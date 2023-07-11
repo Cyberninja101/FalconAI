@@ -1,13 +1,29 @@
-body {
-    font-family: 'Roboto', sans-serif;
-    text-align: center;
+html, body {
+    /* get rid of default margins and padding */
+    margin: 0;
+    padding: 0;
+    background: rgb(246,114,128);
+    background: linear-gradient(0deg, rgba(246,114,128,1) 0%, rgba(192,108,132,1) 100%);
+}  
+
+.header {
+    background-color: gainsboro;
+    padding: 0.5px;
 }
+
 
 #name {
     text-align: center;
     /* font-style: italic; */
 
 }
+
+body {
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+}
+
+
 
 #chat_log {
     display: block;
@@ -17,10 +33,10 @@ body {
     height: 550px;
     border-radius: 20px;
 
-    background-color: antiquewhite;
+    background-color: #f8b195;
 }
 
-.button[type=submit]:hover {
+#submit_button:hover {
     background-color: rgb(50, 139, 212);
     transition: 0.3s;
 }
