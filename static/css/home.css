@@ -2,21 +2,38 @@ html, body {
     /* get rid of default margins and padding */
     margin: 0;
     padding: 0;
-    background: rgb(246,114,128);
-    background: linear-gradient(0deg, rgba(246,114,128,1) 0%, rgba(192,108,132,1) 100%);
+    min-height: 100vh;
+    /* Testing some gradient colors below */
+    /* background: rgb(246,114,128);
+    background: linear-gradient(0deg, rgba(246,114,128,1) 0%, rgba(192,108,132,1) 100%); */
+    /* background-color: rgb(225, 230, 255); */
+
+    background: hsla(234, 100%, 92%, 1);
+
+    background: linear-gradient(135deg, hsla(234, 100%, 92%, 1) 0%, hsla(140, 100%, 91%, 1) 100%);
+
+    background: -moz-linear-gradient(135deg, hsla(234, 100%, 92%, 1) 0%, hsla(140, 100%, 91%, 1) 100%);
+
+    background: -webkit-linear-gradient(135deg, hsla(234, 100%, 92%, 1) 0%, hsla(140, 100%, 91%, 1) 100%);
+
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#D7DBFF", endColorstr="#D1FFE0", GradientType=1 );
 }  
 
 .header {
-    background-color: gainsboro;
-    padding: 0.5px;
-}
-
-
-#name {
+    background-color: rgb(42, 66, 173);
+    /* height: 50px; */
     text-align: center;
+    font-size: 30px;
+    padding-top: 7px;
+    padding-bottom: 7px;
     /* font-style: italic; */
+    color: white;
+    
 
+    
 }
+
+
 
 body {
     font-family: 'Roboto', sans-serif;
@@ -27,13 +44,17 @@ body {
 
 #chat_log {
     display: block;
+    margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
     width: 50%;
     height: 550px;
     border-radius: 20px;
+    opacity: 0.7;
 
-    background-color: #f8b195;
+    background-color: white;
+
+    
 }
 
 #submit_button:hover {
@@ -44,7 +65,8 @@ body {
 #submit_button {
     position: relative;
     padding: 8px 16px;
-    font-size:23px;
+    margin-left:2px;
+    font-size: 1.7rem;
     background: #66b9f1;
     border: none;
     border-radius: 10px;
@@ -56,10 +78,13 @@ body {
 
 input[type=text] {
     border: none;
-    border-bottom: 2px solid black;
+    /* border-bottom: 2px solid black; */
+    border-radius: 20px;
+    height: 70px;
     font-size: 1.25rem; 
     outline: none;
-    width: 45%;
+    width: 46%;
+    opacity:0.7;
 }
 
 form {
