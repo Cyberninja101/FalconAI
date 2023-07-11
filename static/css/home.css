@@ -7,7 +7,7 @@ html, body {
 }  
 
 .header {
-    background-color: gainsboro;
+    background-color: purple;
     padding: 0.5px;
 }
 
@@ -60,6 +60,14 @@ input[type=text] {
     font-size: 1.25rem; 
     outline: none;
     width: 45%;
+    border: 2px solid #dadada;
+    border-radius: 7px;
+}
+
+input:focus {
+    outline: none;
+    border-color: #9ecaed;
+    box-shadow: 0 0 10px #9ecaed;
 }
 
 form {
