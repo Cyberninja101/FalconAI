@@ -4,6 +4,10 @@ import os
 
 app = Flask(__name__)
 
+# Chat Log
+chat_log = []
+
+
 @app.route("/")
 def home():
     """
@@ -20,14 +24,15 @@ def new_entry():
     """
 
     if request.method == "POST":
-        print("It worked")
-        entry = request.form
+        # print("It worked")
+        entry = request.form["entry"]
         print(f"Here is the entry: {entry}")
+        chat_log.append(entry)
 
         # TODO: Send info to LLM somehow
 
     
-    return render_template("home.html")
+    return render_template("home.html", chat_log = chat_log)
     
 
 

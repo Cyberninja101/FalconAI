@@ -15,9 +15,13 @@
     <body>
         <div class="header">FALCON Chatbot</div>
         
-        <div id="chat_log"></div>
+        <div id="chat_log">
+            {% for chat in chat_log %}
+            <div>{{chat}}</div>
+            {% endfor %}
+        </div>
         <form method="POST" action="{{ url_for('new_entry') }}">
-            <input type="text" placeholder="Ask me anything"/>
+            <input type="text" id="entry" name="entry" placeholder="Ask me anything"/>
             <button type="submit" value="Submit" id="submit_button">></button>
             <!-- It was: <input type="submit" value="Submit and Refresh" style="display: none" /> -->
         </form>
