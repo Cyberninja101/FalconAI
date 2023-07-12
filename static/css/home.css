@@ -83,8 +83,9 @@ input[type=text] {
     height: 70px;
     font-size: 1.25rem; 
     outline: none;
-    width: 46%;
+    width: 45.5%;
     opacity:0.7;
+    padding-left: 10px;
 }
 
 form {
