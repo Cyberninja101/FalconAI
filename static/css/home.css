@@ -17,6 +17,8 @@ html, body {
     background: -webkit-linear-gradient(135deg, hsla(234, 100%, 92%, 1) 0%, hsla(140, 100%, 91%, 1) 100%);
 
     filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#D7DBFF", endColorstr="#D1FFE0", GradientType=1 );
+
+    scroll-behavior: smooth;
 }  
 
 .header {
@@ -28,8 +30,6 @@ html, body {
     padding-bottom: 7px;
     /* font-style: italic; */
     color: white;
-    
-
     
 }
 
@@ -56,7 +56,6 @@ body {
     background-color: white;
     /* scrollable */
     overflow-y: scroll;
-
     
 }
 
@@ -108,6 +107,4 @@ form {
     border-radius: 9px;
     color: white;
     text-align: left;
-    
-    
 }
