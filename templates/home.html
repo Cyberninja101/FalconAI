@@ -17,7 +17,7 @@
         
         <div id="chat_log">
             {% for chat in chat_log %}
-            <div>{{chat}}</div>
+            <div id="user_chat">{{chat}}</div>
             {% endfor %}
         </div>
         <form method="POST" action="{{ url_for('new_entry') }}">
