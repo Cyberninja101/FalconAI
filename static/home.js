@@ -23,9 +23,6 @@ const scrollSmoothlyToBottom = (id) => {
     }, 500);
  }
 
-function make_turn_false() {
-    return false
-}
 // var response = "";
 function upload(){
     // uploads user chat to chatlog, POSTs to flask, 
@@ -46,15 +43,13 @@ function upload(){
         enter_flag = true;
     }
     else if (turn==false) {
-        turn = true; // Set turn to machine
         
         // make user chat
         div.id = "user_chat";
         const node = document.createTextNode(form_entry);
         div.appendChild(node);
         chat_box.appendChild(div);
-        
-        document.getElementById("entry").value = "";
+        turn = true; // Set turn to machine
         scrollSmoothlyToBottom("chat_log")
         
     }
@@ -70,15 +65,11 @@ function upload(){
             const node = document.createTextNode(response);
             div.appendChild(node);
             chat_box.appendChild(div);
-            scrollSmoothlyToBottom("chat_log")
-        
-            
-            turn = false(); // Set turn to human
             
             
             // document.getElementById("entry").value = "";
     
-            
+            turn = false; // Set turn to human
         }
         
         
@@ -89,7 +80,9 @@ function upload(){
     
     if (enter_flag == false) {
         request.send();
+        scrollSmoothlyToBottom("chat_log")
         
+        document.getElementById("entry").value = "";
     }
 
     
