@@ -8,34 +8,40 @@
 //     });
 // });
 
+var form_entry = document.getElementById("entry");
+var chat_box = document.getElementById("chat_log");
 
+function upload(){
+    const request = new XMLHttpRequest();
+    var form_entry = document.getElementById("entry").value;
+    request.open('POST', `/new_entry/${form_entry}`);
+    request.onload = () => {
+        // response is what the flask function returns
+        const response = request.responseText;
+        var div = document.createElement("div");
+        div.id = "user_chat";
+        const node = document.createTextNode(form_entry);
+        div.appendChild(node);
+        chat_box.appendChild(div);
+    }; 
+    request.send();
+    chat_box.scrollTop = chat_box.scrollTopMax;
+}
 
+//check if button is manually hit, check this if we add another button
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('button').forEach(button => {
         button.onclick = () => {
-            const request = new XMLHttpRequest();
-            var form_entry = document.getElementById("entry").value;
-            request.open('POST', `/new_entry/${form_entry}`);
-            request.onload = () => {
-                // response is what the flask function returns
-                const response = request.responseText;
-                var div = document.createElement("div");
-                div.id = "user_chat";
-                const node = document.createTextNode(form_entry);
-                div.appendChild(node);
-                chat_box.appendChild(div);
-                // chat_box.scrollBy(0, div.scrollHeight);
-            }; 
-            request.send();
-            chat_box.scrollTop = chat_box.scrollTopMax;
-            // chat_box.scrollTo(0, chat_box.scrollHeight - 60);
+            upload();
         };
     });
-    
 });
 
-var chat_box = document.getElementById("chat_log");
-var user_chat = document.getElementById("user_chat");
-
-
+//check if enter button is hit 
+function enter_check (e){
+    var key_pressed = e.key;
+    if (key_pressed == "Enter"){
+        upload();
+    }
+}
 
