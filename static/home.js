@@ -10,6 +10,7 @@
 
 var form_entry = document.getElementById("entry");
 var chat_box = document.getElementById("chat_log");
+var button = document.getElementById("submit_button");
 
 function upload(){
     // boolean flag
@@ -51,13 +52,8 @@ function upload(){
 }
 
 //check if button is manually hit, check this if we add another button
-document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('button').forEach(button => {
-        button.onclick = () => {
-            upload();
-        };
-    });
-});
+button.addEventListener("click", upload)
+
 
 //check if enter button is hit 
 function enter_check (e){
