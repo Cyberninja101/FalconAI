@@ -9,30 +9,36 @@
 // });
 
 var form_entry = document.getElementById("entry");
+var chat_box = document.getElementById("chat_log");
+// var test = document.getElementById("test");
+
+function enter_check (e){
+    var key_pressed = e.key;
+    if (key_pressed == "Enter"){
+        test.innerHTML = "pressed";
+        upload()
+    }
+}
+
+function upload(){
+    const request = new XMLHttpRequest();
+    request.open('POST', `/new_entry`);
+    request.onload = () => {
+        var div = document.createElement("div");
+        div.id = "user_chat";
+        const node = document.createTextNode(form_entry.value);
+        div.appendChild(node);
+        chat_box.appendChild(div);
+    }; 
+    request.send();
+    chat_box.scrollTo(0, chat_box.scrollHeight);
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('button').forEach(button => {
         button.onclick = () => {
-            const request = new XMLHttpRequest();
-            request.open('POST', `/new_entry`);
-            request.onload = () => {
-                var div = document.createElement("div");
-                div.id = "user_chat";
-                const node = document.createTextNode(form_entry.value);
-                div.appendChild(node);
-                chat_box.appendChild(div);
-                // chat_box.scrollBy(0, div.scrollHeight);
-            }; 
-            request.send();
+            upload()
         };
     });
-    
 });
-
-var chat_box = document.getElementById("chat_log");
-var user_chat = document.getElementById("user_chat");
-
-function Scroller (){
-    
-}
 

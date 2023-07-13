@@ -14,16 +14,10 @@
         <div class="header">FALCON Chatbot</div>
         
         <div id="chat_log">
-            <!-- {% for chat in chat_log %}
-            <div id="user_chat">{{chat}}</div>
-            {% endfor %} -->
+            <h1 id="test">asdf</h1>
         </div>
-        <!-- <form method="POST" action="{{ url_for('new_entry') }}"> -->
-        <!-- <form> -->
-            <input autofocus type="text" id="entry" name="entry" placeholder="Ask me anything">
-            <button type="submit" value="Submit" id="submit_button">></button>
-            <!-- It was: <input type="submit" value="Submit and Refresh" style="display: none" /> -->
-        <!-- </form> -->
+        <input autofocus type="text" id="entry" name="entry" placeholder="Ask me anything" onkeypress="return enter_check(event)">
+        <button type="submit" value="Submit" id="submit_button">></button>
         <script type = "text/javascript" src = "{{ url_for('static', filename = 'home.js') }}"></script>
     </body>
 </html>
