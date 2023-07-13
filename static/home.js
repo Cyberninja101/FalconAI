@@ -12,6 +12,9 @@ var form_entry = document.getElementById("entry");
 var chat_box = document.getElementById("chat_log");
 var button = document.getElementById("submit_button");
 
+//false = user turn, true = machine turn
+var turn = Boolean(false);
+
 // Require jQuery
 const scrollSmoothlyToBottom = (id) => {
     const element = $(`#${id}`);
@@ -20,8 +23,13 @@ const scrollSmoothlyToBottom = (id) => {
     }, 500);
  }
 
+function make_turn_false() {
+    return false
+}
 // var response = "";
 function upload(){
+    // uploads user chat to chatlog, POSTs to flask, 
+    // gets model response, uploads model response to chatlog
     // boolean flag
     var enter_flag = new Boolean(false);
     const request = new XMLHttpRequest();
@@ -37,27 +45,42 @@ function upload(){
         // Didn't find something other than a space which means it's empty
         enter_flag = true;
     }
-    else {
+    else if (turn==false) {
+        turn = true; // Set turn to machine
+        
         // make user chat
         div.id = "user_chat";
         const node = document.createTextNode(form_entry);
         div.appendChild(node);
         chat_box.appendChild(div);
+        
+        document.getElementById("entry").value = "";
+        scrollSmoothlyToBottom("chat_log")
+        
     }
 
     request.onload = () => {
         // response is what the flask function returns
-        response = request.responseText;
+        if (turn) {
+            response = request.responseText;
 
-        // falconAI response
-        var div = document.createElement("div");
-        div.id = "ai_chat";
-        const node = document.createTextNode(response);
-        div.appendChild(node);
-        chat_box.appendChild(div);
-        scrollSmoothlyToBottom("chat_log")
+            // falconAI response
+            var div = document.createElement("div");
+            div.id = "ai_chat";
+            const node = document.createTextNode(response);
+            div.appendChild(node);
+            chat_box.appendChild(div);
+            scrollSmoothlyToBottom("chat_log")
         
-        document.getElementById("entry").value = "";
+            
+            turn = false(); // Set turn to human
+            
+            
+            // document.getElementById("entry").value = "";
+    
+            
+        }
+        
         
         
     }; 
@@ -66,11 +89,6 @@ function upload(){
     
     if (enter_flag == false) {
         request.send();
-        scrollSmoothlyToBottom("chat_log")
-        
-        document.getElementById("entry").value = "";
-
-        
         
     }
 
