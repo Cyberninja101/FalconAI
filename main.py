@@ -30,9 +30,7 @@ def new_entry(entry):
     # making error cause there is no form
         print(f"Here is the entry: {entry}")
         
-        # Make sure it is not an empty entry
-        if entry != "":
-            chat_log.append(entry)
+
 
         # TODO: Send info to LLM somehow
     return entry
