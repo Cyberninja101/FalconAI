@@ -14,22 +14,21 @@ def home():
     This is the home/default page.
     """
     # reset chat_log
-    global chat_log
-    chat_log = []
-    return render_template("home.html", chat_log=chat_log)
+    # global chat_log
+    # chat_log = []
+    return render_template("home.html")
 
-@app.route("/new_entry", methods=["POST"])
-def new_entry():
+@app.route("/new_entry/<entry>", methods=["POST"])
+def new_entry(entry):
     """
     This is when the user asks FALCON a new question, and enters it.
     The question should be saved as a json file, displayed in the 
     chat log, and then sent to the LLM.
     """
-
+    print("This is the new_entry")
     if request.method == "POST":
-        # print("It worked"
-        entry = request.form["entry"]
-        # print(f"Here is the entry: {entry}")
+    # making error cause there is no form
+        print(f"Here is the entry: {entry}")
         
         # Make sure it is not an empty entry
         if entry != "":
