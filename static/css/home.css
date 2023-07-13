@@ -17,6 +17,8 @@ html, body {
     background: -webkit-linear-gradient(135deg, hsla(234, 100%, 92%, 1) 0%, hsla(140, 100%, 91%, 1) 100%);
 
     filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#D7DBFF", endColorstr="#D1FFE0", GradientType=1 );
+
+    scroll-behavior: smooth;
 }  
 
 .header {
@@ -28,8 +30,6 @@ html, body {
     padding-bottom: 7px;
     /* font-style: italic; */
     color: white;
-    
-
     
 }
 
@@ -47,12 +47,16 @@ body {
     margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
+    padding-top: 1px;
+    width: 720px;
     height: 550px;
     border-radius: 20px;
     opacity: 0.7;
 
     background-color: white;
+    /* scrollable */
+    overflow-y: scroll;
+    
 
     
 }
@@ -75,7 +79,7 @@ body {
     color: white;
 }
 
-
+/* input text box */
 input[type=text] {
     border: none;
     /* border-bottom: 2px solid black; */
@@ -83,11 +87,35 @@ input[type=text] {
     height: 70px;
     font-size: 1.25rem; 
     outline: none;
-    width: 46%;
+    width: 650px;
     opacity:0.7;
+    padding-left: 15px;
+    box-shadow: 0 0 15px rgb(233, 233, 233);
 }
 
 form {
     display: block;
     margin-top: 2%;
+}
+
+
+#user_chat {
+    background-color: rgb(31, 127, 210);
+    width:fit-content;
+    max-width: 400px;
+    margin-left: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    padding: 8px;
+    border-radius: 9px;
+    color: white;
+    text-align: left;
+    min-height: 19px;
+}
+
+
+#discount_form {
+    display: block;
+    margin-top: 30px;
 }

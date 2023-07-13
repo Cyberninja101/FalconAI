@@ -4,22 +4,24 @@
     <head>
         <title>FALCON Chatbot</title>
         <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
-        <script type = "text/javascript" 
-            src = "{{ url_for('static', filename = 'home.js') }}" >
-        </script>
         <!-- Connecting to Roboto font -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     </head>
     <body>
         <div class="header">FALCON Chatbot</div>
         
-        <div id="chat_log"></div>
-        <form method="POST">
-            <input type="text" id="subreddit" name="subreddit" placeholder=" Ask me anything"/>
+        <div id="chat_log">
+
+        </div>
+        <div id="discount_form">
+            <input autofocus type="text" id="entry" name="entry" placeholder="Ask me anything" onkeypress="return enter_check(event);">
             <button type="submit" value="Submit" id="submit_button">></button>
-            <!-- It was: <input type="submit" value="Submit and Refresh" style="display: none" /> -->
-        </form>
+        </div>
+        
+
+        <script type = "text/javascript" src = "{{ url_for('static', filename = 'home.js') }}"></script>
     </body>
 </html>
