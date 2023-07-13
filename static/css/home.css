@@ -111,6 +111,7 @@ form {
     border-radius: 9px;
     color: white;
     text-align: left;
+    min-height: 19px;
 }
 
 
