@@ -8,17 +8,20 @@
 //     });
 // });
 
-var form_entry = document.getElementById("entry");
+
 
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('button').forEach(button => {
         button.onclick = () => {
             const request = new XMLHttpRequest();
-            request.open('POST', `/new_entry`);
+            var form_entry = document.getElementById("entry").value;
+            request.open('POST', `/new_entry/${form_entry}`);
             request.onload = () => {
+                // response is what the flask function returns
+                const response = request.responseText;
                 var div = document.createElement("div");
                 div.id = "user_chat";
-                const node = document.createTextNode(form_entry.value);
+                const node = document.createTextNode(form_entry);
                 div.appendChild(node);
                 chat_box.appendChild(div);
                 // chat_box.scrollBy(0, div.scrollHeight);
