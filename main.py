@@ -1,5 +1,5 @@
 from flask import Flask, redirect, url_for, render_template, request
-
+from dummy_model import budget_falcon
 import os
 
 app = Flask(__name__)
@@ -31,8 +31,9 @@ def new_entry(entry):
         print(f"Here is the entry: {entry}")
         
         # TODO: Send info to LLM somehow
-    return entry
-    # return render_template("home.html", chat_log = chat_log)
+        # This is temporary dummy function
+        
+        return budget_falcon(entry)
     
 
 
