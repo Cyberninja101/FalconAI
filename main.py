@@ -30,8 +30,6 @@ def new_entry(entry):
     # making error cause there is no form
         print(f"Here is the entry: {entry}")
         
-
-
         # TODO: Send info to LLM somehow
     return entry
     # return render_template("home.html", chat_log = chat_log)
