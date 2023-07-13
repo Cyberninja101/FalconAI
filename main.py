@@ -16,7 +16,7 @@ def home():
     # reset chat_log
     global chat_log
     chat_log = []
-    return render_template("home.html")
+    return render_template("home.html", chat_log=chat_log)
 
 @app.route("/new_entry", methods=["POST"])
 def new_entry():
@@ -27,18 +27,17 @@ def new_entry():
     """
 
     if request.method == "POST":
-        # print("It worked")
+        # print("It worked"
         entry = request.form["entry"]
-        print(f"Here is the entry: {entry}")
+        # print(f"Here is the entry: {entry}")
         
         # Make sure it is not an empty entry
         if entry != "":
             chat_log.append(entry)
 
         # TODO: Send info to LLM somehow
-
-    
-    return render_template("home.html", chat_log = chat_log)
+    return entry
+    # return render_template("home.html", chat_log = chat_log)
     
 
 
