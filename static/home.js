@@ -10,15 +10,6 @@
 
 var form_entry = document.getElementById("entry");
 var chat_box = document.getElementById("chat_log");
-var test = document.getElementById("test");
-
-function enter_check (e){
-    var key_pressed = e.key;
-    if (key_pressed == "Enter"){
-        test.innerHTML = "pressed";
-        upload();
-    }
-}
 
 function upload(){
     const request = new XMLHttpRequest();
@@ -37,6 +28,7 @@ function upload(){
     chat_box.scrollTo(0, chat_box.scrollHeight);
 }
 
+//check if button is manually hit, check this if we add another button
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('button').forEach(button => {
         button.onclick = () => {
@@ -44,4 +36,12 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     });
 });
+
+//check if enter button is hit 
+function enter_check (e){
+    var key_pressed = e.key;
+    if (key_pressed == "Enter"){
+        upload();
+    }
+}
 
