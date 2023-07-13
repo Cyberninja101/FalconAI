@@ -27,6 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 // chat_box.scrollBy(0, div.scrollHeight);
             }; 
             request.send();
+            chat_box.scrollTop = chat_box.scrollTopMax;
+            // chat_box.scrollTo(0, chat_box.scrollHeight - 60);
         };
     });
     
@@ -35,7 +37,5 @@ document.addEventListener('DOMContentLoaded', () => {
 var chat_box = document.getElementById("chat_log");
 var user_chat = document.getElementById("user_chat");
 
-function Scroller (){
-    
-}
+
 

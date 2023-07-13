@@ -112,3 +112,9 @@ form {
     color: white;
     text-align: left;
 }
+
+
+#discount_form {
+    display: block;
+    margin-top: 30px;
+}
