@@ -114,8 +114,45 @@ form {
     min-height: 19px;
 }
 
+#ai_chat {
+    background-color: rgb(31, 210, 67);
+    width:fit-content;
+    max-width: 400px;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    padding: 8px;
+    border-radius: 9px;
+    color: white;
+    text-align: left;
+    min-height: 19px;
+}
+
 
 #discount_form {
     display: block;
     margin-top: 30px;
 }
+
+#new_chat {
+    display: blocks;
+    margin-top: auto;
+    margin-bottom: auto;
+
+    padding: 6px;
+    
+    font-size: 1.2rem;
+    background: #66b9f1;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    cursor: pointer;
+    color: white;
+
+}
+
+
+
+
+

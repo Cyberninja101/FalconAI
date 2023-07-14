@@ -1,3 +1,7 @@
+import time
+
 
 def budget_falcon(input):
-    return "I am a dum dum."
+
+    time.sleep(1.2) # to represent waiting for the model to finish running
+    return f"I am a dum dum: {input}"
