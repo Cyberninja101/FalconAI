@@ -42,16 +42,15 @@ function upload(){
         // Didn't find something other than a space which means it's empty
         enter_flag = true;
     }
-    else {
-        if (turn==false){
-            // make user chat
-            div.id = "user_chat";
-            const node = document.createTextNode(form_entry);
-            div.appendChild(node);
-            chat_box.appendChild(div);
-            turn = true; // Set turn to machine
-            scrollSmoothlyToBottom("chat_log")
-        }
+    else if (turn==false){
+        // make user chat
+        div.id = "user_chat";
+        const node = document.createTextNode(form_entry);
+        div.appendChild(node);
+        chat_box.appendChild(div);
+        turn = true; // Set turn to machine
+        scrollSmoothlyToBottom("chat_log")
+        
     }
 
     request.onload = () => {
@@ -69,17 +68,15 @@ function upload(){
             // document.getElementById("entry").value = "";
     
             turn = false; // Set turn to human
+            scrollSmoothlyToBottom("chat_log")
         }
-        
-        
-        
     }; 
 
     // make sure div is not empty
     
     if (enter_flag == false) {
         request.send();
-        scrollSmoothlyToBottom("chat_log")
+        
         
         document.getElementById("entry").value = "";
     }    
