@@ -50,7 +50,6 @@ function upload(){
         chat_box.appendChild(div);
         turn = true; // Set turn to machine
         scrollSmoothlyToBottom("chat_log")
-        
     }
 
     request.onload = () => {
