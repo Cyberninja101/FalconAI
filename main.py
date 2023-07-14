@@ -8,7 +8,7 @@ app = Flask(__name__)
 chat_log = []
 
 
-@app.route("/",)
+@app.route("/")
 def home():
     """
     This is the home/default page.

@@ -134,3 +134,25 @@ form {
     display: block;
     margin-top: 30px;
 }
+
+#new_chat {
+    display: blocks;
+    margin-top: auto;
+    margin-bottom: auto;
+
+    padding: 6px;
+    
+    font-size: 1.2rem;
+    background: #66b9f1;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    cursor: pointer;
+    color: white;
+
+}
+
+
+
+
+
