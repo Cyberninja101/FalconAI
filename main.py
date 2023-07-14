@@ -29,13 +29,11 @@ def new_entry(entry):
     if request.method == "POST":
     # making error cause there is no form
         print(f"Here is the entry: {entry}")
-        
+
         # TODO: Send info to LLM somehow
         # This is temporary dummy function
         
-        return budget_falcon(entry)
-    
-
+        return budget_falcon(entry)   
 
 if __name__ == "__main__":
     app.run(debug=True) # Set debug = True for live changes in development
