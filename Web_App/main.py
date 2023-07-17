@@ -1,5 +1,5 @@
 from flask import Flask, redirect, url_for, render_template, request
-from dummy_model import budget_falcon, gpt2
+from dummy_model import budget_falcon, gpt
 import os
 import binascii
 
@@ -42,7 +42,7 @@ def new_entry(entry):
         output = "".join(ls)
 
         print("Here is the entry: " + str(output))
-        return budget_falcon(output)
+        return gpt(output)
 
 if __name__ == "__main__":
     app.run(debug=True) # Set debug = True for live changes in development

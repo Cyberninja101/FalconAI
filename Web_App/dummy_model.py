@@ -1,18 +1,15 @@
 import time
+
+# Use a pipeline as a high-level helper
+# Use a pipeline as a high-level helper
 from transformers import pipeline
 
-# This code is wrong
-# generator = pipeline("text-generation", model="distilgpt2")
-# generator(
-#     "In this course, we will teach you how to",
-#     max_length=30,
-#     num_return_sequences=2,
-# )
 
 
-def gpt2(text):
-    # Make code that will respond to text using gpt2
-    pass
+def gpt(text):
+   pipe = pipeline("text-generation", model="CoffeeAddict93/gpt1-modest-proposal")
+   return(pipe([text]))
+
 
 
 def budget_falcon(input):
