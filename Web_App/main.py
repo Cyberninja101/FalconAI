@@ -1,5 +1,5 @@
 from flask import Flask, redirect, url_for, render_template, request
-from dummy_model import budget_falcon
+from dummy_model import budget_falcon, gpt2
 import os
 import binascii
 
