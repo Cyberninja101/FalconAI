@@ -28,6 +28,7 @@ def new_entry(entry):
     print("This is the new_entry")
     if request.method == "POST":
     # making error cause there is no form
+        
         print(f"Here is the entry: {entry}")
 
         # TODO: Send info to LLM somehow
