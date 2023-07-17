@@ -26,17 +26,40 @@ const scrollSmoothlyToBottom = (id) => {
        scrollTop: element.prop("scrollHeight")
     }, 500);
  }
+ 
+const stringToHex = (str) => {
+    let hex = '';
+    for (let i = 0; i < str.length; i++) {
+        const charCode = str.charCodeAt(i);
+        var hexValue = charCode.toString(16);
+        var hexValue = "," + hexValue
+        // Pad with zeros to ensure two-digit representation
+        hex += hexValue;
+    }
+    return hex;
+}
 
-// var response = "";
+const hexToString = (hex) => {
+    let str = '';
+    for (let i = 0; i < hex.length; i += 2) {
+        const hexValue = hex.substr(i, 2);
+        const decimalValue = parseInt(hexValue, 16);
+        str += String.fromCharCode(decimalValue);
+    }
+    return str;
+};
+
+
 function upload(){
     // uploads user chat to chatlog, POSTs to flask, 
     // gets model response, uploads model response to chatlog
     // boolean flag
     var enter_flag = new Boolean(false);
     const request = new XMLHttpRequest();
-    var form_entry = document.getElementById("entry").value;
+    var form_entry = String(document.getElementById("entry").value);
+    console.log(form_entry)
     response = "";
-    request.open('POST', `/new_entry/${form_entry}`);
+    request.open('POST', `/new_entry/${stringToHex(form_entry)}`);
 
     // creating user chat
     var div = document.createElement("div");
@@ -50,9 +73,8 @@ function upload(){
         if (turn==false){
             var current_time = new Date().getTime();
             if ((current_time - count) >= 1000){
-                console.log("works");
                 div.id = "user_chat";
-                const node = document.createTextNode(form_entry);
+                var node = document.createTextNode(form_entry);
                 div.appendChild(node);
                 chat_box.appendChild(div);
                 turn = true; // Set turn to machine
