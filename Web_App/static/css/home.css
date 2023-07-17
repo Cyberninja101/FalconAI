@@ -45,9 +45,8 @@ body {
     width: 50vmax;
     height: 70vh;
     border-radius: 20px;
-    opacity: 0.7;
-
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.8);
+    
     /* scrollable */
     overflow-y: scroll;
     
@@ -100,7 +99,7 @@ input[type=text] {
     height: 70px;
     box-shadow: 0 0 15px rgb(233, 233, 233);
     border-radius: 20px;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.9);
     align-items: center;
     justify-content: space-between;
     
