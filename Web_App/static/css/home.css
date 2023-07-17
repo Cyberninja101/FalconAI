@@ -3,10 +3,6 @@ html, body {
     margin: 0;
     padding: 0;
     min-height: 100vh;
-    /* Testing some gradient colors below */
-    /* background: rgb(246,114,128);
-    background: linear-gradient(0deg, rgba(246,114,128,1) 0%, rgba(192,108,132,1) 100%); */
-    /* background-color: rgb(225, 230, 255); */
 
     background: hsla(234, 100%, 92%, 1);
 
@@ -23,12 +19,10 @@ html, body {
 
 .header {
     background-color: rgb(42, 66, 173);
-    /* height: 50px; */
     text-align: center;
     font-size: 30px;
     padding-top: 7px;
     padding-bottom: 7px;
-    /* font-style: italic; */
     color: white;
     
 }
@@ -67,12 +61,13 @@ body {
 }
 
 #submit_button {
+    display: flex;
+    flex-grow: 0;
     position: relative;
     
     padding: 8px 16px;
-    /* margin-left:2px; */
-    margin-right: 10px;
-    margin-top: 10px;
+    margin-right: 12px;
+    margin-left: 5px;
     font-size: 1.7rem;
     background: #66b9f1;
     border: none;
@@ -80,24 +75,24 @@ body {
     outline: none;
     cursor: pointer;
     color: white;
+    float: right;
 }
 
 /* input text box */
 input[type=text] {
+    display: flex;
+    flex-grow: 10;
     border: none;
-    /* border-bottom: 2px solid black; */
-    
-    
     font-size: 1.25rem; 
-    outline: none;
-    width: 40vmax;
+    outline: none; 
     opacity:0.7;
     padding-left: 15px;
+    float: left;
     
 }
 
 #discount_form {
-    display: block;
+    display: flex;
     width: 50vmax;
     margin-left: auto;
     margin-right: auto;
@@ -106,7 +101,8 @@ input[type=text] {
     box-shadow: 0 0 15px rgb(233, 233, 233);
     border-radius: 20px;
     background-color: white;
-    align-items: end;
+    align-items: center;
+    justify-content: space-between;
     
 }
 
@@ -120,7 +116,7 @@ form {
 #user_chat {
     background-color: rgb(31, 127, 210);
     width:fit-content;
-    max-width: 400px;
+    max-width: 53%;
     margin-left: auto;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -135,7 +131,7 @@ form {
 #ai_chat {
     background-color: rgb(31, 210, 67);
     width:fit-content;
-    max-width: 400px;
+    max-width: 53%;
     margin-right: auto;
     margin-top: 20px;
     margin-bottom: 20px;
