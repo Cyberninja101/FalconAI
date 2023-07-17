@@ -48,8 +48,8 @@ body {
     margin-left: auto;
     margin-right: auto;
     padding-top: 1px;
-    width: 720px;
-    height: 550px;
+    width: 50vmax;
+    height: 70vh;
     border-radius: 20px;
     opacity: 0.7;
 
@@ -68,8 +68,11 @@ body {
 
 #submit_button {
     position: relative;
+    
     padding: 8px 16px;
-    margin-left:2px;
+    /* margin-left:2px; */
+    margin-right: 10px;
+    margin-top: 10px;
     font-size: 1.7rem;
     background: #66b9f1;
     border: none;
@@ -83,15 +86,30 @@ body {
 input[type=text] {
     border: none;
     /* border-bottom: 2px solid black; */
-    border-radius: 20px;
-    height: 70px;
+    
+    
     font-size: 1.25rem; 
     outline: none;
-    width: 650px;
+    width: 40vmax;
     opacity:0.7;
     padding-left: 15px;
-    box-shadow: 0 0 15px rgb(233, 233, 233);
+    
 }
+
+#discount_form {
+    display: block;
+    width: 50vmax;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    height: 70px;
+    box-shadow: 0 0 15px rgb(233, 233, 233);
+    border-radius: 20px;
+    background-color: white;
+    align-items: end;
+    
+}
+
 
 form {
     display: block;
@@ -130,10 +148,6 @@ form {
 }
 
 
-#discount_form {
-    display: block;
-    margin-top: 30px;
-}
 
 #new_chat {
     display: blocks;

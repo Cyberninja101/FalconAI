@@ -11,7 +11,11 @@
 var form_entry = document.getElementById("entry");
 var chat_box = document.getElementById("chat_log");
 var button = document.getElementById("submit_button");
-
+var test_button = document.getElementById("test_but");
+var test = document.getElementById("test");
+var test2 = document.getElementById("test2");
+var count = 0;
+// let date_time3 = date_time2.getTime();
 //false = user turn, true = machine turn
 var turn = Boolean(false);
 
@@ -42,14 +46,20 @@ function upload(){
         // Didn't find something other than a space which means it's empty
         enter_flag = true;
     }
-    else if (turn==false){
-        // make user chat
-        div.id = "user_chat";
-        const node = document.createTextNode(form_entry);
-        div.appendChild(node);
-        chat_box.appendChild(div);
-        turn = true; // Set turn to machine
-        scrollSmoothlyToBottom("chat_log")
+    else {
+        if (turn==false){
+            var current_time = new Date().getTime();
+            if ((current_time - count) >= 1000){
+                console.log("works");
+                div.id = "user_chat";
+                const node = document.createTextNode(form_entry);
+                div.appendChild(node);
+                chat_box.appendChild(div);
+                turn = true; // Set turn to machine
+                scrollSmoothlyToBottom("chat_log")
+                count = new Date().getTime();
+            }
+        }   
     }
 
     request.onload = () => {
