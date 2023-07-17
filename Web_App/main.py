@@ -1,5 +1,5 @@
 from flask import Flask, redirect, url_for, render_template, request
-from dummy_model import budget_falcon
+from dummy_model import budget_falcon, gpt2
 import os
 
 app = Flask(__name__)
@@ -34,7 +34,8 @@ def new_entry(entry):
         # TODO: Send info to LLM somehow
         # This is temporary dummy function
         
-        return budget_falcon(entry)   
+        return gpt2(entry)
+        # return budget_falcon(entry)   
 
 if __name__ == "__main__":
     app.run(debug=True) # Set debug = True for live changes in development
