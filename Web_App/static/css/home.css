@@ -67,12 +67,15 @@ body {
 }
 
 #submit_button {
+    display: flex;
+    flex-grow: 0;
     position: relative;
     
     padding: 8px 16px;
     /* margin-left:2px; */
-    margin-right: 10px;
-    margin-top: 10px;
+    margin-right: 12px;
+    margin-left: 5px;
+    /* margin-top: 10px; */
     font-size: 1.7rem;
     background: #66b9f1;
     border: none;
@@ -80,33 +83,39 @@ body {
     outline: none;
     cursor: pointer;
     color: white;
+    float: right;
 }
 
 /* input text box */
 input[type=text] {
+    display: flex;
+    flex-grow: 10;
     border: none;
     /* border-bottom: 2px solid black; */
     
     
     font-size: 1.25rem; 
-    outline: none;
-    width: 40vmax;
+    outline: none; 
     opacity:0.7;
     padding-left: 15px;
+    /* margin-top: 22px; */
+    float: left;
     
 }
 
 #discount_form {
-    display: block;
+    display: flex;
     width: 50vmax;
     margin-left: auto;
     margin-right: auto;
     margin-top: 30px;
+    /* margin-bottom: 30px; */
     height: 70px;
     box-shadow: 0 0 15px rgb(233, 233, 233);
     border-radius: 20px;
     background-color: white;
-    align-items: end;
+    align-items: center;
+    justify-content: space-between;
     
 }
 
@@ -120,7 +129,8 @@ form {
 #user_chat {
     background-color: rgb(31, 127, 210);
     width:fit-content;
-    max-width: 400px;
+    /* max-width: 400px; */
+    max-width: 53%;
     margin-left: auto;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -135,7 +145,9 @@ form {
 #ai_chat {
     background-color: rgb(31, 210, 67);
     width:fit-content;
-    max-width: 400px;
+    max-width: 53%;
+
+    /* max-width: 400px; */
     margin-right: auto;
     margin-top: 20px;
     margin-bottom: 20px;
