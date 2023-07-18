@@ -1,6 +1,5 @@
 from flask import Flask, redirect, url_for, render_template, request
-from dummy_model import budget_falcon
-from real_model import model
+from dummy_model import model
 import os
 import binascii
 
@@ -42,10 +41,11 @@ def new_entry(entry):
             ls.append(ascii_string)
         output = "".join(ls)
 
-        print("Here is the entry: " + str(output))
-        return gpt.run(output)
+        x = chatbot.run(output)
+        print(x[1])
+        return x[0]
 
 if __name__ == "__main__":
-    gpt = model()
+    chatbot = model()
     app.run(debug=True) # Set debug = True for live changes in development
     
