@@ -52,12 +52,14 @@ def new_entry(entry):
 def upload_file():
     if request.method == "POST":
         f = request.files['context_file']
-        f.save(os.sep.join(["Web_APP", "contexts",f.filename]))
+        f.save(os.sep.join(["Web_App", "contexts",f.filename]))
 
 
         # TODO: FOR JUSTIN - Convert pdf file to string using ur function
         # and send it to the chatbot model as context
-        return " "
+
+        # empty return with 204 code, means its good
+        return '', 204
 
 if __name__ == "__main__":
     chatbot = model()
