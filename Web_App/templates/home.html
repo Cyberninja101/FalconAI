@@ -25,8 +25,8 @@
                 
             </div>
             <form action="/upload_file" method = "post" enctype="multipart/form-data">
-                <input type="file" name="context_file" accept=".pdf" id="pdf_upload" aria-invalid="false"> </button>
-                <input type = "submit" value="Upload">  
+                <input type="file" name="context_file" accept=".pdf" id="pdf_upload" aria-invalid="false" onchange="this.form.submit()"> </button>
+
             </form>
             
         </div>

@@ -1,6 +1,6 @@
 from flask import Flask, redirect, url_for, render_template, request
 from dummy_model import budget_falcon
-from real_model import model
+# from real_model import model
 import os
 import binascii
 
@@ -57,6 +57,6 @@ def upload_file():
         return " "
 
 if __name__ == "__main__":
-    gpt = model()
+    # gpt = model()
     app.run(debug=True) # Set debug = True for live changes in development
     
