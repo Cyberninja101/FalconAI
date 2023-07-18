@@ -7,19 +7,11 @@ from transformers import pipeline, Conversation
 
 
 def gpt(text):
-    # pipe = pipeline("text-generation", model="CoffeeAddict93/gpt1-modest-proposal")
-    # pipe = pipeline("question-answering", model="monologg/koelectra-small-v2-distilled-korquad-384")
+    # pipe = pipeline("conversational", model="kitbear444/DialoGPT-small-kit")
 
-
-    # conversational_pipe = pipeline("conversational", model="kitbear444/DialoGPT-small-kit")
-    # conversation = Conversation(text)
-    # response = conversational_pipe(conversation)
-    # print("Response:", response.generated_text)
-    # return(response)
-
-    conversational_pipe = pipeline("conversational", model="kitbear444/DialoGPT-small-kit")
+    pipe = pipeline("conversational", model="microsoft/DialoGPT-medium")
     conversation = Conversation(text)
-    response = conversational_pipe(conversation)
+    response = pipe(conversation)
     print("Response:", response.generated_responses[0])
     print(type(response.generated_responses[0]))
     return response.generated_responses[0]
