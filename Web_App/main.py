@@ -54,6 +54,9 @@ def upload_file():
         f = request.files['context_file']
         f.save(os.sep.join(["Web_APP", "contexts",f.filename]))
 
+
+        # TODO: FOR JUSTIN - Convert pdf file to string using ur function
+        # and send it to the chatbot model as context
         return " "
 
 if __name__ == "__main__":
