@@ -23,7 +23,7 @@ class model():
         # initialize HF LLM
         self.flan_t5 = HuggingFaceHub(
             repo_id="google/flan-t5-xxl",
-            model_kwargs={"temperature":0.1}
+            model_kwargs={"temperature":0.01}
         )
 
         self.conversation = ConversationChain(
