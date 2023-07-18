@@ -14,11 +14,12 @@ def home():
     """
     This is the home/default page.
     """
-    # reset chat_log
-    # global chat_log
-    # chat_log = []
 
+    # Refresh the chatbot history
+    chatbot.__init__()
     return render_template("home.html")
+
+
 
 @app.route("/new_entry/<entry>", methods=["POST"])
 def new_entry(entry):
