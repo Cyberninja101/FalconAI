@@ -20,5 +20,3 @@ def read_pdf(filePath):
     pages = "\n".join([i.page_content for i in pages]) # changes from list of Document objects to single string (remove if Document object is better)
 
     return pages
-
-print(read_pdf('RadarInfo/RadarHandbook_CH001.pdf'))
