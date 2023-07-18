@@ -17,6 +17,7 @@ def home():
     # reset chat_log
     # global chat_log
     # chat_log = []
+
     return render_template("home.html")
 
 @app.route("/new_entry/<entry>", methods=["POST"])
@@ -25,6 +26,7 @@ def new_entry(entry):
     This is when the user asks FALCON a new question, and enters it.
     The question should be saved as a json file, displayed in the 
     chat log, and then sent to the LLM.
+
     """
     print("This is the new_entry")
     if request.method == "POST":
@@ -44,6 +46,15 @@ def new_entry(entry):
         x = chatbot.run(output)
         print(x[1])
         return x[0]
+
+
+@app.route("/upload_file", methods=["POST"])
+def upload_file():
+    if request.method == "POST":
+        f = request.files['context_file']
+        f.save(os.sep.join(["Web_APP", "contexts",f.filename]))
+
+        return " "
 
 if __name__ == "__main__":
     chatbot = model()
