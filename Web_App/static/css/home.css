@@ -18,6 +18,7 @@ html, body {
 }  
 
 .header {
+    outline: none;
     background-color: rgb(42, 66, 173);
     text-align: center;
     font-size: 30px;
@@ -91,10 +92,12 @@ input[type=text] {
 }
 
 #discount_form {
+    justify-self: center;
     display: flex;
+
     width: 50vmax;
-    margin-left: auto;
-    margin-right: auto;
+    /* margin-left: auto;
+    margin-right: auto; */
     margin-top: 30px;
     height: 70px;
     box-shadow: 0 0 15px rgb(233, 233, 233);
@@ -162,21 +165,42 @@ form {
 
 }
 
-/* Restarting chat */
-/* #restart_chat {
-    display: blocks;
-    margin-top: auto;
-    margin-bottom: auto;
+#pdf_upload {
+    display: flex;
+    justify-self:right;
+    background-image: url("../pdf_icon.png");
+    background-size: 70px;
+    /* transparent background color */
+    background-color: rgba(255, 255, 255, 0); 
+    width: 70px;
+    height: 70px;
 
-    padding: 6px;
-    height: 40px;
+    border: 0px;
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    color: transparent;
     
-    font-size: 1.2rem;
-    border: none;
-    border-radius: 10px;
-    outline: none;
-    cursor: pointer;
-    background: url("../restart_icon.jpeg")
 }
 
- */
+/* On hover */
+#pdf_upload:hover {
+    background-image: url("../pdf_icon_darker.png");
+}
+
+/* on click */
+#pdf_upload:active {
+    background-image: url("../pdf_icon_darkest.png");
+}
+
+
+/* Hides default file selector button */
+::file-selector-button {
+    display: none;
+}
+
+#bottom_section {
+    display: flex;
+    /* justify-content: center; */
+    
+}
