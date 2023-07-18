@@ -2,13 +2,27 @@ import time
 
 # Use a pipeline as a high-level helper
 # Use a pipeline as a high-level helper
-from transformers import pipeline
+from transformers import pipeline, Conversation
 
 
 
 def gpt(text):
-   pipe = pipeline("text-generation", model="CoffeeAddict93/gpt1-modest-proposal")
-   return(pipe([text]))
+    # pipe = pipeline("text-generation", model="CoffeeAddict93/gpt1-modest-proposal")
+    # pipe = pipeline("question-answering", model="monologg/koelectra-small-v2-distilled-korquad-384")
+
+
+    # conversational_pipe = pipeline("conversational", model="kitbear444/DialoGPT-small-kit")
+    # conversation = Conversation(text)
+    # response = conversational_pipe(conversation)
+    # print("Response:", response.generated_text)
+    # return(response)
+
+    conversational_pipe = pipeline("conversational", model="kitbear444/DialoGPT-small-kit")
+    conversation = Conversation(text)
+    response = conversational_pipe(conversation)
+    print("Response:", response)
+    print(type(response))
+    return response
 
 
 
