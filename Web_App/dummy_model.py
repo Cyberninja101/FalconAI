@@ -29,7 +29,7 @@ class model():
         self.conversation = ConversationChain(
             prompt=self.PROMPT,
             llm=self.flan_t5,
-            memory=ConversationBufferMemory(),
+            memory=ConversationBufferWindowMemory(k=4)
         )
     def run(self, text):
         return([self.conversation(text)["response"], self.conversation.memory.buffer])
