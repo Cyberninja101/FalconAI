@@ -20,9 +20,9 @@ def gpt(text):
     conversational_pipe = pipeline("conversational", model="kitbear444/DialoGPT-small-kit")
     conversation = Conversation(text)
     response = conversational_pipe(conversation)
-    print("Response:", response)
-    print(type(response))
-    return response
+    print("Response:", response.generated_responses[0])
+    print(type(response.generated_responses[0]))
+    return response.generated_responses[0]
 
 
 
