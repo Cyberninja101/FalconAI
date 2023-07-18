@@ -7,14 +7,13 @@ app = Flask(__name__)
 
 # Chat Log
 chat_log = []
-
+ 
 
 @app.route("/")
 def home():
     """
-    This is the home/default page.
+    This is the home/default page. ok
     """
-
     # Refresh the chatbot history
     chatbot.__init__()
     return render_template("home.html")
