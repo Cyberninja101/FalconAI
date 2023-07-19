@@ -20,12 +20,13 @@ def gen(shards):
             for line in f:
                 yield {"line": line}
 
-shards = [f"data{i}.txt" for i in range(32)]
+shards = [f"../../../HandbookPlainText/RadarHandbook_CH0{i}.txt" for i in range(1, 27)]
 ds = Dataset.from_generator(gen, gen_kwargs={"shards": shards})
 
+print(ds)
 # Tokenize text function
-def tokenize_function(examples):
-    return tokenizer(examples["text"], padding="max_length", truncation=True)
+# def tokenize_function(examples):
+#     return tokenizer(examples["text"], padding="max_length", truncation=True)
 
 # print(text.map(tokenize_function, batched=True))
 
