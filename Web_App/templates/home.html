@@ -18,9 +18,15 @@
         
         <div id="chat_log">
         </div>
-        <div id="discount_form">
-            <input autofocus type="text" id="entry" name="entry" placeholder="Ask me anything" onkeypress="return enter_check(event);">
-            <button type="submit" value="Submit" id="submit_button">></button>
+        <div id="bottom_section">
+            <div id="discount_form">
+                <input autofocus type="text" id="entry" name="entry" placeholder="Ask me anything" onkeypress="return enter_check(event);">
+                <button type="submit" value="Submit" id="submit_button">></button>
+                
+            </div>
+            <form action="/upload_file" method = "post" enctype="multipart/form-data">
+                <input type="file" name="context_file" accept=".pdf" id="pdf_upload" aria-invalid="false" onchange="this.form.submit()"> </button>
+            </form>
         </div>
         <script type = "text/javascript" src = "{{ url_for('static', filename = 'home.js') }}"></script>
     </body>
