@@ -13,8 +13,9 @@ class google_flan():
 
         # build prompt template for simple question-answering
         self.template = """
-            The following is a friendly conversation between a human and an AI. The AI is talkative and provides lots of specific details from the Current conversation. 
+            The following is a friendly conversation between a human and an AI. The AI is talkative and will never repeat itself. 
             If the AI does not know the answer to a question, it truthfully says it does not know. 
+            Below is the current conversation it's learning from.
 
             Current conversation:
             {history}
