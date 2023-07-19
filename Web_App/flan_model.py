@@ -32,5 +32,5 @@ class google_flan():
                     memory=ConversationBufferWindowMemory(k=4)
                 )
         
-        def run(self, text):
-            return([self.conversation(text)["response"], self.conversation.memory.buffer])
+    def run(self, text):
+        return([self.conversation(text)["response"], self.conversation.memory.buffer])
