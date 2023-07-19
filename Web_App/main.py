@@ -1,5 +1,6 @@
 from flask import Flask, redirect, url_for, render_template, request
-from dummy_model import model
+from gptj_model import gpt_j
+from flan_model import google_flan
 import os
 import binascii
 
@@ -62,6 +63,6 @@ def upload_file():
         return '', 204
 
 if __name__ == "__main__":
-    chatbot = model()
+    chatbot = google_flan()
     app.run(debug=True) # Set debug = True for live changes in development
     

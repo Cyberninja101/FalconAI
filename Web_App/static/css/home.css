@@ -185,13 +185,10 @@ form {
 
 /* On hover */
 #pdf_upload:hover {
-    background-image: url("../pdf_icon_darker.png");
-}
-
-/* on click */
-#pdf_upload:active {
     background-image: url("../pdf_icon_darkest.png");
 }
+
+
 
 
 /* Hides default file selector button */

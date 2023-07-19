@@ -5,7 +5,7 @@ from langchain.chains.conversation.memory import (ConversationBufferMemory,
                                                   ConversationSummaryMemory, 
                                                   ConversationBufferWindowMemory,
                                                   ConversationKGMemory)
-class model():
+class google_flan():
     def __init__(self):
         os.environ['HUGGINGFACEHUB_API_TOKEN'] = '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'
 
