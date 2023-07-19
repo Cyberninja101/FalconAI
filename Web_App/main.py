@@ -1,5 +1,4 @@
 from flask import Flask, redirect, url_for, render_template, request
-from gptj_model import gpt_j
 from flan_model import google_flan
 from pdfReader import read_pdf
 import os
@@ -62,7 +61,7 @@ def upload_file():
 
         # empty return with 204 code, means its good
         x = read_pdf(f"Web_App/contexts/{f.filename}") # - content of uploaded as string TODO: implement 
-        print(x)
+        # print(x)
         return '', 204
 
 if __name__ == "__main__":
