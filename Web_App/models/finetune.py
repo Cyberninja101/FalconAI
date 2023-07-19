@@ -4,6 +4,8 @@
 
 from transformers import AutoTokenizer, AutoModelForCausalLM
 from datasets import Dataset
+import os
+import sys
 
 # # GPT-J Model (Bigger, Better, Use Servers)
 # tokenizer = AutoTokenizer.from_pretrained("EleutherAI/gpt-j-6b")
@@ -13,20 +15,24 @@ from datasets import Dataset
 tokenizer = AutoTokenizer.from_pretrained("gpt2")
 model = AutoModelForCausalLM.from_pretrained("gpt2")
 
-# Create custom huggingface dataset
+
 def gen(shards):
     for shard in shards:
         with open(shard) as f:
             for line in f:
+                # print("line", line)
                 yield {"line": line}
 
-shards = [f"../../../HandbookPlainText/RadarHandbook_CH0{i}.txt" for i in range(1, 27)]
-ds = Dataset.from_generator(gen, gen_kwargs={"shards": shards})
+# Create custom huggingface dataset from radar textbook txt
+shards = [os.sep.join([os.getcwd(),"HandbookPlainText",f"RadarHandbook_CH0{i}.txt"]) for i in range(1, 27)]
+df = Dataset.from_generator(gen, gen_kwargs={"shards": shards})
 
-print(ds)
-# Tokenize text function
-# def tokenize_function(examples):
-#     return tokenizer(examples["text"], padding="max_length", truncation=True)
+print(df)
 
-# print(text.map(tokenize_function, batched=True))
+# Tokenize the data
+# TODO: FIX TOKENIZER,it doesn't work
+def tokenize_function(examples):
+    return tokenizer(examples["line"], padding="max_length", truncation=True)
+
+print(df.map(tokenize_function, batched=True))
 
