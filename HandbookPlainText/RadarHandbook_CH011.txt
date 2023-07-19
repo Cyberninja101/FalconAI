@@ -1,0 +1,1370 @@
+11.16x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 11
+Solid-State T ransmitters
+Michael T. Borkowski
+Raytheon Company
+11.1 INTRODUCTION
+For commercial applications, the transistor has all but replaced vacuum tube technol -
+ogy in transmitters operating at VHF and below. Since the 1980s, the power output 
+capability among various solid-state technologies has increased to the point where they 
+are actively pursued as replacements for some vacuum electronics in radar transmitters; 
+this is not, however, a universally attractive solution. The transition from high-power 
+klystrons, traveling wave tubes (TWTs), crossed-field amplifiers (CFAs), and magne -
+trons, to solid-state electronics has actually been very gradual because the power output 
+of individual solid-state devices is quite limited compared to typical radar requirements. 
+Nevertheless, transmitter designers have learned that the required higher power levels 
+for radar transmitters can be achieved with a solid-state technology because transis -
+tors and transistor amplifier modules can be readily combined in parallel to achieve 
+a composite higher equivalent power output. As depicted in Figure 11.1, this design 
+attribute helps to extend the solid-state performance envelope well into the region that 
+had previously been dominated by only vacuum electronics.1,2 It is not the intent of this 
+chapter to delineate the relative merits of these sometimes competing technologies, 
+but rather to describe the limits, design practices, and characteristics of the solid-state 
+technology for use in the common radar frequency ranges. The advantages of solid-
+state technologies will be described; some of the key semiconductor technologies and 
+devices will be discussed; and some examples of solid-state component and transmitter 
+design will be presented.
+11.2 ADVANTAGES OF SOLID STATE
+Although the gap in performance capabilities between the solid-state and vacuum 
+electronics technologies can be wide, there still exist relevant trades involving cost, 
+maintainability, and reliability, and this design tradespace can be very complicated. 
+Some point to the continued maturation of vacuum electronics3 and suggest that both 
+vacuum tubes and solid-state devices will be appealing in high performance radars for 
+many years to come. Others note still that the best value in electronic equipment is pro -
+vided when the “appropriate technology”4 is applied to affordable military electronics, 
+recognizing that tubes and solid state may remain as complementary design solutions Chapter 11
+ch11.indd   1 12/17/07   2:25:22 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Source: RADAR HANDBOOK 11.2  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 11
+for future system requirements. For example, microwave power tubes continue to pro -
+vide significantly higher power output and efficiencies than solid-state power ampli -
+fiers for high performance millimeter-wave radars.5 Compared with tubes, solid-state 
+devices offer the following advantages:
+● No hot cathodes are required; therefore, there is no warmup delay, no wasted heater 
+power, and virtually no limit on transistor operating life. Under certain operating 
+conditions, the prediction of the median time to failure (MTTF) for some RF transis -
+tors can exceed 1,000 years.
+● Transistor amplifiers operate at much lower voltages; therefore, power supply volt -
+ages are on the order of volts rather than kilovolts to avoid the need for large spac -
+ings, oil filling, or encapsulation. Compared with a high-voltage power supply, a 
+low-voltage supply uses fewer nonstandard parts and is generally less expensive.
+● Transmitters designed with solid-state devices exhibit improved meantime between 
+failures (MTBF) in comparison with tube-type transmitters. Amplifier module 
+MTBFs greater than 500,000 hours have been extrapolated from accelerated life 
+testing. A factor of 4 improvement in transmitter system MTBF has been reported 
+for an S band solid-state transmitter replacing a klystron transmitter .6
+● Graceful degradation of system performance occurs when individual modules fail. 
+Power output degrades by 20*log (1– b) as devices fail, where b  is the fraction of 
+failed devices.7 This results because a large number of solid-state devices must be 
+combined to provide the power for a radar transmitter, and they are easily combined 
+in ways that degrade gracefully when individual units fail.
+● The ability to demonstrate wide bandwidth is a significant characteristic of solid-
+state devices. While high-power microwave radar tubes can achieve 10 to 20% band -
+width, solid-state transmitter modules can achieve up to 50% bandwidth or more 
+with acceptable efficiency.FIGURE 11.1  By combining the outputs of thousands of transistor amplifiers, 
+the cumulative average power output of solid-state technologies can effectively 
+compete with the performance capabilities of vacuum tube technology, as shown 
+in the center overlap region where competing amplifier solutions coexist.
+ch11.indd   2 12/17/07   2:25:22 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Solid-State Transmitters  SOLID-STATE TRANSMITTERS  11.36x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 11
+● Flexibility can be realized. A module with both transmit and receive path amplifiers 
+(T/R module) can be associated with every antenna element in phased array sys -
+tems. RF distribution losses that normally occur in a tube-powered system between 
+a point-source tube amplifier and the face of the array are thus eliminated. In addi -
+tion, phase shifting for beam steering can be implemented at low power levels on the 
+input feed side of an active array module; this avoids the high-power losses of the 
+phase shifters at the radiating elements and raises overall efficiency. Also, peak RF 
+power levels at any point are relatively low because the outputs are combined only 
+in space. Furthermore, amplitude tapering can be accomplished by turning off or 
+attenuating individual active array amplifiers. For phased array systems with modest 
+power levels, the solid-state solution offers advantages that make it attractive as the 
+basis for a radar transmitter.
+The general replacement of high-power microwave tubes by solid-state devices has 
+not been straightforward. Attempts to replace existing tube-type transmitters with a solid-
+state retrofit have been hindered by the requirement to be a form, fit, functional replace -
+ment for the incumbent hardware. Radar transmit waveforms that previously had been 
+architected to make optimum use of the high peak power and low duty cycle capability 
+of the tube no longer favor the solid-state transmitter. A low duty cycle environment is 
+not the most cost-effective solution for solid-state devices because transistors exhibit 
+much shorter thermal time constants than the replacement tube and are more efficiently 
+operated using a lower composite peak power at a higher duty cycle. As an example of 
+the dilemma, an L-band microwave transistor that is capable of perhaps 50 watts (W)  
+average power cannot provide much more than 300 watts of peak power without over -
+heating during the pulse. The short pulse lengths and low duty cycles typical of older 
+tube-type radars thus make very inefficient use of the average power capabilities of 
+microwave transistors. To replace the old, well-proven 5J26 L-band magnetron that 
+develops 500 W of average RF power at 0.1% (typical) duty cycle would require 2500 
+to 5000 of the 50-watt transistors just described. However, with a 10% duty cycle the 
+500-watt average power requirement could be provided by only 25 to 50 of the 50-watt 
+transistors. In other words, microwave transistors are much more cost-effective when 
+the required radar system average power can be provided by a lower peak power at a 
+higher duty cycle. As a result, there have been relatively few direct replacements of 
+older low duty cycle transmitters by solid-state transmitters. Some initiatives, such as 
+the solid-state AN/SPS-40 replacement that was motivated by the attractive reliability, 
+maintainability, and availability characteristics of a modular solid-state system, have 
+not seen the success once envisioned due to the acquisition cost of solid-state replace -
+ment transmitters. For new radar systems, system designers have been motivated by 
+these considerations to choose as high a duty cycle as possible, both to reduce the peak 
+power required and to permit using solid-state devices at a reasonable cost.
+The decision to use a high transmitter duty cycle, however, has significant impact 
+on the rest of the radar system. Operation at a high duty cycle generally requires the 
+use of pulse compression to provide the desired unambiguous range coverage together 
+with reasonably small range resolution. Other consequences follow in turn: the wide 
+transmitted pulse used with pulse compression blinds the radar at short ranges, so a 
+“fill-in” pulse must also be transmitted and processed. To prevent points of strong clut -
+ter from masking small moving targets, the signal processor must achieve low pulse 
+compression time sidelobes and high clutter cancellation ratio. As a result, it is much 
+easier to design a solid-state transmitter as part of a new system than it is to retrofit one 
+into an old system that usually does not have all these features.
+ch11.indd   3 12/17/07   2:25:23 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Solid-State Transmitters 11.4  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 11
+The use of solid-state does not eliminate all the problems of transmitter design. 
+The RF combining networks must be designed with great care and skill to minimize 
+combining losses in order to keep transmitter efficiency high. Suitable isolation from 
+excessive voltage-standing-wave ratio (VSWR) must be provided to protect the micro -
+wave transistors from undesired operational stresses, and their harmonic power output 
+must be properly filtered to meet MIL-STD-469 and other specifications on RF spec -
+trum quality. Also, just as in tube-type transmitters, energy management is still crucial. 
+Each dc power supply must have a capacitor bank large enough to supply the energy 
+drawn by its solid-state modules during an entire pulse, and each power supply must 
+recharge its capacitor bank smoothly between pulses without drawing an excessive 
+current surge from the power line.
+As a result of unavoidable losses in combining the outputs of many solid-state 
+devices, it is especially tempting to avoid combining before radiating, since combining 
+in space is essentially lossless. For this reason, many solid-state transmitters consist 
+of amplifier modules that feed either rows, columns, or single elements of an array 
+antenna. Especially in the last-named case, it is necessary to build the modules (and 
+usually their power supplies) into the array structure. Generally, solid-state devices 
+or modules are combined in one of three fundamental configurations to generate the 
+required transmitter power levels. Figure 11.2 shows that this may involve either 
+the combination of amplifier outputs to a single port to feed a mechanically rotating 
+antenna or some combination of electronic phase steering and amplification distrib -
+uted among many fixed elements of a planar two-dimensional array .
+Because of the large number of individual modules in a typical solid-state trans -
+mitter, failure of an individual or a few modules has little effect on overall transmitter 
+performance. The module outputs add as voltage vectors, so the loss of 20% of the 
+modules, for example, results in a reduction to 80% of voltage output, which is 64% 
+of power output. Even this is only a 2-dB reduction (the difference between 64 and 
+80% of the power ends up in the combiner loads or in sidelobes if the combining is 
+in space). As a result of this “graceful degradation,” overall reliability of solid-state 
+transmitters is very high even if maintenance is delayed until convenient scheduled 
+periods; however, this advantage should not be abused. Consider a case where 20% 
+of 1000 modules are allowed to fail before output power falls below requirements, 
+and assume that maintenance occurs at scheduled three-month intervals. In this case, 
+module MTBF need only be 22,000 h to provide 90% confidence that the transmitter 
+FIGURE 11.2  Common solid-state transmitter configurations may combine many amplifiers in parallel 
+to a single antenna port ( a), or may use phase-shift elements to electronically steer a beam ( b), or may utilize 
+transmit/receive modules with phase-shift capability at every element to steer a beam ( c).
+ch11.indd   4 12/17/07   2:25:23 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Solid-State Transmitters  SOLID-STATE TRANSMITTERS  11.56x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 11
+will not “fail” in less than three months; however, the cost of replacement modules and 
+labor would be very unattractive because nearly 40% of the transmitter would have to 
+be replaced every year. Higher MTBFs are thus essential to ensure that the transmitter 
+is not only available but also affordable. Fortunately, solid-state module reliability has 
+proven to be even better than the MIL-HDBK-217 predictions. AN/FPS-115 (PA VE 
+PAWS), for example, has grown to 141,000 hours, which is 2.3 times the predicted 
+value. This includes the actual T/R module MTBF, along with the receiver transmit/
+receiver (T/R) switches and phase shifters as well as the power amplifiers. In fact, 
+MTBF for the output power transistors measures better than 1.1 million hours.
+11.3 SOLID-STATE DEVICES
+Although the RF power-generating capability of single transistors is small with 
+respect to the overall peak and average power requirements of a radar transmitter, 
+transistors are used quite effectively by combining the outputs of many identical 
+solid-state amplifiers. The power output level from a particular device is a function 
+of not only the chosen technology, but also the frequency and other conditions, such 
+as pulse width, duty cycle, ambient temperature, operating voltage, and the presented 
+load impedance.
+Technologies and Construction.  Semiconducting materials used in the fabri -
+cation of transistors are considered to be those materials that are typically neither 
+conductors nor insulators. The charge carrying properties of these semiconducting 
+materials can be modified dramatically through the substitution of minute amounts 
+of impurity ions or through crystal lattice defects, either of which act to modulate the 
+flow of electrons. Semiconductor materials from which transistors are fabricated for 
+use in solid-state radar transmitters have generally been either silicon or one of the 
+so-called compound semiconductors, such as gallium arsenide (GaAs), indium phos -
+phide (InP), silicon carbide (SiC), gallium nitride (GaN), or silicon germanium (SiGe). 
+Semiconductors like silicon or gallium arsenide have found early wide acceptance 
+because it has proven practical to control their crystal lattice defects accurately and 
+repeatably during transistor manufacturing. Some semiconductors, such as gallium 
+nitride (GaN) or silicon carbide (SiC), are referred to as wide bandgap semiconduc -
+tors. Semiconductors that exhibit large bandgap values are especially capable of pro -
+ducing very high output power levels with acceptable gain at the frequencies used in 
+most radar applications.
+Transistors are three-terminal devices and are classified as either bipolar or unipolar. 
+Figure 11.3 helps to portray the construction differences among common microwave 
+three-terminal devices, and this figure is referenced multiple times in succeeding sec -
+tions. The bipolar junction transistor (BJT) is so named because the conduction path 
+through the transistor makes use of both majority and minority charge carriers to estab -
+lish current flow in the semiconductor. It is a current-controlled device with the collec -
+tor current modulated by the current flowing between the base-emitter junction. This 
+compares to the operation of a field effect transistor (FET), or a unipolar device, where 
+charge is carried with only one type of charge carrier. The remaining transistor construc -
+tions in Figure 11.3 are all variants of a FET. An external voltage, applied to the gate 
+terminal of a FET, controls the width of the depletion region below the gate terminal. As 
+the width of the depletion region is varied, so too is the equivalent resistance between 
+ch11.indd   5 12/17/07   2:25:23 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Solid-State Transmitters 11.6  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 11
+the drain and source contacts, allowing the current flowing between the drain and source 
+to be modulated accordingly; hence, FETs are referred to as voltage controlled devices . 
+There exist numerous FET variants due to sometimes subtle construction or mate -
+rial differences. Among these are the MOSFET (Metal-Oxide-Semiconductor FET), 
+MESFET (Metal Semiconductor FET), and HFET (Heterostructure FET). The common 
+HFET devices are referred to as the HEMT (High Electron Mobility Transistor) and 
+PHEMT (Pseudomorphic High Electron Mobility Transistor).
+To be useful in a radar transmitter amplifier, the transistor must be capable of oper -
+ating at the appropriate high frequency with good efficiency, while demonstrating 
+useful power gain with adequate thermal management properties to ensure high reli -
+ability. There is not one transistor type or one semiconductor material that is univer -
+sally useful across all the common radar bands from UHF through W band. In fact, 
+among the radar bands, there is often a different dominant device type, along with its 
+attendant design and fabrication methodologies, that offers the optimum performance 
+for that band.
+A first order approximation8 of the power output from a single-stage solid-state 
+amplifier using a FET as the semiconductor device is given by the relationship
+ PRFMAX  = IMAX * (VDGB − |VP| − VK )/8 (11.1)FIGURE 11.3  Transistors are three-terminal semiconductor devices that allow a small voltage or 
+current to control a larger voltage or current. Some cross sections of common transistor types used in 
+the design of radar transmitters are the ( a) GaAs MESFET, ( b) GaAs PHEMT, ( c) Silicon MOSFET, 
+(d ) Silicon LDMOS FET, ( e) Silicon BJT, and ( f) GaN HEMT on SiC Substrate.
+ch11.indd   6 12/17/07   2:25:24 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Solid-State Transmitters  SOLID-STATE TRANSMITTERS  11.76x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 11
+In this relationship, IMAX is the maximum open channel current, VDGB is the gate-
+drain breakdown voltage, VP is the pinchoff voltage, and VK is the knee voltage. These 
+transistor parameters define the transfer characteristics in the I-V (current-voltage) 
+plane, and the boundaries of the I-V plane define the peak power performance enve -
+lope of the transistor. Also, there is an optimum load impedance that will maximize the 
+power output that can be delivered from an amplifier; and to a first order estimate, that 
+load impedance is represented by the line that transversely cuts across the I-V plane 
+from the region of the breakdown voltage to the region of the knee voltage, as shown 
+in Figure 11.4. The ability of a transistor to demonstrate gain at high frequencies is 
+impacted by the mobility and saturated velocity of charge carriers in the semiconduc -
+tor. The ability of a transistor to demonstrate high power output is impacted by the 
+breakdown voltage, the current capability, and the knee voltage of the transistor.
+Silicon device types cost-effectively satisfy the requirements of reliability, elec -
+trical performance, packaging, cooling, availability, and maintainability at lower 
+radar-band frequencies, typically UHF, L band, and into S band. These devices  
+are usually manufactured as discretely packaged transistors and require external 
+impedance-matching circuitry in order to function appropriately in an amplifier. High 
+performance transistors at higher frequencies than S band are usually built using 
+compound semicondctors. Such transistors can result in high cutoff frequencies and 
+demonstrate gain at frequencies much higher than silicon. For example, electrons in 
+gallium arsenide (GaAs) travel approximately twice as fast as they do in silicon. It has 
+a higher saturated electron velocity and higher electron mobility, allowing it to func -
+tion at frequencies into the W band. GaAs transistors generate less noise than silicon 
+devices when operated at high frequency so they also make superior low-noise ampli -
+fiers. A key attribute that makes GaAs an attractive technology is that the GaAs FET 
+can be fully integrated with the passive circuitry that is necessary to provide the bias -
+ing, loading, filtering, and switching functions that are necessary for multistage T/R 
+module designs. Unlike the silicon power transistors, the GaAs FET and its associated 
+FIGURE 11.4  Typical transistor current-voltage continuum (I-V plane) 
+showing key FET dc performance limits with optimum load line for  
+power output shown. Higher power output is achieved when the maxi -
+mum channel current ( IMAX) and the breakdown voltage ( VDGB) are both 
+increased. Optimum amplifier design places the load line as indicated.
+ch11.indd   7 12/17/07   2:25:24 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Solid-State Transmitters 11.8  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 11
+batch-processed monolithic microwave integrated circuitry (MMIC) fabrication tech -
+nology allow for circuit functions to be processed into very, very small, conveniently 
+packaged chips. The wide bandgap semiconductors, such as SiC and GaN, are also 
+compatible with MMIC processing but are also capable of very high power output 
+levels. These semiconductors have material properties that lead to high breakdown 
+voltage with commensurately high channel currents—an order of magnitude higher 
+power output than GaAs (Table 11.1).
+For the upper end of the solid-state microwave spectrum, i.e., the millimeter-
+wave range, the single-port microwave diode can be used as a low-power oscillator. 
+Unfortunately, the power output and efficiency of these devices are, in general, very 
+low; in fact, the efficiency is significantly lower than that of their tube counterparts. 
+However, CW and pulsed power output are attainable up to 300 GHz.
+Peak and Average Power Limitations.  A first-order limit on the RF power out -
+put capability of a transistor is its breakdown voltage and maximum current handling 
+capability. Within that limit, the maximum practical level of power output that can be 
+obtained from a single transistor over a given bandwidth is governed by the thermal 
+dissipation limit of the device. As devices become larger and the dissipative heat flux 
+from the top surface of the transistor chip to the bottom layer of the transistor chip 
+increases, the junction temperature increases to the point where the transistor becomes 
+thermally limited. Regardless of the semiconductor used, the electrical performance 
+and operating lifetime degrade at increasingly higher temperatures.
+There is a composite thermal time constant associated with the numerous thermally 
+resistive layers between the transistor junction and the heat sink or cold plate to which 
+the device is attached. This occurs because each layer (semiconductor, ceramic sub -
+strate, metal base, etc.) exhibits both a thermal resistance and a thermal capacitance. 
+Then, there exists an equivalent thermal time constant ( t) for each packaging material 
+layer. This thermal time constant has been approximateded9 as
+ t  =  0.4053 * (F2rC/KTH)  (11.2)
+where F is thickness (cm), r is density (gm/cc), C is specific heat (Wsec/gm °C), and 
+KTH is thermal conductivity ( W/cm°C). For example, Figure 11.5 shows that when the 
+pulse width and duty cycle for a given GaAs transistor is increased from 20 µs and 10% 
+to 3000 µs and 25%, respectively, there is a 70 °C increase in the overall junction tem -
+perature. Although the transistor may operate reliably at a desired output power level 
+for the shorter pulse width, it would suffer from a decrease in long-term reliability  
+if operated at the same power level for the longer pulse width. Thus, if required to Units Silicon GaAs InP SiC GaN
+Bandgap Energy eV  1.1  1.4  1.3 3.2 3.4
+RF Power Density W/mm 0.6–0.8 0.8–1.8 0.2–0.4 2.0–4.0 3.0–10.0
+Dielectric Constant — 11.8 12.8 12.5 9.7 9.0
+Breakdown Field 106 V/cm  0.6  0.7  0.5 2.5 3.5
+Thermal Conductivity W/m°C 130 46 68 370 170
+Electron Mobility cm2 /Vsec 700 4700 5400 600 1600
+Saturated Velocity 107 cm/sec  1.0  2.0  0.9 2.0 2.5TABLE 11.1  Key Semiconductor Characteristics of the Primary Semiconductors Used for Power 
+Generation in Solid-state Transmitters (The high saturated velocity, breakdown field, and thermal 
+conductivity of SiC and GaN make them attractive for high-power-amplifier applications.)
+ch11.indd   8 12/17/07   2:25:25 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Solid-State Transmitters  SOLID-STATE TRANSMITTERS  11.96x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 11
+maintain long-term reliability at the longer pulse width, the dissipation in the transis -
+tor would have to be reduced to bring the junction temperature down to an acceptable 
+level. De-rating the inherent short-pulse capability by lowering the dissipated power 
+in the transistor, perhaps by reducing the operating voltage and power output, is one 
+method of achieving the desired reliability. Another method may involve the reduction 
+in ambient temperature with the use of chilled fluid in the amplifier heat-sink. These 
+are not always practical solutions and one finds that the layout of the transistor itself 
+is often optimized for a particular pulse width and duty cycle in order to achieve the 
+optimum performance and reliability at the lowest operating temperature.
+The active transistor area on the surface of the chip (the chip is sometimes called 
+the die) is typically divided into manageable units (cells), where the cell size is often 
+optimized for a particular application or range of applications. In addition to frequency 
+considerations, pulse width and duty cycle or, as a result, the peak and average dis -
+sipated power, are the parameters that determine the cell size and arrangement of 
+cells on a chip. The ultimate operating junction temperature of the transistor is largely 
+dependent on the transient heating that will be encountered and the layout and area of 
+the individual cells. For devices that are designed to operate for long pulses or CW, an 
+increase in the average power capability of the transistor can be achieved by dividing 
+the active area of a transistor into small, thermally isolated cell areas.
+Since the overall thermal time constant for a typical power transistor die itself may 
+be on the order of 100–200 µs, the tradeoff between peak and average power versus 
+device size can be significant for solid-state radars using pulse compression with pulse 
+widths in the 10 to 1000 µs range. As an example, the thermal time constant of a silicon 
+die with a thickness of 5 mils is approximately 90 µs whereas a gallium arsenide die 
+with a thickness of 4 mils is approximately 170 µs. Thus, for an operating pulse width FIGURE 11.5  One limit of transistor capability is determined by the maximum junction temperature, 
+which in turn is determined by the thermal time constant, and this results in very different capabilities as a 
+function of operating pulse width and duty cycle.160220
+200
+180
+160
+140
+120
+100GaAs Power Amp Transient Temperature
+Response 20 µsec @ 10% dutyGaAs Power Amp Transient Temperature
+Response 3000 µsec @ 25% dutyGaAs Die (0.004"  thk)
+CuMo Spreader (0.015" thk)
+CuMo Base (0.040" thk)
+τGaAs  = 170 µsec
+τGuMo = 825 µsec
+τGuMo  = 5,850 µsec
+150
+140
+130 Temperature (°C)
+Temperature (°C)120
+110
+100
+0100 200 300 400 500
+Time-µsec2000 4000 6000 8000 10000 12000 14000 0
+Time-µsec600 700 800 900
+ch11.indd   9 12/17/07   2:25:26 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Solid-State Transmitters 11.10  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 11
+representative of a solid-state radar with pulse compression (~300 µs), the tempera -
+ture rise across the silicon die has reached 96% of its steady-state value, but for an 
+operating pulse width representative of a shorter range fire control radar (~20 µs), the 
+temperature rise across the silicon die has only reached 20% of its steady-state value. 
+If the voltage and current threshold of the transistor has not been reached, the shorter 
+pulse width operation could allow for significantly larger power capability to be dem -
+onstrated. Usually, a very detailed thermal analysis using the finite element method is 
+required to quantify these relationships during transistor and amplifier design.
+Background and descriptions of the common three-terminal device types and their 
+associated technologies as utilized for the common radar bands are described in the 
+following sections.
+Silicon Bipolar Junction Transistor . The silicon bipolar junction transistor 
+(BJT) was the earliest of the microwave power devices and found its way into tube 
+replacement transmitters and phased array applications starting in the late 1970s. At 
+lower frequencies, especially below 3 GHz, the Si BJT has been shown to be capable 
+of very high power levels for transistors. Amplifier design is realizable for frequencies 
+up through S band, where the tradeoff between device performance and overall sys -
+tem cost begins to reach a point of diminishing returns. The silicon bipolar transistor 
+technology is now very mature, but the demand for these high performance devices 
+is low because the production quantities required for radar systems is small relative 
+to commercial silicon electronic products. Thus, there tends to be a small number of 
+manufacturers who provide quality devices for use in amplifier designs.
+Silicon-based microwave power transistors can actually be considered hybrid 
+microelectronic circuits and are generally single-chip or multichip transistors com -
+bined in parallel within a flanged hermetic package. Some form of internal impedance 
+prematching circuitry is often included in order to preserve the intrinsic bandwidth of 
+the semiconductor chip and to make the task of external impedance matching easier. 
+The internal matching also increases the terminal impedances of the packaged device 
+to a level where the component losses of the circuitry external to the transistor become 
+less critical. Figure 11.6 is an example of a 230-watt internally matched power tran -
+sistor hybrid using the Si BJT semiconductor technology. It shows the transistor die, 
+along with the capacitors and wires that are used as low-pass and high-pass impedance-
+matching components to achieve an acceptable level of impedance prematching.
+The microwave power Si BJT is invariably an NPN structure (Figure 11.3 e) with 
+a vertical diffusion profile; i.e., the collector contact forms the bottom layer of the 
+chip. The P-type base region has been diffused or implanted into the collector, the  
+N-type emitter has been diffused or implanted into the base, and both base and emitter 
+regions are accessible from the top surface of the chip. The collector region consists 
+of an N-doped, low-resistivity epitaxial layer that is grown on a very low resistivity 
+silicon substrate. The characteristics of the epitaxial layer, i.e., thickness and resistiv -
+ity, can determine the upper limit of performance of the device in terms of ruggedness, 
+efficiency, and saturated power output.
+The fundamental limitation on high-frequency Si BJT performance is the overall 
+collector-to-emitter delay time. If a signal is introduced to either the base or the emit -
+ter, four separate regions of attenuation or time delay are encountered: the emitter-base 
+junction capacity charging time, the base transit time, the collector depletion-layer 
+transmit time, and the collector capacitance-resistance charging time. High-frequency 
+transistor design is concerned with optimizing the physical parameters that contribute 
+to the time-delay components.10
+ch11.indd   10 12/17/07   2:25:26 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Solid-State Transmitters  SOLID-STATE TRANSMITTERS  11.116x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 11
+The design challenge for high-power Si BJTs is to maintain a uniform high current 
+density over a large emitter area with a minimum temperature rise. High-frequency 
+devices require shallow, narrow, high-resistance base regions under the emitter 
+region, causing most of the current carried in the device to be crowded along the 
+periphery of the emitter. Thus, in order to maximize the current-handling capability of 
+the device and, hence, the power output capability of the device, the emitter periphery 
+is maximized. Because the capacitance of the collector-base junction appears as a 
+deleterious parasitic electrical component, the emitter-periphery to base-area ratio, 
+or Ep/Ba, is maximized where possible. Generally, higher-frequency devices exhibit 
+higher Ep/Ba ratios; and to obtain a high Ep/Ba ratio very fine line geometries are 
+required, where the term geometry  refers to the surface construction details of the 
+transistor dice.
+Silicon LDMOS FET . The silicon Laterally Diffused Metal-Oxide Semi-  
+conductor (LDMOS) transistor is beginning to supersede the silicon power BJT as 
+a replacement device, especially at the VHF, UHF, and L-band frequencies. In par -
+ticular, the commercial communications industry has found that the Si LDMOS FET 
+dominates as a cell phone base-station power amplifier because of the higher gain, 
+linearity, and efficiency that it demonstrates compared to the silicon BJT. Although it 
+is a FET, its construction characteristics, packaging, and design challenges are very 
+similar to the design challenges of the Si BJT.FIGURE 11.6  A 230-watt L-band long-pulse and high-duty-
+cycle silicon bipolar power transistor in a custom hermetic, 
+dual-leaded, low-inductance package has an overall footprint of 
+0.40" × 0.45." ( Photograph courtesy of Raytheon Company )
+ch11.indd   11 12/17/07   2:25:27 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Solid-State Transmitters 11.12  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 11
+The silicon LDMOS FET (Figure 11.3 d) is processed on p+ material with a lightly 
+doped p-type epitaxial layer, and just like the silicon BJT, multiple impurity implants 
+form the various junctions. It is still considered a slower device than other semiconduc -
+tors, such as GaAs, because the mobility in silicon MOSFET channels is relatively low. 
+Although the bulk mobility of silicon is lower than GaAs, it does not preclude the sili -
+con LDMOS FET as a high frequency power transistor. The continuous process fabrica -
+tion improvement in the silicon CMOS industry has resulted in sub-micron production 
+transistor feature sizes, and the smaller feature sizes allow for a compensated increase 
+in higher frequency operation; that is, it can exhibit usable gain into S band. In particu -
+lar, the LDMOS structure enables a short channel as a result of the lateral diffusion of 
+the p-type implant. The resulting short channel contributes to improved high frequency 
+response in spite of the lower mobility of silicon. The measured breakdown voltages 
+can be in excess of 100 V , so operation at higher voltages is possible, or conversely, a 
+higher level of margin in ruggedness can be achieved for a given operating voltage; the 
+latter is a key advantage for high-reliability power amplifier applications.
+The underside of the LDMOS transistor dice is the source connection; thus, the chip  
+can be mounted directly to a metal package base. This is unlike the Si BJT where the 
+high voltage collector contact is the underside of the chip. As a result of not having to 
+electrically isolate the underside of the LDMOS chip, there is no need to use the poten -
+tially toxic beryllium oxide based packages that permeate the Si BJT product lines. 
+The lower source inductance achieved with direct attachment to the metal flange of a 
+package base enables higher gains to be demonstrated for comparable Si BJT power 
+levels at frequencies below 2 GHz, but these devices are presently not attractive at 
+frequencies above S band.
+A primary advantage of the LDMOS device is thermal stability. The drain current 
+has a negative temperature coefficient; therefore, the LDMOS FET is not suscep -
+tible to thermal runaway and does not require the amount of gain-degrading resistive 
+emitter ballasting that is commonly required in a Si BJT to help normalize junction 
+temperatures. A more thermally stable device allows for the more efficient power com -
+bining of transistor cells within a package. This contributes to a lower performance 
+sensitivity to load mismatch—a problem that has complicated the design process for 
+the Si BJT. Figure 11.7 and Figure 11.8 summarize the performance envelope for com -
+mercially available silicon bipolar junction transistors and silicon LDMOS FETs for 
+given transmit waveforms.11–14
+GaAs PHEMT.  The GaAs Pseudomorphic High Electron Mobility Transistor 
+(PHEMT) is actually a heterostructure material (Figure 11.3 b) consisting of slightly 
+strain-mismatched crystal layers. A very simplified description portrays an AlGaAs 
+layer over an InGaAs channel on a GaAs substrate forming a high quality two-
+dimensional electron gas layer, often referred to as the 2DEG. This 2DEG exhibits  
+superior electron transport properties resulting in a very confined channel with 
+fewer opportunities for charge carrier collisions. This allows for a very high-quality 
+transistor that can be made with useful gain beyond W band. Higher mobility and 
+electron velocity can be engineered by increasing the percentage content of indium 
+in the channel of the FET. This can be accomplished up to a point, where beyond 
+approximately 25% indium content, the lattice strain differential results in degrading 
+performance and reliability. These techniques can result in transistors with bigger 
+bandgap differences than otherwise possible for the chosen materials. The fabrication 
+of these transistors employs the use of advanced semiconductor processing such as 
+Molecular Beam Epitaxy (MBE) or Molecular Organic Chemical Vapor Deposition 
+ch11.indd   12 12/17/07   2:25:28 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Solid-State Transmitters  SOLID-STATE TRANSMITTERS  11.136x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 11
+(MOCVD) fabrication techniques to achieve the high performance characteristics. 
+These are capital-intensive semiconductor processing steps that are required in 
+order to achieve the high quality channel characteristics that define a microwave or  
+millimeter-wave power transistor. Optimizing the molecular content of the FET 
+channel for best performance is sometimes referred to as bandgap engineering . The 
+challenge for the device engineer is to develop a transistor that supports the highest 
+voltage/current operation while demonstrating the best high frequency gain.FIGURE 11.7  Performance space of commercially available silicon power transistors
+FIGURE 11.8  Performance space of commercially available silicon power transistors
+ch11.indd   13 12/17/07   2:25:28 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Solid-State Transmitters 11.14  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 11
+The complication in power transistor design extends beyond the exotic material 
+fabrication technologies that are used to define the basic FET. Tailored construction 
+techniques are used to control the electric field intensity and improve the breakdown 
+voltage; enhancements such as the field plate,15,16 double gate recess,17 or automatic 
+etch stop layers18 are fabrication and design techniques that are used to optimize the 
+PHEMT performance for a given operating frequency range to bring higher value, 
+performance, or reliability to the semiconductor fabrication process.
+The fundamental three-fingered FET structure (drain-gate-source), shown as a GaAs 
+PHEMT FET in cross-section in Figure 11.9, has power performance limitations that 
+are mitigated by employing a structured design approach for achieving high power-
+output levels. As shown in Figure 11.10, the smallest physical construction dimension 
+of the gate electrode is called the gate length ; the longer of the dimensions is called 
+the gate width . The current carrying capability (and hence the power capability) of the 
+FET is increased as the gate width is increased. There is a limit as to how long the gate 
+width can be increased before phase differential and signal attenuation along the longer 
+dimension of the gate width begin to have a deleterious impact on amplifier perfor -
+mance. In practice, the maximum gate width can be found to approach approximately 
+400 µm, 150 µm, or 60 µm for S band, X band, or Ka band frequencies, respectively.
+With a limitation on maximum gate width, additional current and hence power 
+capability can only be achieved by combining multiple gate electrodes in parallel. Gate 
+electrodes, or fingers  as they are often referred to, are generally grouped in logically 
+convenient substructures (cells) that are stepped and repeated to form a symmetric cor -
+porate hierarchy of combined transistors. The outputs of all fingers are required to be 
+combined in phase and then impedance-matched to the appropriate level. An industry-
+wide figure-of-merit for capability of the semiconductor and the unit FET is the power 
+output density, and this is given in units of watts/mm of total FET gate width or gate 
+periphery. For operating voltages of 7–10 volts, a normalized power output density of 
+0.6–0.8 W/mm should be expected; for more advanced GaAs PHEMT structures oper -
+ating at 11–28 volts, one can expect to deliver 1.1–2.0 W/mm of normalized power 
+output density. Thus, to achieve a power level of 20 watts at 10 GHz, when operating 
+from 15 volts, approximately 80 gate fingers must somehow be combined in parallel to 
+FIGURE 11.9  Cross section of a 0.25 µm double gate–recessed GaAs 
+PHEMT transistor, showing gate, drain, and source metals ( Photograph 
+courtesy  of Raytheon Company )
+ch11.indd   14 12/17/07   2:25:29 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Solid-State Transmitters  SOLID-STATE TRANSMITTERS  11.156x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 11
+deliver the power. Higher numbers of paralleled fingers necessarily lead to decreasing 
+input and output impedances, further complicating the ability to provide the desired 
+impedance match over the desired bandwidth. Higher impedance transformation 
+ratios and wider bandwidths invariably contribute to additional loss in the match -
+ing networks, whether these networks are hybrid construction or MMIC construction. 
+Additional losses degrade the inherent power, gain, and efficiency characteristics of the 
+intrinsic FET. The most appropriate amplifier design for a given application requires 
+optimization of the transistor, and the variables that affect that optimization, such as 
+unit gate length, gate width, number of gate fingers, cell construction, impedance 
+matching circuits, and bias networks, all require detailed attention during the design 
+of the amplifier. Excellent compilations of industry performance have been published 
+for further insight.19,20 These references outline state-of-the-art power output density 
+and efficiencies of compound semiconductors from 1 through 100 GHz.
+Wide Bandgap Semiconductors.  Since the inception of solid-state, Zolper21 
+draws historical reference to the first, second, and third generation of semiconduc -
+tor materials as (1) silicon, (2) gallium arsenide or indium phosphide, and the (3) 
+so-called wide bandgap semiconductors (WBGS). The latter are dominated by the 
+silicon carbide (SiC) MESFET and the gallium nitride (AlGaN/GaN) heterojunction 
+field effect transistor (HFET). The advent of the third semiconductor generation opens 
+enormous new possibilities in the area of high power amplifiers for use in solid-state. 
+The WBGS materials are able to produce very high power-output levels (5–20 w/mm) FIGURE 11.10  Typical two-stage GaAs MMIC power amplifier with insert 
+showing multiple paralleled gate fingers in final stage unit cell ( Photograph 
+courtesy of Raytheon Company )
+ch11.indd   15 12/17/07   2:25:29 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Solid-State Transmitters 11.16  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 11
+from high bus voltages (25–75 volts), while maintaining transistor-like properties at 
+higher operating temperatures than Si or GaAs.22 They are finding application in the 
+S band, C band, or X band frequency ranges. The interest in development is being 
+fueled by both the military for high performance sensors and also by commercial 
+interests for high-power wireless base-station amplifiers. In particular, the GaN HFET 
+device demonstrates physical properties that make it useful as a high gain device with 
+very high power output capability into the W band. The SiC MESFET will likely be 
+competitive at the lower frequency ranges of L band through C band.23
+The thermal conductivity of the SiC substrate is superior to GaAs by nearly an 
+order of magnitude, and the normalized power outputs are much, much higher in the 
+wide bandgap semiconductors than currently being achieved using GaAs at any volt -
+age. The higher thermal conductivity of SiC enables more efficient thermal manage -
+ment. Coupled with the high breakdown voltage and channel current capability of the 
+SiC MESFET, measured results of 80 watts of CW power output with an 8 dB associ -
+ated level of large signal gain at 3.1 GHz from a 58 V drain supply voltage have been 
+reported24 from a single transistor cell.
+Electron mobility in the GaN HEMT at saturated drift velocities is high enough that 
+high gain with simultaneous high power output and high efficiencies can be achieved 
+with voltages as low as 20 to 30 volts. With a GaN epitaxial layer processed on a SiC 
+substrate, the current state-of-the-art for transistor performance is defined on several 
+fronts in the semiconductor industry by the following performances: (1) pulsed power-
+added-efficiency (PAE) of 68% at 30 V and 10 GHz on a 1.25 mm FET, and CW 
+power of 5 W at 30 V and 10 GHz on a single 1.25 mm transistor;25 (2) power density 
+of 8.6 W/mm at 40 GHz;26 (3) less than 0.2 dB power degradation after 15,000 hours  
+RF operation at 28 V with channel temperatures of 150 °C.27 Power-added efficiency 
+is a circuit designer’s term and is defined by
+ PAE = (PO − PI)/PDC (11.3)
+where PO is the RF power output, PI is the RF power input, and PDC is the total  
+dc power input.
+Figure 11.11 and Figure 11.12 illustrate the advantages of GaN at 10 GHz when 
+compared with the physical geometry of an identically sized GaAs PHEMT transistor. 
+GaAs Circuit FET Behavioral Model  
+10 GHz, 1mm, 7V, 25C
+010203040506070
+−8−4 0 4 8 12 16 20 24
+RF Drive (dBm)Po(dBm), PAE(%)
+02468101214
+Gain (dB )Po (Power Output)
+PAE (Efficiency )
+Gn (Gain)
+FIGURE 11.11  Typical 10-GHz performance curves for a 1 mm 
+periphery GaAs PHEMT FET operating at +7 V using a CW (100% 
+duty) waveform
+ch11.indd   16 12/17/07   2:25:30 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Solid-State Transmitters  SOLID-STATE TRANSMITTERS  11.176x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 11
+In this example, a GaAs PHEMT with 1 mm of total gate periphery (Figure 11.11) is 
+compared with an identical 1 mm GaN HEMT (Figure 11.12). These figures portray 
+the power output ( Po), power-added efficiency (PAE), and gain ( Gn). Performance for 
+each is referenced to 10 GHz for CW operation. The GaAs PHEMT operates at 7 V; 
+the GaN HEMT operates at 28 V . From these performance curves, one sees that the 
+small signal gains are nearly identical in the 12–13 dB range, as are the large signal 
+efficiencies, but the power output capability of the GaN HEMT is 8 dB greater than 
+for the GaAs PHEMT of the same size.
+11.4 DESIGNING FOR THE SOLID-STATE  
+BOTTLE TRANSMITTER
+Radar transmitter design invariably requires significant radiated power from the 
+antenna in order to project to the minimum range requirement while maintaining some 
+minimum signal-to-noise ratio on receive. The impact of the requirement for high radi -
+ated power is fundamental to the design of solid-state transmitters—high power must 
+be achieved by combining the outputs of lower-power amplifiers in order to develop 
+the required radiated levels. Transistor fingers are combined into MMIC amplifi -
+ers; amplifiers are combined into modules; and modules are combined into systems. 
+Generally, the combining takes on one of two different configurations using either 
+space-combined or corporate-combined architectures. The phased array is a common 
+example of the space-combined configuration wherein each radiating antenna ele -
+ment is fed by an amplifier module and the wavefront is formed in space. The com -
+mon example of the corporate-combined design is the “solid-state bottle,” wherein a 
+mechanically rotating antenna is fed from a single port, and the power at the port is 
+the summation of the outputs of many amplifier modules. Those modules might be 
+physically located, for example, below deck on a ship away from the antenna. Solid-
+state transmitter designs have been built around each of these generic forms, and the 
+components that are required in the implementation of each share similar character -
+istics and devices.GaN Circuit FET Behavioral Model 
+10 GHz, 1mm, 28V, 25C
+010203040506070
+0 4 8 12 16 20 24 28 3 2
+RF Drive (dBm)Po(dBm), PAE(%)
+02468101214
+Gain (dB)Po (Power Output)
+PAE (Efficiency)
+Gn (Gain)
+FIGURE 11.12  Typical 10-GHz performance curves for a 1 mm 
+periphery GaN HEMT FET operating at +28 V using a CW (100% 
+duty) waveform
+ch11.indd   17 12/17/07   2:25:31 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Solid-State Transmitters 11.18  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 11
+In the corporate-combined solid-state bottle, high power levels are generated at a 
+single point by combining the outputs of many power amplifier modules. In general, 
+a power amplifier module, as shown in Figure 11.13, consists of a number of identical 
+amplifiers that are parallel-combined and isolated from one another through the use 
+of microwave combining and isolating techniques. Drive power for this parallel group 
+is obtained from driver or predriver stages, using phase- and amplitude-matched mir -
+ror-imaged microwave power dividers. A circulator at the module output port is com -
+monly used to protect the amplifier from the damaging effects of high-load VSWR, 
+most notably from the antenna. Also, ancillary circuitry such as energy storage capaci -
+tance for pulsed operation, built-in-test (BIT) sensors, or adaptive control components 
+may be included.
+Amplifier & Module Design.  Solid-state amplifiers for use in transmitter 
+design are often referenced by their class of operation. Amplifiers are designated 
+as operating either Class-A, -B, -AB, -C, -D, -E, -F, or -G. Class-A, -AB, -B, and 
+-C generally refer to analog amplifiers whereas Class-D, -E, -F, and -G generally 
+refer to switching-mode amplifiers. Each class of operation for the analog modes 
+is defined by the manner in which the transistor is biased; each class of operation 
+FIGURE 11.13  Solid-state power amplifier module combines many single stage amplifiers together with 
+matched phase and amplitude using resistively isolating combining techniques
+ch11.indd   18 12/17/07   2:25:31 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Solid-State Transmitters  SOLID-STATE TRANSMITTERS  11.196x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 11
+for the switching modes is defined by the manner in which the transistor is biased 
+and how the waveshape of current and voltage is manipulated. For example, current 
+swing in an amplifier that is biased Class-A replicates exactly the input signal up 
+to the point where the transistor voltage and current limits are reached. In practice, 
+Class-A amplifiers are the most linear as well as the least efficient. High dynamic-
+range linear receive amplifiers are biased Class-A, and audio amplifiers may be also 
+be biased Class-A to preserve the linearity of the input signal. Class-B amplifiers 
+are biased such that conducting current in the transistor flows for exactly one half 
+of the input signal voltage swing. Push-pull amplifiers may be biased in this fashion 
+such that one transistor operates over the positive input signal swing, and the sec -
+ond transistor operates over the negative input signal swing. Higher efficiency but 
+higher distortion is experienced when compared with a Class-A design. The Class-
+AB operated amplifier is biased just above 50% conduction using a trickle quiescent 
+current and is also commonly used as a push-pull amplifier. Class-C amplifiers are 
+biased such that conducting current in the transistor flows for less than 50% of the 
+incident input voltage signal. This allows for the highest efficiency at the expense 
+of power gain and with the highest level of nonlinear operation. Class-C biased 
+transistors are actually “off” without the presence of an RF signal on the input. For 
+use in radar transmitter amplifiers, the Class-C amplifier offers higher efficiency 
+over Class-A, -B, or -AB. In practice, they can be made to be “self-biasing” and 
+have been the preferred class of operation for the silicon bipolar transistors used at 
+UHF, L band, and S band. Because this class of operation is inherently nonlinear, as 
+the transistor modulates between being off and saturated through each RF cycle, the 
+harmonic content is high, and appropriate filtering of undesired higher order spec -
+tral content must be applied at the output of the transmitter. The amplifier Class-D, 
+-E, -F, and -G are high efficiency switching amplifier configurations that require 
+specialized termination of the signal harmonics (filtering) in order to maximize the 
+amplifier efficiency. These can be complicated hardware implementations but may 
+be warranted where incremental improvement in efficiency brings benefit to the 
+transmitter system.
+Silicon BJTs that operate in the HF through S-band frequency ranges are commonly 
+biased either Class-B or Class-C. Class-C operation is the preferred mode because 
+the RF output power of the amplifier is maximized for a given prime power input. In 
+general, the base-emitter junction is reverse-biased, and collector current is drawn for 
+less than half of an RF cycle. Collector current is drawn only when the input voltage 
+exceeds the reverse bias across the input and the output voltage is developed across a 
+resonant-tuned load. The net result is high amplifier efficiency. The practical implica -
+tions of a Class-C-biased amplifier stage are as follows:
+● No quiescent dc current is drawn while the device is not being driven, such as in 
+the radar receive mode. Hence, there is no power dissipation in the amplifier while 
+the transmitter is operating in this mode.
+● Only one power supply voltage is necessary for the collector terminal of the transis -
+tor. The Class-C operation is a self-bias, wherein the transistor draws collector cur -
+rent only when the RF voltage swing on the input exceeds the built-in potential of 
+the emitter-base junction. Additional reverse biasing may be introduced as a result 
+of the voltage drop induced by current flow across parasitic resistance of the base 
+or emitter-bias return, and in common base operation, this will result in degraded 
+power gain.
+ch11.indd   19 12/17/07   2:25:31 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Solid-State Transmitters 11.20  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 11
+● Class-C-biased amplifiers are very sensitive to any deviations from the nominal 
+operating point. Class-C-biased amplifiers exhibit sensitivity to RF drive level and 
+load impedance that may degrade the output pulse characteristics. A single-stage 
+Class-C biased BJT amplifier will typically exhibit a very narrow “linear” transfer 
+characteristic; the linear region may exist over only a narrow 1- to 3-dB window of 
+RF input drive. This becomes strikingly critical when several Class-C-biased stages 
+are cascaded in series, as is common in most amplifier configurations. The final tier 
+of output transistors in a serial amplifier chain must be driven into saturation by the 
+preceding stages, and the drive level must be held relatively constant as a function 
+of time and temperature. Since these devices exhibit this narrow operating range, 
+small decreases in the input RF drive level to a multistage amplifier may bring the 
+final tier of devices out of saturation. Failure to control these conditions accurately 
+can result in unacceptably degraded output pulse fidelity.
+In a very simple sense, the design of an amplifier module consists of matching the 
+power transistors to the proper impedance level and then combining the power levels 
+at these impedances. A typical packaged power transistor has low input and output 
+impedances that must be transformed up to higher level, usually 50 ohms. Thus, the 
+typical amplifier design task must address both low-loss and inexpensive reactive 
+impedance-transforming networks that can provide the proper source and load imped -
+ances to the transistor. The common medium for providing this function is a microstrip 
+transmission line. Microstrip is a quasi-TEM mode transmission-line medium that 
+requires photolithographically defined lines on a low-loss, high-quality dielectric sub -
+strate. Reactive components that are necessary as impedance-matching elements can 
+be approximated in the microstrip format. An inexpensive reactive matching network 
+can be formed by using an interconnected pattern of microstrip elements. Shunt- and 
+series-connected inductive reactances as well as shunt capacitive reactances, are the 
+most easily fabricated and most frequently used matching elements.
+Power Combining.  A power combiner coherently adds together the RF output 
+voltages of individual amplifiers and delivers the sum total of the modules’ output 
+power, minus the losses of the combiner, to a single port. The outputs of identical 
+single-stage power amplifiers are commonly summed by using well-documented28 
+splitting and combining techniques (Figure 11.14). These techniques also address  
+isolation between paralleled amplifiers. Having isolation between adjacent ports 
+means that if one device fails, the power combiner provides a fixed load impedance 
+to the remaining device; however, half the power of the remaining active device will 
+be dissipated in the isolation resistor of the combiner. In order to achieve the most 
+efficient combining of parallel amplifier stages, the phase and amplitude balance 
+of individual stages should be as similar as possible. Any deviations from identical 
+phase and amplitude balance result in power output lost to the resistive terminating 
+port of the combiner. The power lost to similarity differences, from either phase or 
+amplitude, is dictated by vector addition and is given by:
+ PLOST = 20*log ((SQRT (P12 + P22 + 2*P1*P2*COS(q)))/(P1 + P2))  (11.4)
+where q  is the phase difference in degrees between two amplifiers that are summed 
+together, SQRT indicates the “square root of,”, and P1 and P2 are the power levels of 
+each amplifier in watts. Figure 11.15 quantifies the impact of lost performance due to 
+phase or amplitude imbalance.
+ch11.indd   20 12/17/07   2:25:32 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Solid-State Transmitters  SOLID-STATE TRANSMITTERS  11.216x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 11
+FIGURE 11.14  Common microwave power-combining circuit topologies that are used to provide 
+isolation among adjacent parallel amplifiers in a corporate combining structure
+FIGURE 11.15  Contours of power lost to the isolation load resistor of an isolated power com -
+biner for a range of amplitude and phase imbalances between two combined amplifiers. With an 
+amplitude imbalance of 1 dB and a phase imbalance of 30 °, approximately 0.31 dB of power will 
+be lost to the isolating termination of the power combiner.Contours of Vectoral Power Lost
+5101520253035404550
+0 1 2 3 4 5 6 7 8
+Amplitude Imbalance (dB)Phase Imbalance (deg) 0.1dB1.1dB
+1.0dB
+0.9dB
+0.8dB
+0.7dB
+0.5dB
+0.4dB
+0.3dB
+0.2dB0.6dB1.2dB
+ch11.indd   21 12/17/07   2:25:33 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Solid-State Transmitters 11.22  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 11
+In general, the requirements for a power combiner are
+● The combiner should have low insertion loss to maximize transmitter efficiency.
+● The combiner should have RF isolation among ports, such that failed modules do not 
+affect the load impedances or combining efficiency for the remaining functioning 
+modules.
+● The combiner should provide a controlled RF impedance to the amplifier modules, 
+such that the amplifier characteristics are not degraded.
+● The dissipated power capability of the power combiner terminations should be suf -
+ficient to accommodate any combination of power amplifier failures.
+● The mechanical packaging of the power combiner should allow modules to be 
+repaired easily. The packaging should also provide short, equal phase and low-loss 
+interconnections between the amplifier modules and the combiner.
+Power combiners may be either isolative or reactive designs. In isolative designs, 
+any imbalance or difference between the phase and amplitude of the voltages that 
+are being combined is directed to a resistive termination. The net result is that a con -
+stant load impedance is presented to the amplifier under all conditions even when an 
+adjacent amplifier in a combining tier has failed. In a reactive combiner design, any 
+imbalance in power or phase between two input signals results in reflected power and 
+increased VSWR to the module driving it. Higher than desired frequency-dependent 
+phase and amplitude ripple may result from improper use of this configuration.
+A splitter and combiner network may also provide serial isolation among cas -
+caded amplifier stages as well as parallel isolation. For example, when a Class-C 
+biased transistor is pulsed, it passes through its cutoff, linear, and saturation regions. 
+Consequently, the input and output impedances are dynamically varying, and the 
+input impedance changes very dramatically. The dramatically changing input imped -
+ance will present an undesirable load to the preceding amplifier stage supplying the 
+RF drive power. This may very well send the previous stage into unwanted oscil -
+lation. However, a quadrature splitter network, i.e., a power divider that provides a 
+3 dB split as well as a 90 ° phase offset, can be used to provide a constant impedance 
+at the input to the splitter regardless of the individual amplifier input impedances 
+(Figure 11.16). This ensures that a driver amplifier stage is presented with a well-
+matched load.
+Typical RF transmission media that are used in the construction of high-power 
+combiners include coaxial transmission lines, microstrip or stripline transmission 
+lines, or waveguide. The choice of transmission medium is generally a function of 
+many parameters, including peak and average power-handling capability, operat -
+ing frequency and bandwidth, mechanical packaging constraints, and, of course, the 
+overall loss that can be tolerated. More often than not, a combiner design utilizes a 
+hierarchy of cascaded designs to sum the outputs of many modules; however, unique 
+configurations that sum many ports to a single port have been built.
+Amplitude and Phase Sensitivities . The phase and amplitude sensitivity of 
+transistor amplifiers to power supply ripple may impact the MTI improvement factor 
+that can be attained. In a multistage amplifier, the phase errors due to power supply 
+sensitivity of serially cascaded stages will add. In addition, careful design must take 
+into account interactions that can occur as a result of the many cascaded stages of 
+solid-state amplification. These include the following:
+ch11.indd   22 12/17/07   2:25:33 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Solid-State Transmitters  SOLID-STATE TRANSMITTERS  11.236x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 11
+● Phase errors in cascaded stages simply add. However, it may also be possible to 
+arrange them to cancel by proper phasing of power supply ripples for different 
+stages. Similarly, in a stage with N modules in parallel, each with its own high-
+frequency power-conditioned power supply, the overall phase ripple can usually be 
+assumed to be reduced by a factor equal to the square root of N if the power supply 
+clocks are purposely not synchronized.
+● Because of saturation effects, amplitude errors in cascaded stages do not simply add. 
+However, amplitude errors in driving stages will cause drive-induced phase varia -
+tions in the following stages, as noted above, all of which must be counted.
+● Time jitter in cascaded stages simply adds unless the stages are arranged to cancel or 
+to be root-sum-squared. In addition, amplitude fluctuations in the RF drive will also 
+cause drive-induced jitter, which may even exceed power-supply-ripple-induced jitter, 
+so this factor must be carefully measured.
+Spectral Emissions.  When a rectangular RF drive pulse is applied to a single 
+module, the amplifier will typically show rise and fall times that are on the order 
+of nanoseconds. The output signal spectrum of this pulse shape may not meet spec -
+tral emissions requirements, and it may be necessary to slow the rise and fall times. 
+However, the amplifier operating region of optimum efficiency occurs as the tran -
+sistor is driven into saturation, and for a large transmitter, there may be numerous 
+tiers of cascaded saturated amplifiers. With so many cascaded saturating amplifiers, it 
+becomes very difficult to control the rise and fall times as a result of the nonlinearity 
+that is introduced into the power transfer function for the transmitter. Consequently, 
+an input pulse shape with very exaggerated slow rise and fall times may be necessary 
+to achieve the desired output-pulse spectral composition.FIGURE 11.16  Power amplifier combining configurations that provide minimum input port 
+reflected power: ( a) quadrature-coupled amplifier pair and ( b) split-T amplifier pair with a 90 ° offset.  
+The amplifier input voltage reflection coefficient is given as Γ and the amplifier voltage gain as  
+A. (Reprinted with permission from E. D. Ostroff et al ., Solid-State Transmitters, Norwood, MA: Artech 
+House, 1985 .)
+ch11.indd   23 12/17/07   2:25:34 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Solid-State Transmitters 11.24  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 11
+11.5 DESIGNING FOR THE SOLID-STATE 
+PHASED ARRAY TRANSMITTER
+In contrast to the design of the solid-state bottle transmitter where significant losses can 
+accrue in the combining circuitry, the solid-state phased array antenna uses individual 
+transmit/receive (T/R) modules with internal phase shift capability. Each T/R module 
+is located behind an associated radiating element in a two-dimensional array. In this 
+fashion, the beam is more efficiently formed in space and one avoids the losses than 
+can accumulate in corporate combining. The transmit/receive (T/R) module, regard -
+less of complexity, has five fundamental functions: (1) to provide gain and power 
+output in the transmit mode, (2) to provide gain and low-noise figure in the receive 
+mode, (3) to switch between transmit and receive states, (4) to provide phase shift for 
+beam steering for both transmit and receive paths, and (5) to provide self-protection 
+for the low-noise amplifier.
+The first T/R module was developed by Texas Instruments in the mid-1960s as 
+part of the Molecular Electronics for Radar Applications (MERA) program initi -
+ated by the U.S. Air Force to determine the feasibility of using X-band T/R modules 
+in a solid-state phased array radar.29 As a result of continuous development, phased 
+arrays are used in multiple military and communications systems. The advantages 
+of a phased array transmitter include (1) the ability to have multiple independently 
+steered beams from a single aperture, (2) the speed of electronic versus mechani -
+cal beam locations, and (3) the efficiency of utilizing space combining instead of 
+performing the power combining before the antenna. Block diagrams of represen -
+tative T/R module functions are shown in Figure 11.17. Functionally, these are all 
+equivalent, but the partitioning of circuit functions is dependent on the capability 
+of the MMICs used, and different implementations may be required to address a 
+key reliability requirement or a key performance parameter. For example, the use 
+of a single high performance power amplifier may obviate the need for combin -
+ing two lesser power amplifiers together to achieve the same performance. These 
+represent cost, capability, and availability trades that might be exercised by the 
+T/R module architect.
+Microwave Monolithic Integrated Circuits (MMICs).  During the 1990s, it 
+was the reduction-to-practice of the microwave monolithic integrated circuit (MMIC) 
+that enabled most high frequency phased arrays to be realized. MMIC use in T/R 
+module design has enabled bold new module configurations, and hence phased array 
+systems, to be envisioned. Because some of the more complex functions in the generic 
+T/R module block diagram can be fabricated by using MMIC technology, the com -
+ponents that can be realized through the use of this technology can be employed to 
+create system architectures that are difficult, if not impractical, to design with other, 
+less integrated technologies. The MMIC design approach utilizes active and passive 
+devices that have been manufactured by using a single process. Active and passive cir -
+cuit elements are formed on a semi-insulating semiconductor substrate through vari -
+ous deposition schemes. The monolithic approach to circuit design inherently offers 
+several advantages:
+● Low-cost circuitry  Component assembly is eliminated because complex circuit 
+configurations using both active and passive components are batch processed on the 
+same substrate.
+ch11.indd   24 12/17/07   2:25:35 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Solid-State Transmitters  SOLID-STATE TRANSMITTERS  11.256x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 11
+● Increased reliability  Batch-processed components lead to a reduced number of 
+parts from the reliability standpoint and hence to increased operating lifetimes.
+● Increased reproducibility  Circuitry that is batch-processed or circuits that origi -
+nate from the same wafer exhibit consistent electrical characteristics from component 
+to component.
+● Small size and weight  Integration of active and passive components onto a 
+single chip results in high-density circuitry with multiple functions on a single 
+chip. Overall, the T/R module can be made much smaller than with discrete 
+components.
+The partitioning of T/R module circuit functions onto monolithic chips usually rep -
+resents a tradeoff among several design issues, and the resultant circuit configurations 
+represent a compromise among the goals of optimum RF performance, high levels of 
+integration, and fabrication yields that are consistent with processing capabilities of 
+GaAs MMICs. Among the single-chip circuit designs that have been reported from 
+UHF through millimeter-wave frequencies are power amplifiers, low-noise amplifi -
+ers, wideband amplifiers, phase shifters, attenuators, T/R switches, and other special 
+function designs. Noteworthy design considerations for these MMIC functions are 
+described next.FIGURE 11.17  Common T/R module configurations make use of power 
+amplifiers, low-noise amplifiers, duplexers, switches, and controls to enable on-
+face beam steering in a phased array antenna. Architecture variations may result 
+from component capability differences as well as performance and packaging 
+constraints.
+ch11.indd   25 12/17/07   2:25:35 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Solid-State Transmitters 11.26  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 11
+Power Amplifiers.  (1) The area consumed by combining in parallel the total num -
+ber of gate fingers (i.e., total gate periphery) is usually at a premium. For high-power 
+design, the load impedance presented to the final device must be carefully chosen 
+such that power output and efficiency are maximized. Also, too much gate periphery 
+may increase the chip area such that cost of the component becomes unattractive.  
+(2) Losses in the output circuit of the final stage can significantly reduce power output 
+and efficiency. Off-chip matching may be necessary to maximize power output for a 
+given design. (3) GaAs is a poor thermal conductor. Power FET design that addresses 
+thermal management is required. Adequate heat sinking of the chip is mandatory and 
+may become a limiting factor in high performance designs. (4) Careful attention must 
+be paid to unplanned voltage stresses on the power amplifier, either from transient 
+induced effects or load impedance variations in order to maintain the desired reli -
+ability. (5) For efficient multiple-stage designs, it is necessary that the final stage of 
+the amplifier reach saturation before the preceding stages. This must be addressed in 
+the circuit design.
+Low-Noise Amplfiiers.  (1) Multiple stage linear designs require proper device 
+sizing of successive stages in order to maintain low intermodulation distortion 
+products. (2) Circuit losses on the input, before the first stage, degrade the noise 
+figure of the design; therefore, some designs utilize off-chip matching. (3) The best 
+noise-figure usually requires a 
+bias condition that is closer to the 
+pinch-off voltage of the FET than 
+for a power amplifier. The pinch-
+off voltage is the voltage that 
+when applied to the gate terminal 
+causes the current in the tran -
+sistor channel to stop flowing. 
+Thus, the transistor is “pinched-
+off” and variability around this 
+operating point can cause large 
+circuit performance variability if 
+designed poorly. Both gain and 
+noise figures are highly depen -
+dent on the pinch-off voltage 
+when the FET is biased close to 
+pinch-off. Because the pinch-off 
+voltage can vary among devices 
+from the same wafer, the bias 
+condition must be chosen care -
+fully. Gain and noise figures are 
+usually traded off against repeat -
+able performance. Examples of 
+an L band two-stage low-noise 
+amplifier GaAs MMIC and an 
+X band power amplifier GaAs 
+MMIC are shown in Figure 11.18 
+and Figure. 11.19, respectively.FIGURE 11.18  L-band low-noise amplifier MMIC. Shown 
+here are the spiral inductors, metal-nitride-metal capacitors, 
+and via-hole connections to ground. ( Photograph courtesy of 
+Raytheon Company )
+ch11.indd   26 12/17/07   2:25:36 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Solid-State Transmitters  SOLID-STATE TRANSMITTERS  11.276x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 11
+Transmit/Receive Switching.  (1) For switching applications, the FET design 
+should be chosen such that the ratio of OFF-ON resistance of the FET is kept as high as 
+possible. The channel length largely determines the ON resistance and hence the inser -
+tion loss of the device. The tradeoff between short gate length (thus lower processing 
+yield) and insertion loss must be examined. (2) The value of the parasitic drain-source 
+capacitance will affect the OFF-state isolation of the device. This capacitance depends 
+largely on the source-drain spacing of the FET geometry. Critical applications are 
+usually only the front-end switching configurations in a T/R module, i.e., before the 
+receive low-noise amplifier or after the transmit amplifier.
+Phase Shifters.  (1) Digitally controlled phase-shifter designs generally uti -
+lize either a switched-line or a loaded-line circuit configuration, using either 
+distributed transmission-line components or lumped-element equivalent circuits, 
+to achieve multiple-bit phase shifting. Switched-line configurations rely on FET 
+switches to switch lengths of transmission line in and out of the circuit and are 
+typically used for higher frequencies where less chip area is needed. Loaded-line 
+configurations use the switched FET parasitics as circuit elements to introduce the 
+necessary phase changes.
+The typical processing and construction sequence for a MMIC chip is fairly similar 
+among the GaAs foundries (Figure 11.20). In this figure, the active channel region FIGURE 11.19  X-band two-stage power amplifier MMIC showing paral -
+lel combination of FET cells in the output stage. This example was fabri -
+cated on 100 µm- thick GaAs substrate. The RF lines are microstrip-format  
+TEM-mode transmission lines. ( Photograph courtesy of Raytheon Company )
+ch11.indd   27 12/17/07   2:25:37 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Solid-State Transmitters 11.28  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 11
+FIGURE 11.20   GaAs MMIC processing makes use of deposition and etching techniques 
+to first define the active channel region of the transistor (1–4), followed by the deposition of 
+metals, dielectric layers, and resistive layers forming the passive components (5–8). Then, 
+thick metal interconnects (9) are introduced, followed by backside processing to connect RF 
+ground to the topside components (10–11).(1)EPIT AXIAL  LAYERS
+MESA  ETCH AND OXYGEN 
+IMPLANT  FOR ISOLA TION
+OHMIC MET AL PATTERNING 
+DEPOSITION. AND ALLOY
+E-BEAM (OR OPTICALL Y) 
+DEFINE GA TE PA TTERN, 
+GATE RECESS, AND GA TE 
+METAL DEPOSITION
+DEFINE CAP ACIT OR 
+BOTT OM PLA TE MET AL
+PLASMA  ETCH 
+TANTALUM NITRIDE
+PLASMA  ETCH 
+SILICON NITRIDE
+Resistor Capacitor
+FETDEFINE AIRBRIDGE PILLOWS, 
+PATTERN AND DEPOSIT 
+THICK MET AL, REMOVE AIR 
+BRIDGE PILLOWS, AND DO 
+FINAL  FRONT  SIDE DC TEST
+MOUNT  WAFER ON CARRIER 
+GRIND/ETCH TO 100 µm 
+MASK AND ETCH VIAS
+PLATE UP  VIAS 
+DEFINE GRID, DICE 
+AND DISMOUNT
+DEFINE AIRBRIDGES, 
+THICK MET AL 
+ELECTRICAL  TEST
+WAX
+SAPPHIRE100 µmDEPOSIT  Si3N4 PASSIVA TION, 
+FOLLOWED BY  TaN THIN FILM 
+RESIST ORS.(2)
+(3)
+(4)
+(5)
+(6)
+(7)
+(8)
+(10)
+(11)(9)
+50 µmNITRIDE TANTALUM THICK MET AL CAP BOTT OMCAP BOTT OM GATE MET AL GaAs NITRIDE TANTALUMPHEMT  EPIT AXIAL  LAYERS GaAs SUBSTRA TE OHMIC MET AL
+ch11.indd   28 12/17/07   2:25:38 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Solid-State Transmitters  SOLID-STATE TRANSMITTERS  11.296x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 11
+of a FET is delineated by any of several patterning techniques on a semi-insulating 
+GaAs substrate such as ion implantation or molecular beam epitaxy. Once the FET 
+has been defined, a combination of deposited dielectric films and metal layers is used 
+to form the passive components (such as metal-insulator-metal capacitors) and also 
+to interconnect all the elements of the circuit. Standard libraries of circuit elements 
+may include FETs (used as linear amplifiers, low-noise amplifiers, saturating power 
+amplifiers, or switches), resistors, capacitors, inductors, diodes, transmission lines, 
+interconnects, and plated ground vias.
+Transmit/Receive Module Characteristics.  The impact of antenna array elec -
+trical requirements on the packaging of MMIC components into a T/R module is fun -
+damental. The periodic nature of digital phase shifting at each radiating element can 
+create multiple distinct locations in space where parasitic beams (grating lobes) can 
+occur. In array design, this is avoided if the radiating element spacing ( d) is less than 
+that described by
+ d < (l*(1 + sin(q))−1  (11.5)
+Where d is the spacing between adjacent radiating elements, l is the wavelength of 
+the highest operating frequency, and q  is the maximum scan angle of the array. For 
+hemispherical phased array coverage, the maximum scan angle can be upwards of  
+± 60°, depending on the number of array faces used in the system configuration. Thus, 
+for an X-band array that requires scanning to large angles, the spacing between radiat -
+ing elements, and by implication, the maximum spacing available for T/R modules 
+when they are aligned behind the radiating elements must be on the order of 0.5 inches 
+or less. Alleviations in packaging may be allowable if the scan volume is not required 
+to extend to a full field of view. Values of element spacing that satisfy Eq. 11.5 are 
+shown as a function of scan angle for some of the common radar frequency bands 
+through mm-wave frequencies in Figure 11.21. The implication of this graph is that 
+full T/R module functionality must be packaged into the space and volume behind the 
+planar array, and this requirement can pose very difficult challenges to the T/R module  
+FIGURE 11.21  Maximum operating frequency and worst-case scan 
+angle define the maximum allowable distance among adjacent radiat -
+ing elements; T/R modules fitting behind each element are constrained 
+by these spacings.Element Spacing vs Max Scan Angle
+0.11.010.0
+0 5 10 15 20 25 30 35 40 45
+Frequency (GHz)Element Spacing (inch)10-deg
+22-deg
+35-deg
+45-deg
+60-deg
+ 
+ch11.indd   29 12/17/07   2:25:39 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Solid-State Transmitters 11.30  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 11
+designer in order to satisfy the RF electrical, dc electrical, thermal, and reliability 
+requirements. Packaging of MMIC components into the T/R module must take into 
+consideration30,31,32 multiple elements as they impact the electrical performance.
+Power Conditioning Considerations.  Pulsed transmit amplifiers can consume 
+very high dc currents and special design attention must be paid to parasitic induc -
+tance that can generate very high voltage spikes and cause damage to MMIC power 
+amplifiers. In addition, the dc power source must include appropriate energy storage, 
+sometimes locally in the module, in order to support the minimum voltage pulse droop 
+as a function of time.
+Environmental Protection Considerations.  MMIC components utilize thin-film 
+metal deposition techniques to delineate the very fine features that make up the micro -
+wave circuitry. These features are susceptible to potential short-term failure due to 
+corrosion, metal migration, and dendritic growth if there are voltages on the circuitry 
+when exposed to an atmosphere that causes moisture to condense on the circuitry. 
+Thus, a hermetic package with a dry, nitrogen-filled interior is usually employed to 
+ensure long-term reliability. Hermetic packaging also brings with it the undesirable 
+effect of trapping inside the housing any molecular content that outgases into the 
+interior cavity. In particular, hydrogen can be present in the interior metal plating and 
+has been known to cause long-term reliability concerns in some GaAs amplifiers. 
+One solution involves the use of an internal hydrogen getter to counterbalance the 
+reliability impact. A getter is a material included in the module housing to absorb 
+residual hydrogen.
+Mechanical Packaging Considerations.  The T/R module housing must be made 
+of materials that provide for adequate thermal management and long-term reliabil -
+ity. Materials that simultaneously support exposure to shock, vibration, temperature 
+cycling, and adequate thermal management must be used. Materials that match very 
+closely the coefficient of thermal expansion (CTE) of the semiconductor material must 
+be used in the design of the housing such that cracking of the semiconductor devices 
+does not occur during thermal cycling that happens during normal operation or during 
+temperature changes during assembly and test.
+Electrical Interconnection Considerations.  The interconnection of MMIC chips 
+within the T/R module must utilize controlled impedance transmission lines with low 
+insertion loss. Thus, some combination of high-quality microwave dielectric material 
+must be integral to the microwave electrical and mechanical design of the module. 
+Attention to the coefficient of thermal expansion and manufacturability issues will 
+impact the choice of usable materials. T/R modules also generally require as many as 
+6–12 control or bias connections in order to interface with amplifiers, control circuitry, 
+and phase shifters. The interconnection density, especially at higher frequencies, can 
+become a packaging design challenge. At frequencies above 20 GHz, the use of con -
+ventional connectors is usually prohibitive due to the small width available in full 
+field-of-view arrays.
+Manufacturability Considerations  By definition, the use of MMIC components 
+invokes a microelectronic assembly, test, and handling manufacturing infrastructure. 
+The manufacturing of low-cost T/R modules is paramount to being able to effectively 
+produce affordable arrays. Design methodologies, such as statistical performance 
+ch11.indd   30 12/17/07   2:25:40 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Solid-State Transmitters  SOLID-STATE TRANSMITTERS  11.316x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 11
+representation, are often exploited to maximize functional yield. The integration of 
+design and manufacturing processes is a key component to successful execution of 
+product manufacturing.
+11.6 SOLID-STATE SYSTEM EXAMPLES
+PAVE PAWS (UHF Early Warning Radar).  The PA VE PAWS (AN/FPS-115) 
+system is a UHF solid-state active aperture phased array radar that was built for the 
+Electronic Systems Division of the U.S. Air Force by the Equipment Division of the 
+Raytheon Company during the late 1970s.33 The radar is a long-range system with a 
+primary mission to detect and track sea-launched ballistic missiles. The two-faced 
+radar uses 1792 active T/R modules per face, and each module interfaces with a dipole 
+antenna element. Extra elements and a narrow beam are used on receive, and upgrade 
+capability has been included for the future installation of up to 5354 T/R modules per 
+array face. The peak power output from each face, when populated with 1792 modules 
+is 600 kW, and the average power output is 150 kW.
+Among the 1792 modules per face, groups of 32 T/R modules are operated as a 
+subarray. In transmit, a high-power array predriver is used to drive 56 subarray driver 
+amplifiers. Each of these power amplifiers provides enough RF drive for all 32 mod -
+ules in one subarray. In receive, the signal from each of the 56 subarrays is fed into a 
+receive beamforming network.
+The T/R module contains predriver, driver, and final transmit amplifiers, transmit/
+receive switching, low-noise amplifiers, limiter, phase shifters, and logic control. The 
+T/R module block diagram is shown in Figure 11.22, and a photograph is shown in 
+FIGURE 11.22  Block diagram of the PA VE PAWS transmit/receive module shows a 1-2-4 transistor 
+driving configuration for the transmit amplifier and a quadrature splitter on the output to generate a polar -
+ized feed to the radiating element.
+ch11.indd   31 12/17/07   2:25:41 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Solid-State Transmitters 11.32  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 11
+Figure 11.23. The transmitter portion of the T/R module contains seven silicon bipo -
+lar power transistors, operated Class-C from a 31 V dc power supply. The transmit 
+amplifier chain consists of a predriver transistor feeding two driver transistors, in turn 
+feeding four final transistors, i.e., a 1-2-4 configuration. Each of the four final stages 
+delivers 110 W peak for 16-ms pulse widths at duty cycles up to 25%. More than 
+180,000 transistors have been built into more than 25,000 modules. Future upgrades of 
+this design in the BMEWS arrays will use the more powerful and efficient Si LDMOS 
+FET technology for enhanced performance capabilities.
+AN/SPS-40 Shipboard Search Radar.  The AN/SPS-40 was an existing UHF, 
+tube-type, long-range, 2D shipboard search radar system, for which a new solid-state 
+transmitter was built during the 1980s to replace the tube. The solid-state transmitter 
+was built for the Naval Sea Systems Command by the (then) Westinghouse Electric 
+Corporation.34 The existing waveform from the original transmitter was not changed, 
+and the solid-state unit was installed as a direct retrofit. This was not quite as difficult 
+as usual, because the tube-type system already used long pulses and pulse compres -
+sion with a duty cycle of nearly 2%, which is much higher than older 0.1% duty cycle 
+systems. Although it may have been desirable to go to a higher duty cycle and lower 
+peak power to make the solid-state retrofit easier, the Navy preferred not to have to 
+modify the rest of the system.
+The 250-kW peak power transmitter used a total of 128 high-power amplifier mod -
+ules, which, along with power combining, predrivers, drivers, and control circuitry, 
+were housed in three separate cabinets. There were 112 final power output modules 
+arranged in two groups of 56. Each module (Figure 11.24) produced 2500 W peak and 
+50 W average for a 60-µs pulse width at a 2% duty cycle. Drive power for the two FIGURE 11.23  PA VE PAWSUHF T/R module consists of transmit module and receive 
+module in a nested configuration of cast aluminum housings ( Photograph courtesy of 
+Raytheon Company )
+ch11.indd   32 12/17/07   2:25:44 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Solid-State Transmitters  SOLID-STATE TRANSMITTERS  11.336x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 11
+banks of final output modules, 17.5 kW, was provided from the combined outputs of 
+12 more identical modules in the driver group. Predrivers and a redundant preamplifier 
+were used as preceding drive stages.
+The power amplifier module consisted of ten identical silicon bipolar power tran -
+sistors arranged in a 2-driving-8 amplifier configuration to develop more than 2500 W 
+peak power output over the 400 to 450 MHz frequency bandwidth. Each transistor was 
+a 400 W peak-power device that was operated in a balanced push-pull circuit design. 
+By using a push-pull configuration, the circuit designers alleviated some of the low 
+impedance-matching problems normally associated with very high power transistors. 
+The RF input drive to the module was 120 W peak and was used to drive two devices. 
+A combined power level of greater than 600 W was split eight ways to drive the eight 
+identical output stages. Losses in the output circulator, final power combining, and the 
+fault detection circuitry reduced the combined power level to 2500 W. Output modules 
+were liquid-cooled for normal operation, but an emergency backup forced-air cooling 
+was provided in the event of a primary-cooling-system failure. The dissipated heat 
+could be tolerated because the system operated at a low duty cycle.
+The power combining for each output cabinet consisted of 56:1 combiners. The 
+reactive power combiner consisted of seven groups of 8:1 combiners fabricated in 
+air stripline using 0.5-in ground-plane spacing. The seven outputs were combined 
+by using a single 7:1 air stripline combiner with 1.0-in ground-plane spacing. The 
+130 kW outputs of the two 56:1 combiners were combined in a single 2:1 isolated 
+hybrid that was manufactured by using a coaxial transmission line. The advertised 
+losses of the 2:1 and 56:1 combiners were 0.1 dB and 0.25 dB, respectively .
+RAMP (L-Band Air Traffic Control Transmitter).  The Radar Modernization 
+Project (RAMP) radar system is an L band system built by the Raytheon Company dur -
+ing the late 1980s to replace the earlier primary and secondary surveillance radars used 
+for air traffic control by Canada’s Ministry of Transport.35,36 The primary surveillance 
+radar consists of a rotating reflector, horn-fed by a solid-state transmitter, and interfac -
+ing with redundant receive channels with receiver-exciters and signal processors. The 
+primary surveillance radar operates between 1250 and 1350 MHz with a 25-kW peak FIGURE 11.24  AN/SPS-40 transmitter amplifier module ( Photograph courtesy of 
+Westinghouse Electric Corporation )
+ch11.indd   33 12/17/07   2:25:45 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Solid-State Transmitters 11.34  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 11
+power output and provides radar coverage to 80 nmi and to an altitude of 23,000 ft with 
+an 80% probability of detection for a 2 m2 target; with azimuth and range resolution to 
+2.25° and 0.25 nmi, respectively. The receiver-exciter efficiently utilizes the transmit -
+ter solid-state devices with a high duty-cycle waveform. A pair of pulses is used in the 
+frequency-agile system, and target returns are processed by a moving-target detector. 
+The pulse pair consists of a 1-µs single-tone pulse that provides coverage to 8 nmi and 
+a 100-µs nonlinear chirp pulse that provides coverage to 80 nmi. The 100-µs pulse is 
+compressed to 1 µs such that high duty cycle is achieved without compromising range 
+resolution. The transmitter consists of 14 modules, each capable of 2000 W power out -
+put (Figure 11.25), that are combined to produce the greater than 25 kW peak power 
+level. Two modules and a 33 V dc power supply make up a single transmitting group. 
+The module consists of a 2-driving-8-driving-32 transistor (2-8-32) amplifier configura -
+tion of silicon bipolar power devices. The two final output devices and the eight driver 
+devices are 100 W transistors capable of operating up to a 10% duty cycle over the  
+100-MHz bandwidth at collector efficiencies greater than 52%. Each module is air-
+cooled, and the measured efficiency is greater than 25% when the module is operating 
+at an 8.2% average duty cycle. Module power gain is greater than 16 dB. A circulator is 
+used on the output port to protect the 100 W devices from antenna-generated reflections, 
+and control circuitry has been included to switch off modules in the event of cooling-  
+system failure. A 14:1 high-power replicated combiner built by using a combination of 
+reactive and resistive power-combining techniques in air-dielectric stripline, is employed 
+to sum the module outputs to the 25 kW level.
+REFERENCES
+ 1. M. Meth, “Industrial assessment of the microwave power tube industry,” Department of Defense 
+Report, April 1997, p. 3.
+ 2. V . Granatstein, R. Parker, and C. Armstron, “Scanning the technology: Vacuum electronics at the 
+dawn of the 21st century,” Proceedings of the IEEE , vol. 87, no. 5, pp. 702–716, May 1999.FIGURE 11.25  RAMP transmitter amplifier module ( Photograph courtesy of Raytheon 
+Company )
+ch11.indd   34 12/17/07   2:25:46 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Solid-State Transmitters  SOLID-STATE TRANSMITTERS  11.356x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 11
+ 3. V . Gregers-Hansen, “Radar systems trade-offs, vacuum electronics vs. solid-state,” in 5th 
+International Vacuum Electronics Conference, April 27–29, 2004, pp. 12–13.
+ 4. R. Symons, “Modern microwave power sources,” IEEE AESS Systems Magazine , pp. 19–26, 
+January 2002.
+ 5. T. Sertic, “Idiosyncrasies of TWT amplifiers,” presented at The Future of Electronic Devices 
+Conference, Institute of Physics, March 22, 2003.
+ 6. M. Hanczor and M. Kumar, “12-kW S-band solid-state transmitter for modern radar SYSTEMS,” 
+IEEE Transactions on Microwave Theory and Techniques , vol. 41, no. 12, pp 2237–2242, 
+December 1993.
+ 7. D. Rutledge, N. Cheng, R. York, R. Weikle, and M. DeLisio, “Failures in power combining arrays,” 
+IEEE Transactions on Microwave Theory and Techniques , vol. 47, no. 7, pp. 1077–1082, July 1999.
+ 8. L. B. Walker, High Power GaAs FET Amplifiers , Norwood, MA: Artech House, 1993, p. 5.
+ 9. Hewlett-Packard Application Notes, High Frequency Transistor Primer, Part 3, Thermal 
+Properties, p. 6.
+10. H. Cooke, “Microwave transistors: theory and design,” Proceedings of the IEEE , vol. 59, 
+pp. 1163–1181, August 1971.
+11. Vendor transistor datasheet, Integra Technologies, Inc , www.integratech.com.
+12. Vendor transistor datasheet, Tyco Electronics, M/A-COM , www.macom.com.
+13. Vendor transistor datasheet, STMicroelectronic, www.st.com.
+14. Vendor transistor datasheet, Philips , www.datasheetcatalog.com.
+15. N. Sakura, K. Matsunage, K. Ishikura, I. Takenake, K. Asano, N. Iwata, M. Kanamori, and 
+M. Kuzuhara, “100W L-band GaAs power FP-HFET operated at 30V ,” in IEEE Microwave 
+Theory and Techniques Symposium Digest , 2000, pp. 1715–1718.
+16. T. Winslow, “Power dependent input impedance of field plate MESFETs,” Compound 
+Semiconductor Integrated Circuit Digest , pp. 240–243, 2005.
+17. J. Huang, G. Jackson, S. Shanfield, A. Platzker, P. Saledas, and C. Weichert, “An AlGaAs/
+InGaAs pseudomorphic high electron mobility transistor with improved breakdown voltage for 
+X- and Ku-band power applications,” IEEE Transactions on Microwave Theory and Techniques , 
+vol. 41, no. 5, pp. 752–758, May 1993.
+18. K. Alavi, S. Ogut, P. Lymna, and M. Borkowski, “A highly uniform and high throughput 
+double selective PHEMT process using an all wet etch chemistry,” presented at GaAs MaTech 
+Conference, 2002.
+19. C. Snowden, “Recent development in compound semiconductor microwave power transistor 
+technology,” IEE Proc-Circuits Devices Syst ., vol. 151, no. 3, pp. 259–264, June 2004.
+20. D. Miller and M. Drinkwine, “High voltage microwave devices: An overview,” presented at 
+International Conference on Compound Semiconductor Mfg., 2003.
+21. J. Zolper, “Scanning the special issue, special issue on wide bandgap semiconductor devices,” 
+Proceedings of the IEEE , vol. 90, no. 6, pp. 939–941, June 2002.
+22. U. Mishra, P. Parikh, and Y . Wu, “AlGaN/GaN HEMTs—An overview of device operation and 
+applications,” Proceedings of the IEEE , vol. 90, no. 6, pp. 1022–1031, June 2002.
+23. R. Trew, “SiC and GaN transistors—Is there one winner for microwave power applications?” 
+Proceedings of the IEEE , vol. 90, no. 6, pp. 1032–1047, June 2002.
+24. S. Allen, R. Sadler, T. Alcorn, J. Palmour, and C. Carter, “Silicon carbide MESFETs for high 
+power S-band applications,” in IEEE MTT-S International Microwave Symposium , June 1997, 
+pp. 57–60.
+25. Thomas Kazior (personal communication), Raytheon RF Components, August 2006.
+26. Y . Wu and P. Parikh, “High-power GaN HEMTs battle for vacuum-tube territory,” Compound 
+Semiconductor Magazine , January/February 2006.
+27. Colin Whelan (personal communication), Raytheon RF Components, August 2006.
+28. H. Howe, Stripline Circuit Design , Norwood, MA: Artech House, 1974, pp. 77–180.
+29. D. McQuiddy, R. Gassner, P. Hull, P., J. Mason, and J. Bedinger, “Transmit/receive module 
+technology for X-band active array radar,” Proceedings of the IEEE , vol. 79, no. 3, pp. 308–341, 
+March 1991.
+ch11.indd   35 12/17/07   2:25:46 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Solid-State Transmitters 11.36  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 11
+30. G. Jerinic and M. Borkowski, “Microwave module packaging,” in IEEE Microwave Theory and 
+Techniques Symposium Digest , 1992, pp. 1503–1506.
+31. B. Kopp, M. Borkowski, and G. Jerinic, “Transmit/receive modules,” IEEE Transactions on 
+Microwave Theory and Techniques , vol. 50, no. 3, pp. 827–834, March 2002.
+32. B. Kopp, C. Moore, and R. Coffman, “Transmit/receive module packaging: Electrical design 
+issues,” Johns Hopkins APL Technical Digest , vol. 20, no. 1, pp. 70–80, 1999.
+33. D. Hoft, “Solid-state transmit/receive module for the PA VE PAWS phased array radar,” Microwave 
+Journal , pp. 33–35, October 1978.
+34. K. Lee, C. Corson, and G. Mols, “A 250 kW solid-state AN/SPS-40 radar transmitter,” Microwave 
+Journal , vol. 26, pp. 93–96, July 1983.
+35. J. Dyck and H. Ward, “RAMP’s new primary surveillance radar,” Microwave Journal , p. 105, 
+December 1984.
+36. H. Ward, “The RAMP PSR, a solid-state surveillance radar,” presented at IEE International 
+Radar Conference, London, October 1987.
+ch11.indd   36 12/17/07   2:25:47 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Solid-State Transmitters 

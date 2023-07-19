@@ -1,0 +1,2272 @@
+6.16x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 6
+Radar Receivers*
+Michael E. Yeomans
+Raytheon Company
+6.1 THE CONFIGURATION  
+OF A RADAR RECEIVER
+The function of a radar receiver is to amplify, filter, downconvert, and digitize the 
+echoes of the radar transmission in a manner that will provide the maximum discrimi -
+nation between desired echo signals and undesired interference. The interference com -
+prises not only the self noise generated in the radar receiver but also the energy received 
+from galactic sources, neighboring radars and communication equipment, and possibly 
+jammers. The portion of the radar’s own radiated energy that is scattered by undesired 
+targets (such as rain, snow, birds, insects, atmospheric perturbations, and chaff) may 
+also be classified as interference and is commonly categorized as clutter. Where air -
+borne radars are used for altimeters or mapping, other aircraft are undesired targets, and 
+the ground is the desired target. In the case of weather radars, ground, buildings, and 
+aircraft are clutter, and rain or snow is the desired target. More commonly, radars are 
+intended for detection of aircraft, missiles, ships, surface vehicles, or personnel, and the 
+reflection from weather, sea, or ground is classified as clutter interference.
+Although the boundaries of the radar receiver are somewhat arbitrary, this chapter 
+will consider those elements identified in Figure 6.1 as the receiver. The radar exciter 
+generates the transmit waveforms as well as local oscillator (LO), clock, and timing 
+signals. Since this function is usually tightly coupled to a radar receiver, it is also 
+shown in Figure 6.1 and will be discussed in this chapter. The purpose of Figure 6.1 is 
+to illustrate the functions typical of a modern radar receiver and exciter .
+Virtually all radar receivers operate on the superheterodyne principle shown 
+in Figure 6.1. Through this architecture, the receiver filters the signal to separate 
+desired target signals from unwanted interference. After modest RF amplifica -
+tion, the signal is shifted to an intermediate frequency (IF) by mixing with a local-  
+oscillator (LO) frequency. More than one conversion stage may be necessary to 
+reach the final IF without encountering serious image- or spurious-frequency prob -
+lems in the mixing process. The superheterodyne receiver varies the LO frequency to 
+follow any desired tuning variation of the transmitter without disturbing the filtering 
+at IF. This simplifies the filtering operation as the signals occupy a wider percentage Chapter 6
+*  This chapter incorporates material written by John W. Taylor, Jr. for the first and second editions and updated 
+by Michael Yeomans for this edition.
+ch06.indd   1 12/17/07   2:02:53 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Source: RADAR HANDBOOK 6.2 RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 6
+bandwidth at the IF frequency. These advantages have proven to be so significant 
+that competitive forms of receivers have virtually disappeared.
+In conventional antenna systems, the receiver input signal is derived from the 
+duplexer, which permits a single antenna to be shared between transmitter and 
+receiver. In active array systems, the receiver input is derived from the receive beam -
+forming network. Active array antennas include low-noise amplifiers prior to forming 
+the receive beams; although these are generally considered to be antenna rather than 
+receiver components, they will be discussed in this chapter.
+FIGURE 6.1  General configuration of a radar receiverSTC 
+Attenuator
+IF LimiterAGC 
+Attenuator
+COHODirect 
+Digital 
+SynthesizerSingle 
+Receiver 
+Channel 
+replicated 
+N timesReceiver InputExciter Output
+I I Q Q
+Data to Digital Signal ProcessorI/Q 
+DemodulatorReference 
+Oscillator
+A/DA/DSTAL O
+Direct 
+Digital 
+ConversionA/DIF Limiter
+Clock 
+Generator
+A/D Clocks
+STC = Sensitivity Time Control 
+AGC = Automatic Gain Control STALO = Stable Local Oscillator COHO = Coherent Local Oscillator A/D = Analog-to-Digital ConverterBandpass 
+Filter
+Bandpass 
+FilterBandpass 
+Filter
+Bandpass 
+Filter
+A/D ClocksA/D 
+ClockSTC & 
+AGC
+Control
+ch06.indd   2 12/17/07   2:02:54 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Radar Receivers  RADAR RECEIVERS  6.36x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 6
+The block diagram shown in Figure 6.1 includes sensitivity time control (STC) 
+attenuation at the RF input. Alternatively adjustable RF attenuation may be used. 
+Either form provides increased dynamic range above that provided by the analog-
+to-digital (A/D) converters. RF attenuation is described in more detail in Section 6.6. 
+The STC attenuator is followed by an RF amplifier, often referred to as a low-noise 
+amplifier (LNA). This amplifier provides sufficient gain with a low noise figure to 
+minimize the subsequent degradation of the overall radar noise figure by subsequent 
+components. If sufficient gain is provided in the antenna prior to the receiver, it may 
+be possible to eliminate this gain stage. The RF filter provides rejection of out-of-band 
+interference, including rejection at the RF image frequency. After downconversion to 
+IF, a bandpass filter provides rejection of unwanted signals and sets the receiver ana -
+log-processing bandwidth. Additional gain is provided at IF to overcome losses and 
+raise the signal level required for subsequent processing and to set the correct signal 
+level into the A/D converters. An IF limiter provides graceful limiting of large signals 
+that would otherwise overload the A/D converters.
+The two dominant methods of digitization, IF sampling and analog I/Q demodula -
+tion with baseband A/D conversion, are included for illustration in Figure 6.1, though 
+in general, receivers will not include both techniques. Prior to the availability of afford -
+able digital signal processing, a number of functions, such as monopulse comparison, 
+currently performed in the digital domain, were performed using analog processing 
+within the receiver. Readers interested in the details of these analog processing tech -
+niques will find details in the first and second editions of this handbook.1,2
+All but the simplest of radars require more than one receiver channel. Figure 6.1 
+shows a single receiver channel that may be replicated any number of times depending 
+on the radar system requirements. Monopulse radars typically include three receiver 
+channels, sum, delta azimuth, and delta elevation channels, used to provide improved 
+angle accuracy. Additionally, many military radar systems include a sidelobe blanker 
+or several sidelobe canceler channels to combat jamming. Since the advent of digital 
+beamforming radar systems, the number of receiver channels required has increased 
+dramatically, with some systems now requiring hundreds of receiver channels. In 
+these multichannel receiver systems, close matching and tracking of gain and phase is 
+required. Receiver channel tracking and equalization are discussed in Section 6.1 1.
+The stable local oscillator (STALO) block provides the local oscillator frequencies 
+for downconversion in the receiver and upconversion in the exciter. For true coherent 
+operation, the STALO is locked to a low frequency reference, shown by the reference 
+oscillator in Figure 6.1 that is used as the basis for all clocks and oscillators such as the 
+coherent local oscillator (COHO) within the receiver and exciter. The clock generator 
+provides clocks to the A/D converters and the direct digital synthesizer and provides 
+the basis for the signals that define the radar transmit and receive intervals.
+The direct digital synthesizer in Figure 6.1 is used to generate the transmit wave -
+forms at an IF frequency prior to upconversion to the RF output frequency. Filtering 
+in the exciter is required to reject aliased signals from the direct digital synthesizer and 
+unwanted mixer products. RF gain is typically required to provide a sufficient drive 
+level to the transmitter or phased array antenna.
+Almost all modern radar systems use digital signal processing to perform a variety 
+of functions, including pulse compression and the discrimination of desired targets from 
+interference on the basis of velocity or the change in phase from one pulse to the next. 
+Previously, pulse compression was performed using analog processing with dispersive 
+delay lines, typically surface acoustic-wave (SAW) devices. Analog pulse compres -
+sion has largely been replaced by pulse compression using digital signal processing.  
+ch06.indd   3 12/17/07   2:02:54 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Radar Receivers 6.4 RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 6
+In the case of very wideband waveforms, analog stretch processing (see Section 6.3) may 
+be used to reduce the signal bandwidth before subsequent digital signal processing.
+The receiver discussed herein focuses on those functions that provide analog pro -
+cessing and digitization of the individual pulse signals with the minimum of distortion, 
+enabling subsequent digital signal processing to maximize the performance of the 
+radar. The digital signal processing function is not normally considered to be part of 
+the receiver.
+6.2 NOISE AND DYNAMIC-RANGE 
+CONSIDERATIONS
+Receivers generate internal noise that masks weak signals being received from the radar 
+transmissions. This noise contribution, which can be expressed as either a noise tem -
+perature or a noise figure, is one of the fundamental limitations on the radar range.
+The noise temperature or noise figure of the radar receiver has been reduced 
+to the point that it no longer represents a dominant influence in choosing between 
+available alternatives. It is a paradox that a noise parameter is usually the first char -
+acteristic specified for a radar receiver, yet few radars employ the lowest-noise 
+receiver available because such a choice represents too great a sacrifice in other 
+performance parameters.
+Cost is rarely a consideration in rejecting a lower-noise alternative. A reduction in 
+requirements for antenna gain or transmitter power invariably produces cost savings 
+far in excess of any added cost of a lower-noise receiver. Other vital performance 
+characteristics that generally dictate the choice of receiver front end include:
+● Dynamic range and susceptibility to overload
+● Instantaneous bandwidth and tuning range
+● Phase and amplitude stability
+A direct compromise must be made between the noise figure and the dynamic range 
+of a receiver. The introduction of an RF amplifier in front of the mixer necessarily 
+involves raising the system noise level at the mixer to make the noise contribution of 
+the mixer itself insignificant. Even if the RF amplifier itself has more than adequate 
+dynamic range, the mixer dynamic range has been compromised, as indicated below:
+Example 1 Example 2 Example 3
+Ratio of front-end noise to mixer noise 6 dB 10.0 dB 13.3 dB
+Sacrifice in mixer dynamic range 7 dB 10.4 dB 13.5 dB
+Degradation of system noise temperature due 
+to mixer noise1 dB  0.4 dB  0.2 dB
+The same considerations apply to the setting of the noise level at the input to the 
+A/D converters. Traditionally, the noise contribution of the A/D converter was con -
+sidered by the system engineers as a separate contribution to the overall radar system 
+noise, distinct from receiver noise, and was accounted for at the system level. Today, it 
+has become common to include the A/D converter noise as part of the overall receiver 
+noise. Consequently, it is important to understand whether or not the contribution of 
+the A/D converter is included in the specification for the noise figure of a receiver.
+ch06.indd   4 12/17/07   2:02:55 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Radar Receivers  RADAR RECEIVERS  6.56x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 6
+In active array antennas, and many conventional antennas, low-noise amplifiers 
+(LNAs) establish the system noise floor prior to the receiver input. The noise from the 
+antenna is usually set well above the receiver noise floor such that the receiver has 
+only a small impact on overall system noise. Again, the trade-off must be performed 
+between system dynamic range and noise figure.
+Definitions.  Dynamic Range represents the range of signal strength over 
+which the receiver will perform as expected. It requires the specification of a 
+minimum level, typically the noise floor, the maximum level that can be handled 
+with some allowable deviation from the ideal response, and the type of signal to 
+be handled. These parameters are defined through a variety of characteristics as 
+described below.
+Modern radars systems increasingly rely solely on linear receiver channels fol -
+lowed by digital signal processing, providing both increased flexibility and near 
+ideal signal-detection characteristics. Previously, a variety of limiting or logarithmic 
+receiver approaches were used to perform various signal-processing functions. These 
+receivers must define an allowable error in their outputs relative to their ideal nonlin -
+ear response.
+Receivers that include some form of gain control must distinguish between instan -
+taneous dynamic range and the total dynamic range that is achieved as a result of 
+programmed gain variation.
+Receiver Input Noise Level.  Because many radar systems include low-noise 
+amplifiers prior to the input of the receiver, it is important to understand and specify 
+the noise level at the receiver input. This noise level is set by the antenna noise tem -
+perature and its total effective noise gain or loss. The noise level can be specified either 
+as an rms power in a specified bandwidth or as a noise power spectral density .
+System Noise.  The system noise level is the combined antenna and receiver noise. 
+Typically, the receiver input noise will exceed that of the noise due to the receiver 
+itself, so that the receiver has only a small impact on the system noise temperature or 
+noise figure. Thus, when defining dynamic-range parameters, such as signal-to-noise 
+ratio, it is important to specify whether the noise level being referenced is the receiver 
+noise or total system noise.
+Minimum Signal of Interest.  Minimum signal definitions such as minimum-
+detectable-signal or minimum-discernable-signal have been used in the past; how -
+ever, these definitions have become less common due to the extensive use of digital 
+signal-processing techniques. Digital signal processing of the receiver output allows 
+the detection of signals well below the receiver noise floor and the minimum detect -
+able level depends on the nature of the processing performed.
+Signal-to-Noise Ratio (SNR).  SNR is the ratio of the signal level to that of the 
+noise. SNR is typically expressed in decibels (dB). The maximum receiver SNR is 
+set by the noise contribution and maximum signal capability of every component 
+in the chain; however, since the limiting technology is often the Analog-to-Digital 
+(A/D) converter, the preceding components and gain structure are often chosen such 
+that the maximum SNR is driven by the performance of the A/D converter. More 
+details of the relationship between A/D converter and receiver SNR are included in 
+Sections 6.10 and 6.11.
+ch06.indd   5 12/17/07   2:02:55 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Radar Receivers 6.6 RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 6
+Spurious Free Dynamic Range (SFDR).  SFDR is the ratio of the maximum sig -
+nal level to that of largest spurious signal created within the receiver. SFDR is typi -
+cally expressed in decibels (dB). This parameter is determined by a variety of factors 
+including the mixer intermodulation spurious (described in more detail in Section 
+6.4), the spurious content of the receiver local oscillators, the performance of the A/D 
+converter, and the many sneak paths that may result in unwanted signals coupling onto 
+the receiver signal path.
+Intermodulation Distortion (IMD).  Intermodulation distortion is a nonlinear pro -
+cess that results in generation of frequencies that are linear combinations of the fun -
+damental frequencies of the input signals. Second and third order intermodulation are 
+the most commonly specified, and the performance of the receiver is usually specified 
+in terms of two-tone second and third order input intercept points. The intercept point 
+is the extrapolated level at which the power in the intermodulation product equals that 
+of the two fundamental signals.
+For input signals at frequencies f1 and f2, second order intermodulation distortion 
+produces signals at frequencies: 0, f 1 – f 2, f 1 + f2, 2f1 and 2 f2. Third order intermodu -
+lation distortion produces signals at frequencies: 2 f1 – f2, 2f2 – f1, 2f1 + f2, f1 + 2f2, 3f1 
+and 3 f2. For narrow band signals, only the third order products 2 f1 – f2 and 2 f2 – f1 fall 
+in band, and consequently, third order distortion is typically the primary concern. The 
+power levels of these third order intermodulation products are given by
+ P dBm P dBm P dBm P d Bmf f f f 2 1 2 1 2 2 2− = + − ( ) ( ) ( ) ( )IP (6.1)
+ P dBm P dBm P dBm P d Bmf f f f 2 2 1 1 22 2− = + − ( ) ( ) ( ) ( )IP (6.2)
+where Pf 1(dBm) = power of input signal at frequency f1 in dBm
+ Pf 2(dBm) = power of input signal at frequency f2 in dBm
+ PIP(dBm) = third order intercept point in dBm
+Intermodulation can result in a variety of undesirable effects such as
+● Intermodulation of clutter returns causing broadening of clutter doppler width, 
+resulting in the masking of targets
+● Unwanted in-band signals due to out-of-band interfering signals, resulting in 
+false targets
+● Intermodulation products from in-band signals that cannot be readily cancelled 
+through linear cancellation techniques, resulting in susceptibility to jammers
+Intermodulation distortion occurs throughout the receiver chain. Consequently, the 
+receiver will have a significantly different input intercept point, depending on the 
+signal frequency relative to the radio frequency (RF), IF, and video filter bandwidths. 
+It is, therefore, important to distinguish between the requirements for in-band and 
+out-of-band intermodulation distortion as different signals have different effects on 
+the receiver.
+Cross-Modulation Distortion.  Cross-modulation occurs as a result of third order 
+intermodulation, whereby the amplitude modulation (AM) of one signal, typically an 
+unwanted interference signal in the operating RF band but usually outside the tuned 
+signal bandwidth, is transferred onto the desired signal.
+ch06.indd   6 12/17/07   2:02:58 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Radar Receivers  RADAR RECEIVERS  6.76x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 6
+The resultant percent AM modulation, % d, on the desired signal is given by3
+ % %d uP
+P PU
+U=+4
+2IP (6.3)
+where  % u = percent AM modulation of the unwanted signal
+  PU = power of unwanted signal
+  PIP = third order intercept point
+Cross modulation can result in the modulation of clutter and target returns due to 
+large amplitude modulated out-of-band interferences resulting in poor clutter cancel -
+lation and poor range sidelobe performance.
+1 dB Compression Point.  The input 1 dB compression point of a receiver 
+is a measure of the maximum linear signal capability and is defined as the input 
+power level at which the receiver gain is 1 dB less than the small signal linear gain. 
+Receiver gain compression can result from compression in amplifiers, mixers, and 
+other components throughout the receiver chain. Typically, the receiver is designed 
+to provide controlled gain compression through a limiting stage at the final IF as 
+described in Section 6.8.
+Analog-to-Digital Converter Full Scale.  The A/D converter full scale level deter -
+mines the maximum level that can be digitized. Receivers typically provide controlled 
+limiting (Section 6.8) to prevent the signal level from exceeding the full scale level 
+of the A/D converter. Practical considerations mean that the hard limit level is typi -
+cally set 1 dB below full scale to prevent overload as a result of component tolerance 
+variations.
+Types of Signals.  Various types of signals are of interest in determining 
+dynamic-range requirements: distributed targets, point targets, wideband noise jam -
+ming, and narrow band interference. If the radar employs a phase-coded signal, the 
+elements of the receiver preceding the decoder will not restrict the dynamic range 
+of a point target as severely as they will for distributed clutter; the time-bandwidth 
+product of the coded pulse indicates the added dynamic range that the decoder will 
+extract from the point targets. Conversely, if the radar incorporates an excessively 
+wide-bandwidth RF amplifier, its dynamic range may be severely restricted due to 
+wideband noise interference.
+When low-noise amplifiers (LNAs) are included in the antenna, prior to forming 
+the receive beams, the antenna sidelobe levels achieved are dependent upon the degree 
+to which gain and phase characteristics are similar in all LNAs. Dynamic range has 
+an exaggerated importance in such configurations because matching nonlinear char -
+acteristics is impractical. The effect of strong interference—mountain clutter, other 
+radar pulses, or electronic countermeasures (ECM)—entering through the sidelobes 
+will be exaggerated if it exceeds the dynamic range of the LNAs because sidelobes 
+will be degraded. The LNAs are wideband devices, vulnerable to interference over 
+the entire radar operating band and often outside this band; although off-frequency 
+interference is filtered in subsequent stages of the receiver, strong interference signals 
+can cause clutter returns in the LNA to be distorted, degrading the effectiveness of 
+doppler filtering and creating false alarms. This phenomenon is difficult to isolate as 
+the cause of false alarms in such radars owing to the nonrepetitive character of many 
+ch06.indd   7 12/17/07   2:03:00 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Radar Receivers 6.8 RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 6
+sources of interference. In modern radar architectures that employ digital beamform -
+ing, nonlinearity at any stage of the receiver channel will create similar problems.
+System calibration techniques and adaptive beamforming techniques can com -
+pensate for linear gain and phase deviations; however, as for the case of the LNA 
+nonlinearities described above, compensation for nonlinear characteristics is either 
+impractical or impossible when the cause of the nonlinear distortion is outside the 
+digitized bandwidth.
+Evaluation.  A thorough evaluation of all elements of the receiver is nec -
+essary to prevent unanticipated degradation of noise figure or dynamic range. 
+Inadequate dynamic range makes the radar receiver vulnerable to interference, 
+which can cause saturation or overload, masking or hiding the desired signals. 
+A tabular format for such a computation (a typical example of which is shown in 
+Table 6.1) will permit those components that contribute significant noise or restrict 
+the dynamic range to be quickly identified. “Typical” values are included in the 
+table for purposes of illustration.
+Units Input
+STC Attenuator
+Amplifier
+Bandpass Filter
+Mixer
+Bandpass Filter
+Amplifier
+AGC Attenuator
+Limiter
+A/D Converter
+Component  
+ Noise FiguredB 3.0 5.0 0.5 6.5 5.0 4.0 6.0 14.0
+Component Gain dB −3.0 12.0 −5.0 −6.5 −0.2 20.0 −6.0 0.0
+Component Output  
+ 3rd Order InterceptdBm 43.0 32.0 50.0 20.0 50.0 38.0 40.0 30.0
+Component Output 1dB  
+ Compression PointdBm 30.0 18.0 40.0 10.0 40.0 23.0 30.0 −1.0
+Cumulative Gain dB −3.0 9.0 8.5 2.0 0.0 20.0 14.0 14.0
+Cumulative  
+ Noise FiguredB 3.00 8.00 8.01 8.33 9.13 9.86 9.88 10.29
+Cumulative Output  
+ 3rd Order InterceptdBm 43.0 32.0 31.4 18.8 16.8 34.3 28.1 25.9
+Cumulative Output 1dB  
+ Compression Poin tdBm 30.0 18.0 17.5 7.4 5.4 21.0 14.9 −1.1
+Receiver Noise Level dBm/Hz −174.0−157.0−157.5−163.7−164.9−144.1−150.1−149.7
+System  Noise Level dBm/Hz −149.0 −152.0−139.0−140.4−146.9−148.9−128.9−134.9−134.9
+Bandwidth MHz 1000 1000 100 100 10 10 10 10
+A/D SNR in  
+ Nyquist BWdB 70.0
+A/D Converter  
+ Sample RateMHz 100.0
+A/D Full Scale Level dBm −14.0 −17.0 −5.0 −5.5−12.0 −14.0 6.0 0.0 0.0 0.0
+A/D Noise Level dBm/Hz −147.0
+System Noise Relative  
+ to A/D NoisedB 12.1
+Maximum Point Clutter  
+ or Target LeveldBm −20.0 −23.0−11.0−11.5−18.0−20.00.0 −6.0 −6.0TABLE 6.1  Noise and Dynamic-Range Characteristics
+ch06.indd   8 12/17/07   2:03:01 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Radar Receivers  RADAR RECEIVERS  6.96x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 6
+6.3 BANDWIDTH CONSIDERATIONS
+Definitions.  The instantaneous bandwidth of a component is the frequency band 
+over which the component can simultaneously process two or more signals to within a 
+specified accuracy. When the term instantaneous bandwidth  is used as a radar receiver 
+parameter, it refers to the resulting bandwidth set by the combination of RF, IF, video, 
+and digital filtering that occurs within the receiver.
+When the radar receiver employs stretch processing (defined later in this sec -
+tion), the RF processing bandwidth is significantly larger than the IF bandwidth. 
+Consequently, the term instantaneous bandwidth  can be confusing. Confusion can be 
+avoided by using the terms RF waveform bandwidth , LO linear FM (chirp) bandwidth , 
+and IF processing bandwidth . The relationship between RF, LO, and IF bandwidths 
+used in stretch processing is explained in more detail later.
+The tuning range is the frequency band over which the component may operate 
+without degrading the specified performance. Tuning is typically accomplished by 
+adjusting the local oscillator frequency and adjusting the RF filtering characteris -
+tics. The frequency range over which the radar operates is often referred to as the 
+operating bandwidth .
+Important Characteristics.  The environment in which a radar must operate 
+includes many sources of electromagnetic radiation, which can mask the relatively 
+weak returns from its own transmission. The susceptibility to such interference is 
+determined by the ability of the receiver to suppress the interfering frequencies if the 
+sources have narrow bandwidth or to recover quickly if they are more like impulses in 
+character. One must be concerned with the response of the receiver in both frequency 
+and time domains.
+Generally, the critical response is determined in the IF portion of the receiver; this 
+will be discussed in Section 6.7. However, one cannot ignore the RF portion of the 
+receiver merely by making it have wide bandwidth. Section 6.2 discussed how exces -
+sively wide bandwidth can penalize dynamic range if the interference is wideband 
+noise. Even more likely is an out-of-band source of strong interference (e.g., other 
+radars, TV stations, or microwave communication links) that, if allowed to reach this 
+point, can either overload the mixer or be converted to IF by one of the spurious 
+responses of the mixer.
+Ideal mixers in a superheterodyne receiver act as multipliers, producing an output 
+proportional to the product of the two input signals. Except for the effect of nonlineari -
+ties and unbalance, these mixers produce only two output frequencies, equal to the sum 
+and the difference of the two input frequencies. The nonlinearities and imbalance of 
+mixers is described in more detail in Section 6.4.
+The best radar receiver is one with the narrowest RF instantaneous bandwidth com -
+mensurate with the radiated spectrum and hardware limitations and with good frequency 
+and impulse responses. A wide tuning range provides flexibility to escape interference, 
+but if the interference is intentional, as in the case of jamming, a change in RF fre -
+quency on a pulse-to-pulse basis may be required using switchable or electronically 
+tuned filters. If the RF filtering is located prior to RF amplification, the filter insertion 
+loss will have a dB for dB impact on the receiver noise figure, another sacrifice in noise 
+temperature to achieve more vital objectives. Yttrium iron garnet (YIG) filters and pin 
+diode switched filters have been used to provide the necessary frequency agility.
+ch06.indd   9 12/17/07   2:03:01 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Radar Receivers 6.10  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 6
+Stretch Processing.  Stretch processing is a technique frequently used to pro -
+cess wide bandwidth linear FM waveforms. The advantage of this technique is that it 
+allows the effective IF signal bandwidth to be substantially reduced, allowing digitiza -
+tion and subsequent digital signal processing, at more readily achievable sample rates. 
+By applying a suitably matched chirp waveform to the receiver first LO, coincident 
+with the expected time of arrival of the radar return, the resultant IF waveform has 
+a significantly reduced bandwidth for targets over a limited range-window of inter -
+est. Provided that the limited-range window can be tolerated, a substantially reduced 
+processing bandwidth allows more economical A/D conversion and subsequent digital 
+signal processing. It also allows a greater dynamic range to be achieved with lower-
+rate A/D converters than would be achievable if digitization of the entire RF signal 
+bandwidth were performed.
+If the LO chirp rate is set equal to the received signal chirp rate of a point target, 
+the resultant output is a constant frequency tone at the output of the stretch processor 
+receiver, with frequency ∆tB/T, where ∆t is the difference in time between the received 
+signal and the LO chirp signal, and B/T is the waveform chirp slope (chirp bandwidth/
+pulse width). Target doppler is maintained through the stretch processing, producing 
+an output frequency offset equal to the doppler frequency, though the wide percentage 
+bandwidth often used means that the doppler frequency can change significantly over 
+the duration of the pulse.
+Ignoring the effect of target doppler, the required RF signal bandwidth is equal to 
+the transmitted waveform bandwidth. Given the RF signal bandwidth BR, the received 
+pulse width TR, and the range interval ∆T, the required LO reference waveform dura -
+tion is given by
+ T T TL R= + ∆ (6.4)
+the LO reference chirp waveform bandwidth is given by
+ BT T
+TBLR
+RR =+ ∆ (6.5)
+and the IF processing bandwidth is given by
+ BT
+TBI
+RR =∆ (6.6)
+6.4 RECEIVER FRONT END
+Configuration.  The radar front end  consists of a low-noise amplifier (LNA) and 
+bandpass filter followed by a downconverter. The radar frequency is downconverted 
+to an IF, where filters with suitable bandpass characteristics are physically realiz -
+able. The mixer itself and the preceding circuits are generally relatively broadband. 
+Tuning of the receiver, between the limits set by the preselector or mixer bandwidth, 
+is accomplished by changing the LO frequency. Occasionally, receivers will include 
+filtering before the LNA in order to limit the effects of intermodulation distortion that 
+can occur in the LNA. Even when filtering is included before the LNA, a second filter 
+is often still required between the LNA and the mixer in order to reject the amplifier 
+noise at the image frequency. Without this filter, the noise contribution of a broadband 
+LNA would be doubled.
+ch06.indd   10 12/17/07   2:03:04 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Radar Receivers  RADAR RECEIVERS  6.116x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 6
+The receiver front end may also include a limiter, used to protect the receiver cir -
+cuitry from damage due to high power that may occur either from leakage during 
+transmit mode or as a result of interference from another system such as a radar at close 
+range. Front-end limiters are discussed in more detail in Section 6.8.
+The radar or receiver front end often includes some form of gain or attenuation con -
+trol as shown in Figure 6.1. Gain control is described in more detail in Section 6.6.
+Effect of Characteristics on Performance.  Noncoherent pulse radar perfor -
+mance is affected by front-end characteristics in three ways. Noise introduced by the 
+front end increases the radar noise temperature, degrading sensitivity, and limits the 
+maximum range at which targets are detectable. Front-end saturation on strong signals 
+may limit the minimum range of the system or its ability to handle strong interference. 
+Finally, the front-end spurious performance affects the susceptibility to off-frequency 
+interference.
+Coherent radar performance is even more affected by spurious mixer characteris -
+tics. Range and velocity accuracy is degraded in pulse doppler radars; stationary target 
+cancellation is impaired in MTI (moving-target indication) radars; and range sidelobes 
+are raised in high-resolution pulse compression systems.
+Spurious Distortion of Radiated Spectrum.  It is a surprise to many radar engi -
+neers that components of the radar receiver can cause degradation of the radiated 
+transmitter spectrum, generating harmonics of the carrier frequency or spurious dop -
+pler spectra, both of which are often required to be 50 dB or more below the carrier. 
+Harmonics can create interference in other electronic equipment. Spurious doppler 
+spectra levels are dictated by requirements to suppress clutter interference through 
+doppler filtering.
+Harmonics are generated by any component that becomes nonlinear when sub -
+jected to the power level created by the transmitter and that passes those harmonics to 
+the antenna. Gaseous or diode receiver-protectors are designed to be nonlinear during 
+the transmitted pulse and reflect the incident energy back toward the antenna. Isolators 
+or circulators are often employed to absorb most of the reflected fundamental, but they 
+are generally much less effective at the harmonics. Moreover, these ferrite devices are 
+nonlinear devices and can generate harmonics.
+Spurious doppler spectra are created by any process that does not reoccur identi -
+cally on each transmitted pulse. Gaseous receiver-protectors ionize under transmitter 
+power levels, but there is some small statistical variation in the initiation of ioniza -
+tion on the leading edge of the pulse and in its subsequent development. In radars 
+demanding high clutter suppression (in excess of 50 dB), it has sometimes been found 
+necessary to prevent this variable reflected power from being radiated by use of both 
+a circulator and an isolator in the receive path.
+Spurious Response of Mixers.  The ideal mixer acts as a multiplier, producing an 
+output proportional to the product of the two input signals. The input RF signal at fre -
+quency fR is frequency shifted or modulated by the LO signal at frequency fL. Balanced 
+mixers are used to minimize conversion loss and unwanted spurious responses. In 
+active mixers, modulation is performed using transistors, and in passive mixers, the 
+modulation is performed using Schottky-barrier diodes or other solid-state devices 
+(e.g., MESFET) where increased dynamic range is required.
+The resulting output signal frequencies ( fL + fR and fL – fR) are the sum and difference 
+of the two input frequencies. In practice, all mixers produce unwanted intermodulation 
+ch06.indd   11 12/17/07   2:03:04 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Radar Receivers 6.12  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 6
+spurious responses4 with frequencies +nfL +mfR (where m and n are integers), and the 
+degree to which these spurious products impact the radar performance depends upon the 
+type of mixer and the overall radar performance requirements. Analysis of mixer spuri -
+ous levels is nontrivial, and the receiver designer typically requires tabulated data gener -
+ated through mixer characterization measurements to predict mixer spurious levels.
+Advances in mixer technology have resulted in a wide variety of commercially 
+available devices employing balanced, double balanced, and double-double balanced 
+topologies covering a wide range of RF, LO, and IF frequencies and a range of per -
+formance characteristics.
+Mixer Spurious-Effects Chart.  A graphical display of mixer spurious compo -
+nents up to the sixth order is shown in Figure 6.2. This chart allows identification of 
+those combinations of input frequencies and bandwidths that are free of strong low-
+order spurious components. Such charts are most useful in determining optimum IF and 
+LO frequencies during the initial design phase. Once the frequency plan has been deter -
+mined, computer analysis of spurious responses is typically used to ensure spurious free 
+performance over the entire range of LO frequencies and RF and IF bandwidths.
+The heavy line in Figure 6.2 represents the desired signal and shows the variation 
+of normalized output frequency ( H – L)/H with normalized input frequency L/H. 
+All other lines on the chart represent the unwanted spurious signals. To simplify 
+use of the chart, the higher input frequency is designated by H and the lower input 
+frequency by L.
+FIGURE 6.2  Downconverter spurious-effects chart: H = high input frequency; L = low 
+input frequency
+ch06.indd   12 12/17/07   2:03:06 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Radar Receivers  RADAR RECEIVERS  6.136x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 6
+Seven particularly useful regions have been outlined on the chart. Use of the chart 
+is illustrated by means of the region marked A, which represents the widest available 
+spurious-free bandwidth centered at L/H = 0.63. The available RF passband is from 
+0.61 to 0.65, and the corresponding IF passband is from 0.35 to 0.39. However, spuri -
+ous IF frequencies of 0.34 (4 H – 6L) and 0.4 (3 H – 4L) are generated at the extremes 
+of the RF passband. Any extension of the instantaneous RF bandwidth will produce 
+overlapping IF frequencies, a condition that cannot be corrected by IF filtering. The 
+4H – 6L and 3 H – 4L spurious frequencies, like all spurious IF frequencies, arise from 
+cubic or higher-order intermodulation.
+The available spurious-free bandwidth in any of the designated regions is roughly 
+10% of the center frequency or ( H – L)/10H. Thus, receivers requiring a wide band -
+width should use a high IF frequency centered in one of these regions. For IF frequen -
+cies below ( H – L)/H = 0.14, the spurious frequencies originate from high-order terms 
+in the power-series model and are consequently low enough in amplitude that they 
+can often be ignored. For this reason, a low IF generally provides better suppression 
+of spurious responses.
+The spurious-effects chart also demonstrates spurious input responses. One of the 
+stronger of these occurs at point B, where the 2 H – 2L product causes a mixer output in 
+the IF passband with an input frequency at 0.815. All the products of the form N(H – L) 
+produce potentially troublesome spurious responses. These frequencies must be fil -
+tered at RF to prevent their reaching the mixer. If sufficient filtering cannot be applied 
+prior to the mixing process, spurious products that fall within the operating band will 
+no longer be filterable, which will seriously degrade system performance.
+Spurious responses not predicted by the chart occur when two or more RF input sig -
+nals produce other frequencies by intermodulation that lie within the RF passband.
+Image-Reject Mixer.  A conventional mixer has two input responses at points 
+above and below the LO frequency where the frequency separation equals the IF. The 
+unused response, known as the image , is suppressed by the image-reject or single-
+sideband mixer shown in Figure 6.3. The RF hybrid produces a 90 ° phase differential 
+between the LO inputs to the two mixers. The effect of this phase differential on the 
+IF outputs of the mixers is a +90° shift in one sideband and a −90° shift in the other. 
+The IF hybrid, adding or subtracting another 90 ° differential, causes the high-sideband 
+signals to add at one output port and to subtract at the other. Where wide bandwidths 
+are involved, the IF hybrid is of the all-pass type. In practice, image reject mixers often 
+do not provide sufficient rejection of the image response alone without filtering. In 
+this case, they can be used in conjunction with an image rejection filter, reducing the 
+magnitude of rejection required by the filter.
+FIGURE 6.3  Image reject mixerIn-phase 
+power 
+dividerRF 
+SIGNALLOCAL 
+OSCILLA TOR−90º
+−180º
+−180ºHIGH 
+SIDEBAND
+LOW 
+SIDEBAND+90º−
+ch06.indd   13 12/17/07   2:03:07 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Radar Receivers 6.14  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 6
+Characteristics of Amplifiers and Mixers.  Noise figure, amplifier gain, mixer 
+conversion loss, 1 dB compression point, and third order intercept point are the most 
+common performance parameters specified for amplifiers and mixers. Occasionally, a 
+second order intercept point specification is also required for very wide bandwidth sig -
+nals. It should be noted that for amplifiers, compression point and third order intercept 
+are usually specified at their output whereas for mixers these parameters are usually 
+specified at their input.
+Additional specifications for mixers include LO drive power, port-to-port isolation, 
+and single tone intermodulation levels. The LO drive power specification defines how 
+much LO power is required by the mixer to meet its specified performance levels. 
+Typically, the higher the LO power, the higher the 1 dB compression point and third 
+order intercept point. Radar receivers often require high LO drive level mixers in 
+order to meet the challenging dynamic-range requirements. The port-to-port isolation 
+is used to determine the power level coupled directly between the mixer ports without  
+frequency translation. The single tone intermodulation levels specify the levels of  
+the +nfL + mfR spurious signals, as discussed previously.
+6.5 LOCAL OSCILLATORS
+Functions of the Local Oscillator.  The superheterodyne receiver utilizes one 
+or more local oscillators and mixers to convert the signal to an intermediate fre -
+quency that is convenient for filtering and processing operations. The receiver can 
+be tuned by changing the first LO frequency without disturbing the IF section of the 
+receiver. Subsequent shifts in intermediate frequency are often accomplished within 
+the receiver by additional LOs, generally of fixed frequency. These LOs are gener -
+ally also used in the exciter to upconvert modulated waveforms to RF for output to 
+the transmitter.
+In many early radars, the only function of the local oscillators was conversion of 
+the input signal frequency to the correct intermediate frequency. Many modern radar 
+systems, however, coherently process a series of returns from a target. The local oscil -
+lators act essentially as a timing standard by which the signal delay is measured to 
+extract range information, accurate to within a small fraction of a wavelength. The 
+processing demands a high degree of phase stability throughout the radar .
+STALO Instability.  The first local oscillator, generally referred to as a stable 
+local oscillator (STALO) , typically has the greatest effect on receiver-exciter stability; 
+however, when evaluating the overall performance, other contributions should not be 
+neglected. Advances in state-of-the-art STALO oscillator performance and the strin -
+gent clutter cancellation requirements of modern radars means that the phase noise of 
+all oscillators and timing jitter of A/D converter and D/A converter clocks and T/R 
+strobes may be significant.
+The short-term stability requirements of the STALO are generally characterized 
+by device noise relative to carrier (dBc), specified in terms of a phase noise spectrum 
+and measured in the frequency domain. Long-term stability is typically character -
+ized by aging and environmental effects, specified in terms of frequency drift and 
+measured using an Allan Variance5 technique. Requirements are typically specified 
+in terms of an absolute frequency tolerance or a maximum frequency deviation over 
+some time interval.
+ch06.indd   14 12/17/07   2:03:07 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Radar Receivers  RADAR RECEIVERS  6.156x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 6
+It should be noted that measurements of phase noise are typically performed by 
+measurement of double-sideband noise, the sum of the power in both the upper and 
+lower sidebands, but more typically reported and specified as single sideband (SSB) 
+values. Double-sideband noise can be translated to a single-sideband value by sub -
+tracting 3 dB. Unequal sideband power can only result from additive signals or noise 
+or correlated amplitude and phase noise components.
+Amplitude modulation (AM) of the STALO is typically not a significant factor as 
+it is usually at a lower level than the phase noise (at small offset frequencies from car -
+rier) and can be further reduced through limiting. Modern mixers typically provide a 
+significant reduction in the effect of STALO amplitude modulation as their conversion 
+gain is relatively insensitive to LO power variation when operated at their specified 
+drive level.
+For systems requiring high sensitivity, AM noise can become disruptive if unin -
+tentional conversion of AM to PM noise occurs in the receiver chain. This process 
+can occur via suboptimum component bias techniques where high amplitude signals 
+or noise create a phase shift resulting in another phase noise contribution to the 
+receiver chain.
+Vibration Sensitivity.  In addition to the phase noise generated by the STALO in 
+a benign environment, sources of unwanted phase modulation include the effects of 
+power supply ripple and spurious signals as well as mechanical or acoustic vibration 
+from fans, motors, and other sources. The effects of vibration can be severe, espe -
+cially in airborne environments where high vibration levels are present. The vibration 
+sensitivity of an oscillator is specified by the factional frequency vibration sensitivity, 
+commonly know as the g-sensitivity . Typically, a single constant value is specified. In 
+practice, the sensitivity varies significantly with vibration frequency and is different 
+for each axis. Equation 6.7 can be used to determine the effect on oscillator phase noise 
+due to random vibration in each axis.6
+ L ff f
+fvi i v
+v( ) log( )=
+
+
+
+20100Γ γ   dBc SSB in a 1 Hz bandwidth  (6.7)
+where fv = vibration frequency (Hz)
+ f0 = oscillator frequency (Hz)
+ Γi = oscillator fractional frequency vibration sensitivity ( g−1) in axis i
+ gi (  fv) =  vibration power spectral density ( g2/Hz) in axis i at the vibration  
+frequency fv
+The composite STALO vibration sensitivity ( Γ) is defined by the root sum square 
+of the sensitivity in each of the three prime axes, as shown in Eq. 6.8
+ | |Γ Γ Γ Γ= + +x y z2 2 2  (6.8)
+Range Dependence.  Most modern radars use the STALO in both the receiver 
+for downconversion and the exciter for upconversion. This double use of the STALO 
+introduces a dependence on range of the clutter and exaggerates the effect of certain 
+unintentional phase-modulation components by 6 dB, the critical frequencies being 
+those which change phase by odd multiples of 180° during the time period between 
+transmission and reception of the clutter return from a specified range.
+ch06.indd   15 12/17/07   2:03:10 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Radar Receivers 6.16  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 6
+This range-dependent filter characteristic is given by
+ | ( ) | sin ( / ) sin ( ) F f f R c f TR m m m2 2 24 2 4 = = π π  (6.9)
+where fm = modulation frequency (Hz)
+ R = range (m)
+ c = propagation velocity, 3 × 108 (m/s)
+ T = time delay = 2R/c (s)
+A short time delay can tolerate much higher disturbances at low modulation fre -
+quencies, as illustrated by the two cases in Figure 6.4. Consequently, the effects of 
+STALO stability need to be computed for several time delays or ranges to ensure suf -
+ficient stability exists for the intended application.
+Close to carrier phase modulation is typically dominated by that of the oscillators 
+due to the inherent feedback process within the oscillator circuitry. Noise contribu -
+tors within the oscillator loop that exhibit a 1/ f characteristic (10 dB/decade) noise 
+slope, are enhanced by 20 dB via the feedback mechanism with a resulting net 1/ f 3 
+characteristic (30 dB/decade) noise signature close to carrier, within the oscillator loop 
+bandwidth. Outside this loop bandwidth, the oscillator noise signature resumes a 1/ f 
+slope until reaching a flat thermal noise floor. At larger frequency offsets, significant 
+noise contributions can result from other components such as amplifiers in the STALO 
+signal path. Depending on the location of these amplifiers, they may either create 
+phase modulation that is common to both the receiver and exciter (correlated noise) 
+or add phase noise to only the receiver or exciter (uncorrelated noise). Uncorrelated 
+or uncommon noise is not subject to the range dependent factor described above so it 
+must be accounted for separately. Other significant contributors of uncommon noise 
+are the noise on the exciter waveform before upconversion, along with amplifiers in 
+the receiver and exciter signal paths.
+The undesired SSB phase noise after downconversion by the STALO is the sum of 
+the uncommon phase noise and the common phase noise reduced by the range factor. 
+FIGURE 6.4  Effect of range delay on clutter cancellation
+ch06.indd   16 12/17/07   2:03:12 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Radar Receivers  RADAR RECEIVERS  6.176x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 6
+Figure 6.5 illustrates typical common and uncommon phase noise components and the 
+resulting mixer output phase noise as calculated using
+ L f L f F f L fC R U '() ( ) | ( )| ( ) = +2 (6.10)
+where
+ LC(f) = STALO SSB phase noise spectrum common to the receiver and exciter
+ LU(f) = total receiver-exciter uncorrelated STALO SSB phase noise
+ FR(f) = range dependence factor
+Residue Power and MTI Improvement Factor.  Subsequent stages of the receiver 
+and signal processor have responses that are functions of the doppler modulation fre -
+quency, so the output spectrum can be obtained by combining the responses of these 
+filters with the spectrum present at the mixer input. In MTI systems, it is common to 
+describe the ability to suppress clutter in terms of an MTI improvement factor. The 
+MTI improvement factor I is defined as the signal-to-clutter ratio at the output of 
+the clutter filter divided by the signal-to-clutter ratio at the input of the clutter filter, 
+averaged uniformly over all target radial velocities of interest. The MTI improvement 
+factor limitation due to the STALO may be expressed as the ratio of the STALO power 
+to the total integrated power of the return modulation spectrum it creates at the output 
+of the MTI filters. Figure 6.6 illustrates the effect of the overall filtering, consisting of 
+MTI filtering and receiver filtering on the residue power spectrum.
+The integrated residue power due to the STAMO phase noise is given by
+ P H f L f dfresidue= ′
+−∞∞∫| ( ) | ( )2  (6.11)
+where
+ H(f) =  combined response of receiver and doppler filters, normalized to 0 dB 
+noise gain
+ L' (f) = phase noise after downconversion as defined in Eq. 6.10FIGURE 6.5  Phase noise componentsFrequencySingle Sideband Phase Noise (dBc/Hz)
+100 Hz 1 kHz 10 kHz 100 kHz 1 MHzSTALO Common Phase Noise LC(f)
+STALO Uncommon Phase Noise LU(f)Phase Noise after Do wncon version L ’(f) −120
+−130
+−140
+−150
+−160
+−170−110−100
+ch06.indd   17 12/17/07   2:03:15 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Radar Receivers 6.18  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 6
+and the limit on the MTI improvement factor due to the STALO phase noise is 
+given by
+ I P= −1010logresidue (6.12)
+If the radar utilizes more than one doppler filter, the effect of STALO instability 
+should be calculated for each individually.
+Pulse Doppler Processing.   In pulse doppler systems, a series of pulses are trans -
+mitted at a fixed pulse repetition frequency (PRF), and doppler processing is per -
+formed within the digital signal processor, using samples separated at the PRF rate. 
+The resulting sampling of the receiver output at the PRF produces aliasing of the phase 
+noise spectrum periodically at the PRF interval, as shown in Figure 6.7, where each 
+curve represents the phase noise at the output of the receiver, including the effects 
+of receiver filtering and offset by a multiple of the PRF frequency. The combined 
+phase noise due to each aliased component is calculated using Eq. 6.13 with the result 
+illustrated in Figure 6.8. This sampled phase noise spectrum provides a method for 
+comparing different LO phase noise profiles and their relative impact on the overall 
+performance of the system.
+ ˆ( ) ( ) | ( ) | L f L f kf H f kf
+k= ′+ + 
+=−∞∞
+∑ PRF PRF2 (6.13)
+Sinusoidal Modulations.  Radar performance is affected by both random and sinu -
+soidal modulations. Sinusoidal modulations can have a significant impact on radar 
+performance, though the degree to which they cause degradation often depends on 
+their relationship to the radar PRF and their magnitude relative to the random modu-
+lations. Examples of such undesired sinusoidal modulations are in-band, unfilterable 
+mixer products, or leakage due to insufficient isolation between signal sources within 
+a receiver or exciter. In addition to external sources of interference, the radar designer FIGURE 6.6  Clutter residue due to LO phase noiseH(f)Phase Noise after 
+Downconv ersion
+Frequency100 Hz 1 kHz 10 kHz 100 kHz 1 MHzCombined Doppler Filter 
+and Receiv er Filter 
+Response
+Clutter ResidueNoise Level (dBc/Hz)0
+−10
+−20
+−30
+−40
+−5010
+Filter Response (dB)−120
+−130
+−140
+−150
+−160
+−170−110L’(f)
+ch06.indd   18 12/17/07   2:03:18 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Radar Receivers  RADAR RECEIVERS  6.196x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 6
+must be concerned with internal signal sources. MTI and pulse doppler radars are 
+particularly susceptible to any such internal oscillators that are not coherent, i.e., that 
+do not have the same phase for each pulse transmission. The effect of the spurious 
+signal is then different for each return, and the ability to reject clutter is degraded.  FIGURE 6.7  Phase noise aliasing in a pulse doppler systemL(f)
+Frequency0fPRF −fPRF2fPRF 3fPRF −3fPRF−2fPRFPhase Noise after Downconversion 
+and Receiver Filtering
+Phase Noise Shifted kfPRF
+FIGURE 6.8  Sampled phase noise spectrum due to phase noise aliasingFolded Phase Noise 
+Spectrum
+Doppler FrequencyfPRF 0Phase Noise (dBc/Hz)L(f)^
+ch06.indd   19 12/17/07   2:03:20 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Radar Receivers 6.20  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 6
+A truly coherent radar generates all frequencies, including its inter-pulse periods, from 
+a single frequency reference. This fully coherent architecture insures that both the 
+desired frequencies and all the internally generated spurious signals are coherent, 
+eliminating the degradation of clutter rejection.
+Many radar systems are pseudo-coherent. The same oscillators are used in both 
+transmit and receive but not necessarily coherent with each other. The result is that 
+the phase of the target remains constant, but the phase of many of the spurious signals 
+varies from pulse to pulse. In this type of configuration, signal isolation and frequency 
+architecture is critical to minimize the occurrence of spurious signals that could erro -
+neously be interpreted as false targets.
+COHO and Timing Instability.  The majority of this discussion has focused 
+on the STALO as the major contributor to receiver stability. Other contributors 
+such as the second LO, the coherent oscillator (COHO) (if used), A/D and D/A 
+converter clocks can all become significant. A/D and D/A converter clock jitter 
+becomes increasingly significant as sample rates and IF frequencies are increased. 
+The effects of A/D and D/A converter clock phase noise and jitter is described in 
+Sections 6.10 and 6.13. The jitter on timing strobes used to perform transmit/receive 
+(T/R) switching is typically less stringent than that of A/D clocks, as it does not have 
+a direct impact on the signal phase. However, if components such as transmit/receive 
+switches or power amplifiers have a transient phase response of significant duration, 
+time jitter on the switching time can be translated into a phase modulation of the 
+transmitter or receiver signal.
+Total Radar Instability.  The primary sources of radar instability are usually the 
+receiver-exciter common phase noise, receiver and exciter uncommon phase noise, 
+and the transmitter phase noise. If the spectra of these components are available, either 
+through measurements or through predictions based on similar devices, the convolu -
+tion of receiver-exciter common phase noise, modified by the range-dependent effect 
+with the other components, provides an estimate of the spectrum of returns from stable 
+clutter, which is then modified by the receiver filters and integrated to obtain the resi -
+due power caused by these contributors. These procedures are employed to diagnose 
+the source of radar instability in an existing radar or to predict the performance of a 
+radar in the design stage and to allow the allocation of stability requirements to critical 
+components or subsystems within the radar.
+Measurement of total radar instability can be conducted with the radar antenna 
+search-lighting a stable point clutter reflector that produces a signal return close to 
+(but below) the dynamic-range limit of the receiver. Suitable clutter sources are dif -
+ficult to find at many radar sites, and interruption of rotation of the antenna to con -
+duct such a test may be unacceptable at others; in this case, a microwave delay line 
+can be employed to feed a delayed sample of the transmitter pulse into the receiver. 
+All sources of instability are included in this single measurement except for any 
+contributors outside the delay-line loop. It is important to recognize that timing jit -
+ter does not produce equal impact on all parts of the return pulse and generally has 
+minimal effect on the center of the pulse, so it is essential to collect data samples at 
+a multiplicity of points across the return, including leading and trailing edges. The 
+total radar instability is the ratio of the sum of the multiplicity of residue powers at 
+the output of the doppler filter to the sum of the powers at its input, divided by the 
+ratio of receiver noise at these locations. Stability is the inverse of this ratio; both are 
+generally expressed in decibels.
+ch06.indd   20 12/17/07   2:03:20 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Radar Receivers  RADAR RECEIVERS  6.216x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 6
+In radars with phase-coded transmission and pulse compression receivers, residue 
+may be significant in the range sidelobe region as well as in the compressed pulse, 
+caused by phase modulation during the long transmitted pulse rather than solely from 
+pulse to pulse. Measurement of stability of such radars must employ a very large num -
+ber of data points to obtain an answer valid for clutter distributed in range.
+In addition to the amplitude and phase noise of the receiver-exciter and the trans -
+mitter, mechanically scanning antennas produce a modulation that is predominantly 
+AM. The combined effect is the sum of the residue powers produced by each compo -
+nent individually.
+Low Noise Frequency Sources.  Many radar systems operate over a range of 
+RF frequencies, requiring a number of LO frequencies that are typically generated 
+using frequency synthesis. Frequency synthesis is the process of creating one or more 
+frequencies from a single reference frequency using frequency multiplication, divi -
+sion, addition, and subtraction to synthesize the required frequencies. The fundamental 
+building block of any frequency synthesis approach is the oscillator. Crystal oscillators 
+have historically been the most common source technology. VHF crystal oscillators 
+employing doubly-rotated (SC, IT, etc.) crystal resonators are able to support higher 
+power levels than single axis crystals. This enables them to achieve lower phase noise 
+and improved vibration immunity due to properties unique to the particular axis of 
+rotation. Frequency multiplication of these VHF sources is often used to generate the 
+radar RF frequencies required; however, this multiplication process results in increase 
+in phase noise performance by 20 log10(M) dB where M is the multiplication factor. A 
+variety of other source technologies, such as Surface Acoustic Wave (SAW) oscilla -
+tors, have been exploited to achieve improved phase noise performance. SAW oscil -
+lators enable lower far-from-carrier phase noise, largely due to their higher frequency 
+operation and the resulting lower frequency multiplication factor required to generate 
+the equivalent radar RF output frequencies.
+Very accurate frequency timing is often required in radars where coordination or 
+hand-off from one radar to another, or communication to a missile in flight, is required. 
+This is typically the case where a search radar acquires a target and queues a preci -
+sion tracking radar. Accurate timing for these applications may be achieved by phase 
+locking the low phase noise radar oscillators to a low frequency reference generated 
+from either a rubidium oscillator or a GPS receiver. In this configuration, the long-term 
+stability of the reference oscillator is superior to that of the radar oscillator, and the 
+short-term stability of the radar oscillator is superior to that of the reference oscillator. 
+The phase lock loop (PLL) architecture is established to exploit the strengths of both 
+technologies by selecting a PLL bandwidth at the offset frequency where the source 
+stabilities cross over. For typical radar and reference oscillator technologies, this usu -
+ally occurs in the 100 Hz to 1 kHz offset region.
+Frequency Synthesis Techniques.  The most common techniques are direct 
+synthesis, direct digital synthesis, and frequency multiplication. Direct synthesis is 
+the process of generating frequencies through the multiplication and mixing of a 
+number of signals at different frequencies to produce the required output frequency. 
+Frequency multiplication and direct digital synthesis are described in Section 6.13. 
+Conventional phase locked loop synthesizers are occasionally used, but their fre -
+quency switching times and phase settling responses are generally inadequate to meet 
+the stringent radar receiver-exciter requirements. Phase locked loops are more likely 
+used to lock fixed high-frequency oscillators to stable low-frequency references to 
+ch06.indd   21 12/17/07   2:03:21 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Radar Receivers 6.22  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 6
+ensure coherence of all oscillators within the receiver-exciter and obtain an optimum 
+balance of long- and short-term stability.
+Coherence After Frequency Switching.  Long range radars often transmit a series 
+of pulses before receiving returns from the first in the sequence. Pulses may be transmitted 
+at a number of different operating frequencies requiring switching of the LO frequency 
+between pulses. If target returns are processed coherently, the phase of the LO signal 
+must be controlled such that each time it switches to a particular frequency, the phase of 
+the LO is the same phase that it would have been had no frequency switching occurred. 
+This requirement drives the architecture used to generate LO frequencies. Generating 
+all the frequencies from a single reference frequency does not guarantee phase coher -
+ence when frequency switching occurs. Three sources of phase ambiguity are common: 
+frequency dividers, direct digital synthesizers, and voltage controlled oscillators (VCO). 
+Frequency dividers produce an output signal that can have any one of N phases, where N 
+is the divide ratio; switching dividers can result in phase ambiguity of 2 p /N. If frequency 
+dividers are used in the frequency synthesis process, they must be operated constantly 
+without switching the input frequency or divide ratio to avoid this phase ambiguity. 
+Direct digital synthesizers (DDSs) can be used either to generate LO frequencies directly 
+or to generate modulated waveforms prior to upconversion. When pulse-to-pulse phase 
+coherence is required, the starting phase is reset to zero at the start of each pulse. If all the 
+LO frequencies used are multiples of the pulse repletion frequency, the resulting phase 
+will be the same for each pulse. VCOs can be used to create a tunable LO but are usually 
+phase locked to another stable source for improved stability. The tuning voltage design 
+and filter capacitor technology used to achieve phase lock must be carefully designed 
+to ensure rapid voltage and stored charge transitions. Otherwise, the VCO may properly 
+acquire and achieve phase lock, but the residual voltage decay from the transition will 
+manifest itself in an insidious phase ambiguity called post-tuning drift .
+Stretch Processing.  In stretch processing, the LO signal frequency is modulated 
+with a chirp waveform similar to that of the received signal to reduce the bandwidth 
+of the IF signal as described in Section 6.3. The wideband chirp waveform is typically 
+generated by passing a narrower bandwidth linear frequency modulation (LFM) wave -
+form through a frequency multiplier that increases both the operating frequency and 
+bandwidth of the chirp waveform. Frequency multipliers multiply the phase distortion 
+of the input signal and often have significant phase distortion themselves. Distortion of 
+the LO chirp signal phase can have a significant effect on the compressed pulse perfor -
+mance, either distorting the compressed pulse shape or degrading sidelobe performance 
+(Section 6.13). Phase errors can be measured using a test target injected into the receiver 
+and measuring the phase ripple at the receiver output. By performing this measurement 
+with targets injected at different simulated ranges, the errors associated with the receiver 
+LO and test signal can be separated. Correction of receiver LO phase distortion can be 
+readily corrected when using a direct digital synthesizer as described in Section 6.13.
+6.6 GAIN CONTROL
+Sensitivity Time Control (STC).  The search radar detects returns of widely dif -
+fering amplitudes, often so great that the dynamic range of a fixed-gain receiver will 
+be exceeded. Differences in return strength are caused by differences in radar cross 
+ch06.indd   22 12/17/07   2:03:21 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Radar Receivers  RADAR RECEIVERS  6.236x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 6
+sections, in meteorological conditions, and in range. The effect of range on radar return 
+strength overshadows the other causes and can be mitigated by a technique known as 
+sensitivity time control , which causes the radar receiver sensitivity to vary with time in 
+such a way that the amplified radar return strength is independent of range.
+Time sidelobes of compressed pulses in radars that transmit coded waveforms can 
+be degraded by STC. Gradual changes can usually be tolerated, but at close range, the 
+rate of change of attenuation can be very large. Most modern radars that include STC 
+use digital STC control, which can lead to large step sizes at close range unless high 
+digitization rates are used. The phase stability of the STC attenuator is also an impor -
+tant consideration as excessive phase variation as a function of attenuation can have a 
+dramatic impact on range sidelobes.
+Clutter Map Automatic Gain Control.  In some radars, mountain or urban clut -
+ter can create returns that would exceed the dynamic range of the receiver. The spatial 
+area occupied by such clutter is typically a very small fraction of the radar coverage, 
+so clutter map AGC has been used as an alternative to boosting the STC curve. This 
+technique uses a digital map to record the mean amplitude of the clutter in each map 
+cell over many scans and adds receiver attenuation where necessary to keep the clutter 
+returns below the saturation level of the receiver.
+Programmable Gain Control.  Reduced gain may be desirable in a variety of 
+situations such as high clutter or high interference environments or in short range 
+modes. Fixed attenuation is often preferable to STC or clutter map control. High PRF 
+pulse doppler radars, for example, cannot tolerate STC due to the range ambiguity 
+of targets. Additional attenuation may be programmed either manually via operator 
+control or automatically to increase the receiver’s large signal handling capability or 
+to reduce its sensitivity.
+Gain Normalization.  Receiver gain can vary due to component tolerances, fre -
+quency response, variation with temperature, and aging. Accurate receiver gain control 
+is required for a variety of reasons that include target radar cross-section measure -
+ment, monopulse angle accuracy, maximizing the receiver dynamic range, and noise 
+level control. Digital gain control permits the calibration of receiver gain by inject -
+ing test signals during radar dead time or during some scheduled calibration interval. 
+Calibration coefficients can be stored as a function of commanded attenuation, operat -
+ing frequency, and temperature as needed. Measurements over time can also be used 
+to assess component aging and potentially predict receiver failure prior to degradation 
+beyond acceptable limits. Accurate gain control is essential for receiver channels used 
+to perform monopulse angle measurements, where amplitudes received in two or more 
+beams simultaneously are compared to accurately determine the target’s position in 
+azimuth or elevation. Receiver dynamic range is maximized with accurate gain control 
+as too little gain can result in noise figure degradation and too much gain results in 
+large signals exceeding the A/D converter full-scale or creating unwanted gain com -
+pression, intermodulation, or cross modulation distortion.
+Automatic Noise-Level Control.  Another widely employed use for AGC is to 
+maintain a desired level of receiver noise at the A/D converter. As will be described 
+in Section 6.10, too little noise relative to the quantization increment of the A/D con -
+verter causes a loss in sensitivity. Samples of noise are taken at long range, often beyond 
+the instrumented range of the radar or during some scheduled period. If the radar has  
+ch06.indd   23 12/17/07   2:03:21 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Radar Receivers 6.24  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 6
+RF STC prior to any amplification, it can be set to full attenuation to minimize exter -
+nal interference with minimal (and predictable) effect on system noise temperature. Most 
+radars employ amplifiers prior to STC, so they cannot attenuate external interference with -
+out affecting the noise level. The noise level calibration algorithm must be designed to 
+tolerate external interference and returns from rainstorms or mountains at extreme range.
+Another concern with amplification prior to STC is that the noise level at the output 
+of the STC attenuator varies with range. At close range, the noise level into the A/D 
+converter may fall below the quantization interval. Also, a constant noise level as a 
+function of range at the receiver output is desirable in order to maintain a constant false 
+alarm rate. Noise injection after the STC attenuator is used to overcome this problem. 
+A noise source and attenuator are often employed at IF to inject additional noise to 
+compensate for the reduced noise after the STC attenuator. Digital control of the noise 
+injection is synchronized with the STC attenuation to provide an effective constant 
+noise level at the A/D converter input.
+Gain Control Components.  Most modern radars perform gain control digitally. 
+Digital control permits calibration of each attenuation value to determine the differ -
+ence between the actual attenuation and that commanded by injecting test signals 
+during dead time.
+In the past, gain controlled amplifiers were used extensively to control and adjust 
+receiver gain. Recently, this approach has largely been replaced using digital switched 
+or analog (voltage or current) controlled attenuators distributed throughout the receiver 
+chain. Variable attenuators have a number of advantages over variable gain amplifi -
+ers; they typically provide broader bandwidths, greater gain control accuracy, greater 
+phase stability, improved dynamic range, and faster switching speed.
+The choice between voltage controlled and switched attenuation depends on trade-
+offs between performance of a variety of parameters. Switched attenuators generally 
+provide maximum attenuation accuracy, faster switching speed, improved amplitude 
+and phase stability, greater bandwidth, higher dynamic range, and higher power han -
+dling capability. V oltage or current controlled attenuators, controlled via a D/A con -
+verter, typically provide improved resolution and lower insertion loss.
+Gain control attenuators are often incorporated within the receiver at both RF and 
+IF. RF attenuation is used to provide increased dynamic range in the presence of large 
+target returns. By placing the attenuation as close to the front end as possible, large 
+signals can be handled by minimizing gain compression, intermodulation, or cross-
+modulation distortion in the majority of receiver components. The disadvantage of 
+using front-end attenuation is that it will typically have a larger impact on receiver 
+noise figure than attenuation placed later in the receiver. This is not usually an issue 
+when the intent of adding attenuation is to desensitize the receiver as is the case for 
+STC. Back-end or IF attenuation is often used to adjust the gain of the receiver to 
+compensate for receiver gain variations due to component variations where receiver 
+noise figure degradation cannot be tolerated.
+6.7 FILTERING
+Filtering of the Entire Radar System.  Filtering provides the principal means 
+by which the radar discriminates between target returns and interference of many 
+types. The filtering is performed by a variety of filters throughout the receiver and 
+ch06.indd   24 12/17/07   2:03:22 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Radar Receivers  RADAR RECEIVERS  6.256x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 6
+in the subsequent digital signal processing. Most radars transmit multiple pulses at 
+a target before the antenna beam is moved to a different direction, and the multiple 
+returns are combined in some fashion. The returns may be combined using coherent 
+integration or various doppler processing techniques (including MTI) to separate 
+desired targets from clutter. From the radar system standpoint, these are all filter -
+ing functions, and in modern radar systems, these functions are performed using 
+digital signal processing on the receiver output I and Q data. These functions are 
+discussed in other chapters of this handbook. The purpose of the filtering within 
+the receiver is to reject out-of-band interference and digitize the received signal 
+with the minimum of error so that optimum filtering can be performed using digital 
+signal processing.
+Matched Filtering.  Although matched filtering is typically now performed 
+within the digital signal-processing function, the concept is explained here for com -
+pleteness. The overall filter response of the system is chosen to maximize the radar 
+performance. If the signal spectrum X(w), in the presence of white noise with power 
+spectral density N0/2, is processed with a filter with frequency response H(w), the 
+resulting signal-to-noise ratio (SNR) at time T is given by7
+ χπ
+πω
+=−∞∞
+−∞∞∫
+∫1
+2
+42
+0 2X H e d
+NH dj T( ) ( )
+| ( ) |w w w
+w w (6.14)
+The ideal filter response from the standpoint of maximizing SNR is the matched filter 
+that maximizes the SNR at time TM when
+ H X eMj TM ( ) ( )*w ww=−  (6.15)
+Deviations from the ideal matched filter response HM(w) produce a reduction in 
+SNR termed mismatch loss . This loss can occur for a number of reasons such as target 
+doppler or because a filter response is chosen that is different from the matched filter 
+response in order to minimize another parameter such as range sidelobes.
+Receiver filtering is often modified for different waveforms used. When radar sys -
+tems use waveforms of widely varying bandwidths, different I/Q data rates may be 
+used to minimize the digital signal-processing throughput requirements. With differ -
+ent data rates comes the need to adjust the receiver filtering in order to avoid aliasing 
+signals beyond the Nyquist rate. Although these radars adjust their filtering to the 
+waveform bandwidth, they do not typically implement the matched filtering within the 
+receiver. This function is usually implemented in digital signal processing.
+Receiver Filtering.  Filtering is required at various points throughout the receiver 
+chain including RF, IF, baseband if used, digital filtering prior to decimation (reduc -
+tion of the sample rate), and as an integral part of I/Q generation.
+Section 6.4 described how spurious responses are generated in the mixing process. 
+Unwanted interference signals can be translated to the desired intermediate frequency 
+even though they are well separated from the signal frequency at the input to the mixer. 
+The ability of the radar to suppress such unwanted interference is dependent upon the 
+filtering preceding the mixer as well as on the quality of the mixer itself.
+ch06.indd   25 12/17/07   2:03:25 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Radar Receivers 6.26  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 6
+The primary function of RF filtering is the rejection of the image response due to 
+the first downconversion. Image rejection filtering can be alleviated using an image 
+reject mixer; however, the maximum rejection achievable by image reject mixers is 
+typically inadequate without the use of additional rejection through filtering. This 
+image-suppression problem is the reason why some receivers do not translate from the 
+received signal frequency directly to the final intermediate frequency in a single step.
+The other spurious products of a mixer generally become more serious if the ratio 
+of input to output frequencies of the downconverter is less than 10. The spurious-
+effects chart (Figure 6.2) shows that there are certain choices of frequency ratio that 
+provide spurious-free frequency bands, approximately 10% of the intermediate fre -
+quency in width. By the use of a high first IF, one can eliminate the image problem 
+and provide a wide tuning band free of spurious effects. Filtering prior to the mixer 
+remains important, however, because the neighboring spurious responses are of rela -
+tively low order and may produce strong outputs from the mixer. RF filtering is also 
+important as it reduces out-of-band interference before it can cause intermodulation or 
+cross-modulation distortion within the receiver.
+If the receiver operating bandwidth is a large percentage of the RF frequency, some 
+form of switched or tunable RF filtering may be required so that the image response is 
+rejected as it moves through the operating bandwidth. The choice between using switched 
+or tunable filtering depends on the switching speed, linearity, and stability requirements of 
+the receiver. Switched filters provide the fastest response time, with excellent linearity and 
+stability but can be bulky and suffer from the additional loss of the switch components.
+An alternate approach that is sometimes used with large operating bandwidths is 
+to first upconvert the input RF signal to an IF frequency higher than the RF operating 
+band. This process virtually eliminates the image response problem, allowing the use 
+of a single RF filter spanning the entire operating bandwidth. Narrow bandwidth filter -
+ing can be used on the high IF as defined by the signal bandwidth before downconver -
+sion to a lower IF for digitization or baseband conversion.
+IF filtering is the primary filtering used to define the receiver bandwidth prior to A/D 
+conversion in receivers using either IF sampling or baseband conversion. In IF sampling 
+receivers, the IF filter acts as the anti-aliasing filter and limits the bandwidth of signals 
+entering the A/D converter. In receivers using baseband conversion, the IF filter sets the 
+receiver bandwidth. Subsequent video filtering should be of greater bandwidth to prevent 
+the introduction of I/Q imbalance due to filter differences between I and Q channels.
+In IF sampling receivers, digital filtering is usually the primary means of setting the 
+final receiver bandwidth and provides anti-alias rejection required to prevent aliasing 
+in the decimation of the I/Q data rate. Digital filtering can be precisely controlled, 
+tailored to almost any desired passband and stop band rejection requirements. The 
+digital filters used are typically linear phase FIR filters, but they can also be tailored to 
+compensate for variations in the passband phase and amplitude responses of RF and 
+IF analog filters.
+Filter Characteristics.  Filter responses are characterized fully by either their 
+frequency response H(w) or their impulse response h(t); however, they are usually 
+specified by a variety of parameters as described below. Digital filters may be speci -
+fied using the same measures, or because they can be specified exactly, they are fre -
+quently specified by their transfer function H(z) or impulse response h(n).
+Key passband characteristics are: insertion loss, bandwidth, passband amplitude 
+and phase ripple, and group delay. Bandwidths are frequently specified in terms of 
+a 3 dB bandwidth; however, if a low passband variation is required, the specified 
+ch06.indd   26 12/17/07   2:03:25 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Radar Receivers  RADAR RECEIVERS  6.276x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 6
+bandwidth may be, for example, specified as a 0.5 dB or 0.1 dB bandwidth. Passband 
+amplitude variation relative to the insertion loss is a key parameter that has potential 
+impact on range sidelobes and channel-to-channel tracking. Phase ripple, if specified, 
+is relative to a best-fit linear phase and has similar effects as amplitude ripple. Group 
+delay, the rate of change of phase vs. frequency, is ideally constant for linear phase 
+filters. The absolute value of group delay does not impact the range sidelobe perfor -
+mance; however, the relative group delay between channels must be tightly controlled 
+or compensated in monopulse, sidelobe canceler, and digital beamforming systems.
+Although stopband rejection is clearly a key parameter, filters with fast roll-off 
+may not provide the required phase and impulse response characteristics. Figure 6.9 
+shows the magnitude response of six different fifth order low-pass filters with equal 
+3 dB bandwidth.8 The Chebshev filters (0.1 and 0.01 dB ripple) have flat passband 
+response and improved stopband rejection relative to the remaining filters; however, 
+as shown in Figure 6.10 and Figure 6.11, they have inferior phase (group delay) and 
+impulse response characteristics.
+Digital filters can be either Finite Impulse Response (FIR) or Infinite Impulse 
+Response (IIR). FIR filters are typically preferred as their finite response is desirable 
+along with their linear phase characteristic. Phase linearity is achieved with the sym -
+metric impulse response condition9 defined by Eq. 6.16 or the anti-symmetric impulse 
+response conditions defined by Eq. 6.17:
+ h(n) = h(M − 1 − n)    n = 0, 1, … , M − 1 (6.16)
+where M is the length of the FIR filter impulse response
+ h(n) = −h(M − 1 − n)    n = 0, 1, … , M − 1 (6.17)
+FIGURE 6.9  Magnitude response of lowpass filters
+ch06.indd   27 12/17/07   2:03:26 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Radar Receivers 6.28  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 6
+FIGURE 6.10  Group delay response of lowpass filters
+FIGURE 6.11  Normalized impulse response of lowpass filters
+ch06.indd   28 12/17/07   2:03:27 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Radar Receivers  RADAR RECEIVERS  6.296x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 6
+Range Sidelobes.  Errors in filter responses can produce degradation in pulse 
+compression range sidelobes. The effect of a filter response on range or time sidelobes 
+can be seen by taking the filter impulse response h(t) and adding to this a delayed 
+impulse response 20log10(a) dB below the main response to produce the modified 
+response h'(t), which is given by
+ h'(t) = h(t) + a h(t−T0) (6.18)
+Using the property of time shifting of the Fourier transform, the resultant frequency 
+response is given by
+ ′ = +−H H e Hj T( ) ( ) ( ) w w a ww0  (6.19)
+Thus, for small values of a, the resulting magnitude and phase response is that of the 
+original filter modified by a sinusoidal phase and amplitude modulation as given here:
+ | ( ) || ( ) |( c os( ) ) ′ = + H H T w w w 10 α  (6.20)
+ ∠′ = ∠ − H H T ( ) ( ) sin( ) w w a w0 (6.21)
+Therefore, if there are n ripples across the filter bandwidth B, the range sidelobe 
+occurs at time T0 given by
+ T0 = n/B (6.22)
+Assuming a compressed pulse width of 1/B, values of n < 1 will put the range 
+sidelobe within the main lobe of the target return, resulting in a distortion of the 
+mainlobe response.
+Channel Matching Requirements.  Radar receivers with more than one 
+receiver channel typically require some degree of phase and amplitude matching 
+or tracking between channels. In order to operate effectively, sidelobe canceler 
+channels must track very closely. Constant offsets in gain or phase do not degrade 
+sidelobe canceler performance, but small variations in phase and amplitude across 
+the bandwidth cause significant degradation. For example, achieving a cancellation 
+ratio of 40 dB requires a gain tracking of less than 0.1 dB across the receiver band -
+width. Filters are the main source of amplitude and phase ripple across the signal 
+bandwidth as other components such as amplifiers and mixers are typically rela -
+tively broadband. The degree of tracking required for sidelobe canceler operation 
+was previously achieved by providing matched sets of filters with tightly tracking 
+amplitude and phase responses. Modern digital signal processing allows the correc -
+tion of these channel-to-channel variations using FIR equalization (Section 6.11) or 
+correction in the frequency domain in the digital signal processor, allowing the use 
+of less tightly controlled filters.
+6.8 LIMITERS
+Applications.  Limiters are used to protect the receiver from damage and to con -
+trol saturation that may occur within the receiver. When received signals saturate 
+some stage of the radar receiver that is not expressly designed to cope with such a 
+ch06.indd   29 12/17/07   2:03:32 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Radar Receivers 6.30  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 6
+situation, the distortions can result in severely degraded radar performance, and the 
+distortion of operating conditions can persist for some time after the signal disap -
+pears. Video stages are most vulnerable and take longer to recover than IF stages; 
+so it is customary to include a limiter in the last IF stage, designed to quickly regain 
+normal operating conditions immediately following the disappearance of a limiting 
+signal. Limiting prior to the A/D converter also prevents the distortion that occurs 
+when signals exceed full-scale. Although A/D converters can often handle modest 
+overload with fast recovery, the distortion that occurs degrades signal processing such 
+as digital pulse compression and clutter rejection. With IF limiting, these harmonics 
+are filtered out using bandpass filtering after limiting prior to A/D conversion, mini -
+mizing the degradation due to limiting.
+All radar systems contain some form of Transmit/Receive (T/R) device to protect 
+the receive electronics from the high-power transmit signal. In many systems, an RF 
+front-end limiter is also required in order to prevent the receiver from being damaged 
+by high input power levels from the antenna that may occur as a result of leakage from 
+the T/R device during transmit mode or from interference due to jammers or other 
+radar systems. These limiters are typically designed to limit well above the maximum 
+signals to be processed by the receiver.
+In the past, limiters were used to perform a variety of analog signal-processing 
+functions. Hard limiters with as much as 80 dB of limiting range were used with some 
+designed to limit on-receiver noise. Applications that utilize hard limiting, including 
+phase-detectors and phase-monopulse receivers, are described in Section 3.10 of the 
+second edition1 of this handbook. Modern radar systems are mostly designed to maxi -
+mize the linear operating region, with limiters used only to handle excessively large 
+signals that inevitably exist under worst case conditions.
+Characteristics.  The ideal limiter is perfectly linear up to the power level at 
+which limiting begins followed by a transition region beyond which the output power 
+remains constant. In addition, the insertion phase is constant for all input power lev -
+els, and recovery from limiting is instantaneous. The output waveform from a band -
+pass limiter is sinusoidal, whereas the output waveform from a broadband limiter 
+approaches a square wave. Deviations from the ideal characteristics can degrade radar 
+performance in a variety of ways.
+Linearity Below Limiting.  One major drawback of adding a limiter stage to a 
+receiver channel is that it is inherently nonlinear. Since any practical limiter has a 
+gradual transition into limiting, the limiter is often the largest contributor to receiver 
+channel nonlinearity in the linear operating region and can cause significant inter -
+modulation distortion of in-band signals. For this reason, the primary limiting stage is 
+usually located at the final IF stage where maximum filtering of out-of-band interfer -
+ence has been achieved. The lower operating frequency also allows implementation of 
+a limiter that more closely matches the ideal characteristics.
+Limiting Amplitude Uniformity.  No single-stage limiter will exhibit a constant 
+output over a wide range of input signal amplitudes. One cause is apparent if one 
+considers the effect of a single-stage limiter having a perfectly symmetrical clipping at 
+voltages ±E. For a sinusoidal input, the output signal at the threshold of limiting is
+ v0 = Esin(w t) (6.23)
+ch06.indd   30 12/17/07   2:03:33 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Radar Receivers  RADAR RECEIVERS  6.316x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 6
+and when the limiter is fully saturated and the output waveform is rectangular, it is 
+given by the Fourier series:
+ ′=
+=∞
+∑ vE
+nn to
+n4 1
+1 35πsin( )
+, , ,...w (6.24)
+which is an increase of 20 log (4/ p ) = 2.1 dB in the power of the fundamental.
+In practice, the amplitude performance is also degraded by capacitive coupling 
+between input and output of each limiting stage, charge storage in transistors and 
+diodes, and RC time constants that permit changes in bias with signal level. For these 
+reasons, two or more limiter stages may be cascaded when good amplitude uniformity 
+is required over a wide dynamic range.
+Phase Uniformity.  The change of insertion phase of the limiter with amplitude is 
+less of a concern for modern radar systems that operate primarily in the linear operat -
+ing region. However, maintaining constant insertion phase during limiting preserves 
+the phase of target returns in the presence of limiting clutter or interference. The 
+change of insertion phase with signal amplitude is generally directly proportional to 
+the frequency at which it is operated.
+Recovery Time . The recovery time of a limiter is a measure of how quickly the 
+limiter returns to linear operation after the limiting signal is removed. Fast recovery is 
+particularly important when the radar is exposed to impulsive interference.
+6.9 I/Q DEMODULATORS
+Applications.  The I/Q demodulator, also referred to as a quadrature channel 
+receiver, quadrature detector, synchronous detector, or coherent detector, performs fre -
+quency conversion of signals at the IF frequency to a complex representation, I + jQ 
+centered at zero frequency. The baseband in-phase ( I) and quadrature-phase ( Q) signals 
+are digitized using a pair of A/D converters providing a representation of the IF signal, 
+including phase and amplitude without loss of information. The resulting digital data can 
+then be processed using a wide variety of digital signal-processing algorithms, depend -
+ing on the type of radar and mode of operation. Processing such as pulse compression, 
+doppler processing, and monopulse comparison, all require amplitude and phase infor -
+mation. The predominance of digital signal processing in modern radar systems has led 
+to almost universal need for Nyquist rate sampled data. In many modern radar systems, 
+digital I and Q data is now generated using IF sampling followed by digital signal pro -
+cessing used to perform the baseband conversion as described in Sections 6.10 and 6.11. 
+I/Q demodulators are still used, though their use is increasingly limited to wider band -
+width systems where A/D converters are not yet available with the required combination 
+of bandwidth and dynamic range to perform IF sampling.
+Implementation.  Figure 6.12 shows the basic block diagram of a I/Q demodual -
+tor. The IF signal described by Eq. 6.25 is split and fed to a pair of mixers or analog 
+multipliers. The mixer LO ports are fed with a pair of signals in quadrature, generated 
+from the reference frequency signal, or coherent oscillator (COHO), and represented 
+ch06.indd   31 12/17/07   2:03:34 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Radar Receivers 6.32  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 6
+in complex form in Eq. 6.26. Ignoring any mixer insertion loss or loss associated with 
+the IF split, the complex representation of the mixer output is given by Eq. 6.27. Ideal 
+low-pass filtering rejects the second (sum frequency) term of Eq. 6.27, producing the 
+I/Q demodulator output as represented by Eq. 6.28.
+ V A tA
+je eSS j t j t
+IF= + = −+ − +sin( ) ( )( ) ( )w qw q w q
+2 (6.25)
+ V A t j t j A eR Rj t
+COHO= + =−sin( ) c os( ) w ww
+0 00 (6.26)
+ V VAe e A eAS j t j t
+Rj t S
+IFCOHO= − =+ − + −
+20 ( )( ) ( ) w q w q w A AeA AeR j t S R j t
+2 20 0 [( ) ] [( ) ] w w q ww q − + − + +−
+  
+  (6.27)
+ V j VA At jA A
+I QS R S R+ = − + + −2 20 0 cos[( ) ] s in[( ) w w q wwt tA AeS R j t+ =− + qw w q]( )
+20
+  
+  (6.28)
+In implementing an I/Q demodulator, it is important to provide well-balanced  
+I and Q channels in order to maximize image rejection, as explained below. The mixers 
+must have DC coupled IF output ports and be presented with a good match at both the 
+wanted low frequency output and the unwanted sum frequency. A match at the sum 
+frequency can be provided using a diplexer filter. Video filtering is required to reject 
+the sum frequency mixer outputs and also provides rejection of wideband noise from 
+the video amplifiers, which would otherwise alias to baseband through the A/D con -
+verter sampling process, producing an unwanted degradation of receiver noise figure. 
+Video amplification is often required to increase the signal level to the full-scale signal 
+level of the A/D converter and also allows for impedance matching of the mixer and 
+A/D converter.
+The convention for the I and Q relationship is that the I signal phase leads the Q sig-
+nal phase for radar signals with positive doppler (approaching targets). Frequency con -
+versions within the receiver using LO frequencies greater than the RF frequency will 
+cause a doppler frequency inversion, so each conversion must be considered in order 
+to achieve the correct sense of I and Q at the receiver output. Fortunately, an incorrect 
+I and Q relationship can easily be fixed either in the receiver or the signal processor, 
+by switching the I and Q digital data or by changing the sign of either I or Q.
+Gain or Phase Imbalance.  If the gains of the I and Q channels are not exactly 
+equal or if their COHO phase references are not exactly 90 degrees apart, an input 
+signal at frequency w will create an output at both the desired frequency w−w 0 and FIGURE 6.12  I/Q demodulatorIn-phase 
+power 
+dividerIF Signal
+VIF = AS sin(wt + q)I/Q Demodulator 
+Reference 
+(COHO)Lowpass 
+Filter
+90º 
+hybridAR sin(w0t)
+AR cos(w0t)cos[(w − w0)t + q]
+sin[(w − w0)t + q]2ASAR
+ASARVI =
+2VQ =Lowpass 
+Filter
+ch06.indd   32 12/17/07   2:03:42 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Radar Receivers  RADAR RECEIVERS  6.336x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 6
+at the image frequency −(w −w 0). The image signals generated by gain and phase 
+imbalance are given by Eq. 6.29 and Eq. 6.30. For small errors, if the ratio of voltage 
+gains is (1 ± ∆) or if the phase references differ by ( p /2 ± ∆) radians, the ratio of the 
+spurious image at −wd to the desired output of wd is ∆/2 in voltage, ∆2/4 in power, or 
+20 (log ∆) −6 in decibels.
+  V j V E t j E tI Q d d + = + + = +
+
+ cos( ) ( ) sin( ) w w 1 12∆∆E Ee Eej t j td d w w−− ∆
+2 (6.29)
+V j V E t j E t EeI Q d d + = + + =
+
+ cos( ) s in( ) cos w w ∆∆
+2j j t j td dEew w +
+
+ − ++ 
+
+−
+
+∆ ∆∆2 2
+2sinπ
+ 
+  
+  (6.30)
+Historically, I and Q phase and gain corrections have been performed using 
+adjustments in the analog signal paths, as shown in Figure 6.13. Gain errors may 
+be corrected by a change in gain in the IF or video stages of either or both I and Q 
+channels. Video gain control must be implemented with care as it can exaggerate 
+the nonlinearity of those stages. These corrections can now be implemented more 
+precisely in the digital domain.
+A measurement of the signal spectrum at the center of the IF bandwidth indicates 
+the degree of gain and phase imbalance compensation. However, as the following 
+discussion will explain, the suppression of image energy across the IF bandwidth may 
+be substantially less than indicated by this measurement at IF center .
+Time Delay and Frequency Response Imbalance.  If the responses of the  
+I and Q channels are not identical across the entire signal bandwidth, unwanted image 
+responses will occur that are frequency dependent. Optimum bandpass filtering should 
+FIGURE 6.13  I/Q demodulator with gain, phase, DC offset, and time-delay adjustmentsIn-phase 
+power 
+dividerIF 
+SignalI/Q Demodulator 
+Reference 
+(COHO)
++90ºA/D
+90º 
+hybrid
+φ0ºDigital 
+I Data
+Digital 
+Q DataI Gain
+Q GainQ Phaseφ I Phase∆tA/D Sample 
+Clock 
++
+A/D∆tA/D Sample 
+Clock I Offset
+D/A
++Q Offset
+D/ALowpass 
+Filter 
+Lowpass 
+Filter
+ch06.indd   33 12/17/07   2:03:46 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Radar Receivers 6.34  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 6
+be at IF, where it affects I and Q channels identically, not at baseband. Video filter 
+bandwidth should be more than half the IF bandwidth and controlled by precision 
+components in order to minimize the creation of image signals. Substituting ∆(w) for ∆ 
+in Eq. 6.29 and Eq. 6.30 gives the image components for frequency dependent gain and 
+phase errors. Similarly, substituting w ∆T for ∆ in Eq. 6.30 gives the image component 
+due to time-delay imbalance in the I and Q paths. Small time-delay imbalances can 
+be corrected by adding time delay to the A/D sample clock, as shown in Figure 6.13. 
+Large time-delay corrections should be avoided as they can cause problems aligning 
+the I and Q digital data. When adding time delay to the sample clock, care must be 
+taken to avoid adding jitter, which could degrade the A/D converter SNR performance. 
+Time-delay correction can also be implemented effectively in the digital domain, and 
+if frequency dependent phase and amplitude imbalance correction is required, this is 
+most easily and effectively performed in the digital domain using FIR filtering of the 
+I and Q data or by performing corrections in the frequency domain data as part of the 
+radar signal processing.
+Nonlinearity in I and Q Channels.  Component tolerances often lead to some -
+what different nonlinearities in I and Q, which can generate the variety of spurious 
+doppler components.
+The ideal input signal is
+ V A e I jQj td = = +w  (6.31)
+Each video channel response can be expressed as a power series. For simplicity, 
+only symmetrical distortion will be considered. The A/D output, including a residual 
+gain imbalance of ∆, is
+ V'IQ = V'I + jV'Q (6.32)
+ V'I = VI − aV3
+I − cV5
+I (6.33)
+ V'Q = (1 + ∆)VQ − bV3
+Q − dV5
+Q (6.34)
+Substitution of Eqs. 6.33 and 6.34 into Eq. 6.31 yields the amplitudes of the spectral 
+components listed in Table 6.2. Note that if the nonlinearities in I and Q were identi -
+cal (a = b; c = d), spurious components at −5w and +3w  would not be present and the 
+image ( −w) would be proportional to input signal amplitude. Spurious at zero doppler 
+is not due to dc offset; it is the result of even-order nonlinearities that were omitted 
+from the above equations. The negative third harmonic is the dominant component 
+produced by nonlinearity.
+Signal Frequency Amplitude of Spectral Component
+−5w A5(c − d)/32
+−3w A3(a + b)/8 + 5A5 (c + d)/32
+−w A(∆/2) + 3A2 (a − b)/8 + 5A5 (c − d)/16
+(Input)w A(1 + ∆/2) − 3A2(a + b)/8 − 5A5(c + d)/16
++3w A3(a − b)/8 + 5A5 (c − d)/32
++5w A5(c + d)/32TABLE 6. 2 Spurious Signal Components Generated by I/Q Nonlinearity
+ch06.indd   34 12/17/07   2:03:47 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Radar Receivers  RADAR RECEIVERS  6.356x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 6
+DC Offset.  Small signals and receiver noise can be distorted by an offset in 
+the mean value of the A/D converter output unless the doppler filter suppresses this 
+component.
+False-alarm control in receivers without doppler filters is sometimes degraded by 
+errors of a small fraction of the least significant bit (LSB), so correction is preferably 
+applied at the analog input to the A/D. DC offsets can be measured using digital pro -
+cessing of the A/D converter outputs and a correction applied using D/A converters, 
+as shown in Figure 6.13. DC offset correction can also be performed effectively in the 
+digital domain, provided that the DC offset at the input of the A/D converter is not so 
+large that it results in a significant loss of available dynamic range.
+Many of the I/Q demodulator errors described above are either reduced dramati -
+cally or eliminated using IF sampling. This, along with the reduction of hardware 
+required, are the reasons that IF sampling (described in Sections 6.10 and 6.11) is 
+becoming the dominant approach.
+6.10 ANALOG-TO-DIGITAL CONVERTERS
+The high-speed A/D converter is a key component in receivers of modern radar sys -
+tems. The extensive use of digital signal processing of radar data has resulted in a 
+demand for converters with both state-of-the-art sampling rates and dynamic range.
+Analog to digital converters transform continuous time analog signals into discrete 
+time digital signals. The process includes both sampling in the time domain, convert -
+ing from continuous time to discrete time signals and quantization, converting from 
+continuous analog voltages to discrete fixed-length digital words. Both the sampling 
+and quantization process produce errors that must be minimized in order to limit the 
+radar performance degradation. In addition, a variety of other errors such as additive 
+noise, sampling jitter, and deviation from the ideal quantization, result in non-ideal 
+A/D conversion.
+Applications.  The conventional approach of using a pair of converters to digi -
+tize the I and Q outputs of an I/Q demodulator is, in many cases, being replaced by 
+digital receiver architectures where a single A/D converter is followed by digital 
+signal processing to generate I and Q data. Digital receiver techniques are described 
+in Section 6.11.
+Although the dividing line is arbitrary and advancing with the state-of-the-art, radar 
+receivers are often classified as either wideband or high dynamic range. Different 
+radar functions put a greater emphasis on one or the other of these parameters. For 
+example, imaging radars put a premium on wide bandwidth, whereas pulse doppler 
+radars require high dynamic range. Because radars are often required to operate in a 
+variety of modes with differing bandwidth and dynamic range requirements, it is not 
+uncommon to use different types of A/D converter, sampling at different rates for these 
+different modes.
+Data Formats.  The most frequently used digital formats for A/D converters are 
+2’s complement and offset binary.10
+The 2’s complement is the most popular method of digital representation of signed 
+integers and is calculated by complementing every bit of a given number and adding one. 
+ch06.indd   35 12/17/07   2:03:48 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Radar Receivers 6.36  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 6
+The most significant bit is referred to as the sign bit. If the sign bit is 0, the value is posi -
+tive; if it is 1, the value is negative. The representation of voltage in 2’s complement form 
+is given by
+ E = k(−bN2N−1 + bN−12N−2 + bN−22N−3 + ⋅ ⋅ ⋅ + b120) (3.36)
+where E = analog voltage
+ N = number of binary digits
+ bi = state of ith binary digit
+ k = quantization voltage
+Offset binary is an alternate coding scheme in which the most negative value is 
+represented by all zeros and the most positive value is represented by all ones. Zero is 
+represented by a most significant bit (MSB) of one followed by all zeros. The repre -
+sentation of voltage in offset binary is given by
+ E = k[(bN−1)2N−1 + bN−12N−2 + bN−22N−3 + ⋅ ⋅ ⋅ + b120] (3.35)
+The Gray code10 is also used in certain high-speed A/D converters in order to 
+reduce the impact of digital output transitions on the performance of the A/D con -
+verter. The Gray code allows all adjacent transitions to be accomplished by the change 
+of a single digit only.
+Delta-Sigma Converters.  Delta-sigma converters differ from conventional 
+Nyquist rate converters by combining oversampling with noise-shaping techniques to 
+achieve improved SNR in the bandwidth of interest. Noise shaping may be either low-
+pass or bandpass depending on the application. Delta-sigma architectures provide poten -
+tial improvements in spurious-free dynamic range (SFDR) and SNR over conventional 
+Nyquist converters where tight tolerances are required to achieve very low spurious 
+performance. Digital filtering and decimation is required to produce data rates that can 
+be handled by conventional processors. This function is either performed as an integral 
+part of the A/D converter function or can be integrated into the digital downconversion 
+function used to generate digital I and Q data, as described in Section 6.11.
+Performance Characteristics.  The primary performance characteristics of A/D 
+converters are the sample rate or usable bandwidth and resolution, the range over 
+which the signals can be accurately digitized. The resolution is limited by both noise 
+and distortion and can be described by a variety of parameters.
+Sample Rate.  Sampling of band-limited 
+signals is performed without aliasing distortion, 
+provided that the sample rate ( fs) is greater than 
+twice the signal bandwidth and provided the sig -
+nal bandwidth does not straddle the Nyquist fre -
+quency ( fs/2) or any integer multiple ( Nfs/2).
+In conventional baseband approaches, sam -
+pling is usually performed at the minimum rate to 
+meet the Nyquist criteria. Since the baseband I and 
+Q signals have bandwidths ( B/2) equal to half the 
+IF signal bandwidth, a sample rate just greater than 
+the IF bandwidth is required (see Figure 6.14). FIGURE 6.14  Baseband sampling
+Frequency
+0Amplitude
+2-B
+2B
+2-fS
+2fS
+ch06.indd   36 12/17/07   2:03:49 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Radar Receivers  RADAR RECEIVERS  6.376x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 6
+For IF sampling, a frequency at least twice the IF bandwidth is required; however, 
+oversampling is typically employed to ease alias rejection filtering and to reduce the 
+effect of A/D converter quantization noise. IF sampling is often performed with the 
+signal located in the second Nyquist region, as shown in Figure 6.15 or in higher 
+Nyquist regions.
+Stated Resolution.  The stated resolution of an A/D converter is the number of 
+output data bits per sample. The full-scale voltage range of a Nyquist rate converter 
+is given by VFS = 2NQ, where N is the stated resolution and Q is the least significant 
+bit (LSB) size.
+Signal-to-Noise-Ratio (SNR).  SNR is the ratio of rms signal amplitude to rms 
+A/D converter noise power. For an ideal A/D converter, the only error is due to quan -
+tization. Provided that the input signal is sufficiently large relative to the quantization 
+size and uncorrelated to the sampling signal, the quantization error is essentially ran -
+dom and is assumed to be white. The rms quantization noise is Q/ 12, and signal-  
+to-quantization-noise ratio (SQNR) of an ideal A/D converter is given by
+ SQNR (dB) = 6.02 N + 1.76 (6.37)
+Practical A/D converters have additional sampling errors other than quantization, 
+including thermal noise and aperture jitter. Provided that these additional errors can 
+be characterized as white, they can be combined with the quantization noise with a 
+resulting SNR less than the theoretical SNR of the ideal converter. Because various 
+A/D converter error mechanisms are dependent on input signal level and frequency, 
+it is important to characterize devices over the full range of input conditions to be 
+expected. The available signal-to-noise ratio of state-of-the-art high-speed A/D con -
+verters has been shown11 to fall off by one-bit (6 dB) for every doubling of the sample 
+rate. Over-sampling of the signal followed by filtering and decimation provides an 
+improvement of one half-bit (3 dB) in the achievable signal-to-noise-ratio for each 
+doubling of the sample rate. Thus, for high dynamic-range applications, the best per -
+formance is achieved using a state-of-the-art A/D converter that has a maximum 
+sample rate just sufficient for the application.
+Spurious Free Dynamic Range (SFDR).  SFDR is the ratio of the single-tone sig -
+nal amplitude to the largest spurious signal amplitude and is usually stated in dB. 
+Similar to SNR, the spurious performance of an A/D converter is dependent on the FIGURE 6.15  IF sampling in second Nyquist region
+Frequency
+0Aliased 
+SignalBand-limited 
+IF SignalAmplitude
+B
+2fS fS fIF fIF -  fS
+ch06.indd   37 12/17/07   2:03:51 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Radar Receivers 6.38  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 6
+input signal frequency and amplitude. The frequency of spurious signals is also depen -
+dent on the input signal frequency with the highest values typically due to low order 
+harmonics or their aliases. When using IF sampling with a significant over-sampling 
+ratio ( fs  B/2), the worst spurious signals may be avoided by choosing the sample 
+frequency relative to signal frequency such that the unwanted spurious signals fall 
+outside the signal bandwidth of interest. If the worst case spurious can be avoided, the 
+specified SFDR is less important than the levels of the specific spurious components 
+that fall within the bandwidth of interest. Again, it is important to characterize devices 
+over the range of expected operating conditions.
+The impact of A/D converter spurious signals on radar performance depends on the 
+type of waveforms being processed and the digital signal processing being performed. 
+In applications using chirp waveforms with large time-bandwidth products, spurious 
+signals are less critical as they are effectively rejected in the pulse compression pro -
+cess because their coding does not match that of the wanted signal. In pulse doppler 
+applications, spurious signals are of much greater concern because they can create 
+components with doppler at a variety of frequencies that may not be rejected by the 
+clutter filtering.
+Signal-to-Noise-and-Distortion Ratio (SINAD).  SINAD is the rms signal ampli -
+tude to the rms value of the A/D converter noise plus distortion. The noise plus dis -
+tortion includes all spectral components, excluding DC and the fundamental up to 
+the Nyquist frequency. SINAD is a useful figure of merit for A/D converters, but in 
+digital receiver applications, where the worst spurious components may fall outside of 
+the bandwidth of interest, it is not necessarily a key discriminator between competing 
+converters for a specific application.
+Effective Number of Bits (ENOB).  The term effective number of bits  is often used 
+to state the true performance of an A/D converter and has been stated in the literature11 
+in terms of SINAD and SNR, as given below. Consequently, it is important to differ -
+entiate between definitions when using this term.
+ Neff = [SINAD (dB) − 1.76 ] / 6.02 (6.38)
+ Neff = [SNR(dB) − 1.76 ] / 6.02 (6.39)
+Two Tone Intermodulation Distortion (IMD).  Two tone intermodulation distortion 
+is also important in receiver applications. Testing is performed with two sinusoidal input 
+signals of unequal frequency and levels set such that the sum of the two inputs does 
+not exceed the A/D converter full-scale level. Similar to IMD for amplifiers, the most 
+significant distortion is usually second order or third order IMD products. However, 
+due to the complex nature of the distortion mechanism in A/D converters, the amplitude 
+of IMD products is not easily characterized and predicted by the measurement of an 
+input intercept point.
+Input Noise Level and Dynamic Range.  Accurate setting of the A/D con -
+verter input noise level relative to the A/D converter noise is critical to achieving the 
+optimum trade-off between dynamic range and system noise floor. Too high a level 
+of noise into the A/D converter will degrade the available dynamic range; too low 
+a level will degrade the overall system noise floor. Sufficient total noise should be 
+applied to the A/D converter input to randomize or “whiten” the quantization noise. 
+ch06.indd   38 12/17/07   2:03:52 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Radar Receivers  RADAR RECEIVERS  6.396x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 6
+This can be achieved with rms input noise ( s ) equal to the LSB step size ( Q). In 
+addition, the input noise power spectral density should be sufficient to minimize the 
+impact on system noise due to the A/D converter noise. The impact on overall noise 
+due to quantization noise is given by7
+ s
+s s2
+22
+2112= +Q   s≥Q (6.40)
+Typical operating points are in the range of s /Q  = 2 to s /Q = 1, with corresponding 
+noise power degradation due to quantization of 0.09 dB and 0.35 dB, respectively.
+In practice, the SNR of high-speed converters is often such that the noise of the 
+A/D converter is significantly greater than the theoretical quantization noise. In addi -
+tion, the A/D converter input signal noise bandwidth may be significantly less than the 
+Nyquist bandwidth. This is a significant factor in IF sampling applications where the 
+IF noise bandwidth is often less than ¼ of the Nyquist bandwidth. In this case, the total 
+input and A/D converter noise must be sufficient to whiten the quantization noise, and 
+the power spectral density of the input noise should be sufficiently greater than that of 
+the A/D converter, as illustrated in Figure 6.16. In some cases, out-of-band noise may 
+be added to whiten the A/D converter quantization noise and spurious signals. The out-
+of-band noise is then rejected through subsequent digital signal processing.
+The resulting SNR of the system after digital filtering with receiver bandwidth BR 
+and sample rate fs is given by
+ SNR dB SNR dBf
+BS
+RSYS ADC ( ) ( ) log = +
+
+− 1021010 l log101+( )S SIF ADC (6.41)
+where SIF/SADC is the ratio of noise power spectral density of the A/D converter input 
+signal to the power spectral density of the A/D converter. The degradation of overall 
+sensitivity due to the A/D converter noise is given by
+ L(dB) = 10log10(1 + SADC/SIF) (6.42)FIGURE 6.16  IF sampling noise spectrumsBIF
+0 fS fS/2 fIFAliased Input 
+NoiseAmplitude
+FrequencyBRA/D Con verter 
+Quantization Noise 
++ Additional Inter nal 
+NoiseA/D Con verter 
+Input Noise
+10 log(SIF | SADC)(dB)
+ch06.indd   39 12/17/07   2:03:57 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Radar Receivers 6.40  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 6
+A/D Converter Sample Clock Stability.  The stability of the sample clock is 
+critical to achieving the full capability of an A/D converter. Sample-to-sample varia -
+tion in the sampling interval, called aperture uncertainty  or aperture jitter , produces 
+a sampling error, proportional to the rate of change of input voltage. For a sinusoidal 
+input signal, the SNR due to aperture uncertainty alone is given by12
+ SNR(dB) = −20log10(2p fs j) (6.43)
+where f = input signal frequency
+ sj = rms aperture jitter
+Similarly, close-to-carrier noise sidebands present on the sample clock signal are 
+transferred to sidebands on the sampled input signal, reduced by 20log10 (f / fS) dB. 
+For example, in an IF sampling application with the input signal ¾ of the sample 
+frequency, the close-to-carrier phase noise of the sample clock will be transferred to 
+the output of the A/D converter output data signal, reduced by 2.5 dB.
+6.11 DIGITAL RECEIVERS
+The availability of high-speed analog-to-digital converters capable of direct sam -
+pling of radar receiver IF signals has resulted in the almost universal adoption of 
+digital receiver architectures over conventional analog I/Q demodulation. In a digital 
+receiver, a single A/D converter is used to digitize the received signal, and digital 
+signal processing is used to perform the downconversion to I and Q baseband sig -
+nals. Continuing advances in sampling speeds are leading to sampling at increasing 
+frequencies, sometimes eliminating the need for a second downconversion, with the 
+possibility approaching of sampling directly at the radar RF frequency. The benefits 
+of IF sampling over conventional analog I/Q demodulation are
+● Virtual elimination of I and Q imbalance
+● Virtual elimination of DC offset errors
+● Reduced channel-to-channel variation
+● Improved linearity
+● Flexibility of bandwidth and sample rate
+● Tight filter tolerance, phase linearity, and improved anti-alias filtering
+● Reduced component cost, size, weight, and power dissipation
+The use of a high IF frequency is desirable as it eases the downconversion and 
+filtering process; however, the use of higher frequencies places greater demands on 
+the performance of the A/D converter. Direct RF sampling is considered the ulti -
+mate goal of digital receivers, with all the tuning and filtering performed through 
+digital signal processing. The advantage being the almost complete elimination of 
+analog hardware. However, not only does the A/D converter have to sample the 
+RF directly, but unless it is preceded by tunable RF preselector filters, the A/D 
+converter input must have the dynamic range to handle all of the signals pres -
+ent in the radar band simultaneously. Generally, the interference power entering  
+the A/D converter is proportional to the bandwidth of components in front of the 
+ch06.indd   40 12/17/07   2:03:57 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Radar Receivers  RADAR RECEIVERS  6.416x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 6
+A/D converter. The required A/D converter SNR to avoid saturation on the interfer -
+ing signals is given by
+ SNR d BP C
+NI
+ADC
+ADC( ) log =
+
+10102
+ (6.44)
+where
+ PI = interference power at A/D converter input
+ C = crest factor
+ NADC = A/D converter noise
+The crest factor is the peak level that can be handled within the full-scale range 
+of the A/D converter relative to the rms interference level. It is set to achieve a  
+sufficiently high probability that full-scale will not be exceeded. For example, with 
+gaussian noise, a crest factor of 4 sets the peak level at the 4 s level (12 dB above 
+the rms level) with a probability of 0.999937 that the full-scale is not exceeded on 
+each A/D converter sample.
+Setting the system noise level power spectral density into the A/D converter R(dB) 
+above the A/D converter noise gives
+ R dBf N
+B Ns( ) log =
+
+ 10210SYS
+IF ADC (6.45)
+where
+ NSYS = system noise at A/D converter input in bandwidth BIF
+Combining Eq. 6.43 and 6.44 gives the required SNR as
+ SNR d BP C B
+f NR dBI
+SADCIF
+SYS( ) log ( =
+
++ 102
+102
+) ) (6.46)
+The generation of baseband I and Q signals from the IF sampled A/D converter data 
+is performed using digital signal processing and can be implemented through a variety 
+of approaches.7 Two approaches are described next.
+Digital Downconversion.  The digital downconversion approach is shown in 
+Figure 6.17. The signal is sampled by the A/D converter, frequency shifted to base -
+band, low-pass filtered, and decimated to produce I/Q digital data. The signal spectrum 
+at each stage of the process is shown in Figure 6.18. In continuous-time (Fig. 6.18 a), 
+frequency is in hertz and is represented by F. In discrete-time (Fig. 6.18 b–e), fre -
+quency is in radians per sample and is represented by w. The spectrum of the ana -
+log input signal x(t) is shown in Figure 6.18 a, with the signal spectrum centered at  
+F0 hertz. The signal is sampled by the A/D converter at frequency Fs, producing the 
+time sequence x n( ) and frequency spectrum X( )ω centered at frequency w0 with the 
+image centered at −w0. The A/D converter output signal is then frequency shifted by 
+complex multiplication with the reference signal ej n−w0, corresponding to a reference 
+signal rotating at w0 radians per sample, centering the signal spectrum X( )w about 
+zero. The unwanted image is re-centered at −2w0 if w0 > p /2 or −2w0 + 2p  if w0 ≤ p /2. 
+The unwanted image is then rejected using the FIR filter with impulse response h(n) 
+producing output ˆ( )x n with spectrum ˆ( )Xw. Finally, the sample rate is reduced by 
+ch06.indd   41 12/17/07   2:04:09 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Radar Receivers 6.42  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 6
+selecting every Dth sample. Provided the filter response H(w) has sufficient rejection 
+for frequencies | | /w≥πD, there will be negligible aliasing and loss of information in 
+the decimation process.FIGURE 6.17  Digital downconversion architectureI(m)
+A/D x(t)~x(n)
+xI(n)h(n) D
+cos(w0n)sin(w0n)
+h(n) DFIR Filter with 
+Impulse Response h(n)
+y(m) = I(m) + jQ(m)
+Q(m)Decimation by  Factor D 
+y(m) = x(mD)^
+x(n)^
+FIGURE 6.18  Digital downconversion spectra
+B
+F0−F0F
+w0w~X(w)X(F)
+−w0 p −p
+2p − 2w0w
+p
+wX(w)
+Y(w)p
+w
+p−p
+−p
+−p(a)
+(b)
+(c)
+(d)
+(e)X(w)
+^
+ch06.indd   42 12/17/07   2:04:13 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Radar Receivers  RADAR RECEIVERS  6.436x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 6
+Hilbert Transformer.  An alternative digital receiver architecture is shown in 
+Figure 6.19 with the relevant signal spectra shown in Figure 6.20. The A/D converter 
+output signal x n( ) is processed using a Hilbert transformer comprising FIR filters 
+h1(n) and h2(n), where the frequency responses are given by
+  | ( )|| ( )| H H1 2 1 w w≈ ≈    | |w w− ≤0B (6.47)
+and
+ H j B
+j B1( )
+( ), | |
+, | |w
+H ww -w
+w w20
+0+≈− ≤
+≤ (6.48)
+The filter outputs form the desired complex valued signal x n( ) centered at frequency 
+w0, while rejecting the image centered at −w0. The final stage is to perform a frequency 
+shift and sample rate reduction by decimating the signal by selecting every Dth sample. FIGURE 6.19  Hilbert transformer architectureD
+Q(m)A/D y(m) = I(m) + jQ(m)
+DI(m)
+x(t) x(n)
+h2(n)h1(n)
+~x(n)
+FIGURE 6.20  Spectra of Hilbert transformer receiver
+B
+F0 −F0F
+w0w~X(w)X(F)
+−w0 p −p
+w0 = 2pk|DwX(w)
+p
+wY(w)
+p−p
+−p(a)
+(b)
+(c)
+(d)k = 1, 2, …
+ch06.indd   43 12/17/07   2:04:21 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Radar Receivers 6.44  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 6
+If the spectrum of X( )w is centered at frequency w0 = 2p k / D, k = 1,2,.., the decimation 
+will center the spectrum Y(w) about zero. Provided the filter responses have sufficient 
+rejection for frequencies |w  ± w0 | ≥ p / D, there will be negligible aliasing and loss of 
+information in the decimation process.
+I/Q Errors.  Digital I and Q generation does not produce signals without error, 
+as is often stated, but instead allows the generation of these signals with errors 
+that are sufficiently small to be considered negligible. The primary cause of the 
+imbalance is the non-ideal filter responses. An infinite number of taps would be 
+required to set the passband gain to unity and the stopband gain to zero; however, 
+for most applications, sufficient processing resources are available to reduce the 
+errors to insignificant levels. Finite length words for filter coefficients produce non-
+ideal filter responses. The effect on passband response is typically negligible, but 
+significant distortion of the filter stopband rejection can occur, potentially effecting 
+I/Q balance.
+Digital Downconversion Using Multirate Processing and Polyphase 
+filters.  There are many variations to these basic approaches, and specific imple -
+mentations often utilize efficient approaches that minimize the number of calcula -
+tions required with emphasis on reducing the number of multiplications, as these 
+require significantly more resources than additions. Two techniques used to reduce 
+the FIR filter processing burden are multirate processing and polyphase filtering.13 
+The digital downconversion approach is shown in Figure 6.21 using multirate pro -
+cessing. The first FIR filter h1(n) provides sufficient reduction to prevent aliasing 
+in the first decimation by factor D1, the second filter h2(n) provides alias reduction 
+for the second decimation and can also be used to correct passband ripple or droop 
+due to filter h1(n). For large decimation factors, more than two decimation stages 
+may be used.
+A popular filter for the first stage is the Cascaded Integrator Comb14 (CIC) decima -
+tor filter that can be implemented without multipliers. These filters provide rejection in 
+the stopband at frequencies that alias to the passband as a result of decimation. Since 
+they provide relatively large passband droop and slow stopband rejection, they are 
+generally followed by a FIR filter that can both correct for CIC passband droop and 
+FIGURE 6.21  Digital downconversion architectureA/DD1
+x(t)
+Q(k)I(k) h1(n)
+cos(w0n)D1sin(w0n)
+)(~nx
+h1(n)h2(m)
+h2(m)D2D2
+ch06.indd   44 12/17/07   2:04:24 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Radar Receivers  RADAR RECEIVERS  6.456x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 6
+provide the desired stopband rejection response. The kth order CIC filter for decima -
+tion factor D has transfer function:
+ H z zz
+zKm
+mDKDK
+( )=
+
+=−
+−
+
+−
+=− −
+− ∑
+01
+11
+1 (6.49)
+A polyphase filter is a filter bank that splits an input signal into D sub-band filters 
+operating at a sample rate reduced by a factor D, providing a computationally efficient 
+approach to performing the FIR filtering followed by decimation in a digital receiver. 
+Rather than computing all the filter output samples and only using every Dth sample, 
+the polyphase approach calculates only those that are actually used. Figure 6.22 and 
+Eq. 6.50 define how the filter with impulse response h(n), followed with decimation 
+by factor D, is implemented in a polyphase structure. The input signal x(n) is divided 
+into D parallel paths by the “commutator,” which outputs samples in turn, rotating in a 
+counterclockwise direction, to each of the FIR filters operating at the reduced sample 
+rate. The outputs of the FIR filters are summed to produce the output signal y(m). This 
+architecture is beneficial as it provides an approach that can be easily parallelized at 
+rate FX / D.
+ pk(n) = h(k + nD)   k = 0, 1, …, D - 1 (6.50)
+           n = 0, 1, …, K - 1 
+Multi-Channel Receiver Considerations.  Modern radar systems rarely con -
+tain only one receiver channel. Monopulse processing, for example, requires two 
+or more channels to process sum and delta signals. Additionally, the channels 
+must be coherent, synchronized in time, and well matched in phase and amplitude. 
+Digital beamforming systems require a large number of channels with similar 
+coherence and synchronization requirements and tight phase and amplitude track -
+ing. The coherence requirement dictates the relative phase stability of LO and 
+A/D converter clock signals used for each receive channel. The time synchroniza -
+tion requirement means that A/D converter clock signals for each channel must 
+be aligned in time and decimation must be performed in phase for each channel. 
+Phase and amplitude imbalance between channels is a result of variation in the 
+FIGURE 6.22  Decimation using polyphase filters+
++
++ p2(n)p1(n)p0(n)
+x(n)y(m)
+Rate = FXRate = FX/D x(nD)
+x(nD−1)
+x(nD−2)
+x(nD−D+1)pD−1(n)
+ch06.indd   45 12/17/07   2:04:26 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Radar Receivers 6.46  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 6
+analog circuitry prior to and within the A/D converter. If the IF filter bandwidth is 
+wide relative to the digital receiver bandwidth, the majority of the error between 
+channels will be a constant gain and phase offset across the receiver bandwidth. 
+A single correction, applied as a complex multiplication of I/Q data, will cor -
+rect for gain and phase offsets and is usually adequate to provide the required 
+channel tracking for monopulse applications. When tighter channel tracking is 
+required, such as for sidelobe canceler or digital beamforming applications, FIR 
+filter equalization can be used to correct for frequency dependent variations across 
+the receiver bandwidth. FIR filter equalization can be performed either subse -
+quent to the FIR filtering used to generate I/Q data or combined with these filters. 
+It should be noted that to correct for frequency and phase variation across the 
+receiver bandwidth requires FIR filters with complex coefficients, applied equally 
+to I and Q data. Real value coefficients typically used in I/Q generation provide fil -
+ter responses symmetrical about zero frequency. Correction of IF filter frequency 
+response errors will, in general, require asymmetric frequency correction that can 
+only be provided at baseband using complex coefficients.
+The degree to which these multiple receiver channels must track depends on the 
+specific system requirements. Although modern systems typically include some 
+degree of channel equalization function, a reasonable degree of tracking between gain, 
+phase, and timing must be maintained in order to allow the channel equalization to 
+be performed using digital signal processing without consuming excessive processing 
+resources. Also, the relative stability of the radar channels as a function of time and 
+temperature must be such that the corrections can maintain adequate tracking during 
+the time between calibration intervals.
+Digital beamforming systems require a large number of receiver channels. In these 
+applications, size, weight, power dissipation, and cost are critical considerations.
+6.12  DIPLEX OPERATION
+Diplex Benefits.  Diplex operation consists of two receivers that simultaneously 
+process returns from transmissions on different frequencies. Transmissions are usu -
+ally non-overlapping in time to avoid a 6 dB increase in peak power and because most 
+radar transmitters are operated in saturation and simultaneous transmission at multiple 
+frequencies would produce significant transmitted intermodulation distortion.
+The sensitivity benefit of diplex operation for detecting Swerling 1 targets is shown 
+in Figure 6.23, increasing with probability of detection ( PD). For example, diplex oper -
+ation achieves 90% PD with 2.6 dB less total signal power than simplex. Assumptions 
+made in deriving Figure 6.23 are
+1. Returns on the two frequencies are added in voltage or power prior to the detection 
+decision rather than being subjected to individual detection decisions.
+2. Separation of the two frequencies is sufficient to make their Swerling 1 fluctua -
+tions independent. This depends on the physical length of the target in the range 
+dimension lR. The minimum frequency separation is 150 MHz/ lR (m); 25 MHz 
+will maintain the diplex benefit for aircraft longer than 6 m (20 ft).
+3. Equal energy is transmitted in both pulses. A 2:1 imbalance sacrifices only 0.2 dB 
+of the benefit at 90% PD.
+ch06.indd   46 12/17/07   2:04:27 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Radar Receivers  RADAR RECEIVERS  6.476x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 6
+Both linear and asymmetrical nonlinear FM produce a range error as a function 
+of doppler due to range-doppler coupling. These range displacements must match in 
+the two receivers to within a small fraction of the compressed pulse width; otherwise, 
+the sensitivity benefits of diplex operation are not fully achieved and range accuracy 
+may be degraded.
+Implementation . Diplex operation can be implemented with a variety of 
+approaches. Complete replication of the receiver channels is typically the most expen -
+sive approach and may be required if the frequency separation is very large. A more 
+common approach is separation of the frequencies at the first IF, as this does not 
+require complete duplication of the RF front end or the first LO signal. Separate sec -
+ond local oscillator or I/Q demodulator reference frequencies can be used to process 
+the different frequencies. With the use of high-speed IF sampling, it is also possible 
+to digitize both signals simultaneously using a single A/D converter and perform the 
+frequency separation using digital signal processing. Whichever approach is used, care 
+must be taken to provide adequate dynamic range and linearity to prevent intermodula -
+tion distortion from degrading radar performance.
+6.13 WAVEFORM GENERATION  
+AND UPCONVERSION
+The exciter function of waveform generation and upconversion is often tightly coupled 
+with the receiver function. The requirement for coherence between the receiver and 
+exciter is a major factor for this tight coupling and the use of the same LO frequen -
+cies within the receiver and exciter usually results in hardware savings. Similar to 
+the migration to digital receiver architectures, the exciter functionality is increasingly 
+being implemented using digital approaches.FIGURE 6.23  Diplex operation improves the sensitivity of the receiver
+ch06.indd   47 12/17/07   2:04:27 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Radar Receivers 6.48  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 6
+Direct Digital Synthesizer.  The Direct Digital Synthesizer15 (DDS) produces 
+waveforms using digital techniques and provides significant improvements in stabil -
+ity, precision, agility, and versatility over analog techniques. The main limitations are 
+the noise and spurious signals as described below. The general DDS architecture is 
+shown in Figure 6.24. The double accumulator architecture, comprising the frequency 
+and phase accumulators, enables the generation of CW, linear FM (chirp), nonlinear 
+(piece-wise linear) FM, frequency modulated, and phase modulated waveforms. CW 
+waveforms are generated by applying a constant frequency word (digitized frequency 
+representation) input to the phase accumulator, creating a linear phase sequence that is 
+first truncated then input to a cosine (or sine) lookup table that outputs the correspond -
+ing sinusoidal signal value to the digital-to-analog (D/A) converter. The frequency 
+resolution is dependent on the number of bits and the clock frequency of the phase 
+accumulator. The output frequency is given by
+ fM ff
+N outclk=2φ (6.51)
+where
+ Mf = frequency word, input to the phase accumulator
+ fclk = phase accumulator clock frequency
+ Nf = number of bits of phase accumulator
+Linear FM or chirp waveforms are generated by applying a constant chirp slope 
+word (digitized chirp slope representation) to the input of the frequency accumulator, 
+creating a quadratic phase sequence at the output of the phase register. Piecewise-linear 
+or nonlinear FM waveforms can be generated by applying a time-varying slope input 
+to the frequency register. The frequency accumulator may be clocked either at the same 
+rate as the phase accumulator or at a sub-multiple to provide finer chirp slope resolu -
+tion. If both accumulators are clocked at the same rate, the chirp slope is given by
+ ∆
+∆f
+tM fS
+Nfout clk=2
+2 (6.52)
+where
+ MS = chirp slope word, input to the frequency accumulator
+ Nf = number of bits of frequency accumulator
+Frequency modulated and phase modulated waveforms can be created applying time-
+varying inputs to the frequency modulation (FM) and phase modulation (PM) ports.
+FIGURE 6.24  Direct Digital Synthesizer block diagramCosine 
+LookupDACPhase 
+Truncation+ +
+fclkfclkPhase 
+Accumulator
++
+fclkFrequency 
+Accumulator
++MfNf
+MSNf
+FM 
+InputPM 
+InputfoutPhase 
+RegisterFrequency 
+Register
+ch06.indd   48 12/17/07   2:04:31 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Radar Receivers  RADAR RECEIVERS  6.496x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 6
+Errors such as phase truncation and D/A converter quantization and nonlinearity 
+produce spurious signals due to their deterministic nature. The spurious signal fre -
+quencies generated by a DDS can be readily predicted16 as they are a function of the 
+digital architecture and programmed frequency. The spurious signal magnitudes are 
+less predictable as the magnitudes of the dominant spurious signals are a function of 
+the D/A converter nonlinearity.
+When generating CW waveforms, the D/A converter sequence repeats after 2K 
+samples where 2K equals the greatest common divisor of 2Nf and Mf . Thus, spurious 
+signals occur only at frequencies:
+  fnf
+K spurclk=2, n = 0,1,2,... (6.53)
+In the extreme case where Mf does not contain the factor 2, this creates a spurious fre -
+quency spacing of fclk / 2Nf. For example, with a 1 GHz clock and 32-bit frequency accu -
+mulator, the spurious frequency spacing can be as close as 0.23 Hz. In most cases, such 
+closely spaced spurious signals cannot be differentiated from noise. Conversely, choos -
+ing values of Mf that contain large factors of 2N creates relatively large spurious spacing. 
+For example, using a 640 MHz clock allows the generation of frequencies at multiples of 
+10 MHz with all the spurious components occurring at multiples of 10 MHz.
+The impact of DDS spurious signals on radar performance depends on the nature 
+of the spurious signals and the type of radar processing involved. Applications using 
+chirp waveforms with large time-bandwidth products are typically less sensitive to 
+DDS spurious signals since the DDS spurious signals chirp at a different rate to that 
+of the wanted signal. The spurious signals are thus rejected during pulse compression. 
+In pulse doppler applications, spurious signals are of much greater concern; however, 
+their effects can be mitigated by ensuring that the DDS generates each waveform from 
+the same initial conditions. Restarting the DDS for every pulse guarantees that the 
+same digital sequence will be input to the D/A converter for each pulse. The result is a 
+DDS output that only contains spectral components at multiples of the PRF .
+Techniques have been proposed or incorporated into DDS devices that reduce spu -
+rious levels by adding dithering to reduce the effects of limited word lengths. The 
+effect of these techniques and the spurious signals that they are designed to mitigate 
+should be considered carefully as they may be detrimental to radar performance. The 
+use of dithering will randomize the spurious signal, resulting in pulse-to-pulse varia -
+tions in the digital sequence output to the D/A converter, a result that is undesirable in 
+pulse doppler applications.
+Truly random errors are not generated by the digital portion of the DDS. The only 
+nondeterministic errors are a result of the D/A converter performance in the form of 
+internal clock jitter or additive thermal noise and the effect of the phase noise on the 
+input clock signal.
+Internal D/A converter clock jitter produces phase modulation of the output signal 
+proportional to the output frequency. Similarly, phase noise present on the clock input 
+signal is transferred to the output signal, reduced by 20log10 (fout / fclk) dB. D/A con -
+verter additive thermal noise is independent of output signal frequency and produces 
+both phase and amplitude noise components.
+Frequency Multipliers.  Frequency multiplication allows signals to be increased 
+in both frequency and bandwidth. Frequency multiplication is frequently used in gen -
+erating local oscillator CW frequencies where all frequencies are typically based on a 
+ch06.indd   49 12/17/07   2:04:32 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Radar Receivers 6.50  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 6
+low frequency reference. They also provide the capability for wide-bandwidth chirp 
+waveforms that cannot be generated directly using available DDS devices. Frequency 
+multipliers operate as shown in Figure 6.25, by multiplying the phase of the input 
+signal by the integer multiplication factor M. Since in practice the process typically 
+includes some form of limiting, the output amplitude A t( ) generally has a lower ampli -
+tude variation than the input signal amplitude A(t).
+Because the multiplication process multiplies up the variations in the signal phase 
+by factor M, input phase noise and spurious phase modulations are increased by 
+20 log10(M) dB. Similarly, variations in the phase of the signal as a function of fre -
+quency are multiplied up. These variations are produced during signal filtering and 
+may be present on the input signal. For chirp waveforms, this can result in a significant 
+degradation in the range sidelobe performance. Also, practical multipliers may have a 
+significant phase variation as a function of frequency. If the input signal phase distor -
+tion is given by
+ f b( ) sin fnf
+B=
+
+2π (6.54)
+where
+ b = peak phase ripple
+ B = waveform input bandwidth
+ n = number of cycles of phase ripple
+the resulting output distortion produces range sidelobes at times ±n / MB and magnitude 
+20 log10(Mb / 2) relative to the main beam of the target return. As an example, generat -
+ing a chirp waveform that has range sidelobes better than 35 dB using an ×8 multiplier 
+requires that the input signal has less than 0.5 degrees peak-peak phase ripple.
+Frequency multipliers can be implemented using a variety of techniques, such as 
+using step recovery diode multipliers or using phase locked loops. Where wide percent -
+age bandwidth and fast settling is required, the most common technique is to cascade a 
+series of frequency doublers or low order multipliers. This type of multiplier can also 
+provide near ideal phase noise performance, but has significant phase modulation as a 
+function of frequency as it contains filters between each stage of multiplication.
+Predistortion of the multiplier input waveform is often used in order to produce 
+wideband chirp waveforms with low range sidelobe performance. If the multiplier 
+is characterized by an output phase distortion as a function of input frequency given 
+by f (w), then a predistortion of the input signal by phase −f (w)/M will equalize the 
+multiplier response. Predistortion can be performed very precisely by adding the phase 
+modulation via the DDS that is used to generate the chirp waveform.
+Waveform Upconversion.  Upconversion of exciter waveforms is similar to 
+downconversion within the receiver. Also, similar practical considerations of mixer 
+spurious and image rejection apply. The one significant additional challenge is the 
+rejection of the LO leakage. LO rejection typically imposes tight filter rejection 
+requirements on the RF filters, and for wide-tunable ranges, switched filters are 
+often required.FIGURE 6.25  Frequency multiplier operationxM A(t)ej[wt+f(t)]A(t)ejM[wt+f(t)]
+ch06.indd   50 12/17/07   2:04:36 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Radar Receivers  RADAR RECEIVERS  6.516x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 6
+REFERENCES
+ 1. M. I. Skolnik, Radar Handbook , 2nd Ed., New York: McGraw Hill, 1990.
+ 2. M. I. Skolnik, Radar Handbook , 1st Ed., New York: McGraw Hill, 1971.
+ 3. R. E. Watson, “Receiver dynamic range: Part 1,” Watkins Johnson Company, Technical Note, 
+vol. 14, no 1, January/February 1987.
+ 4. B. C. Henderson, “Mixers in microwave systems (Part 1),” Watkins Johnson Company, Technical 
+Note, vol.17, no.1, January/February 1990.
+ 5. D.W. Allan, H. Hellwig, P. Kartaschoff, J. Vanier, J. Vig, G. M. R. Winkler, and N. F. Yannoni, 
+“Standard terminology for fundamental frequency and time metrology,”  in Proceedings of the 
+42nd Annual Frequency Control Symposium , Baltimore, MD, June 1–4, 1988, pp. 419–425.
+ 6. P. Renoult, E. Girardet, and L. Bidart, “Mechanical and acoustic effects in low phase noise piezo -
+electric oscillators,” presented at IEEE, 43rd Annual Symposium on Frequency Control, 1989.
+ 7. M. A. Richards, Fundamental of Radar Signal Processing , New York: McGraw-Hill, 2005.
+ 8. A. I. Zverev, Handbook of Filter Synthesis , New York: John Wiley and Sons, Inc., 1967.
+ 9. A. V . Oppenheim and R. W. Schafer, Discrete-Time Signal Processing , New York: Prentice Hall 
+Inc., 1989.
+10. W. Kester, The Data Conversion Handbook , London: Elsevier/Newnes, 2005.
+11. R. H. Walden, “Analog-to-digital converter survey and analysis,” IEEE Journal on Selected Areas 
+in Communications , vol. 17, no. 4, pp. 539–550, April 1999.
+12. B. Brannon, “Sampled systems and the effects of clock phase noise and jitter,” Analog Devices 
+Inc., Application Note, AN-756, 2004.
+13. J. G. Proakis and D. G. Manolakis, Digital Signal Processing , 2nd Ed., New York: Macmillan, 
+1992.
+14. E. B. Hogenauer, “An economical class of digital Filters for decimation and interpolation,” IEEE 
+Transactions on Acoustics, Speech and Signal Processing , vol. ASSP-29, no. 2, April 1981.
+15. J. Tierney, C. M. Radar, and B. Gold, “A digital frequency synthesizer,” IEEE Trans . AU-19, 
+pp.43–48, March 1971.
+16. H. T. Nicholas III and H. Samueli, “An analysis of the output spectrum of direct digital frequency 
+synthesizers in the presence of phase-accumulator truncation,” Proceedings. 41 st annual Frequency 
+Control Symposium , USERACOM, Ft. Monmouth, NJ, May 1987, pp. 495–502.
+ch06.indd   51 12/17/07   2:04:37 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Radar Receivers 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 6  
+blind folio 6.52
+ch06.indd   52 12/17/07   2:04:37 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Radar Receivers 

@@ -1,0 +1,550 @@
+Radar Basics  
+  WHAT IS RADAR?  ................................ ................................ ........  3 
+RADAR APPLICATIONS  ................................ ................................  3 
+FREQUENCY BANDS  ................................ ................................ .... 3 
+CONTINUOUS WAVE AND PULSED RADAR  ................................ .. 4 
+PULSED RADAR  ................................ ................................ ...........  4 
+PULSE POWER  ................................ ................................ ................  4 
+RADAR EQUATION  ................................ ................................ ...........  5 
+PULSE WIDTH ................................ ................................ ................  5 
+PULSE MODULATION  ................................ ................................ .......  6 
+Linear FM Chirps  ................................ ................................ ... 6 
+Phase Modulation  ................................ ................................ .. 6 
+Frequency Hopping  ................................ ................................  6 
+Digital Modulation  ................................ ................................ . 6 
+PULSE COMPRESSION  ................................ ................................ .......  6 
+LIFECYCLE OF RADAR M EASUREMENT TASKS  ..............................  7 
+CHALLENGES OF RADAR DESIGN & VERIFICATION  ...............................  7 
+CHALLENGES OF PRODUCTION TESTING ................................ .............  7 
+SIGNAL MONITORING  ................................ ................................ ..... 8 
+BASIC RF PULSED RADAR SIGNALS  ................................ .....................  8 
+TRANSMITTER TESTS................................ ................................ .......  9 
+RECEIVER TESTS ................................ ................................ .............  9 
+  www.tektronix.com/radar  3   
+Figure 1: A Weather Radar D isplay  
+What is Radar ? 
+Radar (RAdio Detection And Ranging) is actually a fairly 
+simple  process  of bouncing radio waves off object s and 
+looking at the reflections to determining presence, size, 
+distance, position and speed.  
+Typically, radars illuminate their targets with an RF pulse and 
+then listen for the return echo. Since the RF pulse propagates 
+at the speed of light, the time it  takes the echo to return is 
+proportional to the distance from the target. This, of course, 
+applies to a primary -radar, one that relies on reflected energy 
+bouncing back off the target. Secondary -radars , that re -
+transmit the signal back from a transponder , have additional 
+delays.  
+Transmitted  RF signals are “boun ced” off a target  and a 
+receiver measures the  characteristics  of the echo . Most often , 
+low duty cycle pulses  are used.  
+As the  technology has evolved , the basic concept of radar has 
+not changed. At th e same time , the accuracy, resolution and 
+number of radar applications has increased dramatically  over 
+time. 
+Radar Applications  
+Radar technology is used heavily in military applications. 
+Ground -based radar is used for long -range threat -detection 
+and air tr affic co ntrol. Ship -based radar provide  surface -to-
+surface and surface -to-air observation. Airborne radar is 
+utilized for threat detection, surveillance, mapping, and 
+altitude determination. Finally, missile radars are used for 
+tracking and guidance.  
+There  are many commercial aviation  applications of radar 
+such as air traffic control ( ATC) long range surveillance , 
+terminal air traffic  monitoring, s urface movement  tracking, and 
+weather surveillance . Additionally, short -range radar is 
+increasingly being used in automotive applications for collision 
+avoidance, driver assistance, and autonomous driving. 
+Specialized radars can also be used to provide imaging 
+through fog, through walls, and even underground.  Modern radar s produce  complicated pulses that can presen t 
+significant measurement challenges. Improvements to range, 
+resolution , and immunity to interference have motivated 
+numerous coding schemes, frequency and  phase modulated 
+pulses , frequency chirped pulses , and narrow pulses with high 
+overall  bandwidth.  
+Frequency Bands  
+Radar f requency bands are classified  into letter designations 
+defined by the IEEE  (see Table 1). The most commonly used 
+bands used today for radar are the L -band through the KU -
+band or 1 – 18 GHz. Short -range a utomoti ve radar systems 
+use the very high W -band frequencies in the 75+ GHz range . 
+ 
+Table 1 Common Radar Frequency Bands  
+Band  Use Range  
+HF Long -range , over the horizon 
+(OTH)  3-30 MHz 
+VHF Long -range, over the horizon 
+(OTH)  30-300 MHz 
+UHF Long -range, over the horizon 
+(OTH)  300 MHz-3 
+GHz 
+L Long range Air Traffic Control 
+(ATC), surveillance  1-2 GHz  
+S Medium Range, Airport 
+Surveillance Radar (ASR),  
+long range weather, marine radar  2-4 GHz  
+C Weather, snow/ice mapping, 
+precipitation detecti on 4-8 GHz  
+X Missile guidance, marine radar, 
+weather, ground surveillance, 
+short -range airport tracking radar  8-12 GHz  
+Ku High-resolution radar, satellite 
+transponders  12-18 GHz  
+K Cloud detection, police radar  18-27 GHz  
+Ka Short range, airport surveill ance, 
+red-light traffic camera trigger  27-40 GHz  
+V Very short range, space 
+applications  40-75 GHz  
+W Automotive/vehicle 
+parking/warning radar systems, 
+imaging  75-110GHz  
+ 4  www.tektronix.com/radar   Continuous Wave and Pulsed 
+Radar  
+Radar  systems can use continuous wave  (CW) signals  or, 
+more commonly,  low duty -cycle pulsed signals.  CW radar  
+applications can be simple unmodulated Doppler speed 
+sensing systems such as those used by police and sports 
+related radar s, or may employ modulation in order to sense 
+range as well as speed.  Modu lated CW applications have 
+many specialized and military applications  such as maritime / 
+naval applications, missile homing, and radar altimeters . The 
+detection range of CW radar  systems is relatively short, due to 
+the constraint s of continuous RF power . There is no minimum 
+range, however,  which makes CW radar particularly useful for 
+close -in applications.  
+Pulsed Radar  
+The r adar measurements discussed in this document  are all 
+pulse measurements. Although there are several continuous 
+transmission types of ra dar, primarily Doppler, the great 
+majority of radars are pulsed.  There are two general 
+categories of pulsed radar, Moving Target Indicator (MTI) and 
+Pulsed Doppler. MTI radar is a long -range, low pulse 
+repetition frequency ( PRF) radar used to d etect and tr ack 
+small (~2m2) moving targets at long distances ( up to ~30km) 
+by eliminating ground clutter (aka  chaff) . MTI is useful when 
+velocity is not a big concern (i.e.  “just tell me if something is 
+moving” ). Pulsed Doppler radar, in contrast, utilizes a h igh 
+PRF to avoid “blind speeds”  and has a s horter “unambiguous” 
+range (~15km), high resolution, and provides detailed velocity 
+data. It is used for a irborne missile approach tracking , air 
+traffic c ontrol, and medical applications ( e.g. blood flow  
+monitoring ). 
+The RF pulse characteristics reveal  a great deal about a 
+radar's capability. Electronic Warfare (EW) and ELectronic 
+lNTelligence (ELINT) experts specialize in the study of these 
+pulsed signals. Pulse characteristics provide valuable 
+information a bout the type  of radar producing a signal and 
+what its source might be - sailboat, battleship, passenger 
+plane, bomber, missile, etc.  
+ 
+Figure 2. Common Pulse Characteristics  
+Pulsed radar t ypically utilizes very low duty cycle RF pulses ( < 
+10%) . The r ange and resolution is determined b y the pulse 
+repetition frequency ( PRF), pulse width  (PW) , and transmit 
+power . A wide PW generally provide s better  range, but poor 
+resolution . Conversely, a  narrow PW supports less  range, but better resolution . This  relationship constitutes one of the 
+fundamental trade -offs in radar engineering. Pulse 
+compression with a modulated carrier is often  used to 
+enhance resolution while maintaining a narrow PW allowing 
+for higher power  and longer  range . 
+The Pulse Repetition Interval (PRI) is the time the pulse cycle 
+takes before repeating. It is equal to the reciprocal of the PRF 
+or Pulse Repetition Rate (PRR), the number of transmitted 
+pulses per second. PRI is important because it determines  the 
+maximum unambiguous range or  distance of the radar. In fact, 
+pulse-off time may actually be a better indication of the radar 
+system's maximum design range.  
+Traditional  radar systems employ a Transmit/Receive (T/R) 
+switch to allow the transmitter and receiver to share a single 
+antenn a. The transmitter and receiver take turns using the 
+antenna. The transmitter sends out pulses and during the off -
+time, the receiver listens for the return echo. The pulse -off 
+time is the period the receiver can listen for the reflected echo. 
+The longer th e off-time, the further away the target can be 
+without the return delay putting the received pulse after the 
+next transmitted pulse. This would incorrectly make the target 
+appear to be reflected from a nearby object. To avoid this 
+ambiguity, most radars si mply use a pulse -off time that is long 
+enough to make echo returns from very distant objects so 
+weak in power , they are unlikely to be erroneously detected in 
+the subsequent pulse's off -time.  
+Figure 3 illustrates the need for puls e compression to obtain 
+good range and resolution. Wider PWs  have higher average 
+power , which increases range  capability . However, wide PWs  
+may cause  echoes from closely spaced targets to overlap or 
+run together in the receiver , appearing as a single targe t. 
+Modulated pulse s mitigate these issues , providing higher 
+power and finer resolution to se parate closely spaced targets.  
+ 
+Figure 3. Pulse Width versus Resolution  
+Pulse Power  
+Another consideration for the maximum range of a radar  is the 
+transmitted power. Peak power is a measure of the maximum 
+instantaneous power level in the pulse. Power droop , pulse 
+top amplitude , and overshoot are also of interest. ELINT 
+experts sometimes scrutinize these characteristics, as they 
+provide additi onal information about a radar's characteristics . 
+ www.tektronix.com/radar  5  Pulse top amplitude (Power) and Pulse Width (PW) are 
+important for calculating the total energy in a given pulse 
+(Power x Time). Knowing the duty cycle and the power of a 
+given pulse, the average RF power t ransmitted can be 
+calculated (Pulse Power x Duty Cycle).  
+Radar Equation  
+The Radar Equation , as it is commonly known, defines many 
+of the engineering trade -offs encountered  by radar designers.  
+ 
+Equation 1. Radar Range Equation  
+The radar equation relates the expected receive  power (P r) to 
+the transmitted pulse p ower (P t); based on transmit antenna 
+gain (G t), area of the receive antenna (A r), target cross section 
+(aka reflectivity) σ, range from the transmitter antenna to the 
+target (R t), and range of the target to the receive antenna (Rr). 
+Unlike many communications systems, radar systems suffer 
+from very large signal path losses. The round -trip distance is 
+twice that of a typical c ommunications link  and there are  
+losses associated with the radar cross -section and reflectivity 
+of target s. As can be observed from the Radar Equation, t he 
+range term is raised to the fourth power in the denominator, 
+underscoring the tremendous signal pow er losses radar 
+signal s experience . There are also several forms of the radar 
+equation that take into account differing applications and 
+antenna configurations.  
+Using the radar equation, the received signal level can be 
+calculated to determine if sufficien t power exists to detect a 
+reflected  radar pulse. Combining multiple pulses to 
+accumulate greater signal p ower and average out the noise i s 
+also helpful for increasing the detection range.  
+Pulse Width  
+Pulse width is an important property of radar signal s. The 
+wider a pulse, the greater the energy contained in the pulse 
+for a given amplitude. The greater the transmitted pulse 
+power, the greater the reception range capability of the radar.  
+Greater pulse width also increases the average transmitted 
+power. This  makes the radar transmitter work harder. The 
+difference in decibels (dB) between the pulse power and 
+average power level is easily calculated using ten times the 
+log of the pulse width divided by the pulse repetition interval.  
+Range is therefore limited b y the pulse characteristics and 
+propagation losses. The PRI and duty cycle set the maximum 
+allowed time for a return echo, while the power or energy 
+transmitted must overcome the background noise to be 
+detected by  the receiver.  
+Pulse width also affects a radar’s minimum resolution. Echoes 
+from long pulses can overlap in time, making it impossible to 
+determine the nature of the target or targets. A long pulse 
+return may be caused by a single large target, possibly an airliner, or multiple smaller targets clo sely spaced, possibly a 
+tight formation of fighter aircraft. Without sufficient resolution, 
+it is impossible to determine the number of objects that 
+actually make up the echo return. Narrow pulse width s 
+mitigate the  overlapping of echoes and improve resolu tion at 
+the expense of transmit power.  
+Pulse width thus affects t wo very important radar  system 
+capabilities - resolution and detection range.  These two 
+qualities are traded off against  each other.  Wider pulses 
+equate to longer -range radars  with less  resol ution, whereas 
+narrow  pulses equate to  finer resolution but shorter range.  
+Narrow pulses also  require greater bandwidth to correctly 
+transmit  and receive. This makes the pulse's spectral nature 
+also of interest,  which must be considered in the overall 
+system design  (see Figure 4). 
+ 
+Figure 4. Pulse Time vs  Frequency Characteristics  
+ 6  www.tektronix.com/radar   Pulse Modulation  
+While unmodulated  pulsed  radar are relatively simple to 
+implement, they have drawbacks . As described  previous ly, 
+unmodulated  pulses have relatively poor range  resolution . To 
+make the most efficient use of transmit power and optimize 
+range resolution, most radars modulate pulses using a variety 
+of techniques  (see Figure 5).
+ 
+Figure 5. Common Pulse Modulations – constant CW (top), 
+Linear FM (middle), Phase -Shift Keying (bottom)  
+Linear FM Chirps  
+The simplest  pulse modulation scheme is the  linear FM (LFM) 
+chirp. It is also the most common types of pulse compression  
+and is in wide use. Sweeping the carrier frequency throughout 
+a pulse results in  every part of a pulse being  distinct  and 
+discernable . This enables pulse compression techniques to be 
+utilized  in the receiver , which is a very powerful radar 
+technique for impr oving range resolution and making more 
+efficient use of transmit power.  
+Phase Modulation  
+Phase modulation can also be used to differentiate segments 
+of a pulse in a similar  fashion as frequency hopping. Pulse 
+phase modulation is often implemented as a vers ion of Binary 
+Phase -Shift Keying (BPSK). There are specific phase codin g 
+schemes, such as Barker Codes to  ensure orthogonality of the 
+coding while providing excellent range resolution.  
+Frequency Hopping  
+Another modulation technique utilizes  several frequen cy hops 
+within a pulse. If each frequency has a corresponding filter 
+with the appropriate delay in the receiver, then all segments 
+can be compressed together in the receiver. If the frequency 
+hopping sequence remains the same for all pulses, then the 
+recei ver compression can  even be implemented with a simple 
+Surface Acoustic Wave  (SAW ) filter.  One common form of 
+frequency hopped coding is known as Costas C oding. This is 
+a coding that intentionally reduces the side -lobes in the 
+periodic auto -correlation f unction and has advantageous performance in the presence of Doppler  effects . Additionally, 
+the variable frequency pattern used by  hopping pulses 
+reduce s susceptanc e to spoofing and jamming . This also 
+reduce s interference between transmitters in close proximit y. 
+Digital Modulation  
+With the advancements of software defined radio and digital 
+signal processing applied to radar, mo re complex pulse 
+modulations are now used. For example, more effective anti -
+spoofing can be accomplished using M -ary PSK or QAM 
+modulati ons. These modulations produce pulses that 
+resemble noise as opposed to coherent frequencies , which 
+makes them harder to detect . Other informati on can be 
+encoded into the se more complex digital modulations  as well . 
+Pulse Compression  
+Basic  pulsed  radar  using time-of-flight  to measure  target  range  
+has limitations. For a given pulse width, the range resolution is 
+limited to the distance over which the pulse travels during the 
+time of its duration. When multiple targets are at nearly equal 
+distance from the radar, the return from the farthest target will 
+overlap the return from the first target. In this situation, the two 
+targets can no longer be  resolved  from each  other  with just  
+simple  pulses.  
+Using a short pulse width is one way to improve distance 
+resolution . However,  shorter  pulses  contain  proportionately  less 
+energy, preventing reception at greater range due to 
+propagation  losses. Increasing  the transmit  power is  impractical  
+in many cases, such as for aircraft radar  due to power  constraints.  
+The answer to t hese challenges is the use of pulse 
+compression. If a pulse can be effectively compressed in time, 
+then the returns will no longer overlap. Pulse compression 
+allows low amplitude returns to be “pulled” out of the noise 
+floor. It  is achieved by modulating t he pulse in the transmitter 
+so different  parts of the pulse become more discernable . The 
+actual time compression is accomplished by the radar 
+receiver.  
+ 
+Figure 6. A matched filter in the receiver compresses the 
+signal in time  
+The most common pulse compression technique linear 
+frequency modulation, or LFM pulses.  A LFM pulse is one 
+where the pulse begins at one carrier frequency, then ramps 
+linearly, up or down  to an end frequency .  LFM pulses are 
+often called “chirps” or chirped p ulses.  Compression is 
+achieved in the receiver by passing the s ignal through a 
+matched filter (see Figure 6). This filter is designed to have a 
+delay characteristic matched to the LFM frequency range, and 
+ www.tektronix.com/radar  7  delay s portions of the modulated signal proportional to the 
+carrier frequency. For example, the filter may delay the 
+starting frequency of the LFM more than the ending frequency 
+of the LFM, causing the leading edge of the pulse to be 
+delayed more tha n the trailing edge .  When the  pulse passes 
+through a receiver signal processor, the chirp will transform 
+from a frequency chirp pulse to a narrow pulse containing all 
+the frequencies overlapped. The width of the resulting pulse is 
+dependent on the frequency resolution of the receiver 
+processor. Bear in mind, there will be additional time -smearing 
+and ringing due to non -linearity in the transmitted pulse.  
+When a pulse entering the receiver is a target return, there will 
+likely be multiple close reflections due to the different surfaces 
+of the target. If the compression signal processor has 
+sufficient resolution, it can separate each of these reflections 
+into discrete narrow pulse s. 
+ 
+Figure 7. Barker c oded binary phase shift keying  (BPSK)  
+Another common pulse com pression technique employs 
+binary phase shift keying, or BPSK modulation, using a Barker 
+coded sequence  (see Figure 7).  Barker codes are unique 
+binary patterns that auto correlate against themselves at only 
+one point  in time.  Barker Codes can vary in length from 2 - 13 
+bits, providing a corresponding compression ratio  of 2 - 13. 
+The compression is achieved in the receiver by sensing the 
+auto-correlation of the Barker sequence within the detected 
+pulse.  
+ 
+Figure 8. Barker coded spectrum showing side -lobe 
+suppression  Lifecycle of Radar 
+Measurement Tasks  
+The measurements needed for radar will vary depending on 
+the job to be done and the type or radar to be characterized. 
+From radar system design and component  selection to the 
+surveillance of deployed radars, accurate and fast 
+measurements are required with reproducible results.  
+Challenges of Radar Design & 
+Verification  
+When performing  radar design verification, there is a need  to 
+assure the transmitted signal is correct , the receiver responds 
+to and detects the  correct signals, and that there are no 
+spurious  signals emitted from the transmitter.  Unexpected 
+outputs can range from unintended signals related to the 
+desired pulse (such as harmonics, sub -harmonics, image 
+mixing products, etc.), as well as spurious outputs unrelated to 
+the desired pulse, such as radiation of internal local 
+oscillators, coupling from digital clocks, spurious oscillations 
+within RF circuitry, pulse errors, and so forth  
+In the modern wor ld of "software defined" radar, modulated 
+pulses, chirps, and other waveforms are usually  not generated  
+with traditional analog circuitry, but with  Digital Signal 
+Processors  (DSP) and Direct Digital Synthesis (DDS) 
+techniques . These digital techniques  gene rate complicated 
+signals directly at intermediate frequencies ( IF) or RF 
+frequencies. The signals  only become analog when the 
+synthesized digital data is passed  through a digital -to-analog 
+(D/A) converter.  
+Within the DSP, subtle software code and numeric  errors such 
+as poorly chosen  filter constants, numeric rounding, or 
+overflow errors  can create very short -duration artifacts  that 
+may bear little or no relation to the desired output.  A single 
+DSP error  can create momentarily incorrect RF output  (i.e. a 
+glitch). This can play havoc when filtered, amplified, and 
+transmitted.  
+Spurious emissions can also interfere with other  RF services 
+in the deployment area and often  provide a distinctive 
+signature if they are specific to a particular transmitter  design.  
+Wide band radars can also “bleed” into surrounding spectrum 
+causing unintended interference well outside the assigned 
+spectrum.  
+Challenges of Production Testing  
+Production testing involves  verification that each 
+manufactured product  meets its specifications. Test tasks 
+include tu ning and calibrating assemblies, along with the 
+compensation and calibration  of analog modules, linearizers, 
+and amplifier components. Results must be accura te and 
+repeatable to assure  the final product will function as 
+intended. As comp onent and subsystem vendors make 
+changes  to their processes, continued verification of 
+ 8  www.tektronix.com/radar   performance is required without varying the tests throughout 
+the product lifecycle . 
+Automated testing reduces the chance for operator error , 
+which is a drawback of manua l test processes and manually 
+operated test equipment. With automation, r eproducibility of 
+test results can be maintained regardless of production 
+personnel changes  and training requirements can  be 
+significantly reduced.  
+Signal Monitoring  
+Signal monitoring  is a different challenge. For Signal 
+Monitoring, t here is less need to verify a specification, but 
+more to identify si gnals that may be present in the surrounding 
+area or show t hemselves only very rarely. These types of 
+interfering signals  can jam or redu ce the effectiveness of a 
+radar. When searching for p ulsed or interfering signals, an RF 
+analyzer must not “blink” when the signal appears. 
+Discovering, triggering, and capturing infrequent signals or 
+transient characteristics of signals are required befor e 
+analysis can be performed.  
+Interference may be manifested not only as an infrequent 
+problem, but may be an issue of multiple signals contending 
+for the same spectrum , either intentionally or unintentionally. 
+Discovering such overlapping signals can be ve ry difficult 
+using traditional test equipment. 
+ 
+Figure 9. Oscilloscope trace of an RF pulse train  
+Basic RF Pulsed Radar Signals  
+A simple pulse can be a single frequency that is turned on for 
+a short time and then off again. The s ignal travels from the 
+transmit antenna, reflects off of a target and returns to the 
+radar. The time it takes for the pulse to return represents the 
+range, or distance to the target.  
+An oscilloscope can show the time domain voltage waveform 
+of the transmit ted pulse. This includes all individual cycles of 
+the RF pulse as in  Figure 9. 
+A RF detector can be used to create a trace of the envelope of 
+the pulse, instead of the individual cycles. This makes 
+triggering much easier. A Vector  Signal Analyzer (VSA), or a 
+spectrum analyzer in zero -span, can display amplitude v ersus 
+time. Th is is the equivalent of using a  RF detector. The lower 
+trace in Figure 10 is a spectrum analyzer detected envelope  of 
+a single RF pu lse seen in the voltage waveform of  Figure 9. 
+A spectrum analyzer can also show the frequency spectrum of 
+the pulse. The sin(x) / x (pronounced "sine x over x ") classic 
+pulse spectrum plot is seen in the upper trace. A VSA can use  
+a Fast Fourier Transform (FFT), or other Discrete -Time 
+Frequency Transformation  (DTFT) , to make such a spectrum 
+plot of a single pulse. A swept spectrum analyzer must either 
+be in a "maximum trace hold" mode, or it must sweep slowly 
+enough that at least o ne pulse appears at each position 
+across the screen to provide a comp lete spectrum view. 
+Without additional frequency processing software, the 
+oscilloscope provides only the voltage waveform.  
+ www.tektronix.com/radar  9   
+Figure 10. RF pulse spectrum (top) an d pulse trace (bottom)  
+Transmitter Tests  
+Modern radars often generate pulses at an Intermediate 
+Frequency (IF) where the processing is easier and then 
+convert the IF  frequency to the final CW frequency before 
+amplifying it to the necessary high power. When  testing an up -
+converter from the IF system, or testing the power amplifier, a 
+radar pulse generator is needed in addition to  the pulse 
+analyzer.  
+There are several solutions available for generating radar 
+pulses. Arbitrary Function Generators  (AFGs) , Arbit rary 
+Waveform Generators  (AWGs) , and software to create the 
+necessary pulses can generate baseband, IF, RF, or 
+microwave signals usin g direct synthesis up to 10 GHz and 
+higher . Test waveforms can be imported into  the generators, 
+synthesized, and  replayed. Signal generation is often required 
+in the selection and verification of analog transmitter 
+components to test the margin of design and manufacturing 
+processes.  
+Receiver Tests  
+Testing  the receiver  portion  of a radar  system , when  the 
+companion transmitter  is not yet available , requires  pulse  
+generation  equipment.  However,  verification of receiver 
+performance under varying signal conditions  may not be 
+possible  using  the companion  transmitter. This requires a 
+generator with the capability to add impairments an d 
+distortions to generated pulses. Common  impairments  are in-
+channel  and out-of-channel  signals and  noise  to test 
+desensitization  or blocking. This will verify the limits of receiver 
+functionality. A generator of waveforms with arbitrary variation  
+of any part of a digitally  created  waveform  fills this need.  
+ 
+ 10  www.tektronix.com/radar  
+ Contact Information:  
+ASEAN / Australia (65) 6356 3900  
+Austria  00800  2255 4835  
+Balkans, Israel, South Africa and other ISE Countries +41 52 675 3777  
+Belgium  00800  2255 4835  
+Brazil +55 (11) 3759  76 27 
+Canada 1 800 833  9200  
+Central East Europe / Baltics +41 52 675  3777  
+Central Europe / Greece +41 52 675 3777  
+Denmark +45 80 88  1401  
+Finland +41 52 675  3777  
+France  00800  2255 4835  
+Germany  00800  2255 4835  
+Hong Kong 400 820 5835  
+India 000 800 650  1 835 
+Italy  00800  2255 4835  
+Japan 81 (3) 6714  3010  
+Luxembourg  +41  52  675 3777  
+Mexico, Central/South America and Caribbean 52 (55) 56 04 50 90  
+Middle East, Asia, and North Africa +41 52 675 3777  
+The  Netherlands  00800  2255 4835  
+Norway  800 16098  
+Peopl e’s Republic of China 400 820 5835  
+Poland +41 52 675  3777  
+Portugal  80  08 12370  
+Republic of Korea 001 800 8255 2835  
+Russia / CIS +7 (495) 6647564  
+South Africa +41 52 675 3777  
+Spain  00800  2255 4835  
+Sweden  00800  2255 4835  
+Switzerland  00800  2255 4835  
+Taiwan 886 (2) 2656 6688  
+United Kingdom / Ireland 00800 2255  4835  
+USA 1 800 833  9200  
+Rev. 01/16  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+WWW.TEK.COM  
+ 
+For Further Information  
+Tektronix  maintains  a comprehensive,  constantly  expanding  collection  of application  notes,  technical  briefs  and other  resources  to help engineers  working  on the cutting  edge  of technology. 
+Please  visit www.tek.com  
+Copyright © 201 7, Tektronix. All rights reserved. Tektronix products are cov ered by U.S. and foreign patents, issued and pending. Information in this publication supersedes that in all 
+previously  published  material.  Specification  and price  change  privileges  reserved.  TEKTRONIX  and TEK are registered  trademarks  of Tektronix,  Inc. All other  trade  names  referenced  are 
+the service  marks,  trademarks  or registered  trademarks  of their respective  companies.   

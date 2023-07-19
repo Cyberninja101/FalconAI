@@ -1,0 +1,1043 @@
+26.16x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 26
+The Propagation Factor,  
+Fp, in the Radar Equation
+Wayne L. Patterson
+Space and Naval Warfare Systems Center  
+Atmospheric Propagation Branch
+26.1 INTRODUCTION
+Paralleling the development of radar technology is the development of the radar equa -
+tion. As engineering considerations such as the probability of detection, probability 
+of false alarm, signal loss factors, and signal-to-noise ratio allowed the radar range 
+equation to develop sufficiently to be useful in radar performance analysis, developing 
+computer technologies allowed for more sophisticated radar range equation solution 
+techniques. Thus, solution techniques to the radar range equation migrated from pencil 
+and paper “worksheets” to simple computer programs automating the “worksheet” to 
+highly sophisticated computer programs accounting for technology advances in signal 
+processing and environmental modeling.
+The intent of this chapter is twofold. The first is to focus on one particular term 
+of the radar range equation, the propagation factor FP (defined in Section 26.6). 
+Encompassed within the propagation factor are all the effects upon propagation attrib -
+utable to the natural environment. These effects are energy absorption from gasses and 
+liquid water, diffraction, refraction, multipath interference, earth-surface dielectrics, 
+terrain interference, and a number of other natural environmental considerations.
+The second focus of this chapter is to describe the computer modeling of the propa -
+gation factor. For ease of computations in early solution techniques, the propagation 
+factor was often taken as unity, a condition representing free space. With computer-
+implemented propagation models, however, the assumption of free space need no 
+longer be a limiting factor. One such propagation model, the Advanced Propagation 
+Model (APM) and its graphical user interface program, the Advanced Refractive 
+Effects Prediction System (AREPS),1 are featured here. While the focus upon AREPS 
+within this chapter is for the understanding of how important the propagation factor is 
+within the radar equation, AREPS is much more than a propagation factor tool. AREPS 
+provides the radar engineer and the operational radar operator with an easy to use but 
+extremely powerful method to define the natural atmospheric environment using data 
+from a wide range of sources; to manage, create, and define various elements of ter -
+rain data; to execute the appropriate propagation model for the task at hand; and then 
+to present the results in a number of different and highly configurable graphic and Chapter 26
+ch26.indd   1 12/15/07   4:52:48 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Source: RADAR HANDBOOK 26.2  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 26
+text displays, including exporting computed data in several formats for import into 
+other applications. AREPS is not limited to just radar applications, however. AREPS 
+together with APM and its other embedded propagation models can provide assess -
+ments for LF to EHF communications (ground and sky wave), strike and electronic 
+countermeasures, Electronic Support Measures (ESM) vulnerabilities, and many other 
+applications. AREPS and APM are products of the atmospheric propagation branch of 
+the Space and Naval Warfare Systems Center (SPAWARSYSCEN), San Diego. AREPS 
+will execute on a personal computer (desktop or laptop) using a Microsoft Windows 
+operating system such as NT, 2000, XP, or Vista and requires no additional special 
+hardware. AREPS may be freely obtained at the URL listed in the first reference.
+Before continuing with the discussion of electromagnetic (EM) propagation mod -
+els and assessment systems, it is appropriate to discuss the natural environment and its 
+influence upon EM system performance.
+26.2 THE EARTH’S ATMOSPHERE1
+Structure and Characteristics.  The Earth’s atmosphere is a collection of many 
+gases together with suspended particles of liquids and solids. Excluding variable 
+components such as water vapor, ozone, sulfur dioxide, and dust, the gases of nitrogen 
+and oxygen occupy about 99% of the volume, with argon and carbon dioxide being the 
+next two most abundant gases. From the Earth’s surface to an altitude of approximately 
+80 kilometers, mechanical mixing of the atmosphere by heat-driven air currents evenly 
+distributes the components of the atmosphere. At about 80 kilometers, the mixing 
+decreases to the point where the gases tend to stratify in accordance with their weights.
+The lower, well-mixed portion of the atmosphere is called the homosphere , while 
+the higher, stratified portion is called the heterosphere . Within the heterosphere lies the 
+ionosphere . The bottom portion of the homosphere is called the troposphere .
+Troposphere.  The troposphere extends from the Earth’s surface to an altitude 
+of 8 to 10 kilometers at polar latitudes, 10 to 12 kilometers at middle latitudes, and 
+up to 18 kilometers at the equator. It is characterized by a temperature decrease with 
+height. The point at which the temperature ceases to decrease with height is known as 
+the tropopause . The average vertical temperature gradient of the troposphere varies 
+between 6° and 7° Celsius per kilometer.
+The concentrations of gas components of the troposphere vary little with height, 
+except for water vapor. The water vapor content of the troposphere comes from evap -
+oration of water from oceans, lakes, rivers, and other water reservoirs. Differential 
+heating of land and ocean surfaces produces vertical and horizontal wind circulations 
+that distribute the water vapor throughout the troposphere. The water vapor content 
+of the troposphere rapidly decreases with height. At an altitude of 1.5 kilometers, the 
+water vapor content is approximately half of the surface content. At the tropopause, 
+the content is only a few thousandths of what it is at the surface.
+In 1922, the Weather Bureau, at the request of the National Advisory Committee for 
+Aeronautics (NACA), prepared a standard atmosphere for scientific and engineering 
+use based primarily on the average conditions over the United States at latitude 40°. 
+In 1925, the computations were extended to 20,000 meters using constants adopted 
+by the NACA. An extension of the standard atmosphere to 120,000 meters was 
+prepared in 1947.
+ch26.indd   2 12/15/07   4:52:49 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	The Propagation Factor, Fp, in the Radar Equation  THE PROPAGATION FACTOR, FP, IN THE RADAR EQUATION  26.36x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 26
+The standard atmosphere is based primarily on the assumption of a linear decrease 
+in temperature with height up to the tropopause and an isothermal layer above. In addi -
+tion, certain other assumptions are
+(a) The air is dry.
+(b) The air is a perfect gas, obeying the Laws of Charles and Boyle.
+(c) Gravity is constant at all altitudes.
+(d) The temperature of the isothermal atmosphere is −55º C.
+(e) The linear decrease of temperature with height is −6.5º C per kilometer.
+The International Commission for Air Navigation (ICAN) uses the 1924 NACA 
+standard atmosphere, with minor modifications, primarily in the value of gravity and 
+the temperature of the isothermal region. For generic radar studies and other radar 
+applications, such as target height calculations for height-finding radars, it is the prop -
+agation through this standard atmosphere that is considered.
+26.3 REFRACTION2
+Index of Refraction.  The term refraction  refers to the property of a medium 
+to bend an electromagnetic wave as it passes through the medium. A measure of the 
+amount of refraction is the index of refraction, n, defined as the velocity, c, of propaga -
+tion in free-space (away from the influence of the Earth or other objects) to the veloc -
+ity, v, in the medium. This is
+ nc
+v= (26.1)
+Refractivity and Modified Refractivity in the Troposphere.  The normal 
+value of the refractive index, n, for the atmosphere near the Earth’s surface varies 
+between 1.000250 and 1.000400. For studies of propagation, the index of refraction 
+is not a very convenient number; therefore, a scaled index of refraction, N, called 
+refractivity , has been defined. At microwave frequencies and below, the relationship 
+between the index of refraction, n, and refractivity, N, for air that contains water vapor 
+is given as
+ N np
+Te
+Ts= − = +×( ). .1 10776 3 73 1 065
+2 (26.2)
+where es is the partial pressure of water vapor in millibars or
+ erh e
+sx
+=6105
+100. (26.3)
+ xT
+TT
+e =−−
+
+ 252227325 312732... log. (26.4)
+p = atmosphere’s barometric pressure in millibars
+T = atmosphere’s absolute temperature in Kelvin
+rh = atmosphere’s relative humidity in percent
+ch26.indd   3 12/15/07   4:52:55 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	The Propagation Factor, Fp, in the Radar Equation 26.4  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 26
+Thus, the atmospheric refractivity near the Earth’s surface would normally vary 
+between 250 and 400 N-units.
+Because the barometric pressure and water vapor content of the atmosphere decrease 
+rapidly with height while the temperature decreases slowly with height, the index of 
+refraction, and therefore refractivity, normally decreases with increasing altitude.
+While a radar engineer may like to consider refraction in terms of N-units because 
+it provides a better physical point of view, an AREPS user may not be a radar engineer 
+but a tactical operator such as a combat pilot. In graphically examining refractive gra -
+dients and their effect upon propagation (such as ducting described in Section 26.5), 
+a modified refractivity, defined as
+ M = N + 0.157 h for altitude h in meters an (26.5)
+ M = N + 0.048 h for altitude h in feet (26.6)
+is used in place of the refractivity. While a graphical N-unit versus height display will 
+show a negative slope (decreasing N-units) with height, a graphical M-unit versus 
+height display will show a change in slope, from positive (increasing M-units) under 
+standard atmospheric conditions to a negative slope (decreasing M-units) under ducting 
+atmospheric conditions. Therefore, a M-unit type display is more readily understood by 
+the tactical radar operator looking for an optimum flight altitude for his attack.
+26.4 STANDARD PROPAGATION2
+Standard propagation mechanisms are those mechanisms and processes that occur in 
+the presence of a standard atmosphere. These propagation mechanisms are standard 
+refraction, free-space propagation, multipath interference (or surface reflection), 
+diffraction, and tropospheric scatter.
+Normal/Standard Refraction.  The refractivity distribution within the atmo -
+sphere is nearly an exponential function of height. The decrease of N with height close 
+to the Earth’s surface (within 1 kilometer) is sufficiently smooth, however, to allow 
+an approximation of the exponential function by a linear function. This linear func -
+tion is known as a standard  gradient and is characterized by a decrease of 39 N-units 
+per kilometer, or an increase of 118 M-units per kilometer. A standard gradient will 
+cause traveling EM waves to bend downward from a straight line. Gradients that cause 
+effects similar to a standard gradient but vary between 0 and −79 N-units per kilometer 
+or between 79 and 157 M-units per kilometer are known as normal  gradients.
+Free-space Propagation.  The simplest case of electromagnetic wave propaga -
+tion is the transmission of a wave between a transmitter and a receiver in free space. 
+Free space is defined as a region whose properties are isotropic, homogeneous, and 
+loss-free, i.e., away from the influences of the Earth’s atmosphere and surface. In free 
+space, the electromagnetic wavefront from an isotropic radiator spreads uniformly in 
+all directions from the transmitter.
+Multipath Interference and Surface Reflection.  When an electromagnetic 
+wave strikes a nearly smooth large surface, such as the ocean, a portion of the energy 
+is reflected from the surface and continues propagating along a path that makes an 
+ch26.indd   4 12/15/07   4:52:56 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	The Propagation Factor, Fp, in the Radar Equation  THE PROPAGATION FACTOR, FP, IN THE RADAR EQUATION  26.56x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 26
+angle with the surface equal 
+to that of the incident wave, 
+as shown in Figure 26.1.
+The strength of the 
+reflected wave is determined 
+by the reflection coefficient, 
+a value that depends upon the 
+frequency and polarization 
+of radiation, the angle of 
+incidence, and the roughness 
+of the reflecting surface.
+For shallow incidence 
+angles and smooth seas, typi -
+cal values of the reflection coefficient are near unity (i.e., the reflected wave is almost 
+as strong as the incidence wave). As the wind speed increases, the ocean surface grows 
+rougher and the reflection coefficient decreases. For a transmitter near the surface, the 
+reflection process results in two paths to a receiver within the line of sight.
+As stated above, upon reflection, a portion of the energy is propagated in the direc -
+tion of initial wave motion. A portion of energy is also reflected backward toward the 
+transmitter. This backward reflected energy is also received by the radar and may inter -
+fere with the radar’s ability to distinguish a desired target. This backward reflected 
+energy is called clutter .
+Not only is the magnitude of the reflected wave reduced, but also the phase of the 
+wave is altered. For horizontally or vertically polarized waves at low grazing angles, 
+the phase change upon reflection is approximately 180°. Whenever two or more wave 
+trains traveling over different paths intersect at a point in space, they are said to inter -
+fere (multipath interference). If two waves arrive at the same point in phase, they 
+constructively interfere, and the electric field strength is greater than either of the two 
+component waves taken alone. If the two waves arrive together out of phase, they 
+destructively interfere, and the resultant field strength is weakened.
+As the geometry of the transmitter and receiver change, the relative lengths of the 
+direct path and reflected path also change, which results in the direct and reflected 
+wave arriving at the receiver in varying amounts of phase difference. The received sig -
+nal strength, which is the vector sum of the signal strengths of the direct and reflected 
+wave, may vary up to 6 dB above and 20 dB or more below the free-space value.
+Diffraction.  Energy tends to follow along the curved surface of an object. The 
+degree of refraction is dependent upon the polarization of the propagating wave and 
+the size of the diffracting object relative to the wavelength. Diffraction is the process 
+by which the direction of propagating radiation is changed so that it spreads into the 
+geometric shadow region of an opaque object that lies in the radiation field. In the 
+earth-atmosphere system, diffraction occurs where the straight-line distance between 
+the transmitter and receiver is just tangent to the Earth’s surface. For a homogeneous 
+atmosphere, this point of tangency with the Earth is referred to as the geometrical  
+horizon. For an inhomogeneous atmosphere (using an effective earth radius) and at 
+radar and optical frequencies, this point of tangency is referred to as the radar  and 
+optical  horizon, respectively.
+The ability of the electromagnetic wave to propagate beyond the horizon by diffrac -
+tion is highly dependent upon frequency. The lower the frequency, the more the wave 
+is diffracted. At microwave radar frequencies, the wavelength is small when compared FIGURE 26.1  Surface reflectionDirect pathReflected path
+ch26.indd   5 12/15/07   4:52:57 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	The Propagation Factor, Fp, in the Radar Equation 26.6  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 26
+to the Earth’s dimensions, and little energy is diffracted. At optical frequencies or 
+very short radar wavelengths, the optical horizon represents the approximate boundary 
+between regions of propagation and no propagation.
+Tropospheric Scatter.  At ranges far beyond the horizon, the propagation loss 
+is dominated by troposcatter. Propagation in the troposcatter region is the result of 
+scattering by small inhomogeneities within the atmosphere’s refractive structure. At 
+radar frequencies, troposcatter is generally not considered for radar range perfor -
+mance. However, troposcatter scattering could be an important consideration in target 
+detection by a receiver not co-located with the radar itself or detection of the radar’s 
+emissions by an Electronic Support Measures (ESM) system.
+26.5 ANOMALOUS PROPAGATION2
+Anomalous or nonstandard wave propagation usually refers to the consideration of 
+nonstandard refraction versus standard refraction. These nonstandard refractive condi -
+tions lead to trans-horizon paths, decreased horizon paths, and distortions in simple 
+surface refection and multipath interference.
+Subrefraction.  If the motions of the atmosphere produce a situation where the 
+temperature and humidity distribution create an increasing value of N with height, 
+the wave path would actually bend upward and the energy would travel away from 
+the Earth. This is termed subrefraction . Although this situation occurs infrequently 
+in nature, it still must be considered when assessing electromagnetic systems’ per -
+formance. For example, an Atlantic coast vessel traffic control radar located near the 
+entrance to the Delaware Bay observed a reduction in detection range from 37 to 
+17 km. Sometimes ships can be seen visually from the radar tower before they can be 
+observed on the radar screen. The reduction in the radar detection range usually lasts 
+several hours and occurs often when fog is present.3
+A subrefractive layer of the troposphere would cause the propagating energy to 
+bend upward or away from the Earth’s surface, thereby leading to decreased detection 
+ranges and shortened radio horizons.
+Subrefractive layers may be found at the Earth’s surface or aloft. In areas where 
+the surface temperature is greater than 30° Celsius, and relative humidities are less 
+than 40% (i.e., large desert and steppe regions), solar heating will produce a very 
+nearly homogeneous surface layer, often several hundreds of meters thick. Because 
+this layer is unstable, the resultant convective processes tend to concentrate any avail -
+able moisture near the top of the layer. This in turn creates a positive N gradient or 
+subrefractive stratum aloft. This layer may retain its subrefractive nature into the early 
+evening hours, especially if a radiation inversion develops, trapping the water vapor 
+between two stable layers.
+For areas with surface temperatures between 10° and 30° Celsius and relative 
+humidities above 60% (i.e., the western Mediterranean, Red Sea, Indonesian Southwest 
+Pacific), surface-based subrefractive layers may develop during the night and early 
+morning hours. These layers are characteristically caused by advection of warm, moist 
+air over a relatively cooler and drier surface. While the N gradient is generally more 
+intense than that described above, the layer is often not as thick. Similar conditions 
+may also be found in regions of warm frontal activity.
+ch26.indd   6 12/15/07   4:52:57 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	The Propagation Factor, Fp, in the Radar Equation  THE PROPAGATION FACTOR, FP, IN THE RADAR EQUATION  26.76x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 26
+Superrefraction.  If the troposphere’s temperature increases with height (tem -
+perature inversion) and/or the water vapor content decreases rapidly with height, the 
+refractivity gradient will decrease from the standard. The propagating wave will be bent 
+downward from a straight line more than normal. As the refractivity gradient continues 
+to decrease, the radius of curvature for the wave path will approach the radius of cur -
+vature for the Earth. The refractivity gradient for which the two radii of curvature are 
+equal is referred to as the critical gradient . At the critical gradient, the wave will propa -
+gate at a fixed height above the ground and will travel parallel to the Earth’s surface. 
+Refraction between the normal and critical gradients is known as superrefraction .
+Superrefractive conditions are largely associated with temperature and humidity 
+variations near the Earth’s surface. Inversions aloft, due to large-scale subsidence will 
+lead to superrefractive layers aloft. Superrefractive layers will lead to an increase of 
+radar detection ranges and extensions of the radio horizon.
+The effects of a superrefractive layer upon a surface-based system are directly 
+related to its height above the Earth’s surface. For airborne systems, the effects of a 
+superrefractive layer depend upon the position of the transmitter and receiver relative 
+to the layer. Both of these factors are related to the electromagnetic wave’s angle of 
+layer penetration. The steeper the penetration angle, the less of an effect the layer will 
+have upon propagation.
+Trapping.  Trapping is an extension of superrefraction because the meteorological 
+conditions for both are the same. Should the refractivity gradient decrease beyond the 
+critical gradient, the radius of curvature for the wave will become smaller than the Earth’s 
+curvature. The wave will either strike the Earth and undergo surface reflection, or enter 
+a region of standard refraction and be refracted back upward, only to reenter the area of 
+refractivity gradient that causes downward refraction. This refractive condition is called 
+trapping because the wave is confined to a narrow region of the troposphere. The common 
+term for this confinement region is a tropospheric duct  or a tropospheric waveguide . It 
+should be noted that a tropospheric waveguide is not a waveguide in the true sense of the 
+word because there are no rigid walls that prevent the escape of energy from the guide.
+The refractivity gradients and their associated refractive conditions are summa -
+rized in Table 26.1.
+Atmospheric Ducts.  A duct is a channel in which electromagnetic energy can 
+propagate over great ranges. To propagate energy within a duct, the angle made by 
+the electromagnetic system’s energy with the duct must be small, usually less than 1°. 
+Thicker ducts, in general, can support trapping for lower frequencies. The vertical 
+distribution of refractivity for a given situation must be considered as well as the geo -
+metrical relationship of transmitter and receiver to the duct in order to assess the duct’s 
+effect at any particular frequency.
+Condition N-Gradient M-Gradient
+Trapping < −157 N/km or <  −48 N/kft < 0 M/km or < 0 M/kft
+Superrefraction −157 to −79 N/km or −48 to −24 N/kft 0 to 79 M/km or 0 to 24 M/kft
+Normal −79 to 0 N/km or −24 to 0 N/kft 79 to 157 M/km or 24 to 48 M/kft
+Standard −39 N/km 118 M/km
+Subrefraction > 0 N/km or > 0 N/kft > 157 M/km or > 48 M/kftTABLE 26.1  Refractive Gradients and Conditions
+ch26.indd   7 12/15/07   4:52:58 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	The Propagation Factor, Fp, in the Radar Equation 26.8  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 26
+A simple relationship between a duct’s thickness and its ability to trap a particular 
+frequency is given by
+ ld
+max.
+.. . = × −
+
+−2 5 10 0 5730 5
+1 5 N
+tt (26.7)
+where lmax is the maximum frequency trapped, dN is the refractive index change 
+across the duct, and t is the duct thickness.4
+In addition to extended radar ranges, atmospheric ducts (and other propagation 
+effects such as multipath interference) have other significant impacts upon radar per -
+formance. These effects may be visualized with the aid of a height versus range graphic 
+available from an assessment system such as AREPS. Such a graphic is shown in 
+Figure 26.2. In this figure, the different shadings correspond to different propagation 
+loss values (defined later as computed by the propagation model). The actual values 
+are immaterial to this illustration as the important features to note are the consequences 
+of ducting. In this figure, one can clearly see the null and lobe structure resulting 
+from multipath interference. While a discussion of ducting conditions upon EM wave 
+propagation is usually concerned with propagation beyond the normal horizon, duct -
+ing can have an effect within the horizon. Ducting can alter the normal lobe pattern 
+caused by the interference of the direct ray and the surface-reflected ray. The relative 
+phase between the direct and reflected path may be changed as well as the relative 
+amplitudes of the two rays. The effect of the duct on the line-of-sight propagation is to 
+reduce the angle of the lowest lobe, bringing it closer to the surface.5
+10000
+8000
+6000Nulls
+Lobe
+Radar hole
+Terrain blockage4000Height (ft)
+2000
+0
+0
+0 110 115 120 125 130 135 1402040
+Skip zone
+Loss{dB}:Range (nmi)60
+80
+100
+FIGURE 26.2  Ducting consequences
+ch26.indd   8 12/15/07   4:53:01 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	The Propagation Factor, Fp, in the Radar Equation  THE PROPAGATION FACTOR, FP, IN THE RADAR EQUATION  26.96x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 26
+Ducts not only give extended radar detection ranges for systems within the duct, 
+but they may also have a dramatic effect upon transmitter/receiver systems that tran -
+scend duct boundaries. For example, an air target that would normally be detected may 
+be missed if the radar is within or just above the duct and the target is just above the 
+duct. This area of reduced coverage is known as a radar hole  or shadow zone .
+Another interesting feature of surface-based ducts is the skip zone near the normal 
+horizon, in which the duct has no influence. It should be noted that the surface duct cre -
+ated from a surface-based trapping layer does not have this skip zone phenomenon.
+Height-finding radars usually determine height from energy path assumptions 
+within a normal environment. Nonstandard refractive conditions as discussed earlier 
+will cause the energy’s path to deviate from these assumptions, resulting in errors in 
+altitude calculations. Figure 26.3 shows the downward deviated path associated with 
+a surface ducting condition compared to the path under normal conditions. It can be 
+seen that actual altitude of the radar target is lower than calculated by the height-
+finding radar. This error could lead to significant tactical consequences in a ship’s 
+self-defense scenario.
+For a practical example of ducting effects, one can read about the “Battle of the 
+Pips.” 6 During the summer of 1942, two U.S. Navy task groups were deployed to 
+remove the Japanese occupation of Attu, Alaska. On the night of July 25th, the USS 
+Mississippi gained radar contact with what was believed to be Japanese fleet units mov -
+ing toward Attu in order to withdraw troops. Radars onboard the USS New Mexico, 
+the USS Portland, and the USS Wichita confirmed the radar contacts. On the orders of 
+Admiral Giffen, the U.S. Navy ships opened fire. The firing continued for about half 
+an hour during which time 518 14-inch shells and 487 8-inch shells were expended. 
+Gun flashes were reportedly seen by the Japanese on Kiska, 80 miles away. Two other 
+ships, the destroyers USS San Francisco and USS Santa Fe, could not gain radar con -
+tact, but they did detect the splashes made by shells hitting the water. Nothing was 
+ever found. When U.S. and Canadian forces landed at Attu on August 15th, they found 
+the island abandoned. The 5,000 Japanese troops had been evacuated under cover of 
+fog and rain on July 28th. Later investigation determined that the Japanese evacuation 
+Actual altitude
+Refractive layer∆H
+FIGURE 26.3  Altitude errors
+ch26.indd   9 12/15/07   4:53:02 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	The Propagation Factor, Fp, in the Radar Equation 26.10  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 26
+ships were 500 nautical miles SW of Kiska during the firing. The radar contacts were 
+actually returns from land that had been ducted over the horizon.
+Several meteorological conditions will lead to the creation of ducts. Where these con -
+ditions exist and what these conditions are determines the name and nature of the duct.
+Surface Ducts.  If the meteorological conditions cause a trapping layer to occur, 
+such that the base of the resultant duct is at the Earth’s surface, a surface duct is 
+formed. There are three types of surface ducts based on the trapping layer’s relation -
+ship to the Earth’s surface. The trapping layer is indicated graphically by the solid 
+black M-unit versus height line where the slope of the line is negative ( M-unit decrease 
+with height).
+The first type of duct is a surface duct created from a surface-based trapping layer. 
+This duct is referred to as a surface  duct and is illustrated in Figure 26.4. The dotted 
+line in the figure shows the vertical dimension of the duct from bottom to top. The 
+second type of surface duct is created from an elevated trapping layer. This duct is 
+commonly referred to as a surface-based  duct and is illustrated in Figure 26.5. Note the 
+duct, identified by the dashed line, contains the trapping layer and “normal” gradient 
+layer below. The third type of surface duct is one created by a rapid decrease of relative 
+humidity immediately adjacent to the air-sea interface. This duct is referred to as an 
+evaporation  duct. Because the evaporation duct is of great importance for over-water 
+EM propagation, it warrants a detailed discussion. This discussion appears in its own 
+section below.
+Surface-based ducts occur when the air aloft is exceptionally warm and dry com -
+pared with the air at the Earth’s surface. Several meteorological conditions may lead 
+to the formation of surface-based ducts.
+Over the ocean and near land masses, warm, dry continental air may be advected 
+over the cooler water surface. Examples of this type of advection are the Santa Ana 
+of southern California, the Sirocco of the southern Mediterranean, and the Shamal of 
+the Persian Gulf. This advection will lead to a temperature inversion at the surface. In 
+addition, moisture is added to the air by evaporation, producing a moisture gradient to 
+strengthen the trapping gradient. This type of meteorological condition routinely leads 
+to a surface duct created by a surface-based trapping condition. However, as you travel 
+from the coastal environment into the open ocean, this trapping layer may well rise 
+from the surface, thereby creating the surface-based duct. Surface-based ducts tend 
+FIGURE 26.4  Surface ductTrapping layer
+Surface
+duct
+Modified refractivityHeight
+ch26.indd   10 12/15/07   4:53:03 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	The Propagation Factor, Fp, in the Radar Equation  THE PROPAGATION FACTOR, FP, IN THE RADAR EQUATION  26.116x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 26
+to be on the leeward side of land masses and may occur both during the day and at 
+night. In addition, surface-based ducts may extend over the ocean for several hundred 
+kilometers and may be very persistent (lasting for days).
+Another method of producing surface-based ducting conditions is by divergence 
+(spreading out) of relatively cool air under a thunderstorm. While this method may not 
+be as frequent as the other methods, it may still enhance surface propagation during 
+the thunderstorm activity, usually on the order of a few hours.
+With the exception of thunderstorm conditions, surface-based ducting is associ -
+ated with fair weather and with increased occurrence of surface-based ducts during 
+the warmer months and in more equatorial latitudes. Any time the troposphere is well 
+mixed, such as with frontal activity or with high wind conditions, surface-based duct -
+ing is decreased.
+Evaporation Ducts.  A change in the moisture distribution without an accom -
+panying temperature change can also lead to a trapping refractivity gradient. The air 
+in contact with the ocean’s surface is saturated with water vapor. A few meters above 
+the surface the air is not usually saturated, so there is a decrease of water vapor pres -
+sure from the surface to some value well above the surface. The rapid decrease of 
+water vapor initially causes the modified refractivity, M, to decrease with height, but 
+at greater heights the water vapor distribution will cause M to reach a minimum and, 
+thereafter, increase with height. The height at which M reaches a minimum is called 
+the evaporation duct height , as illustrated in Figure 26.6.
+Evaporation ducts exist over the ocean, to some degree, almost all the time. The 
+duct height varies from a meter or two in northern latitudes during winter nights to as 
+much as 40 meters in equatorial latitudes during summer days. On a world average, 
+the evaporation duct height is approximately 13 meters. It should be emphasized that 
+the evaporation duct “height” is not a height below which an antenna must be located 
+in order to have extended propagation but a value that relates to the duct’s strength 
+or its ability to trap radiation. The duct strength is also a function of wind velocity. 
+For unstable atmospheric conditions (conditions where a cooler layer of air overlies 
+a warmer layer of air), stronger winds generally result in stronger signal strengths 
+(or less propagation loss) than do weaker winds.Trapping layer
+Surface-based
+duct
+Modified refractivityHeight
+FIGURE 26.5  Surface-based duct
+ch26.indd   11 12/15/07   4:53:04 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	The Propagation Factor, Fp, in the Radar Equation 26.12  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 26
+Because the evaporation duct is much weaker than the surface-based duct, its abil -
+ity to trap energy is highly dependent on frequency. Generally, the evaporation duct is 
+only strong enough to affect electromagnetic systems above 3000 MHz.
+For surface ducting conditions, the vertical extent of the duct is sufficient to allow for 
+its measurement using an ascending radiosonde, a descending rocketsonde, or a micro -
+wave refractometer onboard some sort of air vehicle. However, for an evaporation duct, 
+it is not the vertical extent of the duct that is important but the refractive gradient within 
+the duct. Changes of refractive gradients over vertical heights less than a few millimeters 
+may have a significant impact upon the duct’s trapping ability. Thus, assessment of the 
+evaporation duct is best performed by making surface meteorological measurements and 
+inferring the duct height from the meteorological processes occurring at the air/sea inter -
+face and not from direct measurements using the traditional radiosonde, rocketsonde, or 
+microwave refractometer. With the advent of newer, high-resolution sondes that may be 
+lowered to the surface from a ship, the impression is given that the evaporation duct may 
+be measured directly. For practical applications, however, this impression is false and a 
+direct measurement should not be attempted. Due to the turbulent nature of the tropo -
+sphere at the ocean surface, a refractivity profile measured at one time would most likely 
+not be the same as one measured at another time, even when the two measurements are 
+seconds apart. Therefore, any measured profile would not be representative of the average 
+evaporation ducting conditions, the conditions that an assessment system must consider.
+Elevated Ducts.  If meteorological conditions cause a trapping layer to occur 
+aloft, such that the base of the duct occurs above the Earth’s surface, the duct is 
+referred to as an elevated duct, as illustrated in Figure 26.7. Note again the advantage 
+of showing M-unit gradients versus N-unit gradients. From Figure 26.7, it can be seen 
+that the duct extends from the top of the trapping layer downward until it intersects 
+with the M-unit line where the M-unit at the top of the duct is the same as the M-unit 
+at the bottom of the duct (illustrated by the dashed line).
+Great semipermanent surface high-pressure systems, centered at approximately 30° 
+north and south latitude, cover the ocean areas of the world. Poleward of these systems 
+lay the mid-latitude westerly winds, and equatorward lay the tropical easterlies or the 
+trade winds. Within these high-pressure systems, large-scale subsidence of air causes 
+heating as the air undergoes compression. This leads to a layer of warm, dry air overlay -
+ing a cool, moist layer of air (often called the marine boundary layer ).FIGURE 26.6  Evaporation ductEvaporation
+duct height
+Evaporation
+duct
+Modified refractivityHeight
+ch26.indd   12 12/15/07   4:53:05 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	The Propagation Factor, Fp, in the Radar Equation  THE PROPAGATION FACTOR, FP, IN THE RADAR EQUATION  26.136x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 26
+The resultant inversion is referred to as the tradewind inversion and may create a 
+strong ducting condition at the top of the marine boundary layer. Elevated ducts may 
+vary from a few hundred meters above the surface at the eastern part of the tropical 
+oceans to several thousand meters at the western part. For example, along the southern 
+California coast, elevated ducts occur an average of 40% of the time, with an average 
+top elevation of 600 meters. Along the coast of Japan, elevated ducts occur an average 
+of 10% of the time, with an average top elevation of 1500 meters.
+It should be noted that the meteorological conditions necessary for a surface-based 
+duct are the same as those for an elevated duct. In fact, a surface-based duct may slope 
+upward to become an elevated duct as warm, dry continental air glides over cool, moist 
+marine air. The tradewind inversion may also intensify, thereby turning an elevated 
+duct into a surface-based duct.
+26.6 PROPAGATION MODELING2,7
+Radio wave modeling is important for a number of reasons, all of which could be 
+summarized into two large categories of engineering studies and operational perfor -
+mance. For engineering studies, the effects of propagation may be considered in new 
+system design or in the evaluation of long-term performance of existing systems. For 
+operational performance, consideration of propagation effects is usually based upon 
+a single measured or forecasted atmosphere such that these effects can be exploited 
+or mitigated by altering the system’s use tactics. Over the years, many propagation 
+models have been developed to account for the effects important to a particular appli -
+cation. These models span the spectrum of very fast executing but with low fidelity 
+(simplified modeling of or the complete ignoring of certain propagation mechanisms) 
+to relatively slow executing but with high fidelity (physically rigorous modeling of 
+and full inclusion of all propagation mechanisms).
+Spherical Spreading or Free-space Propagation Model.  The simplest propaga -
+tion model is spherical spreading where the transmitter and receiver are far removed FIGURE 26.7  Elevated ductTrapping layer
+Elevated
+duct
+Modified refractivityHeight
+ch26.indd   13 12/15/07   4:53:06 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	The Propagation Factor, Fp, in the Radar Equation 26.14  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 26
+from the Earth’s surface and the atmosphere, i.e., free space. Free space is defined as a 
+region whose properties are isotropic, homogeneous, and loss-free. Spherical spreading 
+models only consider the increasing surface area of a sphere centered on the transmitter 
+and radiating out uniformly in all directions. The field strength at any point is inversely 
+proportional to the square of the range between transmitter and the point. This is called 
+free-space path loss . The power density, Pa , over a sphere at any point in free space is
+ PP G
+rat t=
+
+422
+p( / ) W m  (26.8)
+where Pt is the power radiated by the transmitter, r is the radius of the sphere, and Gt is 
+the transmitting antenna’s gain. For a loss-free, isotropic antenna, the gain is unity.
+In free space, the power density at a loss-free, isotropic receiving antenna is the 
+power density over the entire sphere’s surface times the area of the sphere covered 
+by the receiver antenna, also called the antenna’s effective aperture, Ae. The effective 
+aperture is related to the wavelength ( l) of radiation by
+ AG
+e=l
+p2
+4 (26.9)
+Thus, the power at the receiver, Pr , for isotropic radiating and receiving antennas 
+(Gt = Gr = 1) is
+ P P AP
+rr a et= =l
+p2
+24( ) (26.10)
+The free-space path loss, Lfs, expressed in terms of the sphere’s radius, r, and wave -
+length,  l, where r and l are in the same units is
+ LP
+Prt
+rfs=
+
+=
+
+ 10 104
+10 102
+2log l og( )p
+l (26.11)
+Free-space path loss, Lfs, expressed in terms of range and frequency (in decibels) 
+is given by
+ L f rfs= + + 3245 20 20 . l og( ) log( ) (26.12)
+where f  is frequency in MHz and r is the distance between the transmitter and receiver 
+in kilometers. Free space is included in many modeling applications as a reference for 
+other propagation effects.
+If nonisotropic antenna radiational patterns are considered within the loss calcula -
+tions, the loss is referred to as a propagation loss rather than a path loss. The propaga -
+tion loss can be described with the aid of the propagation factor ( F), which is defined 
+as the ratio of the actual field strength at a point in space to the field strength that would 
+exist at the same range under free-space conditions, with the beam of the transmitter 
+directed toward the point in question. Symbolically this is
+ FE
+Eo=| |
+| | (26.13)
+where Eo is the magnitude of the electric field under free-space conditions and E is the 
+magnitude of the field to be investigated at the same point.
+ch26.indd   14 12/15/07   4:53:25 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	The Propagation Factor, Fp, in the Radar Equation  THE PROPAGATION FACTOR, FP, IN THE RADAR EQUATION  26.156x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 26
+The propagation factor is a desirable quantity since it is an identifiable parameter in 
+most radar equations. As stated earlier, it also contains all the information necessary to 
+account for natural environmental effects. Thus, if the functional form of F is known, 
+then the propagation loss at any point can be determined because the calculation of the 
+free-space field is quite simple. The propagation loss, including antenna parameters, 
+is equivalent to
+ L L F = −fs2010log ( ) (26.14)
+Effective-earth-radius Model.  Since the majority of human activity takes place 
+within the Earth’s atmosphere, the free-space propagation model is usually inadequate 
+for propagation assessment applications, and other propagation mechanisms need con -
+sideration. Under standard or normal atmospheric conditions, the radio ray curves 
+downward with a curvature less than the Earth’s surface. The effective-earth-radius 
+concept8 replaces the Earth’s true radius with a larger radius such that the relative 
+curvature between the ray and the Earth’s surface is maintained, and the ray becomes 
+a straight line. The effective-earth-radius, ae, and the actual-earth-radius, a, are related 
+by an effective-earth-radius factor, k, such that
+ a k ae= (26.15)
+k may be computed using
+ ka dn dh=+1
+1[ ( )] (26.16)
+where dn/dh is the vertical refractive index gradient. Using the mean-earth-radius of 
+6371 kilometers and a refractivity gradient of –39 N/km gives a k of 1.33 or about 4/3.
+In addition to the consideration of refraction, other standard propagation mech -
+anisms such as multipath interference, diffraction, troposcatter, and terrain may be 
+included. Among the general class of effective-earth-radius models are the Standard 
+Propagation Model ( F-Factor),2 the Terrain Integrated Rough Earth Model (TIREM),8 
+the Irregular Terrain Model (ITM) also known as Longley-Rice,9 and the Spherical 
+Earth Knife Edge (SEKE).10
+While these effective-earth-radius models are of the same nature, they do not 
+implement the various propagation mechanisms equally. For example, the F-factor 
+model properly implements multipath propagation for over-water surfaces whereas the 
+TIREM model is based upon knife edge diffraction techniques, making the TIREM 
+model inappropriate for over-water applications. Again, while troposcatter may be 
+unimportant for active radar applications, its effects need to be included for applica -
+tions of radar intercept by other sensors.
+Waveguide Models.  As engineering requirements demanded greater and greater 
+fidelity, other modeling techniques were developed. One such modeling technique is 
+using normal mode theory to compute field strength under standard or nonstandard 
+refractive conditions. This class of models is referred to as waveguide models. The use 
+of waveguide models dates back to the early 1900s when they were used to explain the 
+propagation of long wavelength radio waves around the surface of the Earth in a wave -
+guide formed by the Earth and the ionosphere. A description of waveguide models is 
+beyond the scope of this chapter but may be found in a publication by Budden.11
+ch26.indd   15 12/15/07   4:53:29 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	The Propagation Factor, Fp, in the Radar Equation 26.16  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 26
+While waveguide models are most useful for conditions where the vertical refractiv -
+ity profile does not change along the propagation path (homogeneous environments), 
+they can be applied to inhomogeneous environments by breaking the waveguide up 
+into slabs in a technique known as mode conversion . While successful, this technique 
+is less computationally efficient than other modeling techniques, and hence, wave -
+guide models are not generally used for assessment systems requiring rapid execution 
+times. Waveguide models serve as “laboratory benchmark” models against which the 
+results of other modeling techniques can be compared. One such waveguide model is 
+the MLAYER, derived from the original works of Baumgartner.12
+Parabolic Equation Models.  In 1946, Fock13 used the parabolic equation (PE) 
+method to describe electromagnetic propagation in a vertically stratified troposphere. 
+In 1973, Hardin and Tappert14 developed an efficient practical solution called the split-
+step Fourier method based upon fast Fourier transforms (FFTs) that has been widely 
+applied to ocean acoustic propagation problems. The PE method and its solution by the 
+split-step Fourier technique provides a very robust model for complicated refractivity 
+structures; for within, near, and beyond the horizon effects; and is particularly good for 
+propagation over irregular terrain. Thus, PE models allow for a single model assess -
+ment in many important applications. Three such PE models are the Terrain Parabolic 
+Equation Model (TPEM),15 the Tropospheric Electromagnetic Parabolic Equation 
+Routine (TEMPER),16 and the Variable Terrain Radio Parabolic Equation (VTRPE).17
+Hybrid Models.  While PE models are very attractive, they also have their disad -
+vantages. Probably the biggest disadvantage is that they require very large computer 
+resources, both in terms of memory and execution times, particularly for applications 
+involving combinations of high frequencies, high elevation angles, high terminals, 
+and long ranges. In some cases, this computational burden can be reduced by combin -
+ing the best features of the various other models in a hybrid model. Once such model 
+is the Advanced Propagation Model (APM) described by Barrios.18 In APM, the PE 
+model is combined with various ray optics and other phenomena models to create a 
+hybrid model that can be up to 100 times faster than a PE model for stressful cases. 
+Three other hybrid models are Radio Physical Optics (RPO),19 TERPEM authored by 
+Signal Science Limited,20 and a hybrid method for computing transmission losses in 
+an inhomogeneous atmosphere over irregular terrain by Marcus.21
+Within APM, the assessment space is divided into four regions, or submodels, as 
+illustrated in Figure 26.8. At ranges less than 2500 m and for all elevation angles 
+above 5°, APM uses a flat earth (FE) model that ignores refraction and earth curvature 
+effects. For ranges beyond the FE region where the grazing angles of reflected rays 
+from the transmitter exceed a small limiting value, a full ray optic (RO) model is used 
+that accounts for the effects of refraction and earth curvature. The PE model is used 
+for ranges beyond the RO region, but only for altitudes below a maximum PE alti -
+tude determined by a maximum fast Fourier transform (FFT) size allowed. For ranges 
+beyond the RO region and above the PE region, an extended optics (XO) method is 
+used that is initialized by the PE model at the maximum PE altitude and uses ray optics 
+methods to propagate the signal to higher altitudes. Continuity of the solutions across 
+each region’s boundaries is kept less than 0.1 dB by careful selection of the limiting 
+RO grazing angle and the maximum PE propagation angle.
+The propagation models within APM have also been combined with other envi -
+ronmental effects models, such as gaseous absorption and surface clutter, to form 
+a complete propagation package. The physical propagation phenomena considered  
+by APM version 2.0.01 are illustrated in Table 26.2. As can be seen from the table, 
+ch26.indd   16 12/15/07   4:53:29 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	The Propagation Factor, Fp, in the Radar Equation  THE PROPAGATION FACTOR, FP, IN THE RADAR EQUATION  26.176x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 26
+APM considers almost every environmental effect, making it a highly desirable model 
+for use in complex assessment systems.TABLE 26.2  Propagation Effects Modeled by APM
+Propagation Eff ects
+Mechanisms
+Range-dependent
+refractiv e conditions
+Variable terrain
+Multi-path
+Diffraction
+Terrain masking
+Troposcatter
+Rough (Sea) surf ace
+HF surf ace wave
+Range-dependent
+dielectr ics
+Obstacle gain
+Surface clutter
+Gaseous abosr ption
+Rain attenuation
+VegetationDue To Environment APM
+2.0.01 Sea Terrain Atmosphere
+FIGURE 26.8  APM submodel regionsFlat Ear th
+(FE)
+Ray Optics
+(RO)
+Extended Optics
+(XO)
+Parabolic Equation
+(PE)
+RangeHeight
+ch26.indd   17 12/15/07   4:53:30 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	The Propagation Factor, Fp, in the Radar Equation 26.18  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 26
+26.7 EM SYSTEM ASSESSMENT PROGRAMS
+Using the power of the personal computer in conjunction with the maturity of 
+EM system and environmental propagation modeling, assessment programs and 
+associated software allow a user to define and manipulate refractivity and other 
+natural environment data, run propagation models on that data, and display the 
+results in terms of expected performance on actual or proposed electromagnetic 
+systems. While there are several assessment systems in use within the U.S. and in 
+various other countries, the following discussion is limited to AREPS. It is used 
+extensively throughout the U.S. Department of Defense (DoD) and other federal 
+government agencies, U.S. private industry, their foreign counterparts, and by 
+private individuals.
+AREPS grew out of an urgent military operational requirement for radar perfor -
+mance and propagation modeling within a terrain effects dominated environment. 
+The assessment system requirements included modeling all natural environmental 
+effects, being quickly executable, and executing on a Microsoft Windows operating 
+system personal computer. An evaluation of the various propagation models for their 
+strengths and weaknesses quickly showed that a hybrid model was the only accept -
+able solution. The AREPS graphical user interface was created and interfaced to the 
+APM to provide the user an end-to-end radar propagation assessment tool. Because 
+EM propagation effects are not just limited to radar frequencies, over time the initial 
+radar requirements for AREPS were expanded beyond simple radar detection appli -
+cations to include applications in communications and electronic warfare. AREPS is 
+the only approved EM system assessment application within the Department of the 
+Navy Chief Information Officer DON Applications & Database Management System 
+(DADMS). APM is the only accredited (by the Chief of Naval Operations) EM propa -
+gation (2 MHz to 57 GHz) model for use in Navy systems. Both AREPS and APM are 
+accredited within the Navy Modeling and Simulation Office (NMSO). AREPS is also 
+a North Atlantic Treaty Organization (NATO) application, approved by the Military 
+Committee Meteorological Group/Working Group, Battle Area Meteorological 
+Systems and Support plus with Partners.
+AREPS version 3.6 contains several EM propagation models for applications at 
+various frequencies. For frequencies of 2 MHz to 57 GHz, AREPS uses the APM. For 
+HF sky wave communications, AREPS uses an HF modeling suite,22 consisting of a 
+fully 3D ionosphere ray trace model, an HF field strength model, and an HF noise 
+model. In addition to these EM propagation models, AREPS may optionally use two 
+internationally recognized ionosphere models, the Parameterized Ionospheric Model 
+(PIM)23 and the International Reference Ionosphere (IRI).24 In addition to the propaga -
+tion models, AREPS contains a system performance radar model, which is discussed 
+in the next section.
+AREPS considers range- and azimuth angle–dependent influences from surface 
+features to include terrain elevation, finite conductivity, dielectric ground constants, 
+and scattering effectiveness factors. The terrain elevation data may be obtained from 
+the National Geospatial-Intelligence Agency’s (NGA) Digital Terrain Elevation 
+Data (DTED) or from any other suitable source. The finite conductivity and dielec -
+tric ground constants may be selected from those defined by the International 
+Telecommunication Union, International Radio Consultative Committee (CCIR),25 
+or from any other suitable source.
+ch26.indd   18 12/15/07   4:53:30 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	The Propagation Factor, Fp, in the Radar Equation  THE PROPAGATION FACTOR, FP, IN THE RADAR EQUATION  26.196x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 26
+AREPS considers range- and azimuth angle–dependent atmospheric refractivity 
+data derived from the upper-air observations of radiosondes, other sensors, or meso -
+scale meteorological models such as the U.S. Navy Coupled Ocean/Atmosphere 
+Mesoscale Prediction System (COAMPS).26 Radiosonde data may be manually 
+entered or automatically decoded from either the World Meteorological Organization 
+(WMO) observational message format or a free-form column format, obtained from 
+a number of different data sources. In addition, climatological refractive condi -
+tions may be selected from a 921 WMO station, worldwide reporting database. For 
+ocean reporting stations or numerical weather prediction grid points over the ocean, 
+AREPS automatically calculates an evaporation duct refractive profile and appends 
+it to the bottom of the upper-air observation for a complete description of the propa -
+gation environment.
+AREPS computes and displays a number of EM system performance assessment 
+tactical decision aids. These are radar probability of detection, ESM vulnerability, LF 
+to EHF communications, simultaneous radar detection and ESM vulnerability, and 
+surface-search detection ranges. All decision aids are displayed as functions of range, 
+azimuth angle, and/or height. Detection probability, ESM vulnerability, and communi -
+cations assessments are based on EM system parameters stored in a user-defined and 
+changeable database. In addition to normal radar parameters, a user may completely 
+define the antenna radiation pattern to account for sidelobe considerations. The data -
+base also includes radar target descriptions and platforms’ EM emitter suites.
+Figure 26.9 is an illustration of an AREPS four-panel display. This display was 
+created in support of U.S. homeland defense for the February 5, 2006, Super Bowl 
+XL. The Super Bowl XL (Roman numeral for 40) is a championship football game 
+FIGURE 26.9  AREPS homeland defense application
+ch26.indd   19 12/15/07   4:53:31 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	The Propagation Factor, Fp, in the Radar Equation 26.20  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 26
+played in the United States. It was attended by over 60,000 people, all confined in 
+one sporting event stadium, which presented a significant target for a terrorism attack. 
+The display shows a radar probability of detection in a range versus height depiction, 
+radar probability of detection versus range at a constant altitude depiction, and radar 
+probability of detection versus height at a constant range depiction. This display is 
+courtesy of the 84th Radar Evaluation Squadron, Hill Air Force Base, Utah. The radar 
+depicted is the ARSR-1E (U.S. Air Route Surveillance Radar) located at Canton, 
+Michigan. The target of interest is a small private aircraft.
+As the personal computer version of AREPS developed, it also transitioned into an 
+application called the Naval Integrated Tactical Environmental Subsystem (NITES), a 
+segment of the Global Command and Control System - Maritime (GCCS-M). In NITES, 
+the AREPS functionality of the personal computer was coded in Java and interfaced 
+to the Common Operating Picture (COP). The COP is a real-time display of tactical 
+information and current force positioning. Thus, a radar assessment provided by AREPS 
+may be displayed as a tactical overlay upon the operating picture. Figure 26.10 is an 
+illustration of such a COP display. In this illustration, the radar coverage of three coastal 
+surveillance radars is shown along with the traditional height versus range coverage 
+display typical of the personal computer version of AREPS.
+As the Navy progressed into web-based applications, the display of AREPS 
+tactical decision aids followed suit. One such web-based application is the Navy’s 
+Composable ForceNet, an application similar in nature to the GCCS-M. Figure 26.11 
+is an illustration of the Composable ForceNet application. For this illustration, the 
+background for the Composable ForceNet COP is a hypothetical ocean and island 
+operation area. The symbology (such as the small circles, squares, and half circles), 
+represent the disposition of various forces such as ships and, aircraft. The multiple 
+elliptical and fan-shaped shaded areas correspond to a certain radar probability of 
+detection of various targets by various operational radars. For example, the small fan-
+shaped shaded area in the upper-right corner of the display represents the area where 
+a ground-based radar would be able to detect (with a certain probability of detection) 
+a particular aircraft target.
+An optional capability of AREPS is to provide to an external application, the com -
+puted radar probability of detection, propagation loss, or propagation factor, to an exter -
+nal application. Thus, a tactical application developer need not have knowledge of the 
+underlying radar propagation modeling techniques or other environmental consider -
+ations but can rely upon AREPS to “serve up” data for display within his or her own 
+application. Such an application is the Simulation and Display System (SIMDIS™), 
+authored by the Naval Research Laboratory, Washington DC.27 Figure 26.12 is an illus -
+tration of AREPS-computed data displayed three-dimensionally within SIMDIS™. In 
+this figure, the view is looking northward within the byte of Southern California. The 
+eastern terrain of San Clemente Island shows in the middle left of the figure. From 
+this current view, a ship with a particular air-search radar is located beyond (north) of 
+the island. The darkened fan-shaped area extending upward over the island represents 
+the radar’s probability of detection of a certain target as the radar sweeps southward 
+over the island. For a target located in the forefront of the island and at a sufficiently 
+low altitude, the display shows the target is not detectable by the radar as the target is 
+masked by the intervening terrain.
+ch26.indd   20 12/15/07   4:53:32 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	The Propagation Factor, Fp, in the Radar Equation  THE PROPAGATION FACTOR, FP, IN THE RADAR EQUATION  26.216x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 26
+FIGURE 26.10  AREPS display upon the COP within NITES
+ch26.indd   21 12/15/07   4:53:32 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	The Propagation Factor, Fp, in the Radar Equation 26.22  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 26
+FIGURE 26.11  AREPS computations display upon the Composable ForceNet COP
+ch26.indd   22 12/15/07   4:53:33 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	The Propagation Factor, Fp, in the Radar Equation  THE PROPAGATION FACTOR, FP, IN THE RADAR EQUATION  26.236x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 26
+26.8 AREPS RADAR SYSTEM  
+ASSESSMENT MODEL
+The main purpose of AREPS is to offer radar operators the ability to visualize their 
+radar’s detection of threat targets or their own platform’s detection by threat radars 
+under various natural environmental conditions. The primary visualization is a height 
+versus range display of radar probability of detection, where the radar probability of 
+detection expressed in percent corresponds to certain energy levels in height and range 
+from the radar. APM computes propagation loss in dB. To make a determination of 
+radar performance, AREPS needs to make a comparison of free-space propagation 
+loss and propagation loss within the Earth’s environment as computed by APM. Thus, 
+AREPS contains a fairly simplistic pulsed-radar model to calculate free-space propaga -
+tion loss from radar system parameters such as frequency, pulse length, etc. The models 
+to do this calculation are taken from Blake28 and are fully described within the AREPS 
+online help and the AREPS operator’s manual. Thus, AREPS’ radar system assessment 
+model will not be repeated here. The intent of this section is to show the necessary radar 
+system and radar target inputs needed by the AREPS program. These inputs are shown 
+in Figures 26.13 and 26.14. For a complete description of each input parameter, you 
+may refer to the AREPS online help or the AREPS operator’s manual.FIGURE 26.12  AREPS computations display within SIMDIS showing radar probability of detection of a 
+small target under the influence of terrain-masking effects
+ch26.indd   23 12/15/07   4:53:33 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	The Propagation Factor, Fp, in the Radar Equation 26.24  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 26
+To assist the AREPS user, these and other input windows have many “canned” 
+default values combined with many unit options. One example is the transmitting 
+antenna pattern. APM will consider the full antenna pattern of the transmitting antenna. 
+FIGURE 26.13  AREPS radar window
+FIGURE 26.14  AREPS target window
+ch26.indd   24 12/15/07   4:53:34 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	The Propagation Factor, Fp, in the Radar Equation  THE PROPAGATION FACTOR, FP, IN THE RADAR EQUATION  26.256x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 26
+AREPS provides some basic “canned” antenna patterns such as omni, SinX/X, cose -
+cant-squared, and a generic height-finder. With a user-specified antenna type, the opera -
+tor may enter the pattern angle and factor directly. In addition to entering the antenna 
+pattern directly from the keyboard, AREPS also provides the capability of importing 
+an antenna pattern from an ASCII text file that you may have created from another 
+application. An example of multiple units is the transmitter’s peak power. The default 
+unit for peak power is Kilowatts. By right-clicking on the label associated with peak 
+power, you may select other units of input. AREPS will even convert the input number 
+automatically from one unit to the other unit.
+26.9 AREPS RADAR DISPLAYS
+By default, the results of the propagation model calculations are shown in terms appro -
+priate for a tactical radar operator, i.e., a height versus range display of radar probability 
+of detection as a percentage, as illustrated in Figure 26.15. This display is referred to 
+as a tactical decision aid because it will allow the radar operator to make some sort of 
+tactical decision. For example, superimposed on this tactical decision aid is the flight 
+profile of a target missile (the solid line sloping downward to the origin from right to 
+left). The atmospheric environment is surface-based ducting. The nondetection skip-
+zone is clearly seen in addition to the target’s flight pattern, allowing the operator to see 
+how the probability of detection of the target will vary with range and height. With this 
+knowledge, a decision about when to attempt an attack on the missile can be made.
+FIGURE 26.15  AREPS height versus range coverage for surface-search radar and small missile target—
+probability of detection
+ch26.indd   25 12/15/07   4:53:34 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	The Propagation Factor, Fp, in the Radar Equation 26.26  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 26
+For radar engineers, a display such as that shown in Figure 26.15 will most likely 
+not be very useful since propagation factor, Fp, is the desired quantity for the radar 
+range equation and not the propagation loss as computed by APM. However, there is a 
+simple relationship between propagation loss and propagation factor . This is
+ F L Lp= −fs dB (26.17)
+where  Lfs is the free-space propagation loss given by Eq. 26.12 and LdB is the propaga -
+tion loss in dB as computed by APM. As a convenience for the radar engineer, AREPS 
+will also display the APM output in terms of propagation factor. Thus, Figure 26.15 
+displayed in terms of radar probability of detection as a percentage will appear as 
+shown in Figure 26.16 when displayed in terms of propagation factor .
+In addition to the default height versus range display, AREPS contains many other 
+display and data output options. For example, Figure 26.17 shows (for the same missile 
+detection example) a signal-to-noise ratio versus range display superimposed with a clutter-  
+to-noise ratio computed from an 8 meter-per-second wind speed. The display altitude is 
+100 feet above sea-level. One can see the effects of multipath interference between a range 
+of 0 and about 20 nautical miles. Beyond the multipath interference region, one can see a 
+major fall off of signal-to-noise and clutter-to-noise ratio comes within the surface-based 
+duct skip-zone between about 20 nautical miles and 50 nautical miles. Note, however, the 
+increase in ratios for ranges beyond the skip-zone. In fact, it is even seen that for ranges 
+between 55 and 65 nautical miles, the clutter-to-noise ratio exceeds the signal-to-noise 
+ratio. Thus for these ranges, the radar return is overwhelmed with clutter.
+FIGURE 26.16  AREPS height versus range coverage for surface-search radar and small missile target—
+propagation factor
+ch26.indd   26 12/15/07   4:53:36 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	The Propagation Factor, Fp, in the Radar Equation  THE PROPAGATION FACTOR, FP, IN THE RADAR EQUATION  26.276x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 26
+While a graphic may be useful for visual inspections, it may not be useful for an 
+engineering analysis task. AREPS has many other data display features. For example, 
+the propagation factor values as shown in Figure 26.16 may also be exported in a 
+number of different text formats for use in other engineering applications.
+REFERENCES
+ 1. W. L. Patterson, “Advanced refractive effects prediction system,” Space and Naval Warfare 
+Systems Center TD 3101, January 2000. AREPS may be freely obtained at http://areps  
+.spawar.navy.mil.
+ 2. W. L. Patterson et al., “Engineer’s Refractive Effects Prediction System (EREPS),” Naval 
+Command, Control, and Ocean Surveillance Center TD 2648, May 1994.
+ 3. E. Brookner, “Radar performance during propagation fades in the Mid-Atlantic region,” IEEE 
+Transactions on Antennas and Propagation , vol. 46, No. 7, July 1998.
+ 4. M. P. M. Hall, “Effects of the troposphere on radio communications,” London: Institution of 
+Electrical Engineers, 1979, p. 30.
+ 5. K. D. Anderson, “Radar detection of low-altitude targets in a maritime environment,” IEEE 
+Transactions on Antennas and Propagation , vol. 43. no. 6, June 1995.
+ 6. S. E. Morison, “Aleutians, Gilberts and Marshalls, June 1942–April 1944. History of United States 
+Naval Operations in World War II, V olume VII,” Military Affairs , vol. 15, no. 4, pp. 217–218, 1951.
+ 7. H. V . Hitney, “Refractive effects from VHF to EHF, part B: propagation models,” Advisory Group 
+for Aerospace Research & Development, AGARD-LS-196, pp. 4A1–4A13, September 1994.
+ 8. J. R. Powell, “Terrain Integrated Rough Earth Model (TIREM),” Rep. TN-83-002, Electromagnetic 
+Compatibility Analysis Center, Annapolis, MD, September 1983.
+ 9. A. G. Longley and P. L. Rice, “Predictions of troposphere radio transmission loss over irregular 
+terrain: A computer method,” Environmental Science Services Administration Tech. Rep. ERL 
+70-ITS 76, U.S. Govt. Printing Office, Washington, DC, 1968.
+10. S. Ayasli, “SEKE: A computer model for low altitude radar propagation over irregular terrain,” 
+IEEE Transactions on Antennas and Propagation , vol. AP-34, no. 8, August 1986.FIGURE 26.17  AREPS signal-to-noise ratio versus range for surface-search radar and small missile 
+target—clutter-to-noise ratio superimposedFree-space range re ference100
+60
+0 20
+APM computed S/N ratio
+APM computed clutter to noise ratio40 60
+Range (nmi)Height = 100.0ft
+Signal to noise (dB)
+80 10020
+−20
+−60
+−100Skip-z one signal f alloff
+ch26.indd   27 12/15/07   4:53:37 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	The Propagation Factor, Fp, in the Radar Equation 26.28  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 26
+11. K. G. Budden, The Wave-Guide Mode Theory of Wave Propagation , Inglewood Cliffs,  
+NJ: Prentice-Hall, Inc., 1961. Also London: Logos Press, 1961.
+12. G. B. Baumgartner, “XWVG: A waveguide program for trilinear tropospheric ducts,” Naval 
+Ocean Systems Center TD 610, June 1983.
+13. V . A. Fock, Electromagnetic Diffraction and Propagation Problems , New York: Pergamon, 1965.
+14. R. H. Hardin and F. D. Tappert, “Application of the split-step Fourier method to the numerical 
+solution of nonlinear and variable coefficient wave equations,” SIAM Rev., 15, 2, p. 423, 1972.
+15. A. E. Barrios, “A Terrain Parabolic Equation Model for Propagation in the Troposphere,” IEEE 
+Transactions on Antennas and Propagation , vol. 42, no. 1, pp.90–98, January 1994.
+16. G. D. Dockery, “Modeling electromagnetic wave propagation in troposphere using the para -
+bolic equation,” IEEE Transactions on Antennas and Propagation , vol. 36, pp. 1464–1470, 
+October 1988.
+17. F. J. Ryan, “Analysis of electromagnetic propagation over variable terrain using the parabolic 
+wave equation,” Naval Ocean Systems Center TR-1453, October 1991.
+18. A. E. Barrios, “Advanced Propagation Model (APM) Computer Software Configuration Item 
+(CSCI),” Space and Naval Warfare Systems Center TD 3145, August 2002.
+19. H. V . Hitney, “Hybrid ray optics and parabolic equation methods for radar propagation modeling,” 
+in Radar 92 , IEE Conf. Pub. vol. 365, October 12–13, 1992, pp. 58–61.
+20. Ken Craig and Mireille Levy, http://www.signalscience.com.
+21. S. W. Markus, “A hybrid (Finite Difference-surface Green’s Function) method for computing 
+transmission losses in an inhomogeneous atmosphere over irregular terrain,” IEEE Transactions 
+on Antennas and Propagation , vol. 40. no.12, p. 1451–1458.
+22. R. B. Rose, “Advanced prophet HF assessment system,” Naval Ocean Systems Center, San Diego, 
+January 1984.
+23. R. E. Daniel, Jr., L. D. Brown, D. N. Anderson, M. W. Fox, P. H. Doherty, D. T. Decker, J. J. Sojka, 
+and R. W. Schunk, “Parameterized ionospheric model: A global ionospheric parameterization 
+based on first principal models,” Radio Science , vol. 30, pp. 1499–1510, 1995.
+24. K. Rawer, S. Ramakrishnan, and D. Bilitza, “International reference ionosphere 1978,” 
+International Union of Radio Science, URSI Special Report, pp. 75, Bruxelles, Belgium, 1978.
+25. “Propagation in Non-ionized Media,” International Telecommunication Union, International 
+Radio Consultative Committee (CCIR), vol. V , Report 879-1, p 82.
+26. “U.S. Navy Coupled Ocean/Atmosphere Mesoscale Prediction System (COAMPS),” Naval 
+Research Laboratory, Marine Meteorology Division, NRL Publication 7500-03-448, May 2003.
+27. Naval Research Laboratory, Washington, DC, https://simdis.nrl.navy.mil, simdis@enews.nrl  
+.navy.mil.
+28. L. V. Blake, Radar Range Performance Analysis , Lexington, MA: Lexington Books, D.C. 
+Heath and Co., 1980.
+ch26.indd   28 12/15/07   4:53:37 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	The Propagation Factor, Fp, in the Radar Equation 

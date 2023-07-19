@@ -1,0 +1,1569 @@
+22.16x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 22
+Civil Marine Radar
+Andy Norris
+22.1 INTRODUCTION
+In terms of the number of systems in worldwide use, civil marine radar (CMR) is the 
+largest radar market of all time. The number of vessels of all types currently fitted 
+with radar probably amounts to around 3 million, but there are no official records to 
+verify this estimate.
+CMR breaks down into two main application areas. The vast majority are used at 
+sea and on navigable waterways by ships and smaller craft; the others are used by port 
+and coastal authorities for vessel surveillance from land-based sites. The latter group 
+are normally known as vessel tracking service (VTS†) radars. Radars are available for 
+leisure craft, fishing vessels and merchant ships, and all operate either in the 3 GHz 
+or 9 GHz bands. Many navies also use standard or specially modified CMR for navi -
+gational purposes. Not only does it provide a suitable navigational tool but also its 
+transmissions are identical to conventional commercial traffic, allowing safe naviga -
+tion without necessarily highlighting a vessel’s military purpose.
+The biggest influence on the requirements of shipborne CMR comes from the 
+International Maritime Organization1 (IMO). A United Nations agency based in 
+London, IMO is concerned with international maritime safety and the protection of 
+the marine environment. In particular, IMO issues requirements and guidelines on the 
+installation and use of radar equipment on commercial ships. These are vigorously 
+enforced by the laws of individual maritime states. The purpose of shipborne radar, as 
+defined by IMO, is to “assist in safe navigation and in avoiding collision by providing 
+an indication, in relation to own ship, of the position of other surface craft, obstruc -
+tions and hazards, navigation objects and shorelines.”2 The International Association 
+of Marine Aids to Navigation and Lighthouse Authorities3 (IALA) recommends oper -
+ational and technical requirements for VTS radars.
+This chapter explains the special requirements of CMR, both from a practical and 
+a regulatory point of view, and looks at the technology and system concepts that are 
+being used to meet these requirements. Until the first decade of the present century, 
+CMR shipborne technology had been solely based on magnetrons as the basic source 
+of transmitted power. Since 2004, IMO has encouraged the use of coherent radar solu -
+tions in an attempt to improve the detection of targets in heavy sea clutter conditions.  Chapter 22
+†  A list of all used maritime abbreviations is included at the end of the chapter.
+ch22.indd   1 12/17/07   3:02:29 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Source: RADAR HANDBOOK 22.2  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 22
+In the marine world, these have been called New Technology Radars . They are per -
+mitted to transmit any waveform at 3 GHz, providing the spectrum limitations on 
+marine radar are not exceeded.4 The limits have been agreed within the International 
+Telecommunication Union5 (ITU), a United Nations agency based in Geneva.
+This chapter concentrates on the requirements and design of radars for commer -
+cial ships normally in excess of 300 gt (gross metric tonnage), where radar fitment 
+is compulsory and highly regulated. Worldwide, there are about 50,000 of these ves -
+sels, and many are required to carry more than one radar. Three or even more radars 
+are sometimes carried voluntarily by large ships. Radar forms an important part of a 
+vessel’s total navigation equipment fit. Increasingly, the bridge of a ship is designed 
+as an integrated concept, covering navigation, communications, engine control, and 
+cargo monitoring facilities. Figure 22.1 illustrates a modern integrated bridge system  
+(IBS) as fitted on a cruise ship. The radar displays are seen to form a prominent part of 
+the system. Radars fitted on smaller fishing vessels and leisure craft share many of the 
+features of radars designed for ships but are necessarily more compact; a typical small 
+boat radar is shown in Figure 22.2. Specific requirements for these radars, where they 
+differ to any extent from the design of shipborne radars, are discussed within relevant 
+parts of the chapter. Radar for VTS is separately covered in Section 22.10.
+The challenges facing designers of shipborne radar are detailed within Section 22.2. 
+These radars have to meet certain international standards, which are discussed in 
+Section 22.3. Section 22.4 concentrates on the technology, and Section 22.5 looks at 
+target tracking. Radar targets are being increasingly displayed with electronic chart 
+data as an underlay. This is outlined in Section 22.6, together with other user interface 
+issues. Section 22.7 looks at the links between radar and the relatively new Automatic 
+Identification System  (AIS), which replicates some functions previously provided solely 
+by radar. Marine radar beacons, including racons, Search and Rescue Transponders  
+(SARTs), and Radar Target Enhancers  (RTEs), are described in Section 22.8. There is 
+a short discussion in Section 22.9 on shipborne radar performance validation testing. 
+FIGURE 22.1  Ship’s integrated bridge system ( Courtesy of SAM-Electronics GmbH ) 
+ch22.indd   2 12/17/07   3:02:29 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Civil Marine Radar  CIVIL MARINE RADAR  22.36x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 22
+Shipborne radar has had a remarkably long history. Its conception in the period from 
+1945 to 1948 was remarkably prophetic and still reverberates into the present century. 
+For this reason, a short Appendix to this chapter outlines the early steps in the evolu -
+tion of global standards for shipborne radar.
+22.2 THE CHALLENGES
+Environmental.  Civil marine radar, particularly shipborne navigation radar, is a 
+surprisingly demanding application. The radar head on a CMR comprises the antenna 
+and turning gear, the receiver down to IF or to digital format and often the transmitter. 
+It has to operate in extreme environmental conditions over an extended temperature 
+range (down to −40°C in some parts of the world); in high levels of wind, vibration, 
+and shock; and also in heavy precipitation and salt water spray. Even within the nor -
+mally benign conditions on the bridge of a large modern ship, the display and radar 
+processor can be subject to high levels of shock and vibration and must meet high 
+variations in temperature ( −15°C to +55°C). On small craft, the display and radar pro -
+cessor are often fitted in minimally enclosed areas and are subject to very damp and 
+salty conditions. In these environments, the radar has to detect targets that can have 
+echoing areas ranging from less than one square meter to many tens of thousands of 
+square meters; important targets can have relative speeds ranging from stationary to 
+100 knots or more; the targets can be situated in extreme precipitation and sea clutter 
+conditions; and the radar antenna is not mounted on a static nor a stable platform. The 
+radar is used to prevent collisions and groundings at sea and is, therefore, an important 
+safety related system, requiring integrity and reliability. For most commercial ships, 
+the radar needs to meet stringent, internationally agreed performance criteria. Despite 
+these requirements, systems are sold in a highly competitive market and prices are, 
+therefore, kept keen. Prices range from around $10,000 for a complete but basic 9 GHz 
+system to $40,000 and above for a fully featured 3 GHz system. Radar systems suit -
+able for the leisure market can sell for less than $1,500.
+FIGURE 22.2  Small boat radar ( Courtesy Furuno USA, Inc. )
+ch22.indd   3 12/17/07   3:02:29 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Civil Marine Radar 22.4  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 22
+Detection Performance.  In-the-clear detection requirements for such radars are 
+not particularly demanding. An 80% probability of detection and a probability of false 
+alarm of 10–4 is specified by IMO, as shown in Table 22.1.2
+Taking into account all performance requirements, typical compliant systems for 
+commercial vessels have peak transmit powers of 4 – 60 kW, the lower powers being 
+confined to 9 GHz systems. Antenna gains from 28 to 33 dB are typical, with associ -
+ated horizontal beamwidths ranging from about 2.5° to less than 1°. Pulse lengths are 
+switchable, generally in the range from 50 ns to 1 µs, with PRFs ranging from 350 to 
+3,000 Hz or more. Pleasure craft systems typically have peak powers of 2 – 4 kW and 
+utilize antennas with horizontal apertures as small as 450 mm and gains of about 24 dB. 
+These all operate at 9 GHz. The greatest technical challenge in designing marine radars 
+is to maintain good target detection in high levels of sea and precipitation clutter.
+Precipitation Clutter.  It is well known that circular polarization (CP) can be a 
+counter to rain clutter because its reflection is predominately cross-polarized to inci -
+dent circular polarization. However, very few shipborne navigational radars use CP, 
+even though 10–20 dB improvement in rain clutter rejection is typically achieved 
+from its application. Two important factors have contributed to this. First, it makes 
+the antenna more expensive, exacerbated by IMO’s requirements that 9 GHz radars 
+must be at least switchable to horizontal polarization when searching for survival craft 
+fitted with Search and Rescue Transponders (see Section 22.8). Second, by use of 
+small range cells and by implementing conventional signal differentiation techniques, 
+modern radars, particularly at 3 GHz, give reasonable performance in most commonly 
+experienced precipitation clutter. Therefore, users and maritime authorities are gener -
+ally satisfied with the performance of linearly polarized systems in precipitation.Target DescriptionTarget 
+FeatureDetection Range in NM
+(for specified target size)
+Target TypeHeight Above 
+Sea Level 
+(meters) 9 GHz NM 3 GHz NM
+Shorelines Rising to 60 20 20 Distributed
+Shorelines Rising to 6  8  8
+Shorelines Rising to 3  6  6
+SOLAS ships † (> 5,000 gt) 10 11 11 Complex
+SOLAS ships † (> 500 gt)  5.0  8  8
+Small vessel with radar 
+reflector meeting IMO 
+performance standards 4.0  5.0 (7.5 m2) 3.7 (0.5 m2)Point
+Small vessel of length 10 m 
+with no radar reflector 2.0  3.4 (2.5 m2) 3.0 (1.4 m2)Complex
+Typical navigation buoy  3.5  4.6 (5.0 m2) 3.0 (0.5 m2)Not specified, point 
+target assumed
+Navigation buoy with 
+corner reflector 3.5  4.9 (10 m2) 3. 6 (1.0 m2)Point
+Typical channel marker  1.0  2.0 (1.0 m2) 1.0 (0.1 m2)Not specified, point 
+target assumed
+† Ships conforming to the IMO Safety of Life at Sea (SOLAS9) regulationsTABLE 22.1  IMO Required Detection Performance in Clear Conditions ( Courtesy of IMO )
+ch22.indd   4 12/17/07   3:02:30 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Civil Marine Radar  CIVIL MARINE RADAR  22.56x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 22
+Because precipitation clutter is distributed in a relatively uniform manner, passing 
+the received waveform through a differentiator gives prominence to targets embedded 
+within the clutter by ensuring that the average clutter level is kept well below satura -
+tion. The differentiator has minimal effect on normal targets because of their small 
+extent in the time domain. This means that target visibility is improved. It should be 
+noted that this technique does not give subclutter visibility. This process is convention -
+ally named Fast Time Constant  (FTC). The time constant of the differentiator is opera -
+tor-adjustable with a so-called rain clutter control, which allows the target-to-clutter 
+ratio to be optimized for the particular precipitation scenario.
+The vertical pattern of a shipborne navigational radar antenna needs to be rela -
+tively wide to cope with the ship’s pitch and roll, which is assumed to be a maximum 
+of ±10°. (Use of a stabilized platform would not meet the market’s price demands.) 
+This limits the vertical beam-shaping that can be used to reduce both precipitation 
+clutter and vertical lobing effects. However, the relatively short range of most targets 
+of real interest means that the volume of the radar-illuminated precipitation is rela -
+tively low, helping to make the clutter rejection of the differentiator adequate for its 
+purpose. Such clutter varies approximately with the fourth power of frequency, and 
+so a 3 GHz system inherently experiences 19 dB less clutter than a 9 GHz system, 
+assuming identically sized clutter cells. For this reason, on ships fitted with both 
+3 and 9 GHz radars, the 3 GHz radar is often preferable, except when maneuvering 
+in close situations, for example, in harbors when the normally superior azimuth 
+resolution of a 9 GHz radar is preferred.
+Sea Clutter.  The reduction of sea clutter to levels acceptable to the user is a 
+far more difficult problem, and as yet, commercial radars do not meet all the ideal 
+demands of users. Small craft and buoys can easily be obscured in sea clutter. In 
+the days before precise Global Navigation Satellite Systems  (GNSS), such as GPS, 
+the safe navigation of a ship in coastal waters in poor visibility was dominated  
+by the radar being able to discern navigation markers, such as buoys. Passive markers,  
+including those supplemented by radar reflectors, can be notoriously difficult to 
+detect in higher sea-states, and therefore, some markers are supplemented by radar 
+beacons (called racons—see Section 22.8). Racons are relatively expensive and 
+need maintenance in often difficult to access locations, so their use is restricted. 
+While GNSS, enhanced by the growing use of electronic charts, has helped greatly 
+in informing mariners of the precise position of their vessel, radar is still used as an 
+important secondary source of position. Reliance on GNSS alone has been at the 
+root of many marine accidents.
+The main use of marine radar is to assist collision avoidance. Visual observa -
+tion and radar remain the primary methods for determining the risk of collision with 
+other vessels and also with floating debris and ice. Automatic Identification Systems 
+(AIS—see Section 22.7) offer potential to assist with collision avoidance of coopera -
+tive targets, but it cannot be assumed that all vessels are fitted with AIS, particularly 
+small craft, or that a target vessel’s AIS is operational.
+The traditional way for mariners to optimize their radar for detection of targets in sea 
+clutter is by careful adjustment of the “gain” and “sea-clutter” controls. The gain con -
+trol effectively alters the detection threshold. On a modern marine radar, the sea-clutter 
+control is best described as a method for adjusting the shape of the radar’s sensitivity 
+time control  (STC) in order to match it with the present level of clutter returns. STC is 
+often also called swept gain . The STC law, and the way it varies by use of the manual 
+control, can be complex. It is attempting to reduce the dynamic range of the received 
+waveform and to provide, in association with the gain settings, optimized thresholds. 
+ch22.indd   5 12/17/07   3:02:30 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Civil Marine Radar 22.6  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 22
+Nowadays, it normally involves sophisticated adaptive thresholding techniques, which 
+are discussed in Section 22.4.
+Although this helps to set the threshold to appropriate levels, it does not remove 
+the intrusive “spiky” component of sea clutter that can make wanted targets difficult to 
+observe. However, over a typical antenna scan time of a marine radar (2–3 seconds), the 
+spikes are normally decorrelated, whereas returns from targets are generally correlated—
+therefore, the application of scan-to-scan correlation can improve the target-to-clutter 
+ratio, but it will also remove weak and fast-moving targets. Many years ago, Croney6 
+showed that significant improvements in detecting small targets in sea clutter could be 
+obtained by ensuring that integration was performed at intervals longer than the decor -
+relation time period of the sea clutter. He used an antenna rotating at up to 600 rpm and 
+a PRF of 5 KHz. This gave two correlated pulses per beamwidth, but the pulses from the 
+next scan, 0.1 s later, were decorrelated from the former.
+Crony noted that the rapid scanning of the antenna allowed the eye/brain func -
+tions of the operator to perform scan-to-scan correlation. Although it is easy for mod -
+ern systems to perform this correlation digitally, the difficulties in having an antenna 
+rotating at this speed (mainly now a cost issue) have prevented this from becoming 
+established practice. However, more recent work in Canada has resurrected this idea 
+for detecting floating ice hazards, where antenna rotation rates of 500 rpm and PRFs 
+of 12 KHz have been proposed.7 Terma A/S, a Danish company involved in supplying 
+high performance marine radars, mainly in the noncommercial market, produces the 
+ScanterTM radar, which has an option that simultaneously transmits on two frequen -
+cies from a squinting slotted waveguide array. This produces two beams separated by 
+a few degrees in azimuth. The temporal beam separation is such that sea clutter can be 
+decorrelated between the beams, further enhancing the detection of targets in clutter. 
+This technique could potentially be used by solid-state CMRs. (Section 22.4).
+On a conventional shipborne radar, an experienced operator can manually set the 
+detection threshold to give the best setting over any given area, but this is often only 
+effective over a small proportion of the total radar image. The use of automatic thresh -
+olding is able to give better detection over a complete scan but often cannot compete 
+with a skilled operator optimizing detection over a restricted area. In some conditions, 
+no existing radar gives the performance that a user ideally needs, despite the use of 
+50 ns pulses and sophisticated clutter processing technology.
+Sub-clutter visibility is potentially obtainable from coherent CMRs, which have 
+been made affordable by the continued reduction in cost of microwave power semicon -
+ductors (for instance, using Gallium Nitride technology), precision digitally controlled 
+signal generators, and fast digital signal processors. Coherent CMRs are discussed 
+under “Solid-state CMR” in Section 22.4.
+Vertical Lobing.  Clutter is not the only cause of detrimental performance of 
+marine radar. Direct reflections from a target arrive at the radar antenna and combine 
+vectorially with target reflections that have also been reflected by the sea’s surface. 
+This effect produces a summed signal at the radar antenna that is a function of both the 
+target height and the radar antenna height above the sea, as these affect the path length 
+difference of the direct and reflected radiation. Obviously, the effect is reciprocal for 
+both transmit and receive paths. For a point target and a sea of defined roughness, the 
+calculation to determine the resultant effect is relatively straightforward and results 
+in the classic lobing pattern (see, for example, Briggs8). For a target with reasonable 
+vertical extent, such as a ship, the lobing structure becomes very complex and is less 
+likely to produce troublesome nulls. However, the detection of a small target, such as 
+ch22.indd   6 12/17/07   3:02:31 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Civil Marine Radar  CIVIL MARINE RADAR  22.76x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 22
+a buoy or a pleasure craft, enhanced by a radar reflector can create significant vertical 
+lobing effects that can be a problem to the user. In particular, in very calm seas pro -
+nounced nulls can be experienced, and for users, it can be disconcerting when a target 
+clearly evident from the bridge window is not visible on the radar display, despite the 
+apparently good conditions.
+Since smooth seas can also be associated with mist and fog, vertical lobing effects 
+can become a significant problem because the reduced visibility means that radar often 
+becomes the sole method of detecting other vessels. The absence of sea clutter gives 
+the user a false sense of security that all targets will be easily visible. On ships fitted 
+with both 3 and 9 GHz radars, frequency diversity becomes very useful as the spatial 
+frequencies of the vertical lobes for the radar are different. Surprisingly, even though 
+some radar companies provide the option, very few ships have facilities that allow 
+the 3- and 9 GHz signals to be combined into a single radar display in an automatic 
+process, maximizing the benefits of frequency diversity. Some large ships have an 
+additional 9 GHz radar mounted on the bow at deck level. This has two advantages. 
+First, the vertical lobing will have a different (lower) angular frequency to the main, 
+high-mounted 9 GHz radar. Second, its performance in sea clutter will be enhanced, as 
+the grazing angle to the sea will be closer to horizontal, thereby lessening the reflection 
+coefficient of the clutter. The long range performance of the auxiliary system is, of 
+course, compromised by its low position.
+Moving Platform.  A particular complication of shipborne radar arises because 
+the antenna is mounted on an unstable moving platform. This movement has six 
+components—three translational and three rotational, all of which are typically varying. 
+The motions are complex; the translational components are surge, sway, and heave, and 
+the rotational are roll, pitch, and yaw. Components can be quasi-harmonic when caused 
+by wave motion. In practice, the ship is navigated on notions based on course, heading, 
+and speed in Earth and sea-fixed coordinate systems. The additional wave-induced 
+motions can produce uncompensated errors in radar-derived information, which add 
+to any measurement errors in the course, heading, and speed of the vessel. This affects 
+the precision obtained when displaying radar-derived data, which can differ when 
+switching between the various radar stabilization modes used on CMR. For instance, 
+in order to facilitate both collision avoidance and position fixing activities, shipborne 
+radar displays have always had two particular stabilization modes: Head-up and North-
+up. The “up” direction refers to the vertical ( y-axis) direction of the radar display; 
+“Head” refers to the ship’s heading. Head-up maximizes the relationship to the visual 
+scene, and North-up aids comparison with paper charts. Nowadays, Course-up is also 
+provided, as this eliminates small oscillations in the radar image due to the ship’s yaw 
+that occur when the display is set to Head-up. Each of these directional modes can be 
+set with target tracking vectors shown as relative to the motion of the ship, the ground, 
+or the average sea motion.
+22.3 INTERNATIONAL STANDARDS
+Spectrum use aspects of all radars, including frequency band of use and RF emission 
+constraints, are controlled by the ITU.5 Following ITU requirements, marine radars 
+are permitted to operate in the 9.3 to 9.5 GHz band (X band) and in the 2.9 to 3.1 GHz 
+band (S band).
+ch22.indd   7 12/17/07   3:02:31 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Civil Marine Radar 22.8  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 22
+The IMO International Convention for the Safety of Life at Sea (SOLAS)9 is an 
+established and accepted set of principles and rules aimed at ensuring that ships meet 
+certain requirements to enhance both safety and protection of the environment. The 
+member governments (flag States) of IMO have agreed that SOLAS requirements 
+are embodied within their national maritime laws and regulations. Within Chapter V 
+of SOLAS - Safety of Navigation , the requirements for the carriage of navigation 
+equipment are defined. These vary according to the size and purpose of a ship. All 
+passenger ships and all ships above 300 gt need to carry at least one radar with 
+tracking facilities.
+Footnotes within Chapter V of SOLAS identify the recommended IMO perfor -
+mance standards with which the equipment should conform. IMO has had recom -
+mended radar performance standards2 since 1971, published as annexes to IMO 
+Resolutions. However, by 1980, radar manufacturers were reporting difficulties 
+because differing interpretations by national maritime administrations meant that 
+radars had to be specifically designed to meet individual flag State requirements. 
+The level of technical detail required to remedy this was outside the remit of IMO, 
+and it was agreed that a Technical Committee (TC80) within the International 
+Electrotechnical Commission10 (IEC) would determine technically based interpreta -
+tions of IMO radar performance standards. In addition, it was agreed that the IEC 
+standards would include test procedures, which could be used by national maritime 
+administrations (such as the Coast Guard in the United States of America) to test for 
+conformance of specific designs by manufacturers to IMO and ITU requirements. 
+Today, virtually all national administrations use IEC standards to assess radar and 
+most other IMO-defined navigational and radiocommunications equipment.
+IMO performance standards and the SOLAS Convention are regularly revised, so it 
+is important to check the current status of the standards. IEC 6238811 defines the tech -
+nical and test standards based on the IMO radar performance standards. IEC standards 
+also undergo regular revision. An average radar installation has a life normally exceed -
+ing 10 years, so radars designed and approved to previous standards will continue to be 
+used for some years after new standards have been put in place. Retrofitted equipment 
+must meet the latest standards.
+IMO radar performance standards previous to those in force on 1 July 2008 
+require compatibility with existing racons (radar beacons) and at 9 GHz, Search 
+and Rescue Transponders. This implies the continued use of short pulse radars. 
+However, for the 2008 standards, IMO has encouraged improvements in sea clut -
+ter performance by dropping the need for racon compatibility at 3 GHz, thereby 
+allowing other forms of modulation that would enable affordable coherent pro -
+cessing techniques. Because all ships above 300 gt need to carry at least a single 
+9 GHz radar, it means that racon (and SART) detection capability is maintained. 
+This approach gives IMO an indefinite period to assess the impact of the new regu -
+lations on the detection of targets in sea clutter before deciding what should happen 
+with radar, racons, and SARTs at 9 GHz.
+Another major change in the requirements of older standards is that all new radars 
+must include provision to display Automatic Identification System (AIS) targets and 
+that their related information can be accessed on the radar display. The requirements 
+for target tracking has also had a major revision, with automatic tracking facilities 
+being required for all radars. The integration of electronic chart data as a background 
+to radar images is also embodied within IMO standards. Radars with this optional 
+facility are known as Chart Radars .
+ch22.indd   8 12/17/07   3:02:31 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Civil Marine Radar  CIVIL MARINE RADAR  22.96x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 22
+The minimum detection performance required in clear conditions is tabulated in 
+Table 22.1. Measurements of range have to be within 30 meters accuracy (or within 
+1% of the maximum range scale in use) and within 1° bearing (azimuth angle). 
+Navigational buoys with the characteristics given in Table 22.1 have to be detectable 
+at a minimum range of 40 meters. Two “point” targets on the same bearing have to 
+appear as two distinct targets if they are separated by more than 40 meters in range. A 
+2.5° azimuth resolution is also required. All these performance figures are considered 
+to be peak errors, which can be assumed to mean 95% values, measured with stan -
+dardized point targets. The IMO performance standards recognize that the detection 
+performance of radars working within conditions of clutter will not necessarily give 
+the performance defined for clear conditions. Manufacturers are required to provide 
+effective manual and automatic anti-clutter functions and must specify the expected 
+degradation in rain at 4 mm and 16 mm per hour and for sea states 2 and 5, including 
+combinations of sea and rain clutter.
+Radars designed for conventional vessels need to operate with relative speeds 
+up to 100 kt. For high-speed craft, such as multi-hull fast ferries, the radars need to 
+operate with relative target speeds up to 140 kt. Older standards required a minimum 
+antenna rotation rate of 20 rpm, but this explicit requirement has been omitted from 
+the new standards as other dependent requirements are adequately specified, such 
+as the maximum relative speed of targets and tracking accuracies. The IMO perfor -
+mance standards specify that radar equipment should meet the environmental require -
+ments and test procedures defined within IEC 60945.12 This is a comprehensive set of 
+requirements that are applicable to all ships’ navigational and radio communications 
+equipment. They cover such aspects as temperature, shock, vibration, corrosion, and 
+resistance to water and oil ingress. Detailed requirements on electromagnetic emis -
+sions and immunity to the electromagnetic environment are mandated. IEC 60945 also 
+specifies general requirements on ergonomics, software development, and safety. A 
+further set of IEC standards contained within the IEC 61162 series,13 define the mes -
+sages used for navigation and radiocommunications equipment to interchange digital 
+data. A shipborne radar is likely to be receiving messages from many items of naviga -
+tion equipment, such as AIS, GPS, gyrocompass, log, and echo sounder, and is also 
+likely to be communicating track information to electronic chart systems and possibly 
+other radar displays.
+A number of manufacturers produce radars specifically designed to be used on 
+vessels using the world’s major inland waterways. These are known as river radars . 
+They are epitomized by their superior short-range performance and by having a dis -
+play in “portrait” format in order to get maximum look-ahead along the waterway. 
+The maximum display range on the shortest scale is typically 150 meters. These 
+radars are normally designed to meet requirements for radars on vessels navigating 
+the River Rhine.14
+Radars for the fishing and leisure markets are not covered by SOLAS. Until 2004, 
+such radars did not have an internationally recognized standard for manufacturers to 
+follow. IEC 6225215 is now the agreed international radar standard for “craft not in 
+compliance with IMO SOLAS Chapter V” and was initially issued at the instigation 
+of manufacturers. Now an increasing number of national maritime administrations 
+are insisting that all new small craft radars sold in their jurisdiction conform to this 
+standard. IEC 62252 recognizes three classes of radar. Class A is intended for com -
+mercial craft under 150 gt; Class B is for recreational craft; and Class C is for small 
+recreational craft. The main performance requirements are detailed in Table 22.2.
+ch22.indd   9 12/17/07   3:02:32 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Civil Marine Radar 22.10  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 22
+22.4 TECHNOLOGY
+Antennas.  Antenna maximum sidelobes are specified for SOLAS and non-
+SOLAS radars in IEC 6238811 and IEC 62252,15 respectively. These are summarized 
+in Table 22.3.
+On non-SOLAS radars, the antenna rotation rate is specified to be not less than 20 rpm 
+but is not directly specified for SOLAS-approved radars. In practice, antennas for existing 
+shipborne radars normally rotate at 25–30 rpm; on high-speed craft, the rotation rate is 
+typically 40–45 rpm. For SOLAS vessels, the antenna must be able to start and operate in 
+relative wind speeds up to 100 kt; other environmental requirements for the antenna system 
+are detailed in IEC 60945,12 where there are specific tests for “exposed” equipment.
+There are no explicit requirements on other antenna parameters for SOLAS-
+approved systems, such as beamwidths and gain, but these obviously need to be com -
+patible with the total radar performance requirement. For instance, azimuth resolution 
+has to be better than 2.5°; target bearing has to be determined to within 1°; and the 
+system must operate in conditions when the ship is rolling and pitching ±10°. Typical 
+antenna gains and beamwidths have been outlined in Section 22.2.
+From the 1960s onwards, the use of a slotted waveguide linear array, mounted in 
+a linear flared horn has been the most common antenna solution for shipborne radars. 
+Because at least horizontal polarization has to be provided on 9 GHz SOLAS radars, 
+slotted array solutions generally have their slots cut into the narrow wall of the horizon -
+tally mounted waveguide. A vertical slot (perpendicular to the waveguide edge) couples 
+no power, but as the slot is increasingly angled, more power is coupled out. The slots 
+are normally of a resonant length (half-wavelength) to couple out sufficient power. This 
+extends the slot into the broad wall of the waveguide, but it also makes them easier to 
+construct—conceptually by a sawing action into the narrow wall. Residual power at the 
+end of the array (typically less than 5%) is dissipated into a matched load. Conventionally, 
+the array is end-fed, although center-fed alternatives are sometimes used.Class BeamwidthMinimum 
+Display SizeCoast-Line 
+Detection Range Point Target Detection Range
+Rising  
+to 60 mRising  
+to 6 m400 m2
+7.5 m ht10 m2
+3.5 m ht5 m2
+3.5 m ht
+A ≤ 4.0° ≥ 150 mm 9 nm 5 nm 5 nm 2 nm 1 nm
+B ≤ 5.5°  ≥ 85 mm 5 nm 3 nm 3 nm 1 nm N/A
+C ≤ 7.5°  ≥ 75 mm 5 nm 3 nm 3 nm 1 nm N/ATABLE 22.2  Radar Performance Requirements for Small Craft ( Courtesy of IEC )*
+Radar ClassMaximum Sidelobe Level (dB)
+Within ±10° Within ±10°
+SOLAS –23 –30
+Non-SOLAS Class A –20 –23
+Non-SOLAS Classes B & C –18 –19TABLE 22.3  Antenna Sidelobe Performance Requirements ( Courtesy of IEC )
+*  IEC 62252 ed.1.0 Copyright © 2004 IEC, Geneva, Switzerland. www.iec.ch.
+ch22.indd   10 12/17/07   3:02:32 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Civil Marine Radar  CIVIL MARINE RADAR  22.116x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 22
+If slots were spaced at the guide wavelength in an attempt to get an equi-phase 
+wavefront at the antenna face, then large grating lobes would be generated in the far-
+field pattern. This would occur because they would be spaced at a free-space distance 
+of more than one wavelength. To overcome this, slots are spaced at nominally half 
+the guide wavelength but are angled alternately to the vertical in order to induce the 
+necessary phase reversals. In practice, the slots are placed slightly away from half 
+the guide wavelength spacing to avoid slot-generated mismatches in the waveguide 
+becoming resonant. This creates a tilted phase front across the array, which causes the 
+beam to squint to an angle that is frequency dependent. Individual manufacturers pro -
+duce radar systems operating over a restricted band, much less than the overall radar 
+band, which removes any need for individual squint compensation when magnetrons 
+are replaced. The required sidelobe performance is not demanding (Table 22.3), and 
+so simple aperture distributions, such as pedestal-based cosine squared, are common. 
+The small vertically polarized fields produced by each slanted slot need to be sup -
+pressed as they can otherwise lead to high cross-polarized sidelobes from the array, 
+exacerbated by the phase reversal of the cross-polar component from slot to slot, caus -
+ing cross-polar grating lobes. This can be achieved with a printed polarization filter in 
+front of the array or by effectively creating, as part of the structure, a short length of 
+open-ended waveguide in front of each slot, with dimensions that make it below cutoff 
+for vertical polarization.
+Slot characterization is normally performed by measurement, rather than by 
+detailed electromagnetic analysis. This allows all construction details, including those 
+required for polarization filtering, to be incorporated into the slot characterization; 
+sufficient accuracy is difficult to achieve using numerical analysis. Provided the char -
+acterization is done carefully and good manufacturing techniques can guarantee toler -
+ances, it is reasonably straightforward to produce affordable antennas that meet IMO 
+requirements. The required vertical beamwidth is normally obtained by a linear flare. 
+The flare angle is chosen such that it creates a reasonably phase-constant vertical dis -
+tribution at its aperture. The vertical amplitude distribution approximates to a cosine 
+because of the horizontally polarized field. Vertical beamwidths are typically about 
+25° wide at the 3 dB points.
+Not unnaturally, cost, for a given performance, is the prime driver in the system 
+designer’s choice of antenna. While the conventional slotted linear array is widely 
+used, there are examples where different cost tradeoffs have been made. For instance, 
+the use of a dielectric block mounted directly in front of the slotted waveguide array, 
+in place of the flared section, has been used as an alternative. The leaking energy from 
+the top and bottom faces of the dielectric block adds with energy emerging from its 
+front face, giving forward gain. It is the depth dimension of the dielectric block that 
+determines the gain, somewhat analogous to the length of a Yagi antenna. This effect 
+reduces the height of the antenna compared to a conventional design by about a factor 
+of three, typically from about 300 mm to 100 mm at 3 GHz. This means that there is 
+considerably less wind-loading. The dielectric constant of the block can be quite low, 
+which, with the reduced wind-loading, results in a very lightweight structure. This 
+saves costs in the antenna turning gear and makes the installation easier. An example 
+of this type of antenna, produced by Kelvin Hughes, is illustrated in Figure 22.3.
+Small craft radars have used printed arrays for some years, as well as slotted 
+waveguide arrays. Small, horn-fed parabolic reflector systems have also been used. 
+Antennas for small craft are normally housed within a radome, which protects the 
+antenna and up-mast electronics of the radar environmentally and prevents the 
+antenna from snagging the rigging. In particular, it assures that there is no danger to 
+ch22.indd   11 12/17/07   3:02:33 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Civil Marine Radar 22.12  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 22
+users from rotating mechanisms, since the radar head can be mounted in areas open 
+to human access. Antennas using printed arrays use integral-printed power dividers. 
+The arrays are usually two-dimensional, dispensing with the need for a flared sec -
+tion, and normally consist of radiating patches, rather than printed dipoles. Horizontal 
+apertures of 450 and 600 mm are common. Printed technology is not generally used 
+for shipborne antennas; slotted waveguide arrays remain the cost-effective solution 
+for larger arrays, particularly as the higher power creates additional complications for 
+printed power dividers.
+Poor antenna siting is a common cause of radar performance degradation on ships 
+as well as on smaller craft. Particularly on ships, it is surprising that installations are 
+still being implemented that create significant blockage to the radar. Blind arcs are 
+common from funnels and other superstructure, and there can be significant sidelobe 
+degradation due to smaller structures, such as VHF antennas, causing blockage close 
+to the radar antenna aperture.
+RF Head.  The RF head normally comprises the transmitter and the receiver 
+down to IF or digital baseband, as well as the antenna and turning gear. Its design 
+for both magnetron-based SOLAS and non-SOLAS radars follows conventional prin -
+ciples. The magnetron is connected to the antenna via a duplexer and a rotating joint. 
+The magnetron has a typical operational life of about 10,000 hours and is by far the 
+lowest lifed component in the whole system. The duplexer is nowadays a three- or 
+four-port ferrite circulator. Use of a four-port device is preferred as it presents a bet -
+ter matched load to the magnetron and, therefore, gives a cleaner RF spectrum. The 
+low-noise front-end  (LNFE) subsystem is connected to the circulator via a PIN diode 
+limiter, which protects the LNFE during pulse transmission.
+The modulator to the magnetron is typically a pulse forming network  (PFN), basi -
+cally comprised of capacitors and inductors. Operator control of the pulse length effec -
+tively switches in different choices of reactive components. The discharge of the PFN 
+is controlled by a high voltage switch, which is often a silicon-controlled rectifier; 
+thyristors and FETs are also used. FET modulators are sometimes driven directly by 
+a pulse input rather than a PFN. Finally, a pulse transformer matches the PFN to the 
+impedance seen at the magnetron cathode. A pulse of around 10 kV is required to fire 
+the magnetron. In order to get good performance over a wide range of pulse lengths, 
+designs utilize a great deal of empirically derived knowledge, and actual circuits can 
+be surprisingly complex. A 50 ns pulse hardly achieves any period of stability—rise 
+times are normally restricted to about 10 ns in order to limit out-of-band interference, 
+FIGURE 22.3  Low-profile 3.9 meter S-band shipborne radar antenna ( Courtesy of Kelvin Hughes L td.)
+ch22.indd   12 12/17/07   3:02:33 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Civil Marine Radar  CIVIL MARINE RADAR  22.136x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 22
+and fall times are usually longer. The extra high voltages involved can lead to poor 
+reliability if the design does not adequately address the associated problems. Careful 
+physical layout is essential and consideration must be given to the effects of operating 
+in a potentially damp environment. Pulse timing can be purposely jittered on a pulse-
+to-pulse basis. Pulse-to-pulse correlation in the radar processor then very effectively 
+blocks interference from other radars, albeit with a small but generally acceptable 
+degradation in detection performance.
+After the limiter, the LNFE is preceded by a bandpass filter to reduce the effects 
+of out-of-band interfering signals. The LNFE consists of an RF amplifier (typically 
+giving about 10 dB gain) and a balanced mixer, local oscillator, and IF head amplifier. 
+These are normally supplied to the radar manufacturer by specialist companies as a 
+complete subunit. The overall system noise figure is typically 4 to 5 dB, but lower 
+figures are achievable. The frequency of the local oscillator is generally driven by a 
+control signal, derived from within the IF amplifier. It includes facilities for manual 
+frequency control by the operator. The latter can be useful, for instance, when look -
+ing for SARTs in heavy sea clutter, as it allows returns from own transmissions to be 
+desensitized. The local oscillator uses a Gunn diode or an FET, giving a typical inter -
+mediate frequency of 60 MHz.
+Detection and Processing.  After the LNFE, a logarithmic amplifier reduces the 
+dynamic range of the received signal to prevent limiting. A dynamic range of around 
+100 dB is typically achieved in perhaps an eight-stage amplifier. Filtering, consis -
+tent with the transmitted pulse length, is applied within the IF amplifier. The output 
+from the log amplifier enters a diode-based envelope detector, converting the signal 
+to baseband for subsequent threshold processing. Setting the threshold has become 
+intimately connected with the sensitivity time control (STC) of the radar. The fun -
+damental use of STC is to take out the distance-related dynamic range of received 
+signals. At close range, STC classically follows an inverse fourth power law, merging 
+to an inverse cubic law in the region where sea clutter dominates, in accordance with 
+basic theory. Because transition range is a function of antenna height, a setting for 
+this may be needed when the system is originally installed. The operator’s manual 
+sea-clutter control is used to adjust the transition range. Nowadays, the form of the 
+STC curve and the effects of the manual control are based on the practical experience 
+of individual manufacturers, which contributes greatly to the actual effectiveness of 
+a particular radar in sea clutter. Even under manual control, the detailed shape of the 
+STC curve may have a complex adaptive element to it, in order to optimize thresholds 
+over a broader range.
+Under automatic settings, thresholding becomes increasingly sophisticated but 
+often still allows some manual optimization. The curve may adapt to internal calcula -
+tions made on returns from the last pulse or from a succession of pulses. It may also 
+include more complex clutter-mapping processes. All of this is attempting to create 
+a constant false alarm rate across the radar display. Since the radar is sited on a mov -
+ing platform, subject to complex dynamics, difficulties arise with clutter mapping. 
+However, modern processors permit affordable thresholding algorithms of consider -
+able complexity. Manufacturers keep their own processes highly confidential because 
+of the effort that has gone into their empirical optimization. Theoretical clutter models 
+have been generally found unsuitable to be used for optimization. Even optimizing for 
+sea conditions found in one particular area can create suboptimal solutions in other 
+areas, and therefore, data from a number of regions need to be used to design a glob -
+ally effective product.
+ch22.indd   13 12/20/07   11:10:33 AMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Civil Marine Radar 22.14  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 22
+STC and thresholding is a process that is controlled in the digital domain but often 
+applies analog gain processes at RF and IF (at both pre- and post-log amplification) as 
+well as processes in the digital domain. Intimately connected with thresholding strate -
+gies are signal processing, such as FTC, pulse integration, and correlation processes, 
+both pulse-to-pulse and scan-to-scan. Modern digital technology, with its processing 
+speed, available word length, and large memory capability, allows the radar designer 
+to have great flexibility in the strategy applied, and what are entirely separate pro -
+cesses in the analog world increasingly become an integrated digital process. Simple 
+thresholding ideas are being replaced by complex logical processes, making a detailed 
+evaluation of whether a potential target is present or not, even potentially merging into 
+plot extraction and tracking processes.
+More complex processing can also yield additional information that is useful to 
+marine operators. For instance, by applying spectrum analysis techniques, it is pos -
+sible to extract accurate sea-state information, including significant wave height and 
+period, direction, and speed.16 The Miros A/S WavexTM system determines directional 
+wave spectra scaled in m2/Hz and parameters such as significant wave height and 
+average wave period. An FFT is performed on data collected on a scan-by-scan basis; 
+32 scans of data are typically used in the analysis. The resultant information can be 
+highly useful for large high-speed craft, perhaps traveling at up to 60 knots or more. 
+It is also potentially useful for vulnerable vessels such as chemical carriers to ensure 
+that appropriate action in heavy weather can be taken, particularly at night or in poor 
+visibility. Ocean oil rig operations can also benefit from such systems. Information 
+can be displayed to the user in the form of digital readouts of the primary parameters, 
+as well as graphically displayed data. Installed systems normally extract the raw data 
+from the existing 9 GHz radar and perform wave processing and display functions on 
+a separate processor/display system. Spectrum analysis of this type can also detect oil 
+slicks17 because they reduce the amplitude of sea surface capillary waves. Such sys -
+tems can be valuable on vessels assisting with clean-up operations and also for early 
+detection of spills from oil rig operations.
+It has been proposed18 that additional processing of the cross-polar content of the 
+received radar signal may be of benefit to marine operations where sea ice is a hazard. 
+Due to structural changes that occur in older ice that affect the reflection of radar 
+energy, it is possible to differentiate between potentially dangerous old ice, including 
+glacial ice (icebergs), and single-season sea ice, which is normally less dangerous to 
+navigation. This is because the cross-polar component of the reflection is significantly 
+higher for old ice compared to new ice. The problem is how to affordably determine 
+the cross-polar component.
+In practice, it has been found that excellent ice detection can be made by optimized 
+processing of conventional marine radar signals.7 Because of the slow-moving nature 
+of the targets of interest, averaging the radar image over many antenna scans using 
+an optimized infinite impulse response (IIR) filter can give a very detailed image that 
+allows the user to differentiate between ice and water areas. In particular, small ice 
+features such as bergy bits (icebergs with dimensions above the waterline of less than 
+5 meters in breadth and greater than 1 meter in height) and growlers (less than 2 meters 
+in breadth and less than 1 meter showing above the water line) are readily detected 
+by such systems. Integration over 128 seconds has been found to be suitable, with the 
+antenna rotating at 120 rpm. The increased capability of (ice) target detection in sea 
+clutter with higher antenna rotation rates has also been demonstrated. Dramatic images 
+of ice hazards can be produced by such radars, such as that illustrated in Figure 22.4.
+ch22.indd   14 12/17/07   3:02:34 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Civil Marine Radar  CIVIL MARINE RADAR  22.156x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 22
+FIGURE 22.4  Ice feature detection using IIR filtering on Rutter Sigma 6 radar processor ( Courtesy of Transport Canada )
+ch22.indd   15 12/17/07   3:02:34 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Civil Marine Radar 22.16  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 22
+Solid-state CMR.  Several factors have come together to promote the introduc -
+tion of civil marine radars with solid-state transmitters. The most important of these 
+is that affordable magnetron-based radars do not meet user demands when operating 
+in heavy sea and precipitation clutter. Small craft and buoys become invisible on the 
+display, creating danger to life. IMO recognized this problem and, in order not to con -
+strain opportunities for innovative radar design, removed the requirement that 3 GHz 
+radars be compatible with existing racons.
+Gallium Nitride and other microwave power semiconductors,19 developed primar -
+ily for broadband communications links, have enabled CMR manufacturers to use 
+these in the radar transmitter to replace magnetron-based designs. Pulse compres -
+sion techniques are used to reduce the required peak power. Even single Gallium 
+Nitride devices can generate hundreds of watts of peak power, at mean powers easily 
+sufficient for CMR applications. Also, advances in digitally controlled waveform 
+generators have given designers the ability to create pulse-compressed waveforms 
+with high precision and at low cost. These waveforms enable coherent processing of 
+the received signal, giving additional doppler information that can be used to help 
+separate targets from clutter. The use of frequency diversity techniques to give added 
+target detection possibilities becomes potentially affordable, because of the flexibility 
+of the signal generation technology. Cost has precluded the use of dual-magnetron 
+transmitters for this purpose.
+Demands from other services for more bandwidth, particularly from mobile com -
+munications operators, continue to put pressure on the ITU-determined marine radar 
+spectrum limits (see, for example, Williams20). Since the peak transmitted power from 
+solid-state CMRs is very low compared to magnetron-based radars, for example 200 W 
+compared to 30 kW, the spectrum interference levels are much reduced and, therefore, 
+extended use of this technology could result in better use of the RF spectrum. Also, 
+the highly controlled waveforms are expected to create less spectral noise than typical 
+magnetron-based CMR transmitters.
+An example of a solid-state coherent radar is the Kelvin Hughes SharpEyeTM—the 
+first introduction of such an IMO-compliant system to the CMR market. It has a peak 
+output power of 170 W and a duty cycle of 10%. Figure 22.5 shows a photograph of 
+the transmitter electronics. In order to obtain the required short-range performance, 
+it transmits a frame of pulses with differing lengths. Each pulse within the frame is 
+optimized to cover a specified range bracket. Overall, the pulse sequence completely 
+covers the instrumented range and ensures that the IMO specified minimum range 
+requirement is met.
+In the receiver, frames are grouped into blocks called bursts. The duration of a 
+burst is approximately equal to the time taken for the 3 dB points of the antenna 
+azimuth beam to sweep past a point target; consequently, the number of pulses in 
+a burst is directly related to the instrumented range and the antenna rotation rate. 
+The echoes received during a burst are processed by a filter bank to extract the 
+radial velocities of targets and clutter. Within the digital signal processor, detection 
+thresholds for each of the filters within the bank are calculated adaptively, aiming at 
+providing optimum control of false alarms while maximizing clutter suppression and 
+target detection. Manual control of the thresholds is also provided to be compliant 
+with IMO requirements.
+Modern, fully solid-state radars need little analog circuitry within their designs; 
+they operate on low voltages and have no time-lifed components such as magne -
+trons. This potentially makes them extremely stable and reliable, with a resultant 
+low cost of ownership, therefore, meeting the increasing demands of ship operators. 
+ch22.indd   16 12/17/07   3:02:35 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Civil Marine Radar  CIVIL MARINE RADAR  22.176x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 22
+In previous years, ships were required to have a radio officer, who could carry out 
+radar repairs at sea. This is no longer the case. Reliability is a prime concern, as a non -
+operating radar can force the delay of the ship in port, at great cost to the operator.
+22.5 TARGET TRACKING
+The target tracking function of a shipborne navigation radar has historically been 
+called an Automatic Radar Plotting Aid (ARPA) . This term is becoming obsolete. 
+IMO now defines this process as Target Tracking (TT) , which includes target data 
+obtained from AIS. The basic requirement calls for a minimum radar tracking capac -
+ity of 20 targets on ships less than 500 gt; 30 targets on ships between 500 and 
+10,000 gt; and 40 targets on ships over 10,000 gt. In addition, ships over 10,000 gt 
+must have an automatic target acquisition capability. Actual systems commonly 
+exceed these minimum requirements. Targets with a maximum relative speed of 
+100 kt must be trackable; this requirement is increased to 140 kt for radars on vessels 
+capable of more than 30 kt. On the bridge, the navigator’s requirements to aid colli -
+sion avoidance include the need to know a target’s closest point of approach  (CPA) 
+and time to closest point of approach  (TCPA), both of which must be available for 
+all tracked targets. The required tracked target accuracy at 95% levels is given in 
+Table 22.4.
+FIGURE   22.5 Kelvin Hughes SharpEyeTM CMR S-band solid-state transmitter ( Courtesy of Kelvin 
+Hughes Ltd. )
+ch22.indd   17 12/17/07   3:02:35 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Civil Marine Radar 22.18  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 22
+The tracking problem is complicated by the fact that basic radar measurements 
+are made relative to the ship’s motion, but the display may be set to relative or true 
+motion. In addition, true motion can be ground or sea stabilized. Target vectors and 
+associated data boxes can be shown in true or relative motion, whatever the frame 
+reference of the radar display. A ship’s orientation to north is given by a gyrocom -
+pass or “transmitting” magnetic compass—a compass with a digital interface. A log 
+gives speed through the water  (STW). This can be either a conventional rotating 
+transducer driven by the movement through water or else an acoustic transducer 
+measuring the doppler of the reflected signal. The latter can be set to assess speed 
+either relative to the surrounding water (STW) or relative to the seabed, i.e., speed 
+over ground  (SOG). Mandatory carriage of a dual axis log (which measures speed in 
+the forward and transverse directions) is required on ships above 50,000 gt. This is 
+typically a doppler log. On smaller ships, GNSS is used to provide SOG and is often 
+the user-preferred ground stabilization source for radar, even for a ship fitted with a 
+doppler log. Doppler logs do not always give good speed readings on some types of 
+seabed, for example, soft mud. Facilities must also be provided to allow the use of 
+stationary tracked targets, such as radar conspicuous navigation marks, to provide 
+the ground reference.
+According to the design, the basic tracking function can be carried out in ship or 
+ground/sea referenced frames, using conventional algorithms. The tracking process 
+can be initiated manually or automatically. Automatic initiation is by a conventional 
+plot extraction process confined within a user-defined area, which, at its simplest, 
+could be a chosen range encircling the vessel. The defined area may also have user-
+defined exclusion zones. Algorithms for preventing plots from being formed on typi -
+cally encountered wave features, perhaps lasting a few scans such as a traveling wave 
+crest, need to be employed. Manual selection is effectively a plot extraction process 
+operating over a small area surrounding the cursor. An alpha-beta tracker or other 
+filtering technique is used to smooth measurement noise. The characteristics of this 
+filter need to adapt to the quality of the received target signal. If tracking is carried 
+out in ground referenced coordinates, the process automatically takes into account 
+own-ship movements. In relative motion-based tracking systems, the filter needs to be 
+aided with own-ship data.
+Depending on the user-set mode, the data has to be converted to the correct refer -
+ence frame and displayed appropriately. CPA and TCPA are continually calculated  
+for all tracked targets, such that if limits preset by the user are breached, an alarm TABLE 22.4  Requirements for radar tracked target accuracy (95% levels)11 (Courtesy of IMO )
+Time of Steady 
+State (minutes)Relative 
+Course 
+(degrees)Relative 
+Speed (kn) CPA (NM)TCPA 
+(minutes)True 
+Course 
+(degrees)True Speed 
+(kn)
+1 min: trend † 11 1.5 or 10% 
+(whichever 
+is greater)1.0 − − −
+3 min: motion ‡  3 0.8 or 1% 
+(whichever 
+is greater)0.3 0.5 5 0.5 or 1% 
+(whichever 
+is greater)
+† Trend is an early indication (after 1 minute) of the target’s speed and direction.
+‡ Motion is the established assessment (after 3 minutes) of the tar get’s speed and direction.
+ch22.indd   18 12/17/07   3:02:35 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Civil Marine Radar  CIVIL MARINE RADAR  22.196x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 22
+can be initiated. All tracked targets are displayed on the screen with their associated 
+velocity vectors. Tracked targets may be selected by the user such that all information 
+concerning that target, including CPA and TCPA, is displayed on the data panel of the 
+radar screen. Lost targets create a visual and an audible alarm. Normal termination of 
+tracking occurs when a target leaves the acquisition zone or when manually cancelled. 
+A guard zone may also be set up by the operator. This may be identical to the acquisi -
+tion zone but is there to provide an alarm if any tracked target passes into the zone.
+In common with other radar trackers, strategies have to be evolved to cope with 
+the target being potentially invisible in some scans. IMO requires that the specified 
+performance is maintained when the target is invisible in up to 50% of scans. Also, for 
+an effective system, strategies have to be evolved to reduce the possibilities of target 
+identities being swapped, which can happen when targets move close together and 
+subsequently diverge. In particular, tracking algorithms have to attempt to cope with 
+the potentially large and fast change in the radar centroid as a target vessel turns. In the 
+worst case, this can amount to almost the length of the vessel, 300 meters or so, for a 
+large ship. It is an art to get a good tracker optimized for all situations, over a variety of 
+vessel speeds, and to maintain an appropriate indication of change in heading without 
+excess latency. Over-damped systems may give an apparently stable indication of the 
+track of a target but can be very inaccurate when a target changes heading. From the 
+point of view of safety of navigation, the change in heading is often the more impor -
+tant parameter. Target trackers from individual manufacturers can have quite different 
+design and optimization strategies and can, therefore, differ in performance. Within 
+IEC 62388,11 there are defined test scenarios that all SOLAS-approved tracking sys -
+tems must meet. IMO requires that the trend in a target’s change of direction is shown 
+within one minute and the prediction of the target’s motion should be available within 
+three minutes, as given in Table 22.4.
+In principle, target tracking could be aided by data from AIS (Section 22.7). 
+However, AIS data is best left out of the radar tracking process in order to keep them 
+entirely independent. Once radar tracks have been formed, they can then be auto -
+matically compared to AIS data and associated into a single track, if desired by the 
+operator. This gives complete independence to radar- and AIS-derived data, therefore, 
+enhancing integrity checking.
+22.6 USER INTERFACE
+From the user’s point of view, the most visible and important change in marine radar 
+from its early days has been the development of processor-based display technology. 
+In particular, modern well-designed displays are viewable over a wide variation of 
+ambient lighting; they make effective use of color and give easy and clear access to the 
+radar image and associated data. The days when the radar screen was only viewable 
+in daylight on dim long-persistence monochrome CRTs through the aperture of a hood 
+are long gone. More recently, high brightness color CRTs are being replaced by Liquid 
+Crystal Display flat panel technology, which is helping to make the display more 
+user accessible—large stand-alone radar consoles are no longer necessary, allowing 
+improvements to the ergonomic layout of a ship’s bridge.
+User input devices vary by manufacturer. Some solutions rely on little more than 
+a tracker ball and three control buttons. Others have a number of dedicated switches 
+and rotary controls, as well as a cursor control such as a tracker ball or joystick. 
+ch22.indd   19 12/17/07   3:02:36 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Civil Marine Radar 22.20  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 22
+Touchscreen technology is sometimes employed. Increasingly, systems also include 
+a full alphanumeric keyboard to allow easy input of user-supplied data, especially for 
+chart radars  (radars utilizing an electronic chart-based underlay) and radars integrated 
+with AIS. Radars designed for smaller vessels tend to have a completely waterproofed 
+user interface as they are often used in more exposed areas and by operators with wet, 
+salty hands. In general, tracker balls, although they give more precise control and are 
+common on shipborne radars, have been found to be unsatisfactory in the environmen -
+tal conditions found on small craft. Instead, mini joysticks or simple four-way rocker 
+switches are typically used.
+The operational area of a radar display is normally circular, although this is no 
+longer a mandatory requirement. It originates from the historical use of conical display 
+tubes but is retained by most manufacturers as it gives additional space outside of the 
+operational area for the display of data and menus (see Figure 22.6). The minimum 
+operational display area is defined as a diameter: 180 mm for ships less than 500 gt; 
+250 mm for ships from 500 to 10,000 gt; and 320 mm for ships above 10,000 gt. The 
+minimum recommended display areas for small craft radar are given in Table 22.2. 
+The color of radar targets and background is not mandated. The target trails that used 
+to be provided by the designed-in persistence of original radar monochrome CRTs 
+have to be provided electronically. The trail length is required to be user selectable in 
+units of time. When True Motion is selected, trails can be chosen by the operator to 
+be shown in either true or ship-relative reference frames. The position of the display 
+cursor is always available in a data box in terms of range and bearing from own ship 
+and/or latitude and longitude coordinates. It is this cursor that is used to select and de-
+select targets within the operational display area and to draw user-defined maps. It is 
+also commonly used to set range and bearing markers.
+A consistent common reference point  (CCRP) to which all radar and other naviga -
+tional data need to be referenced is identified on the ship. This point clearly becomes 
+of major importance when close-in navigational calculations are being made. Having 
+a defined CCRP also allows a scaled own-ship’s symbol to be shown on the radar 
+display when appropriately short-range scales are selected. The symbology of this 
+graphic, together with all other symbols and abbreviations on the display, should meet 
+IMO requirements.21 This ensures that operators are familiar with the radar presenta -
+tion when working on different ships. The radar display should also comply with 
+IMO’s performance standards for navigational displays.22
+Certain range scales (maximum displayed ranges) are mandatory, covering 0.25 to 
+24 nm. In practice, range scales above 24 nm are normally provided, typically up to 
+96 nm. Range rings may be optionally switched in by the operator to help estimate dis -
+tances. Precise range measurements are made with the use of a variable range marker  
+(VRM). At least two VRMs are needed, each with numerical readout in the data area 
+of the display. An accuracy of 1% is required (but not better than 30 meters). A bearing 
+scale around the periphery of the operational display must be visible. This scale can 
+help users determine the ship’s direction from viewing the heading line  (HL), which 
+has to be shown on the display; only temporary extinguishing of the HL is permitted. 
+In addition, a ship’s heading is normally available within a data box outside of the 
+operational area. The radar origin can be offset from the center of the operational area 
+by the user; the bearing scale adjusts accordingly.
+Two or more electronic bearing lines  (EBLs) have to be provided with continuous 
+numerical readout. Although these are normally centered on the ship (at the CCRP), they 
+can also be offset to any position. Readouts relative to own ship’s heading or true north 
+can be set. The EBL origin can also be set such that it follows own-ship movement or is 
+ch22.indd   20 12/17/07   3:02:36 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Civil Marine Radar  CIVIL MARINE RADAR  22.216x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 22
+FIGURE 22.6  A ship’s radar display ( Courtesy of Northrop Grumman Sperry Marine BV )
+ch22.indd   21 12/17/07   3:02:36 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Civil Marine Radar 22.22  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 22
+geographically fixed. The distance and bearing of one point to another on the display can 
+be determined, normally by use of a specific menu item and appropriate control of the 
+display cursor. The actual implementation of EBLs, VRMs, and offset measurements is 
+often effected by a common graphical tool, which is used to position and drag lines and 
+circles across the display by means of the cursor. Many mariners find the use of ship-
+referenced parallel index (PI) lines to be highly useful. A PI is a straight line on the radar 
+display that is user-set to a fixed “compass” bearing and a fixed perpendicular distance 
+from the radar origin. At least four of these have to be provided. These can be individu -
+ally switched into use and set by bearing, beam range, and length. PIs are typically used 
+to ensure that a ship is maintaining a safe ground track, with reference to a ground-fixed 
+conspicuous radar target.
+Chart Radars.  The capability and relatively low cost of modern processing and 
+display systems allow great flexibility in the presentation of information to users. For 
+many years, SOLAS-compliant radars have had the capability to employ user-defined 
+maps as an underlay to the radar image. Many maps can be created and stored for 
+future use. Although this facility is still widely used, the use of vectorized electronic 
+chart data as a radar underlay is becoming more common. In IMO terms, they are 
+known as chart radars . All approved chart radars have to be capable of displaying 
+officially recognized vector data. This data is known as the Electronic Navigational 
+Chart  (ENC). It is issued on national authority and complies with an International 
+Hydrographic Organization23 (IHO) standard known as S57.24 ENC data is normally 
+displayed on approved electronic chart systems called Electronic Chart Display and 
+Information Systems  (ECDIS),25 and may be used by ships in place of paper charts. 
+ENC data is kept up-to-date by hydrographic offices that issue update files on a regular 
+basis. An IMO-approved chart radar must also be able to accept these updates. Charts 
+and their updates are loaded by CD-ROM or via a satellite communications link. On 
+some systems, the chart radar may have access to a server on the ship that centralizes 
+the distribution of such data to all equipment needing chart information.
+The user has the ability to choose the ENC vector layers shown on the display 
+of a chart radar. For instance, this may just include the coastline, navigation marks, 
+and a single depth contour, considered safe for the draught of the ship. If the ship is 
+navigating on ECDIS, rather than a paper chart, it is likely that both the radar and 
+the ECDIS will be commonly set to Course-up or Head-up modes. North-up is no 
+longer a particular advantage when the chart is not confined to such a presentation, 
+such as paper charts. Most ECDIS equipment can optionally show radar-derived data, 
+normally as tracked target vectors but sometimes as the radar image itself. This data 
+is obtained from the radar processor via a digital interface, giving an apparent conver -
+gence of ECDIS and radar displays. Certainly, this is true at a basic design level, but 
+IMO is keen to differentiate between the two. An ECDIS is used to plan and monitor 
+passages; a radar is used primarily as a collision avoidance tool but also to aid posi -
+tion fixing, particularly by identifying ground-fixed radar conspicuous objects includ -
+ing coastlines. This results in many differences in the detailed requirements of radar 
+and ECDIS displays. However, from a design point of view, the display processing 
+requirements are very similar and can therefore use virtually identical hardware. As 
+well as saving design costs, this enables an easy transition to multifunction displays  
+(MFDs). An MFD can be instantly switched between radar and ECDIS, as well as 
+other functions, enabling dynamic reconfiguration on a ship to optimize display use 
+for particular circumstances. Clear indication of the selected mode becomes necessary 
+for safety and statutory reasons.
+ch22.indd   22 12/17/07   3:02:37 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Civil Marine Radar  CIVIL MARINE RADAR  22.236x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 22
+Most small craft radars now being sold include the option of a chart underlay facility 
+as a relatively low-cost option. In general, these use unofficial vector chart data, issued 
+by specialist private companies. This data is more affordable than ENCs and is directed 
+to this particular market. Because of cost and space constraints, a single display nor -
+mally acts as both radar and electronic chart. Theses displays are all effectively MFDs 
+and can, therefore, also be used as an electronic chart system without radar input.
+22.7 INTEGRATION WITH AIS
+The maritime Automatic Identification System26 (AIS) is a target information system 
+that performs similar functions to airborne Secondary Surveillance Radar (SSR), such 
+as Air Traffic Control Beacon System (ATCRBS) and Identification Friend or Foe 
+(IFF). However, the vast majority of transmissions are not the result of any interroga -
+tion, as it mainly operates as a broadcast system, based around a Self Organizing Time 
+Domain Multiple Access  (SOTDMA) communications protocol. The communications 
+link, including the SOTDMA definition, is defined by the ITU.27 Ships automatically 
+transmit current navigational data and other information on VHF marine-band chan -
+nels assigned for AIS use. The transmitted information is received by other ships and 
+also by shore stations, such as coastal authorities and VTS facilities. Shore stations 
+and ships also have the ability to specifically interrogate shipborne AIS transponders 
+to initiate the sending of particular data. AIS has three major uses: to enhance the 
+bridge team’s situational awareness, to aid VTS activities, and to provide data to assist 
+national security. The intention of IMO is that ships will normally display AIS data on 
+the radar screen as it complements radar-derived data, adding to the integrity of the 
+presence, position, and velocity of targets and also giving increased target information. 
+In principle, a conventional secondary radar solution could have been adopted but 
+international consensus favored the SOTDMA approach, as it was capable of provid -
+ing higher levels of data exchange, particularly to aid VTS and security activities. An 
+important advantage of the chosen AIS solution is its radio frequency. It is sufficiently 
+low so that reasonable communications are maintained in situations where there is no 
+visual or radar line-of-sight. This can be important in harbor, river, island, and estuary 
+regions, where shielding by the terrain or buildings can affect radar range.
+A shipborne AIS station broadcasts information divided into a number of sets. 
+These comprise static data, such as the ship’s name, type, length, and beam; dynamic 
+data, including position, SOG, COG, and heading; and voyage-related data, such as 
+destination port and ETA, depth under keel, and hazardous cargo type. The dynamic 
+data is broadcast at a rate consistent with the vessel’s velocity and whether it is chang -
+ing course, as shown in Table 22.5. Static and voyage-related data is normally broad -
+cast every 6 minutes. To provide sufficient bandwidth, two specific VHF 25 KHz 
+channels are used, with stations alternating between channels at each message. There 
+are 2,240 message slots per channel every minute. Minutes are aligned to Universal 
+Time Coordinated (UTC), which is obtained from an integral GNSS receiver. The 
+SOTDMA algorithm effectively reserves future slots for stations that are in reception 
+range of each other, preventing mutual interference.
+AIS for SOLAS use is known as AIS Class A . There is a Class B system that is 
+designed for non-SOLAS use.28 This system uses the same VHF channels as Class A, 
+and the transmissions are necessarily compatible, but to avoid overloading the VHF 
+data link (VDL), Class B uses Carrier Sensing TDMA. This is aimed at confining 
+ch22.indd   23 12/17/07   3:02:37 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Civil Marine Radar 22.24  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 22
+Class B systems to use only slots unallocated to Class A users. Class B systems will 
+delay their own transmissions if slots are not available. (There is an additional option 
+of an SOTDMA-based Class B system.) Importantly, Class A and B systems receive 
+each others’ transmissions.
+The combination of AIS and radar-derived data gives benefits to navigation because 
+of the complementary nature of the two systems. The relative range and bearings of 
+a target derived from AIS data are entirely independent of the radar measurements 
+of these parameters. Clearly, any observed differences in radar and AIS positions 
+will then indicate an error in some process, provided the differences are outside the 
+expected noise in the measurements. This can be highlighted for the user. A high posi -
+tional correlation increases the integrity of the observation, particularly as speed and 
+course measurements can also be used in the comparison. Lack of any correlation can 
+also give the user information that may be helpful. If only radar data is received, it may 
+be that the target is not fitted with AIS, which means it could be a small craft, floating 
+debris, or ice. It could also mean that a vessel’s AIS is not operating or is transmitting 
+erroneous positional information. If only AIS data is received, the radar image may 
+be obscured by clutter, a headland, or even a poorly setup or faulty radar installation. 
+Normally, just a few targets will be uncorrelated, highlighting that these few should 
+be given additional caution if they are significant to own-ship navigation, at least until 
+they can be positively identified, perhaps visually. If no targets are correlated, it sug -
+gests that own ship has a significant problem, perhaps with its radar, GNSS position, 
+or more commonly, a gyrocompass offset.
+If there is good positional tie-up or even an understanding of why radar informa -
+tion may be lacking, for example, due to heavy sea clutter, the additional information 
+transmitted on AIS can be extremely useful. For instance, a target’s heading is trans -
+mitted by AIS. This information is not available from radar (only the course can be 
+determined), and yet heading is used as the basis for determining collision avoidance 
+action. The AIS transmitted heading should align with the target’s visual aspect and, 
+therefore, the navigational lights on a vessel. Vessel names can be added automatically 
+to target tracks on the radar/AIS display, and if there is a need to communicate on VHF 
+with a particular target, the radio call sign is also available from the AIS data. The 
+destination port and ETA can sometimes be useful in determining the likely intentions 
+of targets, although such assumptions must be treated warily.
+A significant advantage of radar is that it does not need cooperative targets. It 
+attempts to detect all objects of potential interest. Its inherent Relative Motion mode 
+of operation makes it ideally suited for collision avoidance use—particularly as in this 
+mode it has no requirement to need own ship’s geographical position. However, radar 
+is basically confined to line-of-sight operation; its performance can be significantly Ship Dynamics Reporting Interval (seconds)
+At anchor or moored and not moving faster than 3 knots 180
+With a speed of between 0–14 knots  10
+With a speed of between 0–14 knots and changing course    3.33
+With a speed of between 14–23 knots   6
+With a speed of between 14–23 knots and changing course   2
+With a speed of greater than 23 knots   2 
+With a speed of greater than 23 knots and changing course   2TABLE 22.5  AIS Position Reporting Intervals ( Courtesy of IMO )
+ch22.indd   24 12/17/07   3:02:37 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Civil Marine Radar  CIVIL MARINE RADAR  22.256x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 22
+degraded by clutter, and its tracking capability is compromised when targets are chang -
+ing course or passing close to other targets. AIS has reasonably good capability in 
+non-line-of-sight situations because of its lower frequency. It quickly reports a target’s 
+change in heading or course, including rate of turn data, if it is available on the target 
+vessel. AIS is not affected by sea clutter and can report absolute position accurately—to 
+normally better than 10 meters or even a meter or two, if reporting differential GNSS-
+derived positional data. However, AIS relies on cooperative targets; is prone to gross 
+errors in data accuracy, mainly caused by setup errors; and totally relies on reasonably 
+accurate GNSS data being available. A GNSS blackout, perhaps caused by intentional 
+or unintentional jamming, would prevent AIS from being an effective system, possibly 
+over a wide area and for an appreciable time.
+Future systems might increasingly exploit the complementary aspects of radar and 
+AIS. This could improve the overall target-tracking capability available to ships and 
+will give support for detecting cooperative targets in clutter. Possibly, the knowledge 
+from AIS that a target is likely to be at a particular range and azimuth could direct 
+concentrated processing techniques in that area, perhaps using pattern-matching algo -
+rithms as well as optimizing the false-alarm rate in the immediate area of the AIS-
+reported target. It is ironic that the very targets that may be hidden in clutter are smaller 
+vessels that do not mandatorily carry AIS. Also, a Class B system only transmits once 
+every 30 seconds at a maximum and so will be less useful for aiding radar even though 
+it can usefully alert navigators that a small target is present.
+The use of AIS as an aid-to-navigation  (AtoN) has been put forward as a possible 
+replacement for racons, which are described in the next section. In principle, AIS 
+AtoNs could replace racons, but in practice, it would be a retrograde step as they 
+cannot be used independently of a position fix system, such as GNSS. However, they 
+can be usefully employed to indicate the integrity of the actual position of the mark, 
+which may have dragged or become unattached, and other additional data, such as 
+sea currents. The AIS transceiver does not have to be situated on the actual mark and 
+could be shore-based to ease maintenance. Used in this way, they are known as Virtual 
+AIS AtoNs.29 Up-to-date information concerning the mark and its integrity can be 
+automatically or manually fed-in by port authorities. Such systems can also be used 
+for alerting mariners of the position of recent wrecks and other temporary and perhaps 
+visually unmarked navigation hazards.
+22.8 RADAR BEACONS
+Radar beacons have played an important role in marine navigation ever since the early 
+days of radar. They basically detect incident pulses from marine radars and instan -
+taneously transmit a distinctive signal that identifies the beacon and its position on 
+a radar display. There are three main uses of such beacons. The first of these is for 
+enhancing visual aids to navigation, such as buoys and landmarks, to enable them to 
+be prominently identified on a radar display. These are normally called racons  (as a 
+contraction of radar beacons ). Such systems form an important navigational service 
+that is well liked by mariners. The second use is for Search and Rescue Transponders  
+(SARTs), which are mainly designed to be deployed from life rafts after a marine acci -
+dent. The third category of use is for radar enhancement of small targets, such as plea -
+sure craft. These are called radar target enhancers  (RTE) or active radar reflectors.
+ch22.indd   25 12/17/07   3:02:38 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Civil Marine Radar 22.26  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 22
+Racons.  The International Association of Marine Aids to Navigation and 
+Lighthouse Authorities (IALA) sets the performance standards for racons.30 These 
+incorporate the technical characteristics set out in a specific ITU-R Recommendation.31 
+Because racons normally form only one subsystem of an AtoN. they therefore need to 
+be small in size and power efficient since they are rarely connected to a main power 
+supply. They often operate in an extreme environment, such as on a buoy buffeted by 
+the sea. Racons are specified to meet an extended operational temperature range of 
+–40° to +70°C. Modern racons operate by detecting an incident pulse and then measur -
+ing its frequency and responding at the same frequency, thereby reducing the interfer -
+ence potential with other in-band radars. They are often dual-band (3 and 9 GHz). The 
+ITU recommends that for pulse lengths of 0.2 µs or longer, the frequency accuracy of 
+the responding signal should be within ±1.5 MHz, and for pulses of less than 0.2 µs, 
+the frequency should be within ±3.5 MHz. Swept frequency racons are effectively 
+obsolescent but are still permitted. These work by having an internal RF source that is 
+slewing in frequency across the entire radar band with a saw-tooth waveform at a rate 
+between 60 and 120 seconds per 200 MHz. All received pulses are responded to but 
+the interrogating radar will receive a racon burst only once every one to two minutes 
+when its receiver is in band to the particular transmission.
+IALA recommends that racons have suppression techniques to avoid responding 
+to radar sidelobe transmissions. This is not an easy task to implement and probably 
+impossible to make infallible. Basically, the racon needs to build a table of radar sig -
+natures that it is currently receiving, based on frequency and pulse length. It then 
+identifies whether high level and lower level pulses of the same signature are being 
+received and makes the assumption that these are from the same radar. It sets a thresh -
+old level for individual radars such that it only responds to high-power main beam 
+interrogations. Typically, peak transmit powers are about 1–2 watts. Antennas are usu -
+ally omnidirectional in azimuth but can have a restricted elevation beamwidth and 
+typically have an overall gain of about 6 dB. Prime power consumption in average 
+traffic can be less than 1 watt.
+The modulation on the response signal of a racon paints a Morse code image on the 
+radar display. The code identifies a particular AtoN and appears in the radial direction, 
+conventionally commencing with a dash. This dash starts a short distance beyond the 
+actual position of the AtoN because of inherent delays in the response time of the racon. 
+However, delays giving an error of less than 100 meters are readily achievable. In good 
+conditions, the AtoN primary radar image will be displayed on the radar screen, helped if 
+a passive radar reflector is also a part of the AtoN. Racons have to include muting periods 
+to allow ship radars to look for small targets in the vicinity of the racon identifier.
+The long-term future of racons is unsure, although maritime authorities are assess -
+ing the situation.32 Mariners like them as they are useful, familiar, and give ship-relative 
+data. However, it is difficult to see how they will survive in their original form as marine 
+radar moves away from utilizing magnetron-based systems. Also, compared with earlier 
+years, when racons were essential, many more navigational aids are becoming available 
+that assist positioning. These include multiple GNSS services, differential GNSS, AIS, 
+and enhanced VTS facilities. There are also great improvements in onboard naviga -
+tional aids such as electronic charts and integrated navigation systems.
+The reliance of navigation on a single system, such as GPS, or even a single tech -
+nology, such as GNSS, is not acceptable to the maritime community and neither to 
+aviation. For instance, it is easy to jam all GNSS users over a wide area because of 
+the small amplitude of the received signal. This means that radar and other position -
+ing systems are likely to be always used as essential navigational tools. The overall 
+ch22.indd   26 12/17/07   3:02:38 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Civil Marine Radar  CIVIL MARINE RADAR  22.276x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 22
+requirements for the electronic navigation of ships, including VTS reporting systems, 
+are being examined by IMO and IALA, with the intention of determining a future  
+e-Navigation concept ( e for electronic /enhanced ). The continued need for racons or 
+a replacement technology will inevitably form part of this program. If the continuous 
+availability of precise positional information cannot be totally relied upon, then it is 
+probably essential that some form of ship-relative system to identify fixed naviga -
+tional marks is available. 
+SARTs.  Search and Rescue Transponders33 (SART) form part of IMO’s Global 
+Maritime Distress and Safety System34 (GMDSS). These are 9 GHz radar transponders 
+that are mainly designed to be used on survival craft (such as life rafts) in emergency 
+conditions. They are relatively small and affordable. On being triggered by a radar 
+pulse, a SART emits a 12-cycle frequency-swept saw-tooth waveform covering 9.2 to 
+9.5 GHz. The extension down to 9.2 GHz covers the band used by search aircraft. The 
+very fast upward frequency scan is accomplished in 0.4 µs; the downward scan takes 
+7.5 µs. This forms the possibility of a displayed trace on the radar screen, consisting 
+of 12 radial dots and dashes as the upward and downward scans cross the passband of 
+the radar receiver, with the first dot at a slightly longer range than the SART position. 
+In practice, the upward sweep is so fast that the dots are normally not visible on the 
+display and only the dashes can be seen. Even these can be quite difficult to locate in 
+adverse sea clutter conditions.
+The first dash displayed on the radar screen could be up to 0.8 nm away from the 
+actual SART position and so search craft have to take precautions not to run down 
+the survival craft when bearing down on the signal. At short ranges, the swept gain 
+of the radar may truncate the nearer dashes. Also at short ranges, because there is 
+no sidelobe suppression circuitry, SARTs can be triggered by radar sidelobes. To 
+prevent adjacent SARTs from continuously triggering each other, there is a short 
+delay after a SART transmission before it may be triggered again. To detect SARTs 
+in heavy sea clutter, it is often best to detune the radar receiver, eliminating all 
+other returns. Some radar manufacturers provide a SART search mode that sets the 
+radar optimally for their detection, including inhibiting pulse-to-pulse correlation 
+and optimizing filter bandwidths. AIS-based SARTs have now been proposed. These 
+may eventually replace radar-based SARTs because the latter are difficult to detect 
+in adverse conditions.
+Radar Target Enhancers.  Radar target enhancers35 (RTEs) are used increas -
+ingly by small craft because, for their size, they offer a better enhancement in radar 
+cross section than can be given by a passive reflector. In principle, they are simple 
+devices. In-band received signals are amplified and retransmitted with minimum 
+delay. Delays can be kept to a few nanoseconds, less than the equivalent dimen -
+sions of the craft, ensuring co-located returns of the enhanced signal and natural 
+radar reflection. To prevent positive feedback between receiver and transmitter, 
+the transmit and receive antennas are normally physically separate, one above the 
+other, providing isolation. Isolation can also be increased by transmitting on an 
+orthogonal polarization to that received. Providing they are operating with linear 
+gain, there are no adverse effects from radar sidelobe interrogation. However, at 
+close ranges, the signal from the main beam of the radar may saturate within the 
+RTE, effectively enhancing the levels of the RTE received signal through the radar 
+sidelobes. The ITU regulations limit RTEs to an EIRP of 10 watts, with a minimum 
+gain of 50 dB.
+ch22.indd   27 12/17/07   3:02:38 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Civil Marine Radar 22.28  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 22
+22.9 VALIDATION TESTING
+The factors affecting the range performance of a radar system are well known, and 
+increasingly sophisticated design methodologies have greatly improved the detection 
+of all forms of radar. The final proof, however, is how the radar actually performs at 
+sea. As stated previously, shipborne radars are validated as meeting IMO performance 
+standards by being independently type approved to technical standards issued by the 
+IEC. The IEC standards include defined methods of testing. For a given target and radar 
+antenna height, it is relatively easy to define and execute a test to determine that a point 
+source target with a specific echoing area is detected at a given range in a minimal 
+clutter field. It is very difficult to extend this to determine, in a repeatable and quanti -
+tative manner, the performance of the radar against point targets in predefined clutter 
+conditions. For this reason, some basic performance tests have necessarily been loosely 
+defined to allow scope for approved test laboratories to make their own qualitative judg -
+ments on basic radar performance, normally based on opportunistically testing the radar 
+over the sea and in precipitation in a variety of situations. Judgments on performance 
+can, therefore, be quite subjective and are naturally affected by the conditions actually 
+encountered during the tests. Cost considerations can severely limit the length of test 
+programs and thereby the range of scenarios used. Radars under type approval are typi -
+cally installed on a trial vessel for such tests or use a land site overlooking the sea.
+This scenario is becoming increasingly unsatisfactory as advances in requirements 
+for safety and the protection of the environment mean that it is necessary to ensure that 
+type approval is consistently applied and is, therefore, measured in a quantitative man -
+ner. In an attempt to resolve this, some work has been performed to try to better formal -
+ize marine radar clutter performance tests, including some research performed on behalf 
+of the UK Maritime and Coastguard Agency.36  This approach was aimed to minimize 
+any special configuration of the radar under test. It is based on a system that generates 
+simulated target and clutter waveforms. These are picked up by the antenna of the radar 
+under test from a nearby transmitting source, typically situated about 100 meters from 
+the radar antenna. Co-located with the transmitting source is a receiver, which detects 
+the transmitted radar signal and continually analyses its frequency, pulse length, and 
+amplitude as the radar antenna rotates. From this information, a signal waveform is 
+synthesized on a pulse-to-pulse basis, replicating reflected signals from targets and clut -
+ter. The synthesis procedure calculates appropriate fluctuating target and clutter returns 
+from any desired theoretical model—which could also, in principle, include models 
+derived from recorded data of real target and clutter reflections. Because the simulated 
+signal is predominately entering the radar through the sidelobes of the radar antenna—
+except when the radar main beam aligns with the simulator antenna—the synthesized 
+signal needs to be automatically adjusted in amplitude to compensate for the actual 
+sidelobe sensitivity in the direction of the simulator. Effectively, the synthesizer has to 
+amplify the transmitted signal according to the inverse of the amplitude of each pulse 
+received from the radar. The challenges in designing an affordable system include the 
+large dynamic ranges that have to be encompassed and the processing speed needed to 
+determine the characteristics of the transmitted signal.
+In principle, a number of clutter and target models could be established by inter -
+national agreement, such that they were considered to be representative of conditions 
+around the world; agreed-upon test criteria could then be determined, and simulator 
+systems could be based at marine radar–type approval laboratories. It has been found 
+ch22.indd   28 12/17/07   3:02:39 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Civil Marine Radar  CIVIL MARINE RADAR  22.296x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 22
+that the system is adversely affected if set up close to large radar-reflecting objects, 
+such as buildings, and so needs to be located ideally in relatively open spaces, similar 
+to that found on an antenna far-field test range. To enable tests to be more easily carried 
+out, direct injection of test targets and clutter into the RF path is feasible. However, 
+this involves a certain amount of adaptation of the radar under test, which may be 
+considered inappropriate.
+The potential move at 3 GHz to pulse compressed radar offers additional chal -
+lenges in the design of a universal simulator, as the system described is based on 
+testing noncoherent pulsed radars. Systems based on digital RF memory may have to 
+be devised, storing waveforms that can be subsequently processed. Target and clutter 
+models would obviously need to appropriately take into account doppler effects intro -
+duced by the movement of their equivalent scatterers.
+22.10 VESSEL TRACKING SERVICES
+Radar heads for port control and coastal surveillance systems have some requirements 
+in common with those for shipborne radars. This originally resulted in many of the 
+well-known suppliers of shipborne radar getting involved in this area. They could 
+offer attractive prices as the subsystems were derivatives of the relatively high volume 
+shipborne market. Over time, much of the market has become more sophisticated, and 
+because of this, specialist organizations now dominate the supply of systems for this 
+application. The large costs associated with a major vessel tracking services (VTS) 
+operation, including massive antenna support towers, operations buildings, special -
+ized software, and disaster-proofed broadband communication systems, mean that the 
+costs of a more optimized radar head often become a relatively insignificant addi -
+tion. This also means that switchable linear and circular polarization modes are more 
+common on VTS systems. However, basic low-cost VTS systems still commonly use 
+subsystems intended for shipborne use, giving good cost savings compared to custom-
+made systems.
+There are significant differences, however, in the requirements for a VTS radar 
+compared to a shipborne system. The VTS antenna is mounted on a static platform. 
+This means that the vertical pattern can be more optimally shaped. Also, since the 
+design does not have to cope with the shock, vibration and instability experienced on 
+ships’ radar masts, larger antennas become feasible. This allows azimuth beamwidths 
+to be narrower, therefore, reducing the size of clutter cells. The required coastal area 
+to be covered can be large, and getting the best range out of a few radar heads situated 
+on tall towers is often more cost effective than utilizing many smaller installations. 
+Because VTS often forms part of a nation’s security network, then a longer range 
+capability than that just required for port operations may be necessary. This implies 
+that very high antenna towers are often needed, in some cases up to 100 meters. This 
+exacerbates vertical lobing effects, which may need to be reduced by the use of verti -
+cal pattern shaping. The long-range requirement often means that greater transmitter 
+power than that used on shipborne radars is needed, even though VTS antenna gains 
+can be higher. Pulse lengths must be kept short to get good clutter immunity, but simul -
+taneously, long-range performance is required, again increasing the required transmit -
+ted power. VTS radar heads are usually not operator configurable because a number 
+of operators can typically be using data from one head.
+ch22.indd   29 12/17/07   3:02:39 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Civil Marine Radar 22.30  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 22
+There are more opportunities to enhance performance because of the fixed antenna 
+position; for instance, sea clutter mapping becomes easier because the antenna is not 
+on a moving platform. Also, the clutter conditions can be less variable because of the 
+restricted geographical area of operation, and there are no degradations in the accu -
+racy of the displayed radar image in having to compensate for a ship’s heading with 
+compass input. In particular, target tracking is performed from a stable and static plat -
+form. However, it is generally necessary to track many more targets than is required 
+on a shipborne radar, and normally VTS has fully automatic plot extraction and track 
+initiation. Also, more information on tracked targets may need to be easily available. 
+Much of this additional data can be automatically supplied by AIS. The radar data 
+often has to be relayed many miles, to perhaps a number of operational centers. It 
+may need to be combined with data from a number of radar heads and, therefore, will 
+be quite synthetic when displayed on operators’ screens, reducing the possibilities of 
+individual operator adjustment. Extensive data communications networks become a 
+critical aspect in the performance of the VTS. High reliability of the system is required 
+because of safety, environmental protection, and security aspects. A total system avail -
+ability of 99.9% is not uncommonly specified, implying an average downtime of less 
+than 2 minutes per day.
+Another major difference compared to shipborne radar is the custom nature of 
+the installation. Radar heads are fixed, and there is a specific requirement for certain 
+performance parameters to be met in the particular localized environment. Sea clutter, 
+although very variable, will have certain local characteristics, enabling more effective 
+optimization of the processing. In particular, the actual performance can be more eas -
+ily measured against design requirements.
+The design of high-performance antennas for VTS applications has a similarity to 
+air traffic control antennas, in that they both ideally require a tailored elevation pattern. 
+The ideal pattern shaping for a high-mounted VTS antenna requires a sharp cut-off 
+above the horizon and a tapered pattern below. Energy directed above the horizon 
+increases precipitation clutter and also reduces the antenna gain. At angles below the 
+horizon, the gain should nominally follow a cosecant squared power law. This is aimed 
+at giving a constant signal strength from a target of fixed RCS, independent of range. 
+These are often known as inverted  or inverse  cosec squared antennas to differentiate 
+them from air traffic control radar antennas that have their shaping at angles above the 
+horizon. Such shaping optimizes the pattern to the application, greatly enhancing over -
+all performance. Typically, the pattern shaping is enabled by a doubly curved reflector 
+fed from a point-source primary feed. An example from Easat Antennas is illustrated 
+in Figure 22.7. This is a 7.5 meter reflector antenna with a 35 db gain at 9.3 GHz. It 
+has an inverse cosecant-squared elevation pattern and a 0.3° azimuth beamwidth. It 
+is remotely controlled to give horizontal or circular polarization. The vertical pattern 
+shaping interacts with the STC of the radar receiver, and it is, therefore, necessary to 
+take this into account in the system design. To improve detection, frequency diversity 
+is often used on prime systems.
+IALA has issued detailed recommendations37 on the operational and technical per -
+formance requirements for VTS equipment. There is much useful information in the 
+recommendations, and they are essential for procurers and designers of VTS radar 
+equipment. They cover both coastal and waterway installations. Many major rivers 
+of the world carry vast amounts of cargo on ships that can be surprisingly large. The 
+meandering nature of rivers and relatively abrupt turns in canal systems, together with 
+the natural and manmade obstructions to radar, mean that waterway vessel traffic sys -
+tems are generally covered by many low-power radar heads on relatively low towers. 
+ch22.indd   30 12/17/07   3:02:40 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Civil Marine Radar  CIVIL MARINE RADAR  22.316x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 22
+Because of their number, such radars tend to be minimally adapted shipborne radars 
+as they offer adequate performance at relatively low cost.
+Interestingly, the IALA recommendations allow CCTV solutions to compete with 
+radar when there is very low traffic density. Automatic tracking of a single target is 
+then required. However, on basic radar-based systems, IALA expects a 100 target track 
+capability and a plot extractor that can deal with more than 1,000 plots per rotation. On 
+an advanced system, more that 300 targets may have to be tracked with a possibility 
+of more than 5,000 plots per antenna revolution.
+APPENDIX THE EARLY DAYS OF CMR
+The use of commercial marine radar arose directly from the rapid development of 
+radar technology for military applications during World War II. Even as early as 1944, 
+some attention was being given to the peacetime role of radar as a navigational aid 
+for commercial shipping. In 1946, an “International meeting on radio aids to marine 
+navigation” was held in London and attended by representatives from 23 countries.38 
+The meeting was chaired by Sir Robert Watson-Watt. It was seen that radar on com -
+mercial vessels had an important part to play in anti-collision, coastal navigation, and 
+pilotage decisions. ( Pilotage  is navigating in waters where a qualified pilot is required 
+to be onboard.) The future compulsory fitting of radar to ships was contemplated, as 
+was the desirability of an internationally agreed upon minimum performance stan -
+dard, with requirements for nationally issued certificates of type approval. The need 
+to include the use of radar within the International Collision Regulations was clearly 
+seen, together with the need for certification of users.
+FIGURE 22.7  Dual-polarized doubly curved VTS radar antenna ( Courtesy of Easat Antennas Ltd. )
+ch22.indd   31 12/17/07   3:02:40 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Civil Marine Radar 22.32  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 22
+In 1946, the UK favored operation at 9 GHz, presumably as it more affordably 
+met the UK perceived azimuth requirements of 3° resolution and 1° accuracy. The 
+United States identified operational problems at 9 GHz that could be experienced 
+in the extreme rainfall conditions found on the U.S. eastern seaboard. These caused 
+“blackouts” on early 9 GHz systems—defined as an effective range of less than 1 mile. 
+As a consequence, the U.S. favored operation at 3 GHz. The shortest pulse lengths 
+then commonly available (around 250 ns) made the clutter cells large, resulting in 
+9 GHz radars being very susceptible to rain clutter, particularly as clutter processing 
+techniques were in their infancy. In 1946, there was no question that a commercial ship 
+could afford both a 3 and a 9 GHz radar, as the expense of even a single radar system 
+was seen to be a limiting issue. Because of cost, it was already envisaged that fitment 
+would be confined mainly to certain classes of passenger ships that had a definite need 
+to carry radar, particularly those working in the north Atlantic, in congested areas or 
+areas subject to fog or ice.
+The early trials in the UK concentrated on a single 9 GHz demonstration system 
+fitted to a naval vessel. It was based around a 40 kW magnetron capable of 250 ns 
+pulses at a PRF of 1,000 Hz. It was interesting that the speed of rotation could be var -
+ied between 20 and 100 rpm. Despite the perceived modernity of today’s chart radars, 
+it was connected to an optional Chart Comparison Unit , which was an optical system 
+allowing the radar image to be displayed in coincidence with a paper chart. The facility 
+to allow “North-up” operation was always seen to be a vital requirement for marine 
+navigation radar. Parallel trials in the United States were conducted on a number of 
+candidate systems, using a broad range of frequency bands. The initial trials were 
+conducted in the Great Lakes and were overseen by the Coast Guard.
+The radar standards proposed in 1946 were not adopted internationally, although 
+the UK issued national performance standards based on them in 1948. The UK stan -
+dard was also adopted by a number of other countries. It was not until 1971 that 
+international marine radar standards were agreed by the Intergovernmental Maritime 
+Consultative Organization (IMCO, the original name of IMO). However, the use of 
+radar on ships was first formally recognized by IMO in 1960 in an Annex to the 
+International Regulations for Preventing Collisions at Sea. The influence of the 1946 
+proposed international standard was evident in the 1971 performance standards, even 
+to the extent of using identical wording in a number of places.
+The similarity in performance requirements is still evident in the latest revisions of 
+the IMO performance standard. For instance, the 1946 proposed performance speci -
+fication included the need to give a clear indication of coastlines rising to 200 ft at 
+20 miles, of a 500 gross registered ton (“Imperial” units) vessel at 7 miles and of a 
+30 ft fishing vessel at 3 miles. The modern performance requirements, summarized in 
+Table 22.1, still use these figures but with parameters, except ranges, given in equiva -
+lent metric units.
+The technical vision of the 1946 meeting was remarkable. For instance, it was seen 
+that in the future it would be possible to overlay radar data automatically onto a chart 
+image displayed on a “television” type screen. This was not to be realized on com -
+mercial systems for 50 years. Also, it was observed that such display systems could 
+accomplish more than one function and not just be used for showing radar on a chart. 
+This anticipated the concept of multifunction displays, now in use on some integrated 
+bridge systems.
+It is interesting to note that Kelvin Hughes and Decca obtained the first type 
+approval for commercial marine radar in 1948; effectively, both are still supplying 
+ch22.indd   32 12/17/07   3:02:40 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Civil Marine Radar  CIVIL MARINE RADAR  22.336x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 22
+marine radar today. Kelvin Hughes has retained its name and Decca is incorporated 
+into the Sperry Marine organization of Northrop Grumman Corporation. The 1948 
+Kelvin Hughes Type 1 radar had a peak power of 30 kW, 0.2 µs pulse width, and a 
+PRF of 1,000 Hz. The 5 ft (1.5 meter) cheese antenna had horizontal and vertical 
+beamwidths of 1.6° and 11°, respectively, rotating at 30 rpm. There was an antenna 
+heater to prevent icing, and the transmitter and the receiver (to IF) were “upmast” 
+(integrated within the antenna turning unit.) The display was a 9 in (23 cm) cathode 
+ray tube plan position indicator. The similarities with systems being sold in the 21st 
+century are perhaps more surprising than the obvious differences.
+LIST OF MARITIME RADAR-RELATED 
+ABBREVIATIONS
+AIS Automatic Identification System
+AtoN Aid to Navigation
+CCRP Consistent Common Reference Point
+CMR Civil Marine Radar
+COG Course Over Ground
+CPA Closest Point of Approach
+EBL Electronic Bearing Line
+ECDIS Electronic Chart Display and Information System
+ENC Electronic Navigational Chart (The data for ECDIS)
+FTC Fast Time Constant (differentiator)
+GNSS  Global Navigation Satellite System
+GPS Global Positioning System
+gt Gross tonnage (metric tonnes)
+HL Heading Line
+IALA International Association of Lighthouse Authorities
+IBS Integrated Bridge System
+IEC International Electrotechnical Commission
+IMO International Maritime Organization
+ITU International Telecommunications Union
+MFD Multi-function Display
+PI Parallel Index line
+NT Radar  New Technology Radar (Marine term for coherent solid-state radars)
+nm Nautical mile ( = 1842 meters)
+SART Search and Rescue Transponder
+SOG Speed Over Ground
+SOTDMA  Self Organizing Time Division Multiple Access
+STW Speed Through the Water
+TCPA Time to Closest Point of Approach
+VTS Vessel Traffic Services
+UTC Universal Time Coordinated
+VRM Variable Range Marker
+ch22.indd   33 12/17/07   3:02:41 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Civil Marine Radar 22.34  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 22
+ACKNOWLEDGMENTS
+1. Material from IMO publications is reproduced with the kind permission of the 
+International Maritime Organization (IMO), which does not accept responsibility 
+for the correctness of the material as reproduced: in case of doubt, IMO’s authentic 
+text shall prevail.
+2. The author thanks the International Electrotechnical Commission (IEC) for per -
+mission to reproduce information from its International Standard IEC 62252 
+ed.1.0 (2004). All such extracts are copyright of IEC, Geneva, Switzerland. All 
+rights reserved. Further information on the IEC is available from www.iec.ch. 
+IEC has no responsibility for the placement and context in which the extracts and 
+contents are reproduced by the author, nor is IEC in any way responsible for the 
+other content or accuracy therein.
+REFERENCES
+ 1. International Maritime Organization, www.imo.org.
+ 2. “Revised recommendations on performance standards for radar equipment,” Resolution 
+MSC.192(79), International Maritime Organization, London, 2004.
+ 3. International Association of Marine Aids to Navigation and Lighthouse Authorities, www  
+.iala-aism.org.
+ 4. “Technical characteristics of maritime radio-navigation radars,” ITU-R Recommendation 
+M.1313, International Telecommunication Union, Geneva.
+ 5. International Telecommunication Union, www.itu.int.
+ 6. J. Crony, “Civil marine radar,” in The Radar Handbook , 1st Ed., M. I. Skolnik. (ed.), New York: 
+McGraw-Hill, 1970, Chapter 31.
+ 7. J. Ryan and C. Kirby, “Iceberg detection performance analysis,” Report TP 14391E, Transportation 
+Development Centre, Transport Canada, 2005.
+ 8. J. N. Briggs, “Target detection by marine radar,” Institution of Electrical Engineers (now the 
+Institution of Engineering and Technology), London, 2004.
+ 9. “The international convention for the safety of life at sea (SOLAS), 1974,” International Maritime 
+Organization, London, as amended.
+10. International Electrotechnical Commission, www.iec.ch.
+11. “Maritime navigation and radiocommunication equipment and systems—Shipborne radar,” IEC 
+62388, International Electrotechnical Commission, Geneva, 2007.
+12. “Maritime navigation and radiocommunication equipment and systems—General requirements,” 
+IEC 60945, International Electrotechnical Commission, Geneva, 2002.
+13. “Maritime navigation and radiocommunication equipment and systems—Digital interfaces,” IEC 
+61162 (series), International Electrotechnical Commission, Geneva.
+14. “Regulations regarding the minimum requirements and test conditions for radar equipment used 
+for River Rhine and inland waterways,” Central Commission for the Navigation on the River 
+Rhine, Strasbourg, 1989.
+15. “Maritime navigation and radiocommunication equipment and systems—Radar for craft 
+not in compliance with IMO SOLAS Chapter V,” IEC 62252, International Electrotechnical 
+Commission, Geneva, 2004.
+16. R. Gangeskar and Ø. Grønlie, “Wave height measurements with a standard navigation ship radar, 
+results from field trials,” presented at Sixth International Conference on Remote Sensing for 
+Marine and Coastal Environments, Charleston, South Carolina, 2000.
+ch22.indd   34 12/17/07   3:02:41 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Civil Marine Radar  CIVIL MARINE RADAR  22.356x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 22
+17. R. Gangeskar, “Automatic oil-spill detection by marine X-band radars,” Sea Technology , 
+August 2004.
+18. T. K. Bhattacharya et al., “Cross-polarized radar processing,” Report TP 13263E, Transportation 
+Development Centre, Transport Canada, 1998.
+19. R. Pengelly, “Improving the linearity and efficiency of RF power amplifiers,” High Frequency 
+Electronics , September 2002.
+20. P. D. L. Williams, “Civil marine radar—a fresh look at transmitter spectral control and diversity 
+operation,” The Journal of Navigation , vol. 55, pp 405–418, 2002.
+21. “Guidelines for the presentation of navigation-related symbols, terms and abbreviations,” Safety 
+of Navigation Circular 242, International Maritime Organization, London, 2004.
+22. “Performance standards for the presentation of navigation-related information on shipborne 
+navigational displays,” Resolution MSC.191(79), International Maritime Organization, 
+London, 2004.
+23. International Hydographic Organization, www.iho.shom.fr.
+24. “Transfer standards for digital hydrographic data,” Publication S-57, International Hydrographic 
+Organization, Monaco.
+25. H. Hecht, B. Berking, G. Büttgenbach, M. Jonas, and L Alexander, The Electronic Chart , 2nd Ed, 
+Lemmer, Netherlands: GITC, 2006.
+26. “Operational use of AIS,” Model Course 1.34, International Maritime Organization, London, 2006.
+27.  “The technical characteristics for a universal shipborne automatic identification system (AIS) 
+using time division multiple access in the maritime mobile band,” ITU Recommendation 
+M.1371-1, International Telecommunication Union, Geneva.
+28. “Maritime navigation and radiocommunication equipment and systems—Class B ship -
+borne equipment of the automatic identification system (AIS),” IEC 62287-1, International 
+Electrotechnical Commission, Geneva, 2006.
+29. “Recommendation A-126 on the use of the automatic identification System (AIS) in marine 
+aids to navigation,” Edition 1, International Association of Lighthouse Authorities (IALA), 
+Paris, 2003.
+30. “Recommendation R-101 on marine radar beacons (racons),” Edition 2, International Association 
+of Lighthouse Authorities (IALA), Paris, 2004.
+31. “Technical parameters for radar beacons (racons),” ITU Recommendation M.824-2, International 
+Telecommunication Union, Geneva.
+32. A. P. Norris, “The future of racons,” Final Report, Contract No 237293, General Lighthouse 
+Authorities, London, 2006.
+33. “Global maritime distress and safety system (GMDSS)—Part 1: Radar transponder—Marine search 
+and rescue (SART),” IEC 61097-1, International Electrotechnical Commission, Geneva, 1992.
+34. GMDSS Handbook , 2nd Ed., London: International Maritime Organization, 2000.
+35. “Technical parameters for radar target enhancers” ITU Recommendation M.1176, International 
+Telecommunication Union, Geneva.
+36. T. P. Leonard and S. J. Brain, “Radar performance test Methods—final report,” Research Project 
+RP544, UK Maritime and Coastguard Agency, Southampton, 2005.
+37. “Recommendation V-128 on operational and technical performance requirements for  
+VTS Equipment,” Edition 2.0, International Association of Lighthouse Authorities (IALA), 
+Paris, 2005.
+38. “International meeting on radio navigation aids to marine navigation, May 1946,” vol. 1 Record 
+of the meeting and demonstrations , His Majesty’s Stationery Office, London, 1946.
+ch22.indd   35 12/17/07   3:02:41 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Civil Marine Radar 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 22  
+blind folio 22.36
+ch22.indd   36 12/17/07   3:02:41 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com)
+Copyright © 2008 The McGraw-Hill Companies. All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Civil Marine Radar 
