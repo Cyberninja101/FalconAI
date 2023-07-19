@@ -1,5 +1,6 @@
 from flask import Flask, redirect, url_for, render_template, request
 from dummy_model import model
+from pdfReader import read_pdf
 import os
 import binascii
 
@@ -59,9 +60,11 @@ def upload_file():
         # and send it to the chatbot model as context
 
         # empty return with 204 code, means its good
+        x = read_pdf(f"Web_App/contexts/{f.filename}") # - content of uploaded as string TODO: implement 
+        print(x)
         return '', 204
 
 if __name__ == "__main__":
     chatbot = model()
     app.run(debug=True) # Set debug = True for live changes in development
-    
+
