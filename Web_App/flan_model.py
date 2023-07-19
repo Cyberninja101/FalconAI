@@ -27,9 +27,10 @@ class google_flan():
         )
 
         self.conversation = ConversationChain(
-            prompt=self.PROMPT,
-            llm=self.flan_t5,
-            memory=ConversationBufferWindowMemory(k=4)
-        )
-    def run(self, text):
-        return([self.conversation(text)["response"], self.conversation.memory.buffer])
+                    prompt=self.PROMPT,
+                    llm=self.flan_t5,
+                    memory=ConversationBufferWindowMemory(k=4)
+                )
+        
+        def run(self, text):
+            return([self.conversation(text)["response"], self.conversation.memory.buffer])
