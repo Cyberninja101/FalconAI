@@ -1,5 +1,5 @@
 from flask import Flask, redirect, url_for, render_template, request
-from flask_localtunnel import run_with_lt
+from flask_lt import run_with_lt
 from flan_model import google_flan
 from pdfReader import read_pdf
 import os
