@@ -1,0 +1,1226 @@
+9.16x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 9 T racking Radar Dean D.
+Howard Consultant to ITT Industries, Inc.
+9.1 INTRODUCTION Typical tracking radars have a pencil beam to receive echoes from a single target and  track the target in angle, range, and/or doppler.
+Its resolution cell—defined by its  antenna beamwidth, transmitter pulse length (effective pulse length may be shorter  with pulse compression), and/or doppler bandwidth—is usually small compared with  that of a search radar and is used to exclude undesired echoes or signals from other  targets, clutter, and countermeasures.
+Electronic beam-scanning phased array radars  may track multiple targets by sequentially dwelling upon and measuring each target  while excluding other echo or signal sources.
+Because of its narrow beamwidth, typically from a fraction of 1 ° to 1 or 2 °, tracking  radars usually depend upon information from a surveillance radar or other source of  target location to acquire the target, i.e., to place its beam on or in the vicinity of the  target before initiating a track.
+Scanning of the beam within a limited angle sector may  be needed to acquire the target within its beam and center the range-tracking gates on  the echo pulse prior to locking on the target or closing the tracking loops.
+The gate acts  like a fast-acting on-off switch that turns the receiver “on” at the leading edge of the  target echo pulse and “off” at the end of the target echo pulse to eliminate undesired  echoes.
+The range-tracking system performs the task of keeping the gate centered on  the target echo, as described in Section 9.5.
+The primary output of tracking radar is the target location determined from the  pointing angles of the beam and position of its range-tracking gates.
+The angle loca - tion is the data obtained from synchros and encoders on the antenna tracking axes   (or data from a beam-positioning computer on an electronic-scan phased array radar).
+ In some cases, tracking lag is measured by converting tracking-lag-error voltages from  the tracking loops to units of angle.
+This data is used to add to or subtract from the  angle shaft position data for real-time correction of tracking lag.
+There are a large variety of tracking-radar systems, including some that achieve  simultaneously both surveillance and tracking functions.
+A widely used type of  tracking radar and the one discussed in detail in this chapter is a ground-based sys - tem consisting of a pencil-beam antenna mounted on a rotatable platform with servo  motor drive of its azimuth and elevation position to follow a target (Figure 9.1 a).
+ Errors in pointing direction are determined by sensing the angle of arrival of the  echo wavefront and corrected by positioning the antenna to keep the target centered Chapter 9 ch09.indd   1 12/15/07   6:06:55 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Source: RADAR HANDBOOK 9.2 RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 9 in the beam.
+Modern requirements for simultaneous precision tracking of multiple  targets has driven the development of the electronic scan array monopulse radar  with the capability to switch its beam pulse-to-pulse among multiple targets.
+The  AN/MPS-39 shown in Figure 9.1 b is an example of a highly versatile electronic scan  monopulse missile-range instrumentation radar.
+The principal applications of precision tracking radar are weapon control and   missile-range instrumentation.
+In both applications, a high degree of precision and an  accurate prediction of future position of the target are generally required.
+The earliest  use of tracking radar was gunfire control.
+The azimuth angle, elevation angle, and the  range to the target were measured, and from the rate of change of these parameters, the  velocity vector of the target (speed and direction) was computed and its future position  predicted.
+This information was used to move the gun to lead the target and set the fuze  delay.
+The tracking radar performs a similar role in providing guidance information  and steering commands for missile control.
+In missile-range instrumentation, the tracking-radar output is used to measure the  trajectory of the missile and to predict future position.
+Tracking radars are used to com - pute the impact point of a launched missile continuously during the launch phase in case  of missile failure for range safety.
+If the impact point approaches a populated or other  critical area, the missile is destroyed.
+Missile-range instrumentation radars are normally  used with a beacon (pulse repeater) to provide a point-source echo—usually its pulse  is delayed to separate it from the target echo—and with high signal-to-noise ratio, to  achieve precision tracking on the order of 0.05 mil in angle and 5 m in range.
+FIGURE 9.1  (a) AN/FPQ-6 C-band monopulse precision tracking radar installation at the NASA  Wallops Island Station, VA.
+It has a 29-ft-diameter dish and a specified tracking precision of 0.05 mrad rms.
+  (b) AN/MPS-39 C-band electronic scan phased-array Multi Object Tracking Radar (MOTR) installed at  the White Sands Missile Range.
+( Photo of the AN/MPS-39 courtesy of the White Sands Missile Range and  Lockheed Martin .)(a)  (b) ch09.indd   2 12/15/07   6:06:56 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Tracking Radar  TRACKING RADAR  9.36x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 9 This chapter describes the monopulse (simultaneous lobing with either phase com - parison or amplitude comparison), conical-scan, and sequential lobing tracking-radar  techniques with the main emphasis on the amplitude-comparison monopulse (simul - taneous lobing) radar.
+9.2 MONOPULSE (SIMULTANEOUS LOBING) The susceptibility of conical scanning and sequential lobing tracking techniques to  echo amplitude fluctuations and amplitude jamming (as described in Section 9.3)  was the major reason for the development of tracking radar that provides simultane - ously all the necessary lobes for angle-error sensing.
+This required that the output  from the lobes be compared simultaneously on a single pulse, eliminating the effects  of echo amplitude change with time.
+The technique to accomplish this was initially  called simultaneous lobing , which was descriptive of the technique.
+Later, the term  monopulse  was coined, referring to the ability to obtain angle error information on  a single pulse.
+It has become the commonly used name for this tracking technique;  even though, the lobes are generated simultaneously and monopulse  tracking can be  performed with CW radar.
+The original monopulse tracking radars suffered in antenna efficiency and com - plexity of microwave circuitry because waveguide signal-combining circuitry was a  relatively new art.
+These problems were overcome and monopulse radar, with mod - ern compact off-the-shelf processing circuitry, can readily outperform scanning and  lobing systems.
+The monopulse technique also has an inherent capability for high- precision angle measurement because its feed structure is compact with short signal  paths and rigidly mounted with no moving parts.
+This has made possible the devel - opment of pencil-beam tracking radars that meet missile-range instrumentation-radar  requirements of 0.003 ° angle-tracking precision.
+This chapter is devoted to tracking radar, but monopulse techniques are used in  other systems including homing devices, direction finders, and some search radars.
+ However, most of the basic principles and limitations of monopulse apply for all appli - cations.
+More general coverage is found in Sherman1 and Leonov and Formichev.2 Amplitude-Comparison Monopulse.
+ A method for visualizing the operation of  an amplitude-comparison receiver is to consider the echo signal at the focal plane of  an antenna.3 The echo is focused to a finite size “spot.” The “spot” is centered on the  focal plane when the target is on the antenna axis and moves off center when the tar - get moves off axis.
+The antenna feed is located at the focal point to receive maximum  energy from a target on axis.
+The amplitude-comparison feed is designed to sense any feed plane displacement  of the spot from the center of the focal plane.
+A monopulse feed using the four-horn  square, for example, would be centered at the focal plane.
+It provides symmetry  so that when the spot is centered, equal energy falls on each of the four horns.
+The  radar senses target displacement from the antenna axis that shifts the spot off of the  center of the focal plane by measuring the resultant unbalance of energy received  in the four horns.
+This is accomplished by use of microwave waveguide hybrids to  subtract outputs of pairs of horns, providing a sensitive device that gives signal out - put when there is an unbalance caused by the target being off axis.
+The RF circuitry  for a conventional four-horn square feed (see Figure 9.2) subtracts the output of  ch09.indd   3 12/15/07   6:06:57 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Tracking Radar 9.4 RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 9 the left pair from the output of the right pair to sense any unbalance in the azimuth  direction.
+It also subtracts the output of the top pair from the output of the bottom  pair to sense any unbalance in the elevation direction.
+In addition, the circuitry adds  the output of all four horns for a sum signal for detection, monopulse processing,  and range tracking.
+The comparator shown in Figure 9.2 is the circuitry that performs the addition and  subtraction of the feed horn outputs to obtain monopulse sum and difference signals.
+It  is illustrated with hybrid-T (or magic-T) waveguide components.
+These are four-port  devices that, in basic form, have the inputs and outputs located at right angles to each  other.
+However, the magic T’s have been developed in convenient “folded” configu - rations for a very compact comparator.
+The performance of these and other similar  four-port devices is described in Chapter 4 of Sherman.1 The subtractor outputs are called difference signals,  which are zero when the target  is on axis, increasing in amplitude with increasing displacement of the target from the  antenna axis.
+The difference signals also change 180 ° in phase from one side of center  to the other.
+The sum of all four-horn outputs provides a reference signal to control  angle-tracking sensitivity (volts per degree of error) to remain constant, even though  the target echo signal may vary over a large dynamic range.
+This is accomplished by  automatic gain control (AGC) to keep the sum signal output and angle-tracking loop  gains constant for stable automatic angle tracking.
+Figure 9.3 is a block diagram of typical monopulse radars.
+The sum signal, eleva - tion difference signal, and azimuth difference signal are each converted to intermedi - ate frequency (IF), using a common local oscillator to maintain relative phase at IF.
+ The IF sum-signal output is detected and provides the video input to the range tracker.
+ The range tracker measures and tracks the time of arrival of the desired target echo  and provides gate pulses that turn on the radar receiver channels only during the brief  period when the desired echo is expected.
+The gated video is used to generate the dc  FIGURE 9.2  Microwave-comparator circuitry used with a four-horn  monopulse feed ch09.indd   4 12/15/07   6:06:58 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Tracking Radar  TRACKING RADAR  9.56x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 9 voltage proportional to the magnitude of the Σ signal or Σ for the AGC of all three IF  amplifier channels.
+The AGC maintains constant angle-tracking sensitivity (volts per  degree error), even though the target echo signal varies over a large dynamic range, by  controlling gain or dividing by Σ .
+AGC is necessary to keep the gain of the angle-  tracking loops constant for stable automatic angle tracking.
+Some monopulse systems,  such as the two-channel monopulse, can provide instantaneous AGC or normalizing  by use of log detectors as described later in this section.
+The sum signal at the IF output also provides a reference signal to phase detectors  that derive angle-tracking-error voltages from the difference signals.
+The phase detec - tors are essentially dot-product devices producing the output voltage  e e = =| || | | || | | |Σ ∆ Σ ∆∆ Σcos or cos θ θ (9.1) where e =  angle-error-detector output voltage  Σ = magnitude of sum signal  ∆ =  magnitude of difference signal  q =  phase angle between sum and difference signals The dot-product error detector is only one of a wide variety of monopulse angle-error  detectors described in Chapter 7 of Sherman.1 Normally, q is either 0 ° or 180 ° when the radar is properly adjusted, and the only  purpose of the phase-sensitive characteristic is to provide a plus or minus polarity cor - responding to q = 0° and q = 180°, respectively, giving a + or – polarity to the angle- error-detector output to indicate to the servo which direction to drive the pedestal.
+In a pulsed tracking radar, the angle-error-detector output is bipolar video; that  is, it is a video pulse with an amplitude proportional to the angle error and whose  polarity (positive or negative) corresponds to the direction of the error.
+This video  is typically processed by a sample and hold circuit that charges a capacitor to the  peak video-pulse voltage and holds the charge until the next pulse, at which time the  capacitor is discharged and recharged to the new pulse level.
+With moderate low-pass  filtering, this gives the dc error voltage output to the servo amplifier to correct the  antenna position.
+FIGURE  9.3  Block diagram of a conventional monopulse tracking radar ch09.indd   5 12/15/07   6:07:01 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Tracking Radar 9.6 RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 9 The three-channel amplitude-comparison monopulse tracking radar is the most  commonly used monopulse system.
+However, the three signals may sometimes be  combined in other ways to perform with a two-channel receiver system (as described  later in this section) used in some current surface-to-air missile (SAM) systems.
+Monopulse-Antenna Feed Techniques.
+ Monopulse-radar feeds may have any of  a variety of configurations.
+Single apertures are also employed by use of higher-order  waveguide modes to extract angle-error-sensing difference signals.
+There are many  tradeoffs in feed design because optimum sum and difference signals, low sidelobe  levels, selectable polarization capability, and simplicity cannot all be fully satisfied  simultaneously.
+The term simplicity  refers not only to cost savings but also to the use  of noncomplex circuitry, which is necessary to provide a broadband system with good  boresight stability to meet precision-tracking requirements.
+( Boresight  is the electrical  axis of the antenna or the angular location of a signal source within the antenna beam  at which the angle-error-detector outputs go to zero.) Some of the typical monopulse feeds are described to show the basic relations and  tradeoffs involved in the various performance factors and how the more important  factors can be optimized by a feed configuration but at the price of lower performance  in other areas.4 Many new techniques have been added since the original four-horn  square feed in order to provide good or excellent performance in all desired feed char - acteristics in a well-designed monopulse radar.
+The original four-horn square monopulse feed is inefficient because the optimum  feed size aperture for the difference signals is approximately twice the optimum size  for the sum signal.5 Consequently, an intermediate size is typically used with a signifi - cant compromise for both sum and difference signals.
+The optimum four-horn square  feed, which is subject to this compromise, described in Sherman,1 is based on mini - mizing the angle error caused by receiver thermal noise.
+However, if sidelobes are a  prime consideration, a somewhat different feed size may be desired.
+The limitation of the four-horn squared feed is that the sum- and difference-signal  E fields cannot be controlled independently.
+If independent control could be provided,  the ideal  would be approximately as described in Figure 9.4, with twice the dimension  for the difference signals in the plane of error sensing than for the sum signal.5 A technique used by the MIT Lincoln Laboratory to approach the ideal is a 12-horn  feed (Figure 9.5).
+The overall feed, as illustrated, is divided into small parts, and the  microwave circuitry selects the portions necessary for the sum and difference signals to  approach the ideal.
+One disadvantage is that this feed requires a very complex microwave  circuit.
+Also, the divided four-horn portions of the feed are each four element arrays that  generate large feed sidelobes in the H-plane  because of the double-peak E field.
+Another  consideration is that the 12-horn feed is not  practical for focal-point-fed parabolas or  reflectarrays because of its size.
+A focal- point feed is usually small to produce a  broad pattern and must be compact to avoid  blockage of the antenna aperture.
+In some  cases, the small optimum size required is  below waveguide cutoff, and dielectric  loading of the horn apertures becomes nec - essary to avoid cutoff.
+ FIGURE   9.4  Approximately ideal feed-aperture  E-field distribution for sum and difference signals ch09.indd   6 12/15/07   6:07:01 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Tracking Radar  TRACKING RADAR  9.76x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 9 A practical approach to monopulse feed design uses higher-order waveguide modes  rather than multiple horns for independent control of sum- and difference-signal   E fields.
+This allows much greater simplicity and flexibility.
+A triple-mode two-horn  feed used by RCA5,6 retracts the E-plane septa to allow both the TE10 and TE30 modes  to be excited and propagate in the double-width septumless region, as illustrated in  Figure 9.6.
+At the septum, the double-humped E field is represented by the combined  TE10 and TE30 modes subtracting at the center and adding at the TE30-mode outer  peaks.
+However, because the two modes propagate at different velocities, a point is  reached farther down the double-width guide where the two modes add in the center  and subtract at the outer humps of the TE30 mode.
+The result is a sum-signal E field  concentrated, as desired, toward the center of the feed aperture.
+This shaping of the sum-signal E field is accomplished independently of the  difference-signal E field.
+The difference signal is two TE10-mode signals, side by side,  arriving at the septum of Figure 9.6 out of phase.
+At the septum, it becomes the TE20  mode, which propagates to the horn aperture and uses the full width of the horn as  desired.
+The TE20 mode has zero E field in the center of the waveguide where the  septum is located and is unaffected by the septum.
+A further step in feed development is the four-horn triple-mode feed illustrated in  Figure 9.7.5 This feed uses the same approach as described above but with the addi - tion of a top and bottom horn.
+This allows the E-plane difference signal to couple to  all four horns and uses the full height of the feed.
+The sum signal uses only the center  two horns to limit its E field in the E-plane as desired for the ideal field shaping.
+  FIGURE   9.5  Twelve-horn feed ch09.indd   7 12/15/07   6:07:04 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Tracking Radar 9.8 RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 9 The use of smaller top and bottom horns is a simpler method of concentrating the   E-field toward the center of the feed, where the full horn width is not needed.
+The feeds described thus far are for linear-polarization operation.
+When circular  polarization is needed in a paraboloid-type antenna, square or circular cross-section  horn throats are used.
+The vertical and horizontal components from each horn are  FIGURE   9.6  Use of retracted septum to shape the sum-signal E field FIGURE   9.7  Four-horn triple-mode feed ( after P .
+W.
+Hannan5 © IEEE 1961 ) ch09.indd   8 12/15/07   6:07:07 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Tracking Radar  TRACKING RADAR  9.96x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 9 separated and comparators provided for each polarization.
+The sum and difference  signals from the comparators are combined with 90° relative phase to obtain circular  polarization.
+Use of the previously described feeds for circular polarization would  require the waveguide circuitry to be prohibitively complex.
+Consequently, a five-horn  feed has been used as illustrated in Figure 9.8.
+The five-horn feed is selected because of the simplicity of the comparator that  requires only two magic (or hybrid) T’s for each polarization.
+The sum and differ - ence signals are provided for the two linear-polarization components and, in an  AN/FPQ-6 radar, are combined in a waveguide switch for selecting polarization.
+ The switch selects either the vertical or the horizontal input component or combines  them with a 90° relative phase for circular polarization.
+This feed does not provide  optimum sum- and difference-signal E fields because the sum horn occupies space  desired for the difference signals.
+Generally, an undersized sum-signal horn is used  as a compromise.
+However, the five-horn feed is a practical choice between com - plexity and efficiency.
+It has been used in several instrumentation radars including  the AN/FPQ-6, AN/FPQ-10, AN/TPQ-18, andAN/MPS-367,8 and in the AN/TPQ-27  tactical precision-tracking radar.9 The multimode feed technique can be expanded to other higher-order modes for  error sensing and E-field shaping.10,11,12 The difference signals are contained in unsym - metrical modes such as the TE20 mode for H-plane error sensing and combined TE11  and TM11 modes for E-plane error sensing.
+These modes provide the difference sig - nals, and no comparators are used.10 Generally, mode coupling devices can give good  performance in separating the symmetrical and unsymmetrical modes without signifi - cant cross-coupling problems.
+FIGURE   9.8  Five-horn feed with coupling to both linear-polarization components, which are  combined by the switch matrix to select horizontal, vertical, or circular polarization ch09.indd   9 12/15/07   6:07:08 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Tracking Radar 9.10  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 9 Multiband monopulse feed configurations are practical and in use in several sys - tems.
+A simple example is a combined X-band and Ka-band monopulse paraboloid  antenna radar.
+Separate conventional feeds are used for each band, with the Ka-band  feed as a Cassegrain feed and the X-band feed at the focal point.13 The Cassegrain sub - dish is a hyperbolic-shaped highly efficient grid of wires reflective to parallel polariza - tion and transparent to orthogonal polarization.
+It is oriented to be transparent to the  X-band focal-point feed behind it and reflective to the orthogonally polarized Ka-band  feed extending from the vertex of the paraboloid.
+Monopulse feed horns at different microwave frequencies can also be combined  with concentric feed horns.
+The multiband feed clusters will sacrifice efficiency but  can satisfy multiband requirements in a single antenna.
+AGC (Automatic Gain Control).
+ To maintain a stable closed-loop servosystem for  angle tracking, the radar must maintain essentially constant loop gain independent of  target echo size and range.
+The problem is that monopulse difference signals from the  antenna are proportional to both the angle displacement of the target from the antenna axis  and the echo signal amplitude.
+For a given tracking error, the error voltage would change  with echo amplitude and target range causing a corresponding change in loop gain.
+AGC is used to remove the angle-error-detector-output dependence on echo ampli - tude and retain constant tracking loop gain.
+A typical AGC technique is illustrated in  Figure 9.9 for a one-angle coordinate tracking system.
+The AGC system detects the  peak voltage of the sum signal and provides a negative dc voltage proportional to the  peak signal voltage.
+The negative voltage is fed to the IF amplifier stage, where it is  used to decrease gain as the signal increases.
+A high gain in the AGC loop is equivalent  to dividing the IF output by a factor proportional to its amplitude.
+In a three-channel monopulse radar, all three channels are controlled by the AGC  voltage, which effectively performs a division by the magnitude of the sum signal or  echo amplitude.
+Conventional AGC essentially holds constant gain during the pulse  repetition interval.
+Also, the AGC of the sum channel normalizes the sum echo pulse  amplitude to similarly maintain a stable range-tracking servo loop.
+The angle-error detector, assumed to be a produce detector, has an output  | || || |e k=∆Σ Σ Σcosθ (9.2) where | e | is the magnitude of the angle-error voltage.
+Phases are adjusted to provide  0° or 180° on a point-source target.
+The resultant is  | || |e k= ±∆ Σ (9.3) IF AMPLIFIER IF AMPLIFIERAGC VOLT AGEΣ ∆ AGC AMPLIFIERDETECT OR ANGLE ERR OR DETECT OR FIGURE   9.9  AGC in monopulse tracking ch09.indd   10 12/15/07   6:07:12 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Tracking Radar  TRACKING RADAR  9.116x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 9 Complex targets can cause other phase relations as a part of the angle scintillation  phenomenon.1 The above error voltage, proportional to the ratio of the difference  signal divided by the sum signal, is the desired angle-error-detector output, giving a  constant angle error sensitivity.1 With limited AGC bandwidth, some rapid signal fluctuations modulate e but the  long-time-average angle sensitivity is constant.
+These fluctuations are largely from  rapid changes in target reflectivity, s (t), that are from target amplitude scintillation.
+ The random modulation of  e causes an additional angle noise component that affects  the choice of AGC bandwidth.
+The AGC performance in conical-scan radars provides similar constant angle error  sensitivity.
+One major limitation in conical-scan radars is that the AGC bandwidth  must be sufficiently lower than the scan frequency to prevent the AGC from removing  the modulation containing the angle error information.
+Phase-Comparison Monopulse.
+ A second monopulse technique is the use of mul - tiple antennas with overlapping (nonsquinted) beams pointed at the target.
+Interpolating  target angles within the beam is accomplished, as shown in Figure 9.10, by comparing  the phase of the signals from the antennas (for simplicity a single-coordinate tracker   is described).
+If the target were on the antenna boresight axis, the outputs of each   FIGURE   9.10  (a) Wavefront phase relationships in a phase comparison monopulse radar and ( b) block  diagram of a phase comparison monopulse radar (one angle coordinate) ch09.indd   11 12/15/07   6:07:14 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Tracking Radar 9.12  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 9 individual aperture would be in phase.
+As  the target moves off axis in either direc - tion, there is a change in relative phase.
+ The amplitudes of the signals in each aper - ture are the same so that the output of the  angle-error phase detector is determined  by the relative phase (see Figure 9.11).
+The  phase-detector circuit is adjusted with a  90° phase shift on one channel to give zero  output when the target is on axis and an  output increasing with increasing angular  displacement of the target with a polarity  corresponding to the direction of error.
+Typical flat-face corporate-fed phased  arrays compare the output of halves of the  aperture and fall into the class of phase- comparison monopulse.
+However, the  basic signal processing of amplitude- and  phase-comparison monopulse is similar,  but the control of amplitude distribution across an array aperture for the sum and   difference signals maintains efficiency and lower sidelobes.
+Figure 9.10 shows the antenna and receiver for one angular-coordinate tracking by  phase comparison monopulse.
+Any phase shifts occurring in the mixer and IF ampli - fier stages causes a shift in the boresight of the system.
+The disadvantages of phase- comparison monopulse with separate apertures compared with amplitude-comparison  monopulse are the relative difficulty in maintaining a highly stable boresight and the  difficulty in providing the desired antenna illumination taper for both sum and dif - ference signals.
+The longer paths from the antenna outputs to the comparator cir - cuitry make the phase-comparison system more susceptible to boresight change due  to mechanical loading (sag), differential heating, etc.
+A technique giving greater boresight stability combines the two antenna out - puts at RF with passive circuitry to yield sum and difference signals, as shown in  Figure 9.11.
+These signals may then be processed like a conventional amplitude- comparison monopulse receiver.
+The system shown in Figure 9.11 would provide  a relatively good difference-channel taper, having smoothly tapered E-fields on  each antenna.
+However, a sum-signal excitation with the two antennas provides a  two-humped in-phase E-field  distribution that causes high sidelobes since it looks  like a two-element array.
+This problem may be reduced by allowing some aperture  overlap but at the price of loss of angle sensitivity and antenna gain.
+Electronic Scan Phased Array Monopulse.
+ Tracking radars dedicated to single  target tracking can provide very high precision long range performance, such as the  AN/FPQ-614,15,16 (Figure 9.1 a) with a specified precision of 0.05 milliradian.
+With  high power and a high gain antenna (52 dB) and special tracking techniques, they are  the workhorse for precision tracking of satellites and similar tasks.
+However, most  modern tasks require precision simultaneous tracking of multiple simultaneous targets  where use of multiple single target tracking radars are not cost effective.
+The develop - ment of electronic scan phased array technology has resulted in versatile high preci - sion monopulse tracking with the capability of simultaneous multitarget tracking by  switching its beam to each of several targets on a pulse-to-pulse basis or by groups  FIGURE 9.11  (a) RF phase-comparison mono - pulse system with sum and difference outputs and  (b) vector diagram of the sum and difference signals ch09.indd   12 12/15/07   6:07:14 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Tracking Radar  TRACKING RADAR  9.136x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 9 of pulses.
+Monopulse tracking is necessary to obtain angle data on each pulse to  maintain adequate data rates when sharing pulses and power among several targets.
+A  detailed discussion of electronic scan phased arrays is given in Chapter 13; however,  some characteristics of the arrays require special consideration for the angle tracking  performance of tracking radars using monopulse phased array antennas.
+Optical-feed Monopulse Electronic Scan Arrays.
+ Optical-feed monopulse arrays  include the lens array and reflectarray (Chapter 13) that are optically fed by a conven - tional monopulse feed.
+The AN/MPQ-3917 (Figure 9.1 b) is an example of an optically  fed array lens with the antenna mounted on a two-axis pedestal.
+Typical instantaneous  electronic angle coverage is ±45° to an almost ±60° cone field-of-view that may be  moved by pedestal drive to center on a multitarget event or follow an event progress - ing to a different area.
+Some military systems such as the Patriot with the ±60° cone  of instantaneous view is fixed on its vehicle without a pedestal and is dependent on  movement of its vehicle to change the region of angular coverage as needed.
+The  advantages of space fed arrays are ● Conventional monopulse microwave horn feeds are used.
+● Array elements are available with selectable polarization of the radiated energy when  fed by an optimized linear polarized monopulse feed (such as in Figure 9.7) and select - able receive-polarization as well.
+This avoids the typical compromise and greater com - plexity of a polarization-controlled monopulse feed as described in Figure 9.8.
+● Electronic scan array lenses can also refocus from a transmit feed horn to an adjacent  receive feed horn on reception to allow high power transmission through a simple  single horn feed to simplify isolation of the receiver from the transmit power .
+● Arrays allow greater flexibility to optimize amplitude distribution of the radiated  energy across the array to reduce sidelobes.
+Most of the electronic scan phased array disadvantages are described in Chapter 13  and include losses in the array phase shifting elements, limitation of instantaneous  bandwidth with conventional phase control elements (improved with special true- time-delay phase shifting), phase quantization errors (Chapter 13) resulting from  phase shifting in steps, restriction to a single rf band (multiband arrays require special  techniques with major compromises), and gradual degradation of performance as the  beam is scanned from the normal to the array.
+The quantization errors from phase  shifting in steps are of concern to monopulse radar because it results in corresponding  random error steps in the electronic axis of the array.
+As described in Chapter 13, the  quantization errors are inversely proportional to the number of phase shifting elements  and 2P where P is the number of bits of phase control in each element.
+Consequently,  the high precision tracking radars with typically 4000 to 8000 phase shifters and four  or more phase shift bits have small resultant electrical axis error steps on the order of  0.1 milliradians or less.
+The electrical axis errors are essentially random and can be  further reduced by averaging.
+Intentional dither of phase steps may be introduced to  aid in averaging.
+The optically fed technique results in feed energy spillover around the aperture;  however, these resultant spillover sidelobes can be eliminated by an absorbing cone  between the feed and the array aperture.
+The absorbing cone is observed in the AN/ MPQ-39 (Figure 9.1 b).
+However, cooling is also necessary and provided, as observed  by the cooling coils around the absorbing cone.
+ch09.indd   13 12/15/07   6:07:15 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Tracking Radar 9.14  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 9 Of further concern to high precision monopulse applications is drift of the elec - tronic axis that causes variations in phase and temperature variation across the array  surface that causes distortion of the lens.
+Significant variation of heat distribution  across the array face can result from high power transmitted through the phase shifting  elements as well as the electronic phase control.
+Consequently, where high precision  tracking is required, special cooling techniques may be necessary to maintain constant  temperature across the aperture.
+Corporate Feed Monopulse Electronic Scan Phased Array.
+ The corporate feed  array is fed by dividing and subdividing the transmit signal through transmission lines  typically to subarrays of multiple array radiating elements.
+This technique, although  typically resulting in heavier and higher cost implementation, offers the advantage  of flexibility of control of the signal paths through the array structure, as described  in Chapter 13.
+Another advantage is the capability to transmit very high peak power  without the limitations of full peak power propagating through a single transmission  line.
+This is accomplished in the corporate feed array by placing high power amplifiers  where the power divides to the subarrays, allowing the sum of the high peak power  amplifier outputs to add in space to meet requirements for long-range tracking and  power sharing between multiple simultaneous targets.
+The parallel power amplifier configuration also provides a practical means for  overcoming the narrow instantaneous bandwidth of typical phased arrays at wide  scan angles.
+Full array instantaneous bandwidth requires equal path lengths between  each array element and the target, requiring many wavelengths of phase control or the  equivalent time delay in array elements at wide angle scans.
+However, this control has  prohibitively high loss for typical phased array radiating elements; consequently, typi - cal phased array elements provide only sufficient phase control of up to 360° or to one  wavelength, limited to tolerable loss, to cause the signal from each element to arrive  approximately in phase at the target.
+Unfortunately, this shortcut is adequate for only  a narrow instantaneous bandwidth.
+The parallel power amplifiers, as described above,  provide a low power amplifier drive stage where the high loss of the desired time  delay control can be tolerated to gain wide instantaneous bandwidth, as described in  Chapter 13.
+The time delay may be controlled similar to the diode phase shifters used  in radiating elements that switch between different line lengths to adjust phase.
+Longer  time delay transmission line could be similarly controlled by diode switching to pro - vide the wide instantaneous bandwidth to allow, for example, use of wideband narrow  pulses to provide the range resolution requirements for tracking radar applications.
+Two-Channel Monopulse.
+ Monopulse radars may be designed with fewer than the  conventional three IF channels.
+This is accomplished, for example, by combining the sum  and difference signals in two IF channels and the sum and two difference signal outputs  are then individually retrieved at the output.
+These techniques provide some advantages  in AGC or other processing techniques but at the cost of reduced SNR, reduced angle  data rate, and potential for cross coupling between azimuth and elevation information.
+A two-channel monopulse receiver18 combines the sum and difference signals  at RF, as shown in Figure 9.12.
+The microwave resolver is a mechanically rotated  RF coupling loop in cylindrical waveguide.
+The azimuth and elevation difference  signals are excited in this guide with E-field polarization oriented at 90o.
+The  energy in the coupler contains both difference signals coupled as the cosine  and sine of the angular position of the coupler, wst, where ws is the angular rate   of rotation.
+The hybrid adds the combined difference signals ∆ at the angular   ch09.indd   14 12/15/07   6:07:15 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Tracking Radar  TRACKING RADAR  9.156x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 9 rate of rotation.
+The Σ + ∆ and Σ – ∆ outputs each look like the output of a conical- scan tracker except that their modulation function differs by 180°.
+In case one  channel fails, the radar can be operated as a scan-on-receive-only conical-scan radar  with essentially the same performance as a conical-scan radar.
+The advantage of two  channels with opposite-sense angle-error information on one channel with respect to  the other is that signal amplitude fluctuations in the received signal are canceled in the  post-detection subtraction at the IF output that retrieves the angle-error information.
+ The log IF performs essentially as an instantaneous AGC, giving the desired constant  angle-error sensitivity of the difference signals normalized by the sum signal.
+The  detected ∆ information is a bipolar video where the error information is contained in  the sinusoidal envelope.
+This signal is separated into its two components, azimuth-  and elevation-error information, by an angle demodulation.
+The demodulator, using  a reference from the drive on the rotating coupler, extracts the sine and cosine  components from ∆ to give the azimuth- and elevation-error signals.
+The modulation  caused by the microwave resolver is of concern in instrumentation radar applications  because it adds spectral components in the signal, complicating the possible addition  of pulse doppler tracking capability to the radar.
+This system provides instantaneous AGC operation with only two IF channels and  operation with reduced performance in case of failure of either channel.
+However,  there is a loss of 3-dB SNR at the receiver inputs, although this loss is partly regained  by coherent addition of the Σ-signal information.
+The design of the microwave resolver  must minimize loss through the device, and precisely matched IF channels are required  to minimize cross coupling between the azimuth and elevation channels.
+In some mod - ern systems, the resolver performance is improved by use of ferrite switching devices  to replace the mechanical rotating coupler.
+Conopulse.
+ Conopulse (also called scan with compensation ) is a radar tracking  technique that is a combination of monopulse and conical scan.19,20 A pair of antenna  FIGURE   9.12  Block diagram of a two-channel monopulse radar system ( from R.
+S.
+Nobli t18 ) ch09.indd   15 12/15/07   6:07:19 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Tracking Radar 9.16  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 9 beams is squinted in opposite directions from the antenna axis and rotated like a pair  of conical-scan-radar beams.
+Since they exist simultaneously, monopulse information  can be obtained from the pair of beams.
+The plane in which monopulse information   is measured rotates.
+Consequently, elevation and azimuth information is sequential  and must be separated for use in each tracking coordinate.
+Conopulse provides the  monopulse advantage of avoiding errors caused by amplitude scintillation, and it  requires only two receivers.
+However, it has the disadvantage of lower angle data  rates and the mechanical complexity of providing and coupling to a pair of rotating  antenna feedhorns.
+9.3 SCANNING AND LOBING The first technique used for radar angle tracking was to displace the antenna beam  above and below the target in elevation and side to side of the target in azimuth to  compare beam amplitudes similar to monopulse radar simultaneous lobing but differ - ing by being in a time sequence.
+This was performed by a continuous conical beam  scan, as illustrated in Figure 9.1321 or by sequentially lobing up/down and right/left  and observing the difference between amplitudes as a measure of displacement of the  antenna axis from the target.
+The signal output for a conical-scan radar, illustrated in  Figure 9.14, is typically a sinusoid amplitude modulation of the received target echo  pulses.
+The amplitude of the modulation is a measure of the magnitude of the angle  error, and the phase, relative to the scanning-beam rotation angle, indicates the portion  of the error caused by each tracking axis.
+The performance of scanning and lobing radar relative to the beam offset angle is  described in Barton.22 An optimum beam offset is described as a compromise between  the loss of antenna gain and the increase in sensitivity to target angle displacement  from the antenna axis as beam offset is increased.
+The optimum offset is typically  chosen to provide the minimum rms angle-tracking error as affected by the signal-to- noise ratio and tracking sensitivity.
+Special tracking radar applications with nontypical  requirements could arrive at a different optimum beam offset.
+A major limitation of scanning and lobing radar is the susceptibility to target ampli - tude fluctuations that occur during the time the beam is moved from side to side or up  and down.
+It is also susceptible to false modulation on signals from countermeasures.
+ The echo fluctuations not related to antenna beam position cause false target angle- tracking errors.
+FIGURE   9.13  Conical-scan tracking ch09.indd   16 12/15/07   6:07:19 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Tracking Radar  TRACKING RADAR  9.176x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 9 Monopulse radar was developed to provide simultaneous offset antenna beams for  comparison of target echo amplitudes on a single pulse independent of echo signal  amplitude fluctuations.
+However, few microwave devices and components were ini - tially available, and the first monopulse systems were complex and resulted in cum - bersome and inefficient antennas.
+At present, modern monopulse radars, as described  in Section 9.2, provide highly stable and efficient antennas with high precision perfor - mance and have generally displaced scanning and lobing tracking radars for meeting  the increasing demands for high precision and high data rate of angle information on  each pulse.
+However, special radar tracking requirements may exist where a practical  implementation of conical scan or lobing tracking radar may more effectively provide  adequate performance.
+9.4 SERVOSYSTEMS FOR TRACKING RADAR The servosystem of a tracking radar is the subsystem of the radar that receives as its  input the tracking-error voltage and performs the task of moving the antenna beam in a  direction that will reduce to zero the alignment error between the antenna axis and the  target.
+For two-axis tracking with a mechanical-type antenna pedestal, there are typi - cally separate axes of rotation for azimuth and elevation and separate servosystems to  move the antenna about each axis.
+A conventional servosystem is composed of ampli - fiers, filters, and a motor that moves the antenna in a direction to maintain the antenna  axis on the target.
+Range tracking is accomplished by a similar system to maintain  range gates centered on the received echo pulses.
+This may be accomplished by analog  techniques or by digital-counter registers that retain numbers corresponding to target  range to provide a closed range-tracking loop digitally.
+Servosystems may use hydraulic-drive motors, conventional electric motors  geared down to drive the antenna, or direct-drive electric motors where the antenna  mechanical axis shaft is part of the armature, and the motor field is built into   the support case.
+The direct drive is heavier for a given horsepower but eliminates  FIGURE   9.14  (a) Angle error information contained in the envelope  of the received pulses in a conical-scan radar and ( b) reference signal  derived from the drive of the conical-scan feed ch09.indd   17 12/15/07   6:07:20 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Tracking Radar 9.18  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 9 gear backlash.
+Backlash may also be reduced with conventional motors by duplicate  parallel drives with a small residual opposing torque when near zero angle rate.
+ Amplifier gain and filter characteristics as well as motor torque and inertia deter - mine the velocity and acceleration capability or the ability to follow the higher-order  motion of the target.
+It is desired that the antenna beam follow the center of the target as closely as pos - sible, which implies that the servosystem should be capable of moving the antenna  quickly.
+The combined velocity and acceleration characteristics of a servosystem can  be described by the frequency response of the tracking loop, which acts essentially like  a low-pass filter.
+Increasing the bandwidth increases the quickness of the servosys - tem and its ability to follow a strong, steady signal closely.
+However, a typical target  causes scintillation of the echo signal, giving erroneous error-detector outputs, and at  long range, the echo is weak, allowing receiver noise to cause additional random fluc - tuations on the error detector output.
+Consequently, a wide servo bandwidth, which  reduces lag errors, allows the noise to cause greater erroneous motions of the tracking  system.
+Therefore, for best overall performance, it is necessary to limit the servo band - width to the minimum necessary to maintain a reasonably small tracking-lag error.
+ There is an optimum bandwidth that may be chosen to minimize the amplitude of  the total erroneous outputs including both tracking lag and random noise, depending   upon the target, its trajectory, and other radar parameters.
+The optimum bandwidth for angle tracking is range-dependent.
+A target with typical  velocity at long range has low angle rates and a low SNR, and a narrower servo passband  will follow the target with reasonably small tracking lag while minimizing the response  to receiver thermal noise.
+At close range, the signal is strong, overriding receiver noise,  but target angle scintillation errors proportional to the angular span of the target are large.
+ A wider servo bandwidth is needed at close range to keep tracking lag within reasonable  values, but it must not be wider than necessary or the target angle scintillation errors,  which increase inversely proportional to target range, may become excessive.
+The low-pass closed-loop characteristic of a servosystem is unity at zero frequency,  typically remaining near this value up to a frequency near the low-pass cutoff, where  it may peak up to higher gain, as shown in Figure 9.15 a.
+The peaking is an indication  of system instability but is allowed to be as high as tolerable, typically to about 3 dB  above unity gain to obtain maximum bandwidth for a given servomotor drive system.
+ System A in Figure 9.15 a is a case of excessive peaking of about 8 dB.
+The effect of  the peaking is observed by applying a step error input to the servosystem.
+The peaking  of the low-pass characteristic results in an overshoot when the antenna axis moves to  align with the target.
+High peaking causes a large overshoot and a return to the target  with additional overshoot.
+In the extreme (as in system A shown in Figure 9.15 b),  the antenna zeros in on the target with a damped oscillation.
+An optimum system  compromise between speed of response and overshoot, as in system B, allows the  antenna to make a small overshoot with reasonably rapid exponential movement back  to the target.
+This corresponds to about 1.4 dB peaking of the closed-loop low-pass  characteristic.
+The resonant frequency of the antenna and servosystem structure (including the  structure foundation, which is a critical item) must be kept well above the bandwidth  of the servosystem, otherwise the system can oscillate at the resonant frequency.
+ A factor of at least 10 is desirable for the ratio of system resonance frequency to servo  bandwidth.
+High resonant frequency is difficult to obtain with a large antenna, such  as the AN/FPQ-6 radar with a 29-ft dish, because of the large mass of the system.
+  ch09.indd   18 12/15/07   6:07:20 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Tracking Radar  TRACKING RADAR  9.196x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 9 The ratio was pushed to a very minimum of about 3 to obtain servosystem bandwidth  of the specified 3.5 Hz.
+A smaller radar with a 12-ft dish, for example, can provide a  servosystem bandwidth up to 7 or 8 Hz with conventional design.
+Locke23 describes methods for calculating angle tracking lag for a given target  trajectory versus time and set of servosystem characteristics.
+Range tracking lags  may be similarly calculated, but with typical inertialess electronic tracking systems,  tracking lags are usually negligible.
+Electronically steerable arrays provide a means for inertialess angle tracking.
+ However, because of this capability, the system can track multiple targets by rapidly  switching from one to another rather than continuously tracking a single tar get.
+The tracker simply places its beam at the location where the target is expected,  corrects for the pointing error by converting error voltages (with known angle-error  sensitivity) to units of angle, and moves to the next target.
+The system determines  where the target was and, from calculations of target velocity and acceleration, pre - dicts where it should be the next time the beam looks at the target.
+The lag error, in  this case, is dependent on many factors, including the accuracy of the value of angle  sensitivity used to convert error voltages to angular error, the size of the previous  tracking error, and the time interval between looks.
+FIGURE 9.15  (a) Closed-loop frequency-response characteristics of two  servosystems and ( b) their corresponding time response to a step input ch09.indd   19 12/15/07   6:07:22 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Tracking Radar 9.20  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 9 9.5 TARGET ACQUISITION AND RANGE TRACKING Range tracking is accomplished by continuously measuring the time delay between  the transmission of an RF pulse and the echo signal returned from the target, and con - verting the roundtrip delay to units of distance.
+The range measurement is the most  precise position-coordinate measurement of the radar; typically, with high SNR , it can  be within a few meters at hundreds-of-miles range.
+Range tracking usually provides  the major means for discriminating the desired target from other targets (although  doppler frequency and angle discrimination are also used) by performing range gat - ing (time gating) to eliminate the echo of other targets at different ranges from the  error-detector outputs.
+The range-tracking circuitry is also used for acquiring a desired  target.
+Range tracking requires not only that the time of travel of the pulse to and from  the target be measured but also that the return is identified as a target rather than noise  and a range-time history of the target be maintained.
+Although this discussion is for typical pulse-type tracking radars, range measure - ment may also be performed with CW radars using FM-CW, a frequency-modulated  CW that is typically a linear-ramp FM.
+The target range is determined by the range- related frequency difference between the echo-frequency ramp and the frequency of  the ramp being transmitted.
+The performance of FM-CW systems, with consideration  of the doppler effect, is described in Sherman.1 Acquisition.
+ The first function of the range tracker is acquisition of a desired  target.
+Although this is not a tracking operation, it is a necessary first step before range  tracking or angle tracking may take place in a typical radar.
+Some knowledge of target  angular location is necessary for pencil-beam tracking radars to point their typically  narrow antenna beams in the direction of the target.
+This information, called designa - tion data,  may be provided by surveillance radar or some other source.
+It may be suf - ficiently accurate to place the pencil beam on the target, or it may require the tracker  to scan a larger region of uncertainty.
+The range-tracking portion of the radar has the  advantage of seeing all targets within the beam from close range out to the maximum  range of the radar.
+It typically breaks this range into small increments, each of which  may be simultaneously examined for the presence of a target.
+When beam scanning is  necessary, the range tracker examines the increments simultaneously for short periods,  such as 0.1 s, makes its decision about the presence of a target, and allows the beam to  move to a new location if no target is present.
+This process is typically continuous for  mechanical-type trackers that move the beam slowly enough that a target will remain  well within the beam for the short examination period of the range increments.
+Target acquisition involves consideration of the S/N threshold and integration time  needed to accomplish a given probability of detection with a given false-alarm rate  similar to surveillance radar.
+However, high false-alarm rates, as compared with values  used for surveillance radars, are used because the operator knows that the target is pres - ent, and operator fatigue from false alarms when waiting for a target is not involved.
+ Optimum false-alarm rates are selected on the basis of performance of electronic cir - cuits that observe each range interval to determine which interval has the target echo.
+A typical technique is to set a voltage threshold sufficiently high to prevent most  noise peaks from crossing the threshold but sufficiently low that a weak signal may  cross.
+An observation is made after each transmitter pulse as to whether, in the range  interval being examined, the threshold has been crossed.
+The integration time allows the  radar to make this observation several times before deciding if there is a target present.
+ ch09.indd   20 12/15/07   6:07:23 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Tracking Radar  TRACKING RADAR  9.216x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 9 The major difference between noise and a target echo is that noise spikes exceeding the  threshold are random, but if a target is present, the threshold crossings are more regular.
+ One typical system simply counts the number of threshold crossings over the integration  period, and if crossings occur for more than half the number of times that the radar has  transmitted, a target is indicated as being present.
+If the radar pulse repetition frequency  is 300 Hz and the integration time is 0.1 s, the radar will observe 30 threshold crossings  if there is a strong and steady target.
+However, because the echo from a weak target  combined with noise may not always cross the threshold, a limit may be set, such as  15 crossings, that must occur during the integration period for a decision that a target is  present.
+For example, performance on a non-scintillating target has a 90% probability  of detection at a 2.5 dB-per-pulse SNR and a false alarm probability of 10–5.
+The AN/ FPS-16 and AN/FPQ-6 instrumentation radars use these detection parameters with 10  contiguous range gates of 1000 yd each for acquisition.
+The 10 gates give coverage of a  5-nmi range interval at the range where the target is expected, possibly from coarse range  designation from search radar.
+Range Tracking.
+ Once a target is acquired in range, it is desirable to follow the  target in the range coordinate to provide distance information or slant range to the tar - get.
+Appropriate timing pulses provide range gating so the angle-tracking circuits and  AGC circuits look at only the short range interval, or time interval, when the desired  echo pulse is expected.
+The range tracking operation is performed by closed-loop  tracking similar to the angle tracker.
+Error in centering the range gate on the target  echo pulse is sensed, error voltages are generated, and circuitry is provided to respond  to the error voltage by causing the gate to move in a direction to recenter on the target  echo pulse.
+The range-tracking error may be sensed in many ways.
+The most commonly used  method is the early- and late-gate technique (see Figure 9.16).
+These gates are timed  so that the early gate opens at the beginning of the main range gate and closes at the  center of the main gate.
+The late gate opens at the center and closes at the end of  the main range gate.
+The early and late gates each allow the target video to charge  capacitors during the time when the gates are open.
+The capacitors act as integrators.
+ The early-gate capacitor charges to a voltage proportional to the area of the first half  of the target video pulse, and the late-gate capacitor charges negatively proportion - ally to the late half of the target video.
+When the gates are properly centered about a  symmetrical video pulse, the capacitors are equally charged.
+Summing their charge  voltages yields a zero output.
+When the gates are not centered about the target video, so that the early gate  extends past the center of the target video, the early-gate capacitor charged posi - tively receives a greater charge.
+The late gate sees only a small portion of the pulse,  resulting in a smaller negative charge.
+Summing the capacitor voltages results in a  negative output.
+Over a range of errors of approximately ± 1/4 of the target-video  pulse width, the voltage output is essentially a linear function of timing error and  of a polarity corresponding to the direction of error.
+During acquisition, the target  is centered in the 1000 yd acquisition gate by range-tracking techniques described  as follows, and the gate is reduced to approximately the width of the radar transmit  pulse for normal tracking.
+Many radar range-tracking systems use high speed sampling circuitry to take three  to five samples in the vicinity of the echo video pulse.
+The amplitudes of the samples  on the leading and lagging halves of the pulse are compared for range-error sensing  similar to the comparison of amplitudes in the early-late-gates range tracker .
+ch09.indd   21 12/15/07   6:07:23 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Tracking Radar 9.22  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 9 In some cases, leading- or lagging-edge range tracking is desired.
+This has been  accomplished in some applications by simply adding a bias to move the error-sensing  gates either to lead or lag the center of the target.
+This provides some rejection by the  gates of undesired returns that might occur near the target, such as the echoes from  other nearby targets.
+Threshold devices are also used as leading- or lagging-edge  trackers by observing when the target video exceeds a given threshold level.
+The  point of crossing the threshold is used to trigger gating circuits to read out a target  range from timing devices or to generate a synthetic target pulse.
+The range-tracking loop is closed by using the range-error-detector output to repo - sition range gates and correct range readout.
+One technique uses a high-speed digital  counter driven by a stable oscillator.
+The counter is reset to zero at the time of the  transmit pulse.
+Target range is represented by a number stored in a digital register, as  shown in Figure 9.17.
+A coincidence circuit senses when the digital counter reaches the  number in the range register and generates the range gate, as indicated in the block dia - gram shown in Figure 9.18.
+A range error sensed by the range error detector results in an  error voltage that drives a voltage-controlled variable-frequency oscillator to increase  or decrease the count in the range register, depending on the polarity of the error volt - age.
+This changes the number in the range register toward the value corresponding to  the range of the target.
+Range readout is accomplished by reading the number in the  register, where, for example, each bit may correspond to a 2-yd range step.
+FIGURE   9.16  Early- and late-gate range-error-sensing circuit ch09.indd   22 12/15/07   6:07:25 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Tracking Radar  TRACKING RADAR  9.236x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 9 Another technique is to use a pair of oscillators—one controlling the transmitter  trigger and the other controlling the range gate.24 The range rate is controlled by the  beat frequency between the oscillators, where one is frequency-controlled by the range  FIGURE   9.17  Digital range tracker operation FIGURE   9.18  Block diagram of a digital range trackerSTABLE OSCILLA TOR TRANSMIT RESET PULSEHIGH-SPEED DIGIT AL COUNTER TARGET RANGE REGISTER ERR OR VOLT AGE VIDEO PULSEMAIN GATEEARL Y-LATE GA TE ERR OR DETECT ORVOLT AGE-C ONTR OLLED VARIABLE -FREQUENCY OSCILLA TOR POLARITY SENSING TO CONTR OL UP OR DO WN COUNT MAIN GA TE AND EARL Y- LATE GA TE PULSE GENERA TORTRIGGER PULSE DIGIT AL RANGE READOUTCOINCIDENCE CIRCUIT ch09.indd   23 12/15/07   6:07:26 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Tracking Radar 9.24  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 9 error-detector-output voltage.
+The beat frequency is a small fraction of one Hz and is  better visualized as a phase rate between the transmit pulse cycle and cycle of the range  gate.
+The changing phase causes the range gate to follow a moving target.
+The electronic range tracker is inertialess, allowing any desired slew speed, and pro - vides flexibility for conveniently generating acquisition gates for automatic-detection  circuitry as well as transmitter trigger and pre-trigger pulses.
+Tracking bandwidth is usu - ally limited to that necessary for tracking to minimize loss of track to false targets and  countermeasures.
+Many other electronic range-tracking techniques also offering most of  these advantages are used.22 nth-Time-Around Tracking.
+ To extend unambiguous range by reducing the  PRF increases the acquisition time and reduces the data rate.
+A solution to this prob - lem is called nth-time-around tracking,  which avoids transmitting at the time that an  echo is expected to arrive and can resolve the range ambiguity.
+This allows the radar  to operate at high PRF and track unambiguously to long ranges where several pulses  may be propagating in space to and from the target.
+The technique is useful only when  a target is being tracked.
+During acquisition, the radar must look at the region between  transmitter pulses, and upon initial acquisition, it closes the range- and angle-track - ing loops without resolving the range ambiguity.
+The next step is to find which range  interval, or between which pair of transmit pulses, the target is located.
+The zone n is  determined by coding a transmit pulse and counting how many pulses return before  the coded pulse returns.
+Instrumentation radars provide nth-time-around tracking capability because bea - cons are used on rockets and space vehicles to provide sufficient signal level at very  long ranges.
+To prevent the target echo from being blanked by a transmit pulse, it is necessary  to sense when the target is approaching an interference region and shift the region.
+ This is accomplished by changing the PRF or alternately delaying groups of pulses  equal to the number of pulses in propagation.
+This can be performed automatically  to provide an optimum PRF shift or to alternately delay pulse groups of the correct  number of pulses.
+9.6 SPECIAL MONOPULSE TECHNIQUES Dual-Band Monopulse.
+ Dual-band monopulse can be efficiently accommo - dated on a single antenna to combine the complementary features of two RF bands.13,25  A useful combination of bands is X band (9 GHz) and Ka band (35 GHz).
+The   X-band operation provides the expected microwave performance of good radar range  and precise tracking.
+Its weakness is the low-angle multipath region and the availabil - ity of electronic countermeasures in the band.
+The Ka band, although atmospheric- and  rain-attenuation-limited, provides much greater tracking precision in the low-angle  multipath region and a second and more difficult band that the electronic-countermea - sures techniques must cover.
+A Naval Research Laboratory system called TRAKX (Tracking Radar At Ka and  X bands) was designed for instrumentation radar applications for missile and training  ranges.13  Its purpose was to add precision tracking on targets, essentially to “splash”  and provide precision tracking at Ka band in an environment of X-band countermea - sure experiments.
+ch09.indd   24 12/15/07   6:07:26 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Tracking Radar  TRACKING RADAR  9.256x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 9 A similar X- and Ka-band system was developed by Hollandse Signaalapparaten of  the Netherlands for tactical application.
+The land-based version called FLY-CATCHER  is part of a mobile anti-air-warfare system.25 Another version, GOAL-KEEPER, is for  a shipboard anti-air-warfare application for the fire control of Gatling guns.26 Both  systems take full advantage of the two bands to provide precision tracking in multipath  and electronic-countermeasures environments.
+Mirror-Scanned Antenna (Inverse Cassegrain).
+ An antenna technique that  uses a movable RF mirror for scanning the beam, called a mirror-scanned antenna  or  inverse Cassegrain,  provides useful applications to monopulse radar.
+The technique  uses a radome-supported wire-grid paraboloid that reflects parallel-polarized feed  energy.
+The beam, polarized parallel to the grid, is collimated by the paraboloid and  is reflected by a flat moveable polarization rotating mirror.
+The basic polarization  rotating mirror is a flat metal surface with a grid of wires located a quarter wave - length above the metal surface and oriented at 45° relative to the RF energy reflected  from the paraboloid.
+The RF energy may be visualized as being composed of a  component parallel to and reflecting from the grid and a component perpendicular  to and passing through the grid to reflect from the metal mirror surface below.
+By  traveling the quarter wavespace twice, this component is shifted by 180° in phase.
+ When added to the reflection from the grid, it results in a 90° change in polariza - tion.
+The total reflected energy from the mirror rotated by 90° will efficiently pass  through the wire-grid paraboloid.
+The advantages are as follows: (1) The mirror and  its drive mechanism are the only moving parts for beam movement.
+The feed and  radome-supported paraboloid remain fixed.
+(2) The beam movement is by specular  reflection, twice the angle of the mirror tilt.
+This provides a compact structure for  a given angle coverage requirement.
+(3) The normally lightweight mirror and the  2:1 beam displacement versus mirror tilt allow reduced size and very rapid beam  scan with low servo drive power.
+The compactness and lightness are particularly attractive for airborne applications  such as the Thompson-CSF Agave radar in the Super Entendards, which determines  target range and designation data for the Exocet missile.
+It is a compact monopulse  roll- and pitch-stabilized radar with 140° azimuth and 60° elevation scan.27 The Israeli  Elta subsidiary of Israeli Aircraft Industries also developed an airborne tracking radar  using this antenna technology for air-to-air combat and ground weapon delivery.28 A ground- or shipboard-based experimental mirror antenna system concept was  developed with dual-band monopulse capability (3.0 GHz and 9.3 GHz bands).
+The  objective included high-speed beam movement for high-data-rate 3D surveillance  and multitarget precision tracking.29 Dual-band polarization-twist mirror design was  accomplished with a two-layer mirror grid configuration.30 On-Axis Tracking.
+ The best radar tracking performance is usually accomplished  when the target is essentially on the radar antenna axis.
+Therefore, for maximum  precision tracking, it is desirable to minimize lag and other error sources affecting  the beam pointing.
+A technique called on-axis tracking was developed to minimize  radar axis deviation from the target by prediction and optimum filtering within the  tracking loop.8,31 The technique is particularly effective when the target trajectory is  known approximately, such as when tracking satellites in orbit or a ballistic target.
+A  computer in the tracking loop can cause the radar to follow an estimated set of orbital  parameters, for example.
+It also performs optimum filtering of radar angle-error- detector output to generate an error trend from which it can update the assumed set   ch09.indd   25 12/15/07   6:07:27 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Tracking Radar 9.26  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 9 of orbital parameters to correct the radar beam movement to update the original   set of orbital parameters, and by this means, the radar antenna axis can be held on  target with minimum error.
+Improved tracking can also be provided on other targets where the approximate  trajectory can be anticipated.
+However, performance of on-axis tracking is limited  when tracking targets with unanticipated maneuvers.
+9.7 SOURCES OF ERROR There are many sources of error in radar-tracking performance.
+Fortunately, most are  insignificant except for very high-precision tracking-radar applications such as range  instrumentation, where the angle precision required may be of the order of 0.05 mrad  (mrad, or milliradian, is one thousandth of a radial, or the angle subtended by 1-m  cross-range at 1000-m range).
+Many sources of error can be avoided or reduced by  radar design or modification of the tracking geometry.
+Cost is a major factor in provid - ing high-precision-tracking capability.
+Therefore, it is important to know how much  error can be tolerated, which sources of error affect the application, and what is the  most cost-effective means to satisfy the accuracy requirements.
+Because tracking radars track targets not only in angle but also in range and some - times in doppler, the errors in each of these target parameters must be considered on  most error budgets.
+The rest of this chapter will provide a guide for determining the  significant error sources and their magnitudes.
+It is important to recognize what the actual radar information output is.
+For a  mechanically moved antenna, the angle-tracking output is usually obtained from the  shaft position of the elevation and azimuth antenna axes.
+Absolute target location  (relative to earth coordinates) will include the accuracy of the survey of the antenna  pedestal site.
+Phased array instrumentation radar, such as the Multi-object Tracking Radar  (MOTR), provide electronic beam movement over a limited sector of about  ± 45o to  approximately ± 60o plus mechanical movement of the antenna to move the coverage  sector.16–19 The output will be mechanical shaft positions locating the normal to the  array plus digital angle information from the electronic beam scan for each tar get.
+9.8 TARGET-CAUSED ERRORS (TARGET NOISE) Radar tracking of targets is performed by use of the echo signal reflected from a target  illuminated by the radar transmit pulse.
+This is called  skin tracking to differentiate  it from beacon tracking, where a beacon or a transponder transmits its signal to the  radar and usually provides a stronger point-source signal.
+Because most targets, such  as aircraft, are complex in shape, the total echo signal is composed of the vector sum   of a group of superimposed echo signals from the individual parts of the target, such as  the engines, propellers, fuselage, and wing edges.
+The motions of a target with respect  to the radar causes the total echo signal to change with time, resulting in random  fluctuations in the radar measurements of the parameters of the target.
+These fluctua - tions caused by the target only, excluding atmospheric effects and radar receiver noise  contributions, are called target noise.
+ch09.indd   26 12/15/07   6:07:27 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Tracking Radar  TRACKING RADAR  9.276x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 9 This discussion of target noise is based largely on aircraft, but it is generally appli - cable to any target, including land targets of complex shape that are large with respect  to a wavelength.
+The major difference is in the target motion, but the discussions are  sufficiently general to apply to any target situation.
+The echo return from a complex target differs from that of a point source by the  modulations that are produced by the change in amplitude and relative phase of the  returns from the individual elements.
+The word modulations  is used in plural form  because five types of modulation of the echo signal that are caused by a complex target  affect radars.
+These are amplitude modulation, phase front modulation (glint), polar - ization modulation, doppler modulation, and pulse time modulation (range glint).
+The  basic mechanism by which the modulations are produced is the motion of the target,  including yaw, pitch, and roll, which causes the change in relative range of the various  individual elements with respect to the radar.
+Although the target motions may appear small, a change in relative range of the  parts of a target of only one-half wavelength (because of the two-way radar signal  path) causes a full 360° change in relative phase.
+At X band, this is about 1.5 cm, which  is small even compared with the flexure between parts of an aircraft.
+The five types of modulation caused by a complex target are discussed next.
+Amplitude Noise.
+ Amplitude noise is the change in echo signal amplitude caused  by a complex-shaped target, excluding the effects of changing target range.
+It is the  most obvious of the various types of echo signal modulation by a complex-shaped  target and is readily visualized as the fluctuating sum of many small vectors changing  randomly in relative phase.
+Although it is called noise , it may include periodic compo - nents.
+Amplitude noise typically falls into a low frequency and high frequency region  of interest.
+These categories overlap in some respects, but it is convenient to separate  the noise in these two frequency ranges because they are generated by different phe - nomena, and they are each significant to different functions of the radar.
+Low-Frequency Amplitude Noise.
+ The low-frequency amplitude noise is the time  variation of the vector sum of the echoes from all the reflecting surfaces of the target.
+ The time variation is visualized by considering the target as a relatively rigid body  with normal yaw, pitch, and roll motions.
+The small changes in relative range of the  reflectors caused by this motion result in corresponding “random” change in the rela - tive phases.
+Consequently, the vector sum fluctuates randomly.
+Typically, target ran - dom motion is limited to small aspect changes such that the amplitudes of the echoes  from the individual reflectors vary little over a period of a few seconds, and change in  relative phase is the major contributor.
+Exceptions are large flat surfaces with narrow  reflection patterns.
+An example of a target configuration is a distribution of reflecting surfaces that  change in relative range with target motion.
+A typical pulse amplitude time function is  a slowly varying echo amplitude.32 The low-frequency amplitude noise contributes the  largest portion of the noise modulation density and is concentrated mainly below about  10 Hz at X band.
+The amplitude-noise spectrum is similar for both large and small  targets.
+This is because the rate of relative range change is a function of both angular  yaw and distance from the center of gravity of the aircraft.
+Thus, a larger aircraft with  slow yaw rates but greater wingspan generates a low-frequency noise spectrum simi - lar to that of a small aircraft with high yaw rates but smaller wingspan.
+However, the  larger aircraft typically has the broader noise spectrum because of the difference in  distribution of dominant reflectors.
+ch09.indd   27 12/15/07   6:07:27 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Tracking Radar 9.28  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 9 The radar frequency affects the low-frequency amplitude-noise spectrum shape  where the spectrum width is closely proportional to the radar frequency (if the target  span is assumed to be at least several wavelengths).
+The reason for this dependence  is that the relative phase of the individual echo signals is a function of the number of  wavelengths of change in relative range caused by the target’s random motion.
+Thus,  with shorter wavelengths, a given relative range change will subtend more wave - lengths, causing higher phase rate, resulting in higher-frequency noise components.
+ The rate of amplitude fluctuations of the envelope of the echo pulses is approximately  proportional to the radar frequency.
+A mathematical model of low-frequency amplitude noise of a typical aircraft is  given by  A fB B f2 2 20 12( ).=+ (9.4) where  A2(f) = (fractional modulation)2/Hz   B  = half-power bandwidth, Hz   f = frequency, Hz The value of B falls typically between 1.0 Hz and 2.5 Hz at X band, with the larger  aircraft at the higher values because of the larger reflectors, such as engines, spread  out along the wings.
+These reflectors with the greater separation contribute to the  higher frequencies because their relative range change is large for a given angular  movement of the target.
+A2(f) is the modulation power density such that the spectrum  may be integrated over any frequency range to find the total noise power within a  frequency band of interest.
+Taking the square root of the value of the integral gives  the rms modulation.
+High-Frequency Amplitude Noise.
+ High-frequency amplitude noise consists of  both random noise and periodic modulation.
+The random noise is largely a result of  the vibration and moving parts of the aircraft producing a relatively flat noise spec - trum spread out to a few hundred Hz, depending on the type of aircraft.
+The rms noise  density is typically a few percent of modulation per Hz.
+The periodic modulation appearing as spikes in the Figure 9.19 spectrum are  caused by rapidly rotating parts of an aircraft, such as the propellers.
+As the echo  from a propeller blade changes with aspect when it rotates, a periodic modulation  FIGURE   9.19  Typical amplitude spectral voltage distribution showing the propeller modulation measured  on a propeller-driven aircraft in flight ( Figure 4 from Dunn, Howard, and King33 © IRE 1959 ) ch09.indd   28 12/15/07   6:07:30 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Tracking Radar  TRACKING RADAR  9.296x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 9 is produced.
+The background noise from the airframe is also observed.
+The spikes  in the spectrum result from a fundamental modulation frequency related to the pro - peller rev/min and number of blades.
+Since it is not usually sinusoidal, there are  harmonic frequencies spread throughout the spectrum, as shown in Figure 9.19 for  the SNB, a small aircraft with two propeller engines.
+The location of these spikes  is not dependent on RF frequency, as in the case of low-frequency amplitude noise,  because the target controls the periodicity of the modulation, which is dependent  only on the aircraft propeller rotation rate and number of blades.
+Jet aircraft may also  cause echo amplitude modulation of radar signals reflected from rotating fan blades  from within the jet engines.
+The jet engine caused modulation is called Jet Engine  Modulation (JEM) spectral modulation lines.
+The high-frequency-noise modulation  affects scan-type tracking radars, as described later, and gives some information as  to the type of aircraft.
+Effects of Amplitude Scintillation on Radar Performance.
+ Amplitude noise, to  some extent, affects all types of radars in probability of detection and tracking radar  accuracy.32–36 One effect on all types of tracking radars is the interrelation between the  low-frequency spectrum of amplitude noise, the AGC characteristics (which determine  to what extent the slow fluctuations are smoothed), and the angle noise.
+The effects on  angle noise are described later in this section, where it is described why a fast-acting  AGC is generally the preferred choice for maximizing overall tracking accuracy .
+High-frequency amplitude noise causes errors only in conical-scan or sequential lob - ing tracking radars because the effects are eliminated by the monopulse techniques.
+ Conical scan or sequential lobing, to sense target direction, depend upon measuring the  amplitude of the signal for at least two different antenna beam positions for each tracking  axis.
+In azimuth tracking, for example, the antenna beam is displaced to the left of the  target and then to the right.
+If the target were on the antenna axis, the signal would drop  the same amount when the beam (assumed to be symmetrical) is moved an equal amount  in either direction.
+The amplitudes for each beam position are subtracted in an angle error  detector; hence, the output is zero if the target is on the antenna axis and becomes finite,  increasing positively or negatively as the target moves off axis to the right or left.
+High-frequency noise can cause the amplitude to change during the time taken to  move the antenna beam from one position to the next.
+Even if the target is on axis,  high-frequency noise can cause the amplitude at the two beam positions to differ,  thus causing an erroneous indication that the target is off axis.
+This effect is averaged  out except for the noise spectral energy near the scan rate.
+For example, a periodic  modulation spike near the scan rate will cause the tracking radar to drive its antenna  in a circular motion around the target at a rate equal to the difference in frequency  between the scan rate and the frequency of the spectral line.
+The direction, clockwise  or counterclockwise, depends upon whether the spectral line is above or below the  scan rate and whether the scan is clockwise or counterclockwise.
+The servosystem  filters out all frequencies outside the frequency range between the scan rate plus the  servo bandwidth and the scan rate minus the servo bandwidth, and an angle sensitivity  constant that converts rms modulation to rms angle error.
+An equation using this relation to calculate rms noise in scanning and lobing-type  tracking radars caused by high-frequency amplitude noise22 is  σθβsB sskA f =2( )  (9.5) ch09.indd   29 12/15/07   6:07:31 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Tracking Radar 9.30  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 9 where ss = rms angle error in same angular units as qB  A(fs) = rms-fractional-modulation noise density in vicinity of scan rate  ks = conical-scan error slope ( ks = 1.6 for system optimum22)  qB = one-way antenna beamwidth  b = servo bandwidth, Hz A sample calculation for an fs of 120 Hz, where A(fs) from measured data taken on a  large jet aircraft is approximately 0.018/ Hz, qB is 25 mils, and b is 2 Hz, gives a ss  of 0.42 mil rms.
+In the case of a periodic modulation, where a spectral line falls within the band   fs ± b, the rms noise is ss = 0.67qB A(fs), where A(fs) is the rms fractional modulation  caused by the spectral line.
+The resultant rms tracking error ss will be periodic at the  frequency fs- ft where ft is the frequency of the spectral line.
+The effects of amplitude noise on target detection and acquisition are of concern in  all types of radars,2 particularly at long ranges where the signal is weak.
+The amplitude  fluctuations can cause the signal to drop below the noise level for short periods of time,  thus affecting the choice of thresholds, acquisition scan rate, and detection logic.34–36 Angle Noise (Glint).
+ Angle noise causes a change with time in the apparent  location of the target with respect to a reference point on the target.
+This reference  point is usually chosen as the center of “gravity ” of the reflectivity distribution along  the target coordinate of interest.
+The center of gravity is the long-time-averaged track - ing angle on a target.
+The term glint is sometimes used for angle noise, but it gives  the false impression that the wander in the apparent position of a target always falls  within the target span.
+It was originally expected that angle fluctuations caused in a  monopulse radar by a target would be simple variations in the center of gravity of  the reflecting areas; however, much larger angle errors were observed.
+The apparent  angular location of a target can fall at a point completely outside the extremities of  the target.
+This can be demonstrated both experimentally and theoretically.37,38 A pair  of scatterers can be appropriately spaced to cause a tracking radar with closed-loop  tracking to align its antenna axis at a point many times the scatterer spacing away  from the scatterers.
+If the scatterers are stationary, the radar antenna will stay pointing  in the erroneous direction.
+Figure 9.20 shows experimental data demonstrating this  phenomenon with a two-reflector target.
+The angle noise phenomenon affects all types of tracking radars but is mainly of  concern for tracking radars where precision target location is needed.
+To aid in visu - alizing why angle noise affects any radar-type angular-direction-sensing device, the  echo signal propagating in space was analyzed, showing that the angle noise is pres - ent in this propagating energy as a distortion of the phase front.
+Theoretical plots of  a distorted phase front from dual sources compare very closely with photographs of  the phase front of the radiating surface ripples in the ripple-tank experiment with dual  vibrating probes.37 All radar angle-sensing devices sense, by one means or another, the  phase front of the signal and indicate the target to be in a direction normal to the phase  front.
+Thus, the phase-front distortions affect all types of angle-sensing radars.
+Many measurements of angle noise have been made on a variety of aircraft, and  the results of theoretical studies have been verified.
+The theory and measurements  show that angle noise expressed in linear units of displacement, such as meters, of the  apparent position of the target from the center of gravity of the target is independent  of range (except for very short ranges).
+Therefore, rms angle noise sang is expressed in  ch09.indd   30 12/15/07   6:07:32 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Tracking Radar  TRACKING RADAR  9.316x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 9 units of meters of error measured at the target location.
+The results show that the rms  value of angle noise sang is equal to Ro/2, where Ro is the radius-of-gyration* (taken  along the angular coordinate of interest) of the distribution of the reflecting areas of the  target.33 For example, if a target’s reflecting areas have a cos2 (pa/L)-shaped distribu - tion, where a is a variable and the target span is from +L/2 to – L/2, calculation of the  radius of gyration divided by 2 gives a value of sang of 0.19 L.
+Typical values of sang  on actual aircraft fall between 0.15 L and 2.0 L, depending upon the distribution of the  major reflecting areas such as engines, wing tanks, and so on.
+A small aircraft, nose- on view, with a single engine and no significant reflectors attached to the wings will  have a sang of approximately 0.1 L, whereas larger aircraft with an outboard engine and  possibly wing tanks will have a sang approaching the value of 0.2 L.
+The aircraft side  view also tends toward the value of 0.2 L because of a more continuous distribution  of reflecting areas.
+Estimation of angle scintillation rms error in units of target span  can be made by relating the approximate target distribution in Figure 9.21 with actual  aircraft configurations.
+The value of sang for a complex target is essentially a fixed value regardless of RF  frequency, if a target span of at least several wavelengths is assumed and is independent  of the rate of random motion of the target.
+However, as described later, the spectral  distribution of angle-noise power is directly affected by radar frequency, atmospheric  turbulence, and other parameters.– a = 0.966+ 29 L12L 11L 10L 9L 8L 7L 6L 5L 4L 3LREFLECTORS POINTING ERROR (UNITS OF TARGET SP AN L) 2L LL 0– a = 0.866 – a = 0.682 0 40 8 0 120 160 200 f (degrees)240 280 320 360 FIGURE 9.20  Apparent location of a dual-source target as a function of relative phase f for different  values of relative amplitude a measured with a tracking radar ( Figure 5 from Howard37) *  Radius-of-gyration is calculated assuming the “weight” of the scatterers is their effective radar scattering cross section.
+ch09.indd   31 12/15/07   6:07:34 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Tracking Radar 9.32  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 9 Target angle noise is typically gaussian-distributed.
+An example of the measured  distribution of the apparent target angle of a small two-engine aircraft is shown in  Figure 9.22.
+A relatively long time sample is needed, since short time samples of data  can depart from the gaussian shape.
+Unusual targets may also depart from gaussian  distributed angle noise.
+Delano38 gives data from two aircraft in formation that are  gaussian-distributed when completely unresolved, but change shape at close range  where the antenna begins to resolve the two aircraft (as described in Section 9.1 1).TWO SMALL AIRCRAFTAIRCRAFT CONFIGURA TION BOMBER (LIKE B52) SMALL TWO- ENGINE AIRCRAFT FIGHTER0.2 L0.5 L 0.29 L 0.25 L 0.14 L0.35 L 0.20 L 0.18 L 0.10 LGEOMETRICAL APPR OXIMA TIONRADIUS OF GYRA TION (R)ANGLE SCINTILLA TION (RMS) s = R/ 2 L L FIGURE   9.21  RMS angle scintillation based on the theoretical relation to the radius-of-gyration of the  distribution of reflecting areas of the target FIGURE   9.22  Amplitude probability distribution of angle scintillation measured on a small  two-engine aircraft ch09.indd   32 12/15/07   6:07:35 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Tracking Radar  TRACKING RADAR  9.336x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 9 Although the rms value of angle noise is essentially a constant for a given target and  aspect, the spectral distribution of this energy is dependent on radar frequency and the  random target motion.
+A typical spectrum shape is  N fB B f( )( )=+σπang2 2 2 2 (9.6) where N(f) = spectral noise power density, power/Hz  B = noise bandwidth, Hz  f = frequency, Hz The values of B are proportional to radar frequency and dependent upon air tur - bulence effects on target motion and target aspect.
+An example of a measured angle  scintillation spectrum is shown in Figure 9.23.
+Typical values of B at X band, in rela - tively turbulent air, range from about 1.0 Hz for small aircraft to about 2.5 Hz for larger  aircraft.
+B changes in proportion to radar frequency provided that the target span is at  least a few wavelengths.
+Again, long time samples are necessary to obtain a relatively  smooth spectrum from measured data.
+For the above values of  B, about 7 minutes of  data was necessary to reach essentially the long-time-averaged characteristic.
+This is  a reference point about which there will be considerable variation for a typical time  period of interest.
+For example, with only 1 minute of data the noise power sang would  vary over 0.5 to 1.5 times the long-time-averaged sang.
+At lower radar frequencies  and in less turbulent atmosphere, B may be smaller, and proportionately longer time  samples are necessary; thus, for short time samples of radar performance, significant  statistical variations must be expected.
+To convert sang expressed in linear units measured at the target to angular units for  a radar at range r, the following relation may be used: sang (angular mils) = sang (m)/r(km) Because the angular errors caused by angle noise are inversely proportional to  range, angle noise is of concern mainly at medium and close ranges.
+The resultant  tracking noise can be reduced by lowering the servo bandwidth to reduce the radar’s  ability to follow the higher-frequency components of the noise.
+The amount of noise  reduction may be estimated by comparing the area under a spectral-power-density plot  of angle noise below the frequency corresponding to the radar servo bandwidth with  the total area under the power-density plot.
+(The spectral-power-density plot may be  obtained by squaring the ordinate values of a spectral-distribution plot such as shown  in Figure 9.23).
+The choice of AGC characteristics also affects the amount of angle noise followed  by a tracking antenna.
+The AGC voltage is generated from the sum signal and fol - lows the echo-signal-amplitude fluctuation.
+There is a degree of correlation between  the angle-noise magnitude and echo-signal magnitude such that angle-noise peaks  are generally accompanied by a dip or fade in amplitude.
+A slow AGC system that  does not maintain constant signal level during rapid changes allows the signal level  to drop during a rapid fade, reducing sensitivity (volts per degree angle error) during  the large angle-noise peaks.
+This results in a smaller rms tracking noise with a slow  AGC system.39,40 However, this reasoning neglects an additional noise term, caused by the lack of  full AGC action, which is proportional to tracking lag.
+A tracking lag causes a dc error   ch09.indd   33 12/15/07   6:07:37 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Tracking Radar 9.34  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 9 voltage in the angle-error-detector output equal to angle error times the angle sen - sitivity.
+A slow AGC allows the amplitude noise to modulate the true tracking-error   voltage, causing additional noise in angle tracking.
+Thus, there will be an additional  rms angle error proportional to tracking lag and dependent on the AGC time con - stant,40 as illustrated in Figure 9.24.
+In general, a fast AGC is recommended because it reduces the additional noise  term allowed by slow AGC and the possibility of larger rms tracking errors, which  can be considerably greater than the angle noise with a fast AGC.
+As previously  discussed, angle noise is significant, mainly at medium and close range where target  angle rates are greatest.
+As seen in Figure 9.24 a tracking lag of only one-half the  FIGURE   9.23   Spectral-energy distribution of angle scintillation measured on the nose  aspect of a small two-engine aircraft ch09.indd   34 12/15/07   6:07:40 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Tracking Radar  TRACKING RADAR  9.356x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 9 target span will result in greater tracking noise in a slow AGC system, with the danger  of much higher noise with greater lag.
+Therefore, for overall performance, a fast AGC  is recommended.
+Range Noise (Range Glint).
+ Range noise, or random tracking errors in the range  coordinate caused by complex targets, is a significant basic limitation in range tracking.
+ Acquisition of a desired spectral line by a doppler frequency tracking system is also  limited by range noise.
+Coarse velocity information is obtained by differentiation of  range to determine the desired spectral line.
+Range noise is a major limitation to the  accuracy of velocity obtained from range rate and can prevent selection of the desired  spectral line.
+The range-tracking errors caused by a finite-size target and by multipath also cause  significant angle-tracking errors in multilateration tracking systems that triangulate  using high-precision range measurements from multiple locations to calculate target  angle location.
+Multilateration systems, such as the Pacific Missile Range Extended  Area Tracking System (EATS), depend upon very precise range measurements.
+Small  range-tracking errors cause significant errors in calculated target angle based on the  range measurements.
+These errors must be fully understood to assess the performance  of multilateration systems.
+Target-caused range-tracking errors, similar to target-caused angle errors, are  greater than the wander of the target center of gravity and can fall outside the target  span.41 Figure 9.25 shows typical samples of spectral-energy distributions and prob - ability density functions for different target configurations.
+The range noise measure - ments were made on small and large aircraft and multiple aircraft using the split video  range error detector.42 The characteristics follow very closely to the relations of target  angle noise to the target configuration radius-of-gyration along the angle coordinate.
+ FIGURE   9.24  Angle-scintillation noise power as a function of tracking  error for three different AGC bandwidths ( from Dunn, Howard, and King33  © IRE 1959 ) ch09.indd   35 12/15/07   6:07:41 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Tracking Radar 9.36  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 9 For range tracking, it is necessary to relate range noise to the target reflectivity distri - bution along the range coordinate.
+In general, the long-time-average value of the rms  range error may be closely estimated by taking 0.8 times the radius-of-gyration of the  distribution of the reflecting areas in the range dimension based on many measure - ments of small, large, and multiple aircraft.
+Typically, in terms of target span along  the range coordinate, the rms value will fall between 0.1 and 0.3 times the target  span—being close to the multiplier, 0.3, for the tail view and nose view, and 0.1, for  the side view.
+The spectral shape may be closely estimated by using the same function  of frequency as described for angle noise and the same value of bandwidth.
+The error  as a function of relative phase and amplitude of the target reflectors is similar to the  angle noise phenomenon.
+A beacon on a cooperative target can provide a point source (single-pulse response)  to eliminate range error caused by the target.
+However, very stable circuitry is required  to avoid pulse jitter and drift.
+Doppler Scintillation and Spectral Lines.
+ Doppler scintillation and spectral  lines caused by a complex target may be divided into two phenomena43: (1) spectral  lines caused by parts of the aircraft such as propellers and jet turbine blades, and (2) a  continuous doppler spectrum spread by the motion of an aircraft in flight symmetrically  FIGURE   9.25  Typical spectral-energy distributions for the three views of the SNB aircraft: ( a) nose view,  (b) side view, ( c) tail view, and ( d) side view of two small two-engine aircraft flying in formation ch09.indd   36 12/15/07   6:07:45 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Tracking Radar  TRACKING RADAR  9.376x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 9 above and below the average doppler of the target.
+A target typically has a significant  random yaw, pitch, and roll motion even on a “fixed” heading.
+Time plots of typical  aircraft heading for an aircraft flying a “straight course” are observed to have typical  random yaw motion that causes small changes in the doppler from each of the scattering  surfaces of the aircraft’s rigid structure.
+Relative to the average doppler of the aircraft,  the scattering surfaces located away from the aircraft center will have a small increasing  and decreasing relative doppler frequency as the aircraft yaws right and left.
+This causes  a spectral spread of the doppler of the echo from the rigid body of the aircraft and   is accompanied by spectral lines caused by moving parts on the aircraft.
+Components of the target echo from rotating or moving parts of the target cause  doppler lines at frequencies displaced from the airframe doppler spectrum.
+The periodic  amplitude modulation causes pairs of doppler lines symmetrical about the doppler of  the airframe velocity.
+Moving parts can also cause pure frequency modulation that will  result in a single set of doppler lines on one side of the airframe doppler spectrum.43 A major significance of the doppler modulation is its effect on doppler-measuring  radars.
+A doppler tracking system that automatically tracks the frequency of a spectral  line of the echo is subjected to two problems: (1) there is the possibility of locking on  a false line caused by moving parts of the target; and (2) when properly locked onto  the airframe doppler spectrum, the doppler reading will be noisy as defined by the  random fluctuation in instantaneous frequency as observed by the spread of the dop - pler spectrum.
+Coherent beacons (which receive, amplify, and transmit received radar  pulses) can provide a doppler-shifted response free of target-caused spectral spread  and periodic modulations.
+A delay time is provided to separate the beacon response  from the target echo.
+Target doppler scintillation also offers useful information about the target configura - tion.
+Normal target motion will result in different doppler shifts for each major scat - terer of a rigid-body target, and the shifts will be a function of the displacement of the  scatterer from a reference point such as the center of rotation of the target’s random  motions.
+Therefore, a high-resolution doppler system can resolve major reflectors and  locate them in cross range as a function of the doppler difference from the reference  reflector.
+This technique, called inverse synthetic aperture radar (ISAR),  uses the target  motion for the needed aspect change, instead of radar motion as used in conventional  synthetic aperture radar, to obtain detailed cross-range target image information.44,45 9.9 OTHER EXTERNAL CAUSES OF ERROR Multipath.
+ Multipath angle errors result from reflections of the target echo  from objects or surfaces causing echo pulses to arrive by other than the direct  path to the radar beam in addition to the  direct path.
+These errors are sometimes  called low-angle tracking errors  when  applied to tracking of targets at small  elevation angles over the Earth or  ocean surface.46–50 Multipath errors are  typically a special dual-source case of  angle noise resulting from the geometry  as described in Figure 9.26, where the  target and its image reflected from a  FIGURE   9.26  Geometry of the radar multipath  tracking condition, where the reflection from a  surface appears to the radar as an image below  the surface ch09.indd   37 12/15/07   6:07:47 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Tracking Radar 9.38  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 9 surface to the radar beam are the two sources.
+Over a smooth ocean surface, they  are separated only in the elevation coordinate so that most of the error appears  in the elevation-tracking channel.
+Severe elevation errors may cause some cross  coupling of the error to the azimuth channel.
+Rough surfaces cause diffuse  scattering, which can contribute errors to both azimuth and elevation tracking.46  Different path geometries such as non-flat land or a building may also cause a  significant error to appear in the azimuth-tracking channel.
+The major difficulty with low-angle tracking is that the target and its image are  essentially coherent and their relative phase changes slowly and the angular error it  causes is readily followed by an angle-tracking system.
+Furthermore, the paths are  almost equal, and in most cases, they cannot be resolved by high-range-resolution  techniques.
+Long time averages of the data do not, in practice, give target elevation;  thus, the multipath angle error has no simple solution and is generally minimized by  using narrow-beam antennas.
+When the target is at low altitude, the multipath errors are severe, as observed in  the measured data shown in Figure 9.27.
+This data is the multipath error of a 2.7°  beamwidth S band (3-GHz) tracking radar that is tracking an aircraft target with a  beacon at 3300-ft altitude.
+An AN/FPS-16 tracking radar with a 1.1° beamwidth at  C band (5.7 GHz) was used to simultaneously track with its narrow beam, which  remained above the sea surface without significant multipath error, to provide a true  target altitude reference for the data in Figure 9.27.
+There is a measurement bias error  (observed in Figure 9.27) of about 0.25°.
+The tracking data from a radar tracking a target with a beacon is plotted in  Figure 9.27, showing a typical multipath error illustrating the phenomenon from the  region where the image enters the sidelobes to the region where it enters the main  beam.
+There are three methods used for predicting multipath errors, depending  upon where the reflected target image enters the antenna pattern.
+At the far range,  FIGURE   9.27  Measured elevation-tracking error of an S-band radar using an AN/FPS-16 radar for a target  elevation reference ch09.indd   38 12/15/07   6:07:48 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Tracking Radar  TRACKING RADAR  9.396x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 9 the image enters the antenna main beam, and the error is essentially that of a two- reflector target glint error following approximately the equation37  e h=+ + +21 22 2ρ ρ φ ρ ρ φcos cos (9.7) where e = error, same units as h, measured at the target range relative to the target  r = magnitude of surface reflection coefficient  h = height of target  f =  relative phase determined by geometry of direct and surface-reflected  signal paths, as shown in Figure 9.26.
+Although the fluctuations in r and f alter the actual tracking from the theoretical, the  equation gives a good indication of the errors to be expected when tracking a point  source such as a beacon.
+However, skin tracking of an aircraft at low elevation may  result in a departure from the classic periodic error versus elevation, as illustrated in  Figure 9.27, because of an interaction between target angle scintillation and multipath  error that can change the characteristics of the multipath error .
+When tracking a point source target at close range, the radar main beam is  above the image, but the image is seen by the difference-pattern sidelobes.
+The  multipath errors that result are cyclic, almost sinusoidal, with an rms value pre - dicted by the equation46  σρθ EB G= 8sepeak) ( (9.8) where sE = rms elevation angle multipath error, same units as qB  qB = one-way antenna beamwidth  r = reflection coefficient and Gse (peak) is the power ratio of the tracking-antenna sum-pattern peak to the error- pattern peak sidelobe level at the angle of arrival of the image signal.
+The cyclic rate may be approximated by the equation  fhE m=2 λ (9.9) where fm = frequency of cyclic multipath error, rad/s  h = height of radar antenna  l = wavelength, same units as h  E = rate of target elevation change as seen by radar, rad/s The intermediate range is between the short-range region where the image  appears in the sidelobes, and the long-range region, where the image appears within  the half-power beamwidth.
+The error is difficult to calculate in this region because  it falls in the nonlinear error-sensing portion of the antenna patterns, and the radar  response is strongly dependent upon the specific feed design and error-processing  technique.
+However, Figure 9.2846,47 provides a practical means for approximating  multipath-error values in this region.
+The curves are calculated multipath errors  based on an assumed gaussian-shaped sum pattern and derivative of the sum pattern  ch09.indd   39 12/15/07   6:07:52 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Tracking Radar 9.40  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 9 as the monopulse difference pattern.
+Figure 9.28 shows typical sidelobe multipath  errors for higher-elevation targets and the linearly decreasing error versus target  elevation, predicted by the above equation, for very low-elevation targets.
+The graph  is normalized to radar beamwidth on both axes for convenient use with a wide vari - ety of radars.
+The dashed portions of the curves are regions of uncertainty because  of significant variations of reflection for a given sea state.
+In the intermediate region, the error increases to a peak at target elevations of  about 0.3 beamwidth.
+The peak value is dependent on several factors including surface  roughness (which, in part, determines the value of r), servo bandwidth, and antenna  characteristics in the region.
+The errors are severe, and with un-smoothed track  (wide  servo bandwidth), the radar can break lock and lose track of the tar get.
+When the surface is rough, corresponding to a reflection coefficient of about 0.3,  the characteristic of the error versus elevation changes is observed in Figure 9.28.
+The  rough surface causes significant diffuse scattering rather than a mirror reflection.
+This  changes the shape of the error curve and results in some residual elevation-angle error  when the target elevation goes to zero.
+It also causes some significant azimuth error.46 Crosstalk Caused by Cross-Polarized Energy.
+ Target echo energy cross-polar - ized to the radar antenna causes crosstalk (cross coupling) in radars; i.e., the azimuth  error causes output from the elevation-error detector, and the elevation error causes  output from the azimuth-error detector.
+Generally, this effect is negligible because the  cross-polarized energy is usually a small fraction of the received polarization from  typical targets, and it is normally reduced by about 20 dB by the antenna design.
+ However, in special cases, the resultant crosstalk can be very high and may cause a  large tracking error and possible loss of track.
+For example, polarization of a linearly  polarized beacon on a target could rotate with target aspect change and, in the worst  case, approach a cross-polarized condition.
+FIGURE   9.28  Calculated rms multipath error sE versus target elevation Et, both normalized to radar  beamwidth qB ch09.indd   40 12/15/07   6:07:53 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Tracking Radar  TRACKING RADAR  9.416x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 9 Theoretically, the coupling to cross-polarized energy is zero when the source is pre - cisely on axis and increases with displacement from the axis.51 The cross-polarization  error in a tracking radar system is pure crosstalk so that a small true tracking error in  one tracking coordinate causes the antenna to move in the other coordinate.
+The error  in the second coordinate then causes the antenna to move farther from the source in the  first coordinate.
+When there is no retarding effect, the cross-polarized energy causes  the antenna to drive off target in one of the quadrants of the two-axis angle-tracking  coordinate system, depending upon the direction of the initial error that moved the  source off the precise on-axis position.4,51 A solution used with missile-range-instrumentation radar, where target aspect  changes can cause a linearly polarized beacon to rotate to a cross-polarized aspect,  is to provide a circular polarization tracking capability.
+Coupling a linearly polarized  signal to a circularly polarized antenna results in a 3 dB signal loss, but it is indepen - dent of the direction of the linear polarization when rotated about a line in the direction  toward the radar.
+Troposphere Propagation.
+The troposphere is typically a nonhomogeneous  medium for propagation and will cause random beam bending.
+Figure 9.29 illustrates  the approximate relation of rms angle error to various atmospheric conditions.22 The  worst case is heavy cumulus clouds, which cause columns of air, shaded from the  sun by the clouds, that are cooler than the surrounding air and consequently of a  different dielectric constant.
+The result is typically a random beam bending as the  radiated energy passes through these columns.
+Figure 9.29 applies only for the portion  FIGURE   9.29  Angle fluctuation versus path length for different  tropospheres ( from Final Report: Instrumentation Radar AN/FPS-16  (XN-2) by RCA under contract Bu Aer NOas 55-869c ) ch09.indd   41 12/15/07   6:07:54 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Tracking Radar 9.42  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 9 of the beam that is within the troposphere.
+Once the beam goes above the troposphere  (typically about 6 to 9 km), there is no further beam bending.
+The troposphere also affects target range measurement, but the errors are small,  in the order of 0.3 to 0.6 m maximum.
+However, even small errors of this magnitude  will cause significant errors in multilateration systems that determine target angle by  calculations using precise range measurements from separate locations.
+9.10 INTERNAL SOURCES OF ERROR Receiver Thermal Noise.
+ The angle error caused by receiver thermal noise in a  monopulse tracking system is  σθ τ βtB m r n k B S N f= ( ) ( )/ / (9.10) where km is the angle-error-detector slope.
+The value of km is determined by the  steepness of the antenna difference patterns, and a variety of values can be obtained,  depending on the type of feed used.
+The values vary from 1.2 for the original  four-horn square feed to a maximum of 1.9 for the MIT 12-horn feed.
+However,  as described in the discussion on feeds, the 12-horn feed gives a lower antenna  efficiency (0.58) than an optimum multimode monopulse feed, which can approach  an efficiency of 0.75, although its angle sensitivity is less, typically having a value   of 1.7.
+Therefore, there is a tradeoff between slope and efficiency.
+A slope for mono - pulse radars is dependent upon feed design and is typically 1.57 for a good modern  four-horn multimode feed design.
+When there is a significant tracking lag or deliberate beam offset from the target,  the error sto, due to receiver noise for a given SNR, is given by the equation  σ σ θ θt t L B L k021 = + [ ( ) ]/  (9.11) where qL = lag angle, same units as qB  L = antenna sum-pattern loss at angle qL A similar range-tracking error srt results from receiver noise.
+The equation relating  the error to the SNR and system parameters is  στ βrt/ /ft(rms) = k S N fr r n ( ) (9.12) where t = pulse length in ft  kr =  range-error-detector sensitivity (maximum value of 2.5 for a receiver  where B = 1.4)  S/N = signal-to-noise ratio  bn = servo bandwidth Other Internal Sources of Error.
+ There are many other sources of internal errors  that are small in well-designed tracking radars.
+These include changes in relative phase  and amplitude between monopulse receiver channels as a function of signal strength,  ch09.indd   42 12/15/07   6:07:58 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Tracking Radar  TRACKING RADAR  9.436x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 9 RF frequency, detuning, and temperature.
+Also, pedestal bending from solar heating,  nonorthogonality of pedestal axes, gearing backlash, bearing wobble, granularity of  data readout, and many other factors contribute to errors.
+Table 9.1 lists the magnitude  of these errors for the precision instrumentation radar AN/FPS-16.22 Calibration is important to minimize errors.22 When maximum performance is  required, timely accurate calibration must be performed.
+The procedure may require  up to four hours to fully stabilize the radar system.
+For instrumentation radar, where  the time of a tracking event is known, final calibration is performed just preceding the  event to minimize drift errors.
+9.11 SUMMARY OF SOURCES OF ERROR Angle Measurement Errors.
+ An inventory of angle measurement errors is  given in  Table 9.2.
+This includes several sources of error that should be considered in  addition to the radar-related sources.
+Figure 9.30 is an example of the measured tracking performance of an AN/FPS- 16 radar tracking a 6-in metal sphere that provides a point source target to eliminate  target-caused errors.
+The data illustrates which error sources dominate at different  regions of the radar range and their characteristics versus range.
+The target-caused errors discussed in Section 9.8 include the usual tracking  events where the target extent is within the 3-dB beamwidth of the radar.
+However,  a large target such as an aircraft formation may extend beyond the linear angle-error  region of the antenna patterns and eventually reach the point of resolution of one  of the aircraft.
+The resultant angle-tracking error for large targets is illustrated by  the example in Figure 9.31.
+In Figure 9.31 a, the typical gaussian-like glint error  distribution is observed.
+With the wider separation of the aircraft, the tracking-error Component Bias Noise Radar-dependent    tracking errorsZero range setting Range discriminator shift    servo unbalance Receiver delayReceiver thermal noise Multipath Servo electrical noise Servo mechanical noise Variation in receiver delay Radar-dependent    translation errors Range oscillator frequency  Data takeoff zero settingRange resolver error Internal jitter Data gear nonlinearity and backlash Data takeoff nonlinearity and granularity Range oscillator instability Target-dependent    tracking errorsDynamic lag Beacon delayDynamic lag Glint Scintillation Beacon jitter Propagation error Average tropospheric refraction Irregularities in tropospheric refraction Average ionospheric refraction Irregularities in ionospheric refraction * From D.
+K.
+Barton in “Modern Radar,” R.
+S.
+Berkowitz (ed.), New York: John Wiley & Sons, 1965, chap.
+7, p.
+622.TABLE   9.1  Inventory of Range-Error Components* ch09.indd   43 12/15/07   6:07:59 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Tracking Radar 9.44  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 9 distribution changes shape, becoming somewhat rectangular with a separation of  aircraft as in Figure 9.31 b.
+At the widest separation, where the aircraft are almost  resolved, as in Figure 9.31 c, the radar will track one aircraft until it fades and the  other aircraft blossoms in amplitude.
+Then the radar-tracking point will move to  the other aircraft.
+The dwell on each target with random switching between the two  aircraft causes the double-humped distribution of error.
+Range Measurement Errors.
+ The major sources of target range-error  measurement errors are given in Table 9.3.
+Typical bias and noise of target range  measurement errors in a precision-ranging radar are equal to a total rms value of  1.6 m rms.
+Further details of range-error sources and their magnitude are give in  Section 10.3 of Barton.22 Limitations of Performance.
+ Mitchell et al.52 describe basic performance  limitations of the AN/FPQ-6 high precision tracking radar measured under ideal Component Bias Noise Radar-dependent    tracking errors    (deviation of antenna    from target)Boresight axis collimation Axis shift with    RF and IF tuning    Receiver phase shift    Target amplitude    Temperature   Wind force   Antenna unbalance Servo unbalance Receiver thermal noise    Multipath (elevation only)    Wind gusts    Servo electrical noise    Servo mechanical noise Radar-dependent    translation errors    (errors in converting    antenna position to    angular coordinates)Leveling of pedestal North    alignment Static flexure of pedestal    and antenna Orthogonality of axes solar    heatingDynamic deflection of pedestal    and antenna Bearing wobble Data gear nonlinearity    and backlash Data takeoff nonlinearity    and granularity Target-dependent    tracking errorsDynamic lag Glint   Dynamic lag variation Scintillation Beacon modulation Propagation errors Average refraction of    troposphere Average refraction of    ionosphereIrregularities in tropospheric    refraction Irregularities in ionospheric    refraction Apparent or    instrumentation errors    (for optical reference)Telescope or reference    instrument stability Film emulsion and base    stability Optical parallaxTelescope, camera, or reference    instrument vibration Film-transport jitter Reading error Granularity error Variation in optical parallax * From D.
+K.
+Barton in “Modern Radar,” R.
+S.
+Berkowitz (ed.), New York: John Wiley & Sons, 1965, chap.
+7, p.
+618.TABLE   9.2  Inventory of Angle-Error Components* ch09.indd   44 12/15/07   6:08:00 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Tracking Radar  TRACKING RADAR  9.456x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 9 conditions with a carefully designed boresighting facility.
+This task provided mea - sured data verifying the anticipated performance of the highest precision tracking  radar at that time.
+FIGURE 9.30  Azimuth-tracking noise versus range using a 6-in metal  sphere target supported inside a balloon to minimize target motion (estimated  at 1.5 in rms).
+bn = servo bandwidth Component Bias Noise Radar-dependent  tracking errorsZero range setting Range discriminator shift    servo unbalance Receiver delayReceiver thermal noise Multipath Servo electrical noise Servo mechanical noise Variation in receiver delay Radar-dependent  translation errors Range oscillator frequency Data takeoff zero settingRange resolver error Internal jitter Data gear nonlinearity and backlash Data takeoff nonlinearity and granularity Range oscillator instability Target-dependent  tracking errorsDynamic lag Beacon delayDynamic lag Glint Scintillation Beacon jitter Propagation error Average tropospheric refraction Irregularities in tropospheric refraction Average ionospheric refraction Irregularities in ionospheric refraction *From D.
+K.
+Barton in “Modern Radar,” R.
+S.
+Berkowitz (ed.) New York: John Wiley & Sons, 1965, chap.
+7, p.
+622.TABLE   9.3  Inventory of Range-Error Components* ch09.indd   45 12/15/07   6:08:01 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Tracking Radar 9.46  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 9 9.12 ERROR REDUCTION TECHNIQUES Multipath-Error Reduction.
+ Very-low-altitude targets cause severe elevation- angle tracking errors, as described in Section  9.9, which may result in useless elevation  tracking data and possible loss of tracking of the target.
+A variety of techniques  have been developed to reduce these errors or their effects on radar tracking.53–58  One simple approach to avoid loss of tracking in elevation is to open the elevation- tracking servo loop and place the antenna beam at about a half beamwidth above  the horizon.1 Azimuth closed-loop tracking may continue.
+Although the elevation- angle-error-detector output has large indicated angle errors, it is monitored to observe  whether or not the target is maneuvering upward through the beam.
+A target rising  through the beam will cause a positive angle-tracking error indication and the closed- loop elevation tracking resumes.
+A very effective and direct approach to multipath-error reduction is to use a very  narrow beam, usually accomplished by operating at short wavelengths such as an 8-mm   (35 GHz or Ka band) region with the usual microwave-tracking aperture size.13,25,26, TARGETS TARGETS TARGETS(a) TA RGET SEP ARATION –0.30 ANTENNA BEAMWIDTH (b) TA RGET SEP ARATION –0.75 ANTENNA BEAMWIDTH (c) TA RGET SEP ARATION –0.85 ANTENNA BEAMWIDTHPROBABILITY DENSITY FIGURE   9.31  Probability distribution of radar pointing when tracking  two targets (where the left target is approximately 1.5 dB larger than the  right target).
+Three different angular separations of the targets are ( a) 0.30  antenna beamwidth, ( b) 0.75 antenna beamwidth, and ( c) 0.85 antenna  beamwidth.
+ch09.indd   46 12/15/07   6:08:02 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Tracking Radar  TRACKING RADAR  9.476x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 9 This approach can reduce errors by two effects.
+First, as observed in Figure 9.28, the  magnitude of the elevation multipath error reduces in direct proportion to the beam - width.
+The second advantage of shorter wavelengths is that even a relatively smooth  sea, such as sea state 1, has wave heights of many wavelengths and appears rough,  resulting in a smaller reflection coefficient.
+This is observed in Figure 9.28 to give  small multipath errors.
+The 8-mm-wavelength monopulse capability may be effec - tively combined with a lower microwave band as described in Section 9.6 to take  advantage of the complementary features of both bands.
+Target Angle and Range Scintillation (Glint) Reduction.
+ Target-caused errors  in angle and range tracking may be reduced by filtering, such as reducing tracking  servo bandwidth.
+However, sufficient servo bandwidth must be retained to follow  target trajectories.
+Unfortunately, target angle and range scintillation power density is  normally concentrated below about 1 to 2 Hz when operating at microwave bands and  falls within normally required bandwidths.
+Target scintillation total noise power is relatively independent of frequency, but  the spectral energy tends to spread upward in frequency as wavelength is reduced,  resulting in lower noise power density in the servo passband.
+Therefore, operating at a  shorter wavelength will result in lower target noise effects on closed-loop tracking.
+Diversity techniques, which can provide statistically independent samples of target  scintillation, offer a means for reducing target scintillation effects.
+The most practical  technique is frequency diversity using pulse-to-pulse radar frequency change, which  will alter the phase relations between the echoes from dominant reflecting surfaces  of the target.59–62 The frequency change must be sufficient to cause enough change in  relative phases of the reflectors to result in statistically independent samples of target  scintillation at each new frequency.
+An approximate rule is a minimum frequency  change of 1/ t, where t is the radar range delay time between the leading and lagging  extremities of the target.
+The reduction in rms angle and range target scintillation  may be approximated by dividing by the square root of n, where n is the number of  frequency steps provided.
+Reduction of Internally Caused Errors.
+ Angle errors caused by receiver ther - mal noise, as well as target scintillation, are minimized by maintaining the target  as closely as possible to the tracking axes.
+The technique called on-axis  tracking,   described in Section 9.6, is a means of placing a computer in the tracking loop to  minimize lag and provide optimum angle-error filtering.
+Accurate system calibration also greatly reduces internal sources of error.
+Frequent  calibration corrects for drift in component gain and phase and pedestal flexure.
+Other  internal sources of error with known characteristics can be automatically corrected to  minimize their contamination of the output data.
+REFERENCES  1.
+S.
+M.
+Sherman, Monopulse Principles and Techniques , Norwood, MA: Artech House, 1986.
+ 2.
+A.
+I.
+Leonov and K.
+I.
+Formichev, Monopulse Radar ,” Norwood, MA: Artech House, 1986.
+ 3.
+J.
+H.
+Dunn and D.
+D.
+Howard, “Precision tracking with monopulse radar,” Electronics , vol.
+33,   pp.
+51–56, April 22, 1960.
+ 4.
+P.
+Z.
+Peebles, Jr., “Signal Processor and accuracy of three-beam monopulse tracking radar,” IEEE  Trans ., vol.
+AES-5, pp.
+52–57, January 1969.
+ch09.indd   47 12/15/07   6:08:02 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Tracking Radar 9.48  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 9  5.
+P.
+W.
+Hannan, “Optimum feeds for all three modes of a monopulse antenna, I: Theory; II:  Practice,” IEEE Trans ., vol.
+AP-9, pp.
+444–460, September 1961.
+ 6.
+“Final report on instrumentation radar AN/FPS-16 (XN-2),” Radio Corporation of America,  unpublished report NTIS 250500, pp.
+4-123–4-125.
+ 7.
+D.
+K.
+Barton, “Recent developments in radar instrumentation,” Astron.
+Aerosp.
+Eng ., vol.
+1,   pp.
+54–59, July 1963.
+ 8.
+J.
+T.
+Nessmith, “Range instrumentation radars,” IEEE Trans ., vol.
+AES-12, pp.
+756–766,  November 1976.
+ 9.
+J.
+A.
+DiCurcio, “AN/TPQ-27 precision tracking radar,” in IEEE Int.
+Radar Conf.
+Rec ., Arlington,  V A, 1980, pp.
+20–25.
+10.
+D.
+D.
+Howard, “Single Aperture monopulse radar multi-mode antenna feed and homing device,”  in Proc.
+IEEE Int.
+Conv.
+Mil.
+Electron.
+Conf ., September 14–16, 1964, pp.
+259–263.
+11.
+P.
+Mikulich, R.
+Dolusic, C.
+Profera, and L.
+Yorkins, “High gain cassegrain monopulse antenna,”  in IEEE G-AP Int.
+Antenna Propag.
+Symp.
+Rec ., September 1968.
+12.
+R.
+C.
+Johnson and H.
+Jasik, Antenna Engineering Handbook , 2nd Ed., New York: McGraw-Hill  Book Company, 1984, Chap.
+34.
+13.
+D.
+Cross, D.
+Howard, M.
+Lipka, A.
+Mays, and E.
+Ornstein, “TRAKX: A dual-frequency tracking  radar,” Microwave J ., vol.
+19, pp.
+39–41, September 1976.
+14.
+V .
+W.
+Hammond and K.
+H.
+Wedge, “The application of phased-array instrumentation radar in test  and evaluation support,” in Electron.
+Nat.
+Security Conf.
+Rec ., Singapore, January 17–19, 1985.
+15.
+J.
+W.
+Bornholdt, “Instrumentation radars: Technical evaluation and use,” in Proc.
+Int.
+Telemetry  Council , November 1987.
+16.
+W.
+B.
+Milway, “Multiple target instrumentation radars for military test and evaluation,” in Proc.
+ Int.
+Telemetry Conf .
+vol.
+XXI, 1985.
+17.
+R.
+L.
+Stegall, “Multiple object tracking radar: System engineering considerations,” in Proc.
+Int .
+ Telemetry Council, 1987.
+18.
+R.
+S.
+Noblit, “Reliability without redundancy from a radar monopulse receiver,” Microwaves ,   pp.
+56–60, December 1967.
+19.
+H.
+Sakamoto and P.
+Z.
+Peebles, Jr., “Conopulse radar,” IEEE Trans ., vol.
+AES-14, pp.
+199–208,  January 1978.
+20.
+P.
+A.
+Bakut and I.
+S.
+Bol’shakov, Questions of the Statistical Theory of Radar , vol.
+II, Moscow:  Sovetskoye Radio, 1963, Chaps.
+10 and 11.
+(Translation available from NTIS, AD 645775,   June 28, 1966.) 21.
+M.
+I.
+Skolnik, Introduction to Radar Systems , 2nd Ed., New York: McGraw-Hill Book   Company, 1980.
+22.
+D.
+K Barton, Radar Systems Analysis , Norwood, MA: Artech House, 1977.
+23.
+A.
+S.
+Locke, Guidance,  Princton , NJ: D.
+Van Nostrand Company, 1955, Chap.
+7.
+24.
+D.
+C.
+Cross, “Low jitter high performance electronic range tracker,” in IEEE Int.
+Radar Conf.
+ Rec., 1975, pp.
+408–411.
+25.
+D.
+L.
+Malone, “FLYCATCHER,” Nat.
+Def ., pp.
+52–55, January 1984.
+26.
+Hollandse Signaalapparaten B.V .
+advertisement, Def.
+Electron ., vol.
+19, p.
+67, April 1987.
+27.
+Editor, “Inside the Exocet: Flight of a sea skimmer,” Def.
+Electron ., vol.
+14, pp.
+46–48,   August 1982.
+28.
+Editor, “Special series: Israeli Avionics-2,” Aviat.
+Week Space Technol ., pp.
+38–49, April 17, 1978.
+29.
+D.
+C.
+Cross, D.
+D.
+Howard, and J.
+W.
+Titus, “Mirror-antenna radar concept,” Microwave J .,   vol.
+29, pp.
+323–335, May 1986.
+30.
+D.
+D.
+Howard and D.
+C.
+Cross, “Mirror antenna dual-band light weight mirror design,” IEEE  Trans ., vol.
+AP-33, pp.
+286–294, March 1985.
+31.
+E.
+P.
+Schelonka, “Adaptive control technique for on-axis radar,” in Int.
+Radar Conf.
+Rec ., 1975  pp.
+396–401.
+ch09.indd   48 12/15/07   6:08:02 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Tracking Radar  TRACKING RADAR  9.496x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 9 32.
+I.
+D.
+Olin and F.
+D.
+Queen, “Dynamic measurement of radar cross section,” Proc.
+IEEE , vol.
+53,  pp.
+954–961, August 1965.
+33.
+J.
+H.
+Dunn, D.
+D.
+Howard, and A.
+M.
+King, “Phenomena of scintillation noise in radar-tracking  systems,” Proc.
+IRE , vol.
+47, pp.
+855–863, May 1959.
+34.
+M.
+I.
+Skolnik, Introduction to Radar Systems , New York: McGraw-Hill Book Company, 1962,  Chap.
+2.
+35.
+D.
+K.
+Barton, Modern Radar System Analysis , Norwood, Mass: Artech House, 1988, p.
+388.
+36.
+G.
+Merrill, D.
+J.
+Povejsil, R.
+S.
+Raven, and P.
+Waterman, Airborne Radar , Boston: Boston  Technical Publishers, 1965, pp.
+203–207.
+37.
+D.
+D.
+Howard, “Radar target angular scintillation in tracking and guidance systems based on  echo signal phase front distortion,” in Proc.
+Nat.
+Electron.
+Conf ., vol.
+15, October 1959.
+38.
+R.
+H.
+Delano, “A theory of target glint or angle scintillation in radar tracking,” Proc.
+IRE , vol.
+41,  pp.
+1778–1784, December 1953.
+39.
+R.
+H.
+Delano and I.
+Pfeffer, “The effects of AGC on radar tracking noise,” Proc.
+IRE , vol.
+44,   pp.
+801–810, June 1956.
+40.
+J.
+H.
+Dunn and D.
+D.
+Howard, “The effects of automatic gain control performance on the track - ing accuracy of monopulse radar systems,” Proc.
+IRE , vol.
+47, pp.
+430–435, March 1959.
+41.
+D.
+C.
+Cross and J.
+E.
+Evans, “Target generated range errors,” in IEEE Int.
+Radar Conf.
+Rec .,  Arlington, V A, April 21–23, 1975, pp.
+385–390.
+42.
+D.
+J.
+Povejsil, R.
+S.
+Raven, and P.
+Waterman, Airborne Radar , Princeton, NJ: D.
+Van Nostrand  Company, 1961, pp.
+397–399.
+43.
+R.
+Hynes and R.
+E.
+Gardner, “Doppler spectra of S band and X band signals,” IEEE Trans.
+Suppl .,  vol.
+AES-3, pp.
+356–365, November 1967.
+44.
+A.
+A.
+Ausherman, A.
+Kozma, J.
+L.
+Walker, H.
+M.
+Jones, and E.
+C.
+Poggio, “Development in radar  imaging,” IEEE Trans ., vol.
+AES-20, pp.
+363–400, July 1984.
+45.
+G.
+Dike, R.
+Wallenberg, and J.
+Potenza, “Inverse SAR and its application to aircraft classifica - tion,” in IEEE Int.
+Radar Conf.
+Rec ., pp.
+20–25, 1980.
+46.
+D.
+K.
+Barton, “The low-angle tracking problem,” presented at IEE Int.
+Radar Conf ., London,   October 23–25, 1973.
+47.
+D.
+K.
+Barton and H.
+R.
+Ward, Handbook of Radar Measurement , Englewood Cliffs, NJ:  Prentice-Hall, 1969.
+48.
+D.
+K.
+Barton, “Low-angle radar tracking,” Proc.
+IEEE , vol.
+62, pp.
+687–704, June 1974.
+49.
+D.
+K.
+Barton, Radar Resolution and Multipath Effects  in vol.
+4 of Radars , Norwood, MA: Artech  House, 1978.
+50.
+D.
+D.
+Howard, J.
+Nessmith, and S.
+M.
+Sherman, “Monopulse tracking error due to multipath:  Causes and remedies,” in EASCON Rec ., 1971 pp.
+175–182.
+51.
+E.
+M.
+T.
+Jones, “Paraboloid reflector and hyperboloid lens antenna,” IRE Trans ., vol.
+AP-2,   pp.
+119–127, July 1954.
+52.
+R.
+Mitchell et al., “Measurements of performance of MIPIR (Missile Precision Instrumentation  Radar Set AN/FPQ-6),” Final Rept., Navy Contract NOW 61-0428 d, RCA, Missile and Surface  Radar Division, Moorestown, NJ, December 1964.
+53.
+P.
+R.
+Dax, “Accurate tracking of low elevation targets over the sea with a monopulse radar,”  in IEE Radar Conf.
+Publ .
+105, Radar—Present and Future , London, October 23–25, 1973,   pp.
+160–165.
+54.
+D.
+D.
+Howard, “Investigation and application of radar techniques for low-altitude target track - ing,” in IEE Int.
+Radar Conf.
+Rec ., London, October 25–26, 1977.
+55.
+D.
+D.
+Howard, “Environmental effects on precision monopulse instrumentation tracking radar at  35 GHz,” in IEEE EASCON ’79 Rec ., October 1979.
+56.
+R.
+J.
+McAulay and T.
+P.
+McGarty, “Maximum-likelihood detection of unresolved targets and  multipath,” IEEE Trans ., vol.
+AES-10, pp.
+821–829, November 1974.
+ch09.indd   49 12/15/07   6:08:03 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Tracking Radar 9.50  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 9 57.
+W.
+D.
+White, “Techniques for tracking low-altitude radar targets in the presence of multipath,”  IEEE Trans ., vol.
+AES-10, pp.
+835–852, November 1974.
+58.
+P.
+Z.
+Peebles, Jr., “Multipath error reduction using multiple target methods,” IEEE Trans .,   vol.
+AES-7, pp.
+1123–1130, November 1971.
+59.
+F.
+E.
+Nathanson, Radar Design Principles , New York: McGraw-Hill Book Company, 1969,   p.
+37.
+60.
+G.
+Linde, “Reduction of radar tracking errors with frequency agility,” IEEE Trans ., vol.
+AES-4,  pp.
+410–416, May 1968.
+61.
+G.
+Linde, “A simple approximation formula for glint improvement with frequency agility,” IEEE  Trans ., AES-8, pp.
+853–855, November 1972.
+62.
+D.
+K.
+Barton, Frequency Agility and Diversity , in Vol.
+6 of Radars , Norwood, MA: Artech  House, 1977.
+ch09.indd   50 12/15/07   6:08:03 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Tracking Radar 

@@ -41,8 +41,8 @@ def pdfToTxt(filePath, txtOutDir):
 
     for document in docs:
         docPath = document.metadata['source']
-        with open(txtOutDir+"/"+docPath[docPath.rfind('/')+1:-4]+".txt", "a") as f: # cursed but it works so I don't really care (see line 43)
-            f.write(document.page_content+" ")
+        with open(txtOutDir+"/"+docPath[docPath.rfind('/')+1:-4]+".txt", "a") as f: # cursed but it works so I don't really care (see line TODO)
+            f.write(document.page_content.replace('\n',' ').replace('. ', '.\n')+" ")
 
 def pdfDirToTxt(pdfFilesDir, txtOutDir):
     """
@@ -64,4 +64,4 @@ def pdfDirToTxt(pdfFilesDir, txtOutDir):
     for document in docs:
         docPath = document.metadata['source']
         with open(txtOutDir+"/"+docPath[docPath.rfind('/')+1:-4]+".txt", "a") as f: # names new txt file the same as name of pdf
-            f.write(document.page_content+" ")
+            f.write(document.page_content.replace('\n',' ').replace('. ', '.\n')+" ")
