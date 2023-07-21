@@ -39,10 +39,18 @@ def pdfToTxt(filePath, txtOutDir):
     loader = PyPDFLoader(filePath)
     docs = loader.load()
 
+    count = 0
     for document in docs:
         docPath = document.metadata['source']
         with open(txtOutDir+"/"+docPath[docPath.rfind('/')+1:-4]+".txt", "a") as f: # cursed but it works so I don't really care (see line TODO)
-            f.write(document.page_content.replace('\n',' ').replace('. ', '.\n')+" ")
+            content = document.page_content.replace('\n',' ')
+            l_content = [s+". " for s in content.split(". ")]
+            while l_content: # while list is not empty
+                f.write(l_content.pop(0))
+                count+=1
+                if count == 3:
+                    count = 0
+                    f.write('\n')
 
 def pdfDirToTxt(pdfFilesDir, txtOutDir):
     """
@@ -61,7 +69,15 @@ def pdfDirToTxt(pdfFilesDir, txtOutDir):
     loader = PyPDFDirectoryLoader(pdfFilesDir)
     docs = loader.load()
 
+    count = 0
     for document in docs:
         docPath = document.metadata['source']
         with open(txtOutDir+"/"+docPath[docPath.rfind('/')+1:-4]+".txt", "a") as f: # names new txt file the same as name of pdf
-            f.write(document.page_content.replace('\n',' ').replace('. ', '.\n')+" ")
+            content = document.page_content.replace('\n',' ')
+            l_content = [s+". " for s in content.split(". ")]
+            while l_content: # while list is not empty
+                f.write(l_content.pop(0))
+                count+=1
+                if count == 3:
+                    count = 0
+                    f.write('\n')
