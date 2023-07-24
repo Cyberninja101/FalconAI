@@ -25,7 +25,7 @@ class bloom(LLM):
         tokenizer = AutoTokenizer.from_pretrained("bigscience/bloom-560m")
         model = AutoModelForCausalLM.from_pretrained("bigscience/bloom-560m")
         inputs = tokenizer(prompt, return_tensors="pt").input_ids
-        outputs = model.generate(inputs, max_new_tokens=15, do_sample=True, top_k=50, top_p=0.95).tolist()[0]
+        outputs = model.generate(inputs, max_new_tokens=7, do_sample=True, top_k=50, top_p=0.95).tolist()[0]
         return (tokenizer.decode(outputs))
 
 
