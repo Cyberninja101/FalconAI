@@ -1,0 +1,1045 @@
+17 .16x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17 Synthetic Aperture Radar* Roger Sullivan Institute for Defense Analyses Most of the discussion in this Handbook concerns real aperture radar  (RAR) ,  where the antenna is a physical object that first emits, and then collects, the radia - tion.
+We turn our attention to the case where the antenna moves to cover a syn- thetic aperture , thus producing synthetic aperture radar  (SAR) .
+This overview is  based on Sullivan1 and Cutrona2†; more detailed treatments are also provided in  the literature.3–11 17.1 BASIC PRINCIPLE OF SAR For airborne or spaceborne ground-mapping radar, there has been continuous desire  to achieve finer resolution.
+We shall use the term range resolution  to mean the resolu - tion along the line-of-sight (LOS) from the radar to the target region and crossrange  resolution  to mean the resolution along the direction perpendicular to the LOS and  parallel to the ground.
+The former is also frequently termed downrange resolution  to  emphasize that it is along the LOS.
+Crossrange resolution is also frequently called azi- muth resolution , since it is measured along a line obtained by holding range constant  and varying the azimuth (as measured from the physical antenna) of the LOS.
+If (and  only if) the LOS remains perpendicular to the direction of flight, range resolution is  sometimes called cross-track resolution , and crossrange resolution is sometimes called  along-track resolution .
+With respect to SAR resolution, the preferred terms are fine and coarse .
+Better  resolution is finer , not greater ; poorer resolution is coarser , not less.
+In this way  ambiguity in terminology can be avoided.
+Of course, in practice the terms high- resolution  (fine resolution) and low-resolution  (coarse resolution) are often used  without ambiguity.
+Crossrange resolution was initially achieved by use of a narrow beam.
+The beam - width (in radians) qB of an aperture antenna is given approximately by the wavelength Chapter 17 *  The present chapter draws significantly from Dr.
+Sullivan’s book, Radar Foundations for Imaging and Advanced  Concepts , Raleigh, NC: SciTech Publishing, 2004.
+Dr.
+Sullivan is grateful to SciTech for permission to quote  considerable material from the chapters on SAR.
+He is also grateful to Mr.
+Michael Tuley (Institute for Defense  Analyses) for reviewing the manuscript prior to publication and suggesting many improvements.
+†  In the first two editions of this Handbook, the chapter on SAR was written by Dr.
+Louis J.
+Cutrona, who is now  deceased.
+In 1988, Dr.
+Sullivan had the privilege of working with Dr.
+Cutrona at the Environmental Research  Institute of Michigan, Ann Arbor (now General Dynamics, Ypsilanti), and is grateful for having learned much from  him concerning SAR.
+ch17.indd   1 12/17/07   6:48:22 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Source: RADAR HANDBOOK 17 .2  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17 l divided by the aperture diameter: qB ≈ l  /D.
+The corresponding linear crossrange  resolution at range R is then  δλ cr≈R D  (real aperture) (17.1) For example, if l = 3 cm (X band) and D = 2 m, qB ≈ 0.015 radians.
+At a range of R =  100 km, the crossrange resolution would be R qB ≈ 1.5 km, hardly fine enough to resolve  such targets as buildings and vehicles.
+However, by using appropriate coherent process - ing, an aperture of modest size may be moved (e.g., by an aircraft or spacecraft—referred  to as the platform ) along a path in space—a synthetic aperture —and may achieve cross - range resolution comparable to what would, in principle, be achieved by a real aperture  with a length equal to the path length (synthetic aperture) LSA:  δλ λ cr SA≈ ≈R L2 2 ∆q  (synthetic aperture) (17.2) where ∆q is the synthetic aperture angle, i.e., the angle subtended by the synthetic  aperture as seen from the target area.
+The additional factor of two in the denominator  (compared with Eq.
+17.1) occurs because of the SAR processing and will be discussed.
+ For example, for a path length of 5 km, the crossrange resolution for the case discussed  above would be ≈ 30 cm, clearly a superb improvement over the real-aperture case.
+17.2 EARLY HISTORY OF SAR The original concept of SAR was first described by Carl Wiley of Goodyear in 1951.12  He called it doppler beam sharpening (DBS) .
+Later, the doppler beam sharpening mode  of SAR was introduced as the name for a variable squint angle mode that produced a  partial plan-position indicator (PPI) display.
+Thus, DBS really has two meanings in  SAR: (1) the name for SAR invented by Wiley before it was called SAR and (2) the  name for a PPI-like mode based on squinted SAR.
+In 1952, the University of Illinois demonstrated the SAR concept.
+In 1953, during  a summer study that launched a program known as Project Michigan, ideas related  to synthetic apertures were discussed by L.
+J.
+Cutrona of the University of Michigan  Willow Run Laboratories, C.
+W.
+Sherwin of the University of Illinois, W.
+Hausz of  General Electric, and J.
+Koehler of Philco Corporation.2 This resulted in a successful  SAR program by the Michigan group.13 The Illinois group also demonstrated success - ful SAR imaging.14 The work of Cutrona et al.13 and Sherwin et al.,14 plus many other  early SAR papers, are compiled in a very useful book by Kovaly.15 More detailed  histories of SAR development are given by Curlander and McConough,4 Jackson and  Apel,10 and Ausherman et al.11 17.3 TYPES OF SAR When we refer to SAR, we usually mean focused SAR;  the term indicates that the  phase information has been optimally processed to produce resolution comparable  to the theoretical limit.
+In the development of SAR, several interesting techniques  ch17.indd   2 12/17/07   6:48:29 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar  SYNTHETIC APERTURE RADAR  17 .36x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17 preceded the development of focused SAR.
+These techniques are discussed in order of  progressively finer resolution.
+Precursors to Focused SAR.
+Side-Looking Airborne Radar (SLAR).
+ SLAR consisted of an aircraft-mounted  RAR pointed perpendicular to the direction of flight (hence “side-looking”), with  crossrange resolution ∼ Rl/D.
+Doppler Beam Sharpening (DBS).
+ As previously mentioned, when Wiley first  conceived of the concept that we now call SAR, he termed it doppler beam sharp - ening .
+Wiley explained it as follows: “I had the luck to conceive of the basic idea,  which I called Doppler Beam Sharpening (DBS), rather than Synthetic Aperture  Radar (SAR).
+Like all signal processing, there is a dual theory.
+One is a frequency- domain explanation.
+This is Doppler Beam Sharpening.
+If one prefers, one can ana - lyze the system in the time domain instead.
+This is SAR.
+The equipment remains the  same–just the explanation changes.
+Conception was reported in a Goodyear Aircraft  report in 1951.”12 Subsequently, as described in Section 8.1 of Schleher,16 DBS came to refer to an  airborne scanning mode in which the echoes from the scanning real beam are doppler- processed to produce crossrange resolution finer than that provided by the real beam  alone; broadside crossrange resolution is ≈ Rl /2LDBS, where LDBS is the synthetic aper - ture length generated during a target dwell.
+Stimson5 explains: “Typically, the antenna  continuously scans the region of interest...Because the integration time is limited to  the length of time a ground patch is in the antenna beam—or, if you prefer, the length  of the array that can be synthesized is so limited—the resolution is coarser than can be  achieved with a non-scanning antenna” (p.
+434).
+Unfocused SAR.
+ This type of early SAR is described by Cutrona2 as follows: “The  coherent signals received at the synthetic array points are integrated, with no attempt  made to shift the phases of the signals before integration.
+This lack of phase adjust - ment imposes a maximum upon the synthetic antenna length that can be generated.
+ This maximum synthetic antenna length occurs at a given range when the round-trip  distance from a radar target to the center of the synthetic array differs by l /4 from the  round-trip distance between the radar target and the extremities of the array.” Cutrona  shows that the crossrange resolution is approximately ½ ( l R) ½.2 Unfocused SAR is typically not used today and is included here only for historical  reasons.
+It was used in the early days of SAR since the technology of that time did not  support focused SAR.
+Types of Focused SAR.
+ In focused SAR, a phase correction is made for each  returning pulse echo.
+This essentially results in the theoretical crossrange resolution  of Eq.
+17.2.
+Stripmap SAR.
+ Stripmap SAR (or “strip” SAR) is also sometimes called “search”  SAR, since it is useful for imaging large areas at relatively coarse resolution.
+In strip - map SAR, the beam remains normal to the flight path (the latter is assumed to be a  straight line at constant altitude) and continuously observes a swath  (or strip) of terrain  parallel to the flight path extending from some minimum range Rmin to some maximum  range Rmax from the flight path.
+ch17.indd   3 12/17/07   6:48:30 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar 17 .4  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17 For stripmap SAR, the synthetic aperture angle ∆q  is essentially equal to the real- aperture beamwidth qB:  ∆q q≈ ≈BDλ (17.3) Thus  δλ cr≈ ≈2 2∆qD (17.4) Under ideal conditions, as long as D  l and signal-to-noise ratio (SNR)  1,  then the smaller the physical antenna, the finer the crossrange resolution, independent  of range.
+As the physical antenna moves along the synthetic aperture, the return from a  point target at a particular range will exhibit a quadratic phase behavior (i.e., phase  varies as the square of the time referenced to the closest approach) that is unique to  the target’s location on the ground.2,17 Some stripmap SARs use a filtering approach  to take advantage of this phenomenon.11 In fact, for the echo from a point target in  the scene, a close analogy exists between its quadratic phase variation during a single  pulse (from a linear FM [LFM] pulse echo) and its quadratic phase variation over  many pulses due to platform motion (Stimson,5 p.
+421).
+Other stripmap SARs divide  the strip into subpatches  and use spotlight-SAR processing (next section) for each  subpatch3 (see also Section 4.8 of Ausherman et al.11).
+The newer Range Migration Algorithm  (RMA) (see Chapter 10 of Carrara et al.3),  originally developed for seismic applications, provides the most theoretically correct  solution to the stripmap image problem.
+It does not make a far-field approximation but  treats the wavefronts as spherical.
+It is particularly applicable to SAR with very wide  fractional bandwidth and/or wide synthetic aperture angle.
+RMA involves substan - tial computational complexity; however, as processors become more sophisticated,  this limitation is disappearing.
+A simpler, faster version of RMA is the Chirp-Scaling  Algorithm  (CSA) (see Chapter 11 of Carrara et al.3).
+Squinted Stripmap SAR.
+ In this case, the antenna boresight is not normal to  the flight path.
+As seen from a top view, the squint angle  qsq is the angle between  the antenna boresight and the normal to the flight path; thus, for a broadside beam,   qsq = 0 and dcr ≅ D/2.
+More generally,  ∆q qqB≅ ≅λ Dcossq  (17.5)  δλ crsq 2≅ ≅2∆qq Dcos  It is assumed here that the synthetic aperture length LSA  R and qsq is essentially  constant during a data collection.
+Depending on details, this condition is valid only for  qsq less than about 45°, since, for a given crossrange resolution, as qsq increases, LSA  increases, and the condition becomes no longer valid.
+Spotlight  SAR.
+ Spotlight SAR (sometimes called “spot SAR”) is used to obtain  a relatively fine-resolution image of a known location or target of interest.
+As the  ch17.indd   4 12/17/07   6:48:36 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar  SYNTHETIC APERTURE RADAR  17 .56x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17 platform passes by the target, the beam direction moves to keep pointing at the target.
+ In this way, ∆q  may be made considerably greater than qB, and dcr (spotlight) < dcr  (stripmap).
+We may wish to make a correction for the variation in received power  (∼1/R4) as the range to the target varies slightly over the synthetic aperture.
+This is  usually negligible for most spotlight SAR applications but might not be negligible  when collection angles are large, such as for the case of foliage-penetration SAR  (Section 17.8).
+The synthetic aperture time  tA required to collect the data for a spotlight SAR image  is found as follows:  δλ λ λ λcr SA sq sq≈ ≈ = ≈2 2 2 ∆q q qR LR Vt tRA Acos( ) c os( ) 2 2Vδcr sq cos( )q (17.6) where V is the platform speed.
+Interferometric SAR.
+ Interferometric SAR (InSAR, sometimes also called  “IFSAR”) refers to the use of two antennas whose signals are combined coherently.
+ InSAR was originally developed by the Jet Propulsion Laboratory (JPL) to detect  ocean currents or moving targets.18,19 The two antennas were displaced horizontally  on the platform (along a line parallel to the ground) so that the received echoes from  a moving target would be different from the corresponding echoes from fixed tar - gets, and thus movers could be detected and analyzed.
+Later researchers (e.g., Adams  et al.20) used two antennas displaced vertically on the platform so that the received  echoes from a target above the surface (assumed flat) would be different from the  corresponding echoes from a target on the surface, and thus target height could be esti - mated.
+Both types of InSAR are discussed in Section 17.8.
+The former is discussed in  “Interferometric SAR for Moving Target Indication (MTI),” and the latter is discussed  in “Interferometric SAR for Target Height Measurement.” Inverse SAR.
+ Skolnik21 presents a discussion of Inverse SAR (ISAR).
+He states,  “In SAR, the target is assumed stationary and the radar is in motion.
+In ISAR, the  target motion provides the changes in relative velocity that cause different doppler  shifts to occur across the target” (pp.
+375–380).
+Skolnik also includes a discussion  of ISAR images of ships obtained by the U.
+S.
+Naval Research Laboratory (NRL)  (Musman et al.22).
+An airborne radar obtains a series of images of a ship that is expe - riencing pitch/roll/yaw in the waves, and the user is able to identify the ship type and  characteristics.
+Musman et al.
+discuss feature extraction, multiframe processing, and  a capability for automatic target recognition (ATR) of ships.
+ISAR is also widely used  for diagnostic measurements on indoor and outdoor radar cross section (RCS) ranges  (Knott et al.,26 p.
+516).
+Improvements in SAR Resolution.
+ The following example illustrates how SAR  crossrange resolution has improved as the preceding types of airborne mapping radar  were developed.
+Let us assume that l = 0.03 m (X band), D = aperture diameter =   2 m, R = 100 km, qsq = 0, V = 180 m/sec, LDBS = 10 m (corresponding to an angular  scan rate of 15° sec), and spotlight synthetic aperture length = 5 km ( ∆q ≈ 3 deg).
+  ch17.indd   5 12/17/07   6:48:38 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar 17.6  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17 Then crossrange resolution is approximately as follows for the different modes dis - cussed previously: SLAR: 1500 m DBS: 150 m Unfocused stripmap SAR: 27 m Stripmap SAR: 1 m Spotlight SAR: 0.3 m  17.4 SAR RESOLUTION In this section, we discuss SAR resolution in more detail.
+By “resolution,” in keeping with  common usage, we mean the precision to which we can measure the location of a point  target and not necessarily the ability to resolve two point targets.
+(For a discussion of this  issue, see Wolfe and Zissis.23) How we do this will be discussed in more detail below.
+Since fine range resolution is typically achieved with a single pulse, the corre - sponding processing is often termed fast-time processing .
+On the other hand, fine  crossrange resolution requires multiple pulses, and the corresponding processing is,  therefore, often termed slow-time processing  (Carrara,3 Richards,24 and Klemm25).
+Range Resolution.
+ Strictly speaking, SAR refers to a method for improving  crossrange resolution, not range resolution.
+However, because fine range resolution is  so necessary to a successful SAR, and also because of an analogy between range and  crossrange resolution, we discuss range resolution briefly here.
+Fine range resolution is achieved by transmitting and receiving radar waves char - acterized by a fairly wide bandwidth B.
+As an example, consider a carrier frequency   f = 10 GHz and a 10% bandwidth B = 1 GHz.
+One way to achieve this bandwidth (not  the best way, in general, but a way that is easy to describe) is to use a step-frequency   waveform consisting of a series of “single-frequency” pulses, each with a frequency  somewhat greater than that of the previous pulse.
+(By a “single-frequency” pulse,  we mean a pulse consisting of a pure sinusoidal tone multiplied by a rectangular  function of duration (“width”) t much longer than the period of the tone.
+Such a  pulse is not truly single-frequency but has a bandwidth of ≈ 1/t.
+For example, if t  =  1 microsecond, B(pulse ) = 1 MHz.
+This is far less than the bandwidth of the overall  step-frequency waveform, equal to the difference between the frequencies of the last  and first pulses in the sequence, which is typically hundreds of MHz.) Step-frequency pulse compression has not proven successful in airborne or space - borne applications, as compared to the linear-FM (LFM) waveform (see Section 2.6  of Carrara3), and is seldom used.
+Linear-FM (LFM) is a common waveform used in  operational high-power radars, because (1) each pulse contains the full bandwidth,  thereby enabling the full bandwidth to be transmitted and received much more  quickly than with step-frequency—a great advantage when the radar is moving,  such as for SAR—and (2) the hardware is relatively inexpensive and mature.
+LFM  has been successfully employed operationally (e.g., in the U.
+S.
+Navy AN/APS-116  and AN/APS-137) since the 1970s.
+The only apparently successful application of  step-frequency has been in ground-based instrumentation radars, where it is less  expensive to implement and more time is available for data collection (Knott et al.,26  pp.
+35, 540).
+Nevertheless, for the moment, we assume the step-frequency waveform because  it provides a much simpler example for explaining the principle of range resolution.
+ ch17.indd   6 12/21/07   2:42:43 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar  SYNTHETIC APERTURE RADAR  17.76x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17 Let us assume that the radar transmits a step-frequency waveform consisting of iden - tical groups of pulses, each group consisting of N ( 1) “single-frequency” pulses  of width t.
+Within a pulse group, the frequency of a pulse is ∆f greater than that of  the previous pulse, and the radar transmits ( PRF)/N groups per second, where PRF  is the pulse repetition frequency.
+The waveform bandwidth is ( N − 1) ∆f  1/t.
+The  phase and amplitude of each pulse echo is digitally recorded by the radar.
+As shown  in Figure 17.1 a, a discrete Fourier transform (DFT)—typically a fast-Fourier trans - form (FFT)27—is applied to this set of N complex samples of frequency-domain data,  resulting in a set of N complex numbers in the time-domain corresponding to echoes  (magnitude and phase) that would be returned from a very short pulse of width ≈ 1/B,  sampled at time intervals ∆t = 1/B.
+This is a simple example of pulse compression.
+ Since an incremental delay ∆t corresponds to an incremental downrange distance   ∆r = c∆t/2, we multiply the DFT output by c/2 and obtain the echoes corresponding  to a set of downrange distances separated by a pixel width of c∆t/2 = c/2B.
+Thus, the  range resolution (strictly speaking, pixel separation) of a step-frequency waveform  of bandwidth B is  δrc B=/2 (17.7) Although it is beyond the scope of this chapter, it can be shown that such a range  resolution of ≈ c/2B may be obtained using a wide variety of waveform types, as long  as the overall transmitted bandwidth is B.
+For example, Section 7.2 of Sullivan1 shows  that this is true for the LFM waveform.
+Crossrange Resolution.
+ Let us now assume that the airborne (or spaceborne) SAR  is observing a scene on the Earth’s surface consisting of a few point targets and that it  transmits and receives N identical pulses each of bandwidth B (presumably, though not  necessarily, via the LFM waveform) and determines the downrange position of each  FIGURE 17.1  Range and crossrange resolution: Similar discrete Fourier transform (DFT) processes may  be used to obtain range and crossrange resolution.(a) Do wnrange (b) Cr ossrang e N/(2T) = fR/2Frequenc y Doppler  Frequency fdTimeTime Downrange  Distance dr = (c/2)∆t Velocity v = (l/2)fd Crossrange  Distance r = v/ΩFourier  TransformFourier Tr ansformf0 – B/ 2 f0 + B/ 2 f0 ∆f ≅ B/N ∆t = 1/B dr = c/(2B)–T/2 T/2 0 ∆t ≅ T/N = 1/fR 1/T –fR l/4 fR l/4–N/(2T) = –fR/2 l/(2T)0 0 0 –fR l/(4Ω) fR l/(4Ω) dcr = l/(2ΩT)  = l/(2∆q) ch17.indd   7 12/19/07   2:36:54 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar 17 .8  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17 target with a range resolution of c/2B.
+Let us also assume that the SAR is moving in a  straight line at a constant altitude H and constant speed V for a time T along a direction  normal to the LOS.
+The synthetic aperture LSA = VT is assumed small compared with  the range R to the center of the target region.
+As viewed from the target region (also  assumed small compared to R), the synthetic aperture subtends the synthetic aperture  angle ≈ LSA/R = VT/R.
+As the radar moves through its synthetic aperture, it views the  scene from slightly different angles.
+For simplicity, let us assume that during this time  the targets do not leave their “range bins” of width c/2B.
+(This assumption will be dis - cussed in Section 17.5, “Range Migration.”) From the viewpoint of the SAR, the scene appears to be rotating with angular  velocity Ω = V/R.
+During the data collection, the total angle through which the scene  appears to rotate is ∆q  =  ΩT = VT/R.
+A specific point target appears to have a LOS  velocity of Ωr relative to the SAR, where r is the crossrange distance of the target  from the LOS.
+These apparent LOS velocities will result in doppler frequencies (in  absolute value) of 2 v(apparent)/  l = 2Ωr/l, where l is the wavelength corresponding  to the carrier frequency.
+For each range bin, we now have N complex numbers corresponding to different  radar echoes in the time domain.
+As shown in Figure 17.1 b, these N time-domain  echoes may be processed using a DFT to produce a set of N frequency-domain returns.
+ The frequency interval between successive returns is ∆f = 1/T, and the overall fre - quency interval is ( N − 1)/T ≈ N/T = PRF = fR.
+We assume operation at baseband, and  thus the frequency in question is the apparent doppler frequency of the targets.
+We  convert this to crossrange by multiplying by l/2Ω = lR/2V:  δλ λ λ λ cr SA≈ = ≈ =2 2 2 2 Ω ∆TR LR VT q (17.8) Note that our assumption that R  VT permits the use of small-angle approxima - tions for small ∆q.
+When ∆q is not small, Eq.
+17.8 must be appropriately modified.
+Summary of SAR Resolution.
+ We have, therefore, now derived the two basic  formulas for SAR resolution:  δ δλrc B= =/2 2RangeResolutio n cr∆q q≈λR L2SACrossrangeResolutio n (17.9) The processing described produces a two-dimensional array of complex numbers,  i.e., each consists of a magnitude and a phase.
+This ordered array of complex numbers  as a function of downrange and crossrange produces a complex radar image, i.e., each  pixel consists of a magnitude and a phase.
+Typically the magnitude squared (represent - ing pixel energy) is displayed.
+As shown in Chapter 6 of Sullivan,1 a point target in the scene transforms to a two- dimensional point-spread function  (PSF) in the radar image, so-called because a point  target is displayed in the image as somewhat “spread out.” This PSF is characterized by  a mainlobe  and sidelobes  in both range and crossrange.
+Usually weighting  (also called  tapering  or apodization ) is applied in the processing, resulting in considerably lower side-   lobes, but at the expense of a somewhat broader mainlobe, a price that the user is typically  willing to pay.
+Many types of weighting exist.
+If no weighting is applied, the PSF is a  (sinc)2 function of the form ( sin(x)/x)2.
+In that case, the formulas above for SAR resolution  ch17.indd   8 12/17/07   6:48:46 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar  SYNTHETIC APERTURE RADAR  17 .96x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17 represent the distance from the mainlobe peak to the first null.
+Note that this definition of  SAR resolution is different from the more common definition of the half-power width of  the mainlobe.
+With no weighting, the latter is (0.886) times the values given above; thus  the two definitions are not very different.
+We prefer the former definition because, for no  weighting, it results in a simpler formula without the introduction of the factor of (0.886).
+ (More details concerning weighting are given in Section 17.6.) There are at least two mathematically equivalent ways of considering SAR.
+As we have  developed the concept so far, the crossrange resolution may be considered to result from the  doppler shifts resulting from the different apparent line-of-sight velocities of different parts  of the scene.
+However, the crossrange resolution may also be considered to result from the  large synthetic aperture, much as fine crossrange resolution would also result from a large  real aperture.
+Per Eq.
+17.8, the crossrange resolution (peak-to-first null) of a SAR is finer  by a factor of two than the resolution for a RAR of equal aperture.
+An intuitive explanation  for this interesting result is that for RAR, the echo received at a particular aperture location  results from energy transmitted from all locations  in the aperture, whereas for SAR, the  echo received at a particular aperture location results from energy transmitted from that  (known) location  in the aperture; i.e., more information is received (Carrara et al.,3 p.
+36).
+  Stimson5 provides  a detailed explanation for this result (pp.
+416–417).
+Figure 17.2 presents a comparison of RAR and SAR.
+FIGURE 17.2  Comparison of RAR and SAR: The crossrange resolution (peak- to-first-null of antenna pattern) of a SAR is one-half that of a real aperture radar  (RAR) of the same aperture diameter.
+( Courtesy of SciTech Publishing, Inc .) ch17.indd   9 12/17/07   6:48:47 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar 17.10  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17 The sidelobes are also different for RAR and SAR.
+For a RAR with an unweighted  aperture function, the transmitted intensity at the peak of the first angular sidelobe  is reduced by –13 dB, and the received intensity from a target in that direction is  thus reduced by –26 dB.
+For a SAR, typically the entire region of the image is in the  main beam during the data collection, and there are no effects from the sidelobes of  the physical antenna.
+The sidelobes result solely from the processing, and (with no  weighting) the first sidelobe is reduced by –13 dB relative to the main beam.
+17.5 KEY ASPECTS OF SAR Range and Velocity Contours.
+ Using fine range resolution, a radar can distin - guish between targets at different ranges.
+A particular target may be determined to  be located on a constant-range-contour.
+In 3D space, these contours are concentric  spheres with the radar at the center (Figure 17.3 a).
+Similarly, using doppler processing, the radar can distinguish between targets of  different apparent velocities.
+If V is the platform velocity and q  is the angle between V  and the LOS to a stationary target, then the apparent LOS speed of the target is VLOS =  −V cos q  (Figure 17.4 b).
+In 3D space, surfaces of constant VLOS are circular cones with  axis V and generating angle q, with the radar at the vertex.
+The negative sign occurs  FIGURE 17.3  Range and velocity contours in 3D space: ( a) Constant-range con - tours are concentric spheres with the radar at the center.
+( b) Constant-apparent-velocity  contours are circular cones with the radar at the vertex and the axis along the platform  velocity vector.
+( Courtesy of SciTech Publishing, Inc .) ch17.indd   10 12/21/07   2:43:08 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar  SYNTHETIC APERTURE RADAR  17 .116x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17 because we define LOS velocity as dR/dt, where R is the range to the target.
+Thus, a  positive dR/dt corresponds to a receding target and results in a negative doppler fre - quency shift, and a negative dR/dt corresponds to an incoming target and results in a  positive doppler frequency shift.
+Consider an airborne radar with an isotropic antenna pattern, with constant velocity  along a straight line parallel to a flat ground3 (Figure 17.4 a).
+On the ground, the con - stant-range contours are the intersections of concentric spheres with the ground—a set  of concentric circles with the subradar point at the center (Figure 17.4 b).
+The contours  of constant LOS velocity (called isodops ) correspond to the intersections between the  set of cones and the flat ground—a set of nested hyperbolas (Figure 17.4 c).
+Figure 17.4 d  shows the combination of constant-range circles and the isodops .
+The “nadir line” shown  in Figure 17.4 is the locus of subradar points as the platform flies along its path.
+FIGURE 17.4  Range and velocity contours on the Earth’s surface:  (a) Collection geometry.
+( b) Constant- range contours are concentric circles with the subradar point at the center; “nadir line” refers to the locus of  subradar points.
+( c) Constant-apparent-velocity contours (“isodops”) are confocal hyperbolas with the axis  parallel to the platform velocity vector.
+( d) Set of intersecting concentric circles and confocal hyperbolas.
+ (Courtesy of SciTech Publishing, Inc .) Z Sensor Nadir (a) (b) (c) (d)Nadir lineX Nadir lineXNadir lineXYY Y YX ch17.indd   11 12/17/07   6:48:49 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar 17 .12  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17 Through appropriate range-doppler processing, returns from each intersection  cell may be distinguished.
+Over a small angle about the broadside direction, the  range contours and the isodops are essentially orthogonal to each other.
+The result - ing radar returns may be displayed to yield an image of the ground.
+At a nonzero  squint angle, the isodops are not orthogonal to the range contours; however, addi - tional processing corrections can still usually result in an essentially undistorted  ground image.
+Motion Compensation.
+ The basic theory of SAR relies on the assumption that  the platform, and therefore the SAR antenna, is traveling along a straight-line flight  path at constant velocity parallel to the ground at constant altitude.
+This is not exactly  true, and for successful SAR imaging, it is necessary that the deviations of the antenna  from this nominal flight path be measured, recorded, and compensated for in the pro - cessing.
+This procedure is known as motion compensation  (sometimes abbreviated  mocomp ).
+For example, at a particular moment, as a particular frequency is transmit - ted, if the antenna is estimated to have deviated a distance d away from the nominal  flight path along the LOS, the phase correction  ∆φπ λπ= =4 4d d f c (17.10) with appropriate sign, is added to the measured phase at the frequency f to produce  the best estimate of what the recorded phase would have been if the platform had not  deviated from the nominal flight path.
+Similarly, if the platform speed is not constant,  the received data are interpolated to produce the best estimate of what they would have  been if the speed had been constant.
+When the platform is an aircraft, an on-board Inertial Navigation System (INS)   uses accelerometers and gyroscopes to measure the deviations.
+Sometimes a smaller  Inertial Measurement Unit  (IMU) relying on the same general principles is “strapped  down” very near the antenna.
+Without an absolute reference frame, the outputs of any  INS or IMU will drift with time as errors accumulate.
+An absolute frame for position  and velocity may be obtained from the global positioning system (GPS) , a constella - tion of at least 24 satellites in polar Earth orbit providing continuous reference signals  for determination of precise position and velocity.28 Slant and Ground Planes.
+ When a SAR image is initially produced, the range  pixel size dr is usually a constant.
+(It is generally chosen to be somewhat less than c/2B,  e.g., 0.75 ( c/2B), to ensure adequate sampling).
+As illustrated in Figure 17.5, the actual  ground locations that correspond to these range samples are not spaced at constant  intervals in ground range.
+Near the scene center, they are spaced at  dg ≅ dr / cos y (17.11) where y  is the grazing angle.
+At ground ranges closer to the radar, they are spaced still  farther apart because of the spherical range contours.
+Near the scene center, the image  corresponds to the projection of the ground onto a slant plane ; this plane is determined  by the LOS and its perpendicular in the ground plane.
+We often refer to this type of  image as a slant-plane image .
+By appropriate interpolation and resampling, a ground- plane image  with dg = constant = dcr may be produced.
+Ground-plane imagery with  minimal distortion is necessary if comparison is to be made with maps or with imaging  taken from other sensors, such as optical sensors or other SARs.
+ch17.indd   12 12/17/07   6:48:51 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar  SYNTHETIC APERTURE RADAR  17 .136x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17 Pulse Repetition Frequency (PRF) Requirements for SAR.
+ For broadside  operation, the apparent angular velocity of the scene rotation is  Ω =V R (17.12) With respect to the radar, the relative velocity of point A (see Figure 17.6) at the  first null of the main beam is  v rV RR DV DA= − = −    = − Ωλ λ 2 2 (17.13)FIGURE 17.5  Slant and ground planes: The slant plane is determined  by the radar line-of-sight and its perpendicular in the ground plane.
+ Ground-plane range resolution is coarser than slant-plane range resolu - tion.
+( Courtesy of SciTech Publishing, Inc .) FIGURE 17.6  Minimum PRF for SAR: The apparent line-of-sight velocity of point A  is toward the radar, whereas the apparent line-of-sight velocity of point B is away from  the radar.
+These determine the minimum PRF of 2 V/D, where V = platform speed and D =  antenna physical diameter.
+( Courtesy of SciTech Publishing, Inc .) ch17.indd   13 12/17/07   6:48:54 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar 17 .14  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17 Similarly, the relative velocity of point B on the opposite side of the beam is  v rV RR DV DB= =    = Ωλ λ 2 2 (17.14) Thus, the range of relative velocities in the scene is  ∆ Ω Ω Ω v r r rV D= − − = = ( ) 2λ (17.15) The range of doppler frequencies received from the scene is  ∆fV DV Dd= =2 2 λλ  (17.16) Thus, to avoid velocity ambiguity, the PRF must be at least 2 V/D.
+Writing  fV D tR R(min)(max)= =2 1 (17.17) we have  VtD R(max)=2 (17.18) Thus, the distance traveled by the platform during the time between pulses ( tR) must  be no more than D/2, and the SAR must transmit at least two pulses as its physical  antenna passes a stationary point in space.
+We also frequently want range-unambiguous operation, which implies  2 2V Dfc RR≤ <  (17.19) For example, if V = 180 m/s ( ≈ 350 kts), D = 2 m, and R = 150 km, then 180 Hz <  fR < 1000 Hz.
+Eq.
+17.19 is really two equations.
+We use < for the second equation instead of ≤  because when the equality is used, a pulse is being transmitted just as the echo from  the previous pulse is being received, resulting in eclipsing and consequent loss of the  received information.
+Skolnik21(pp.
+520–521) points out that, since for stripmap SAR the crossrange  resolution dcr ≅ D/2 (Eq.
+17.4), Eq.
+17.19 becomes  Vfc RRδcr≤ <2 (17.20) This leads to the condition  R c V δcr≤2 (17.21) Thus, the unambiguous range Ru and the resolution of a stripmap SAR cannot be  selected independently of one another.
+Skolnik further points out, quoting Bayma and  McInnes,29 that more sophisticated reasoning leads to the condition  R c Vu δcr≤4 7.
+(17.22) ch17.indd   14 12/17/07   6:49:05 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar  SYNTHETIC APERTURE RADAR  17 .156x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17 Skolnik21 continues, “When a SAR images the ground from an elevated platform,  the unambiguous range can correspond to the distance between the forward edge and  the far edge of the region to be mapped.
+This requires that the elevation beamwidth be  tailored to illuminate only the swath S that is to be imaged by the radar.
+The swath S is  often much smaller than the maximum range so that the PRF can be increased to allow  the unambiguous range Ru to encompass the distance S cos y, where y  is the grazing  angle” (p.
+521).
+For a stripmap SAR, Eq.
+17.22 then becomes  S c V δ ψcr≤( .) cos 4 7 (17.23) Range Migration.
+ As we have seen, a SAR may obtain range resolution of dr =  c/2B, where B = signal bandwidth, and obtain cross-range resolution through doppler  processing, with dcr = l/2∆q.
+If we wish to prevent range migration  (movement of a  point target from one range bin to the next during the time required to collect the data  for image formation), we would require that ∆R, the variation of range during the data  collection (over the synthetic aperture), be less than dr.
+We consider the formation of a SAR image after collecting data over an aperture  time tA.
+The SAR flight path is a straight line at constant speed and altitude over a flat  ground.
+From Levanon17 we have  R RV t RR RA max min( / ), ≅ + =02 2 002 2 (17.24) where R0 = distance from the radar to the scene center in the middle of the data collec - tion interval, and Rmax = distance from the radar to the scene center at the beginning  and end of the data collection interval.
+Then  ∆∆R R RVt RL RR RA= − = = = =max min( ) ( )2 02 002 0 8 8 8SA θ λ2 2 232δδ cr<r (17.25) The last inequality is necessary for the condition of no range migration.
+For exam - ple, parameters for a SAR might be R0 = 200 km, l = 0.03 m, and dr = dcr = 1 m; then,  ∆R = 5.6 m > dr, and the condition is not satisfied.
+Thus, the processor must usually  correct for range migration .
+However, this is typically accomplished by modern SAR  processing methods.3 For spotlight SAR, the polar format algorithm3,11 is often used  to accomplish this correction.
+Other Processing Functions.
+ Curlander et al.4 provide a detailed discussion of  several key options for SAR processing beyond simple image formation.
+● Clutterlock  (Curlander et al.,4 Chapter 5) refers to the use of information in the  received signals to ascertain the center frequency of the echoes from the ground  (clutter) and compensate for sideways drift of the platform.
+● Autofocus  (Curlander et al.,4 Chapter 5) describes the use of information in the  (complex) image itself to estimate and correct phase errors, and then reprocess and  sharpen the image (see also Carrara et al.3).
+● Calibration  (Curlander et al.,4 Chapter 7) refers to the use of targets of known radar  cross section (RCS) in the scene to obtain the absolute level of RCS per pixel and  thus s  0, the ground RCS per unit area.
+● Geolocation  (Curlander et al.,4 Chapter 8) is the process of determining the absolute  latitude and longitude of pixels in the SAR image, typically using information from  the GPS.
+ch17.indd   15 12/17/07   6:49:09 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar 17.16  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17 17.6 SAR IMAGE QUALITY It is clearly important for a SAR to produce high-quality imagery.
+Image quality is  typically measured using several image-quality metrics  (IQMs) described in the fol - lowing sections.
+More detailed discussion of SAR imagery is given by Henderson and  Lewis30 and Oliver and Quegan.31 Point-Spread Function (PSF).
+ A point target may be considered an impulse input  to a SAR processor, and the PSF in the image may be regarded as an impulse response  (IPR).
+The primary IQM for most SARs is the width (meters) of the PSF mainlobe at  its “half-power points,” or points where the intensity (power, proportional to voltage  squared) is one half, or −3 dB, relative to the mainlobe peak.
+This IQM is typically  referred to as the “3-dB width.” To obtain fine resolution in either range or crossrange, a Fourier transform (FT) is  performed on a set of collected data.
+Since all data samples have essentially the same  magnitude, for either range or crossrange we essentially perform a FT on a rect - angular function, which produces a ( sinc)2 function ( sin(x)/x)2, with a 3-dB width  of (0.886) dpn (where dpn = peak-to-first-null interval) and a first sidelobe –13.3 dB  below the peak.
+As mentioned in Section 17.4, when a tapering, or weighting, function multi - plies the rectangular input, the result is typically a function with broader mainlobe  and lower sidelobes than the ( sinc)2 (see Section 2.2.2 of Sullivan1).
+A typical  weighting function used in SAR processing is Taylor weighting, with the first  sidelobe constrained to be –35 dB below the peak and “nbar = 5” (see Section  D.2 of Carrara et al3), which produces a widened main beam of 3-dB IPR value  (l.19)dpn.
+Another choice is Hann17 (or “Hanning”3) weighting, which results in an  even wider main beam of (1.43) dpn; the first sidelobe is –31.7 dB below the peak,  and the far sidelobes are very low compared with uniform or Taylor weighting.
+ An excellent discussion of over 20 weighting functions (not including Taylor) is  given by Harris.32 Signal-To-Noise Ratio (SNR).
+ For a real radar, for which the exact phase of the  target echo can never be known in advance, the greatest achievable signal-to-noise  ratio (SNR) is (Sullivan,1 Section 4.2.2)  SNR=E kTF0 (17.26)  E P tA=−Rxavg (17.27) where E = collected energy; k = Boltzmann’s constant = 1.38 × 10–23 joule/Kelvin;  T0 = standard temperature (290 K); F = “noise figure,” which is typically about 2;   PRxavg− = average received power; and tA = time to form the synthetic aperture.
+ (The denominator of Eq.
+17.26 is correct only if the temperature of the radar is  the same as that of the scene, which we assume; see Chapter 2 and Section 1.11  of Sullivan1):  EP G RtP A A = ⋅=Tx-avg Tx-avg Loss2 2 3 42 4λ σ πη ( ) ( )2 2 4 24σ π λRtA( )Loss⋅ (17.28) ch17.indd   16 12/21/07   2:43:40 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar  SYNTHETIC APERTURE RADAR  17 .176x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17 where PTx-avg = average transmitted power, G = antenna gain, s = target radar cross  section (RCS), A = antenna aperture area, h = antenna efficiency, and the radar losses  are represented by ( Loss).
+For SAR, at qsq = 0, from Eq.
+17.6,  tR VA=λ δ2cr (17.29) Thus  SNRLossTx-avg crTx-= =P G R kT F VP2 3 3 3 0 2 4λ σ π δ ( ) ( )a avg cr LossA R k T F V2 2 3 0 8η σ π λ δ ( ) (17.30) If a flat ground is being observed, then  σ σ δ δ ψ =0 crr/ cos  (17.31) where s  0 characterizes the ground RCS per unit area and dr = pixel width in slant  range.
+Then the signal-to-noise ratio (SNR) is  SNRLossTx-avg= =P G R kT F Vr2 3 0 3 3 0 2 4λ σ δ π ψ ( ) ( ) cosP P A R k T F Vr Tx-avg Loss2 2 0 3 0 8η σ δ π λ ψ ( ) cos (17.32) This agrees with Skolnik,21 Eq.
+14.15, and Curlander et al.,4 Eq.
+2.88.
+It is very useful to consider the noise-equivalent sigma-zero (NE s  0), defined as the  level of s  0 that produces a received power equal to the thermal noise power, i.e., an  SNR of unity.
+We set SNR = 1 and have  NER kT F V P Grσπ ψ λ δ03 3 0 2 32 4 8= =( ) ( ) cos Loss Tx-avgπ π λ ψ η δR k T F V P Ar3 0 2 2( ) cos Loss Tx-avg (17.33) For example, if R = 200 km, T0 = 290 K, F = 2, Loss = 5, V = 180 m/s, y  = 10o, Pavg =  700 W, G = 34 dB, l = 0.03 m (X band), and dr = 0.3 m, then NEs  0 = −22 dB.
+A clear SAR image must have an SNR greater than about 5 dB.
+From Barton33 and  summarized in Section 3.2 of Sullivan,1 we see that this example SAR could image  “wooded hills,” i.e., s  0 ≈ −17 dB, with SNR ≈ 5 dB, but could not image “flatland”  (perhaps desert) at s  0 ≈ −27 dB, since SNR ≈ −5 dB.
+Integrated Sidelobe Ratio (ISLR).
+ An actual PSF typically resembles the theo - retical PSF but is somewhat different from it, especially in the sidelobes, due to phase  noise, motion compensation imperfections, and other “real-world” effects.
+A useful  figure of merit is the integrated sidelobe ratio (ISLR), defined as3  ISLR =IntegraloverPSFSidelobes Integralove erPSFMainlobe (17.34) ISLR is usually measured in dB; a typical value might be −20 dB.
+Low ISLR is  clearly desired.
+Multiplicative Noise Ratio (MNR).
+ Thermal noise (generally internal when the  radar is a SAR) is often referred to as additive noise , since it adds to the scene inde - pendent of the scene content.
+Another type of unwanted background in a SAR image  ch17.indd   17 12/17/07   6:49:23 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar 17 .18  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17 is often called multiplicative noise  (not really noise in the strict sense), which is pro - portional to the average scene intensity.
+Carrara et al.3 define multiplicative noise as follows: “The principal contributors to  multiplicative noise are the integrated sidelobes of the system impulse response, the  energy present in the scene as a result of range and azimuth ambiguities, and digital  [i.e., from quantization in the analog-to-digital converter] noise” (p.
+332).
+The multiplicative noise ratio  (MNR)3 of a SAR image is defined as the ratio of the  image intensity in no-return area  (NRA)  (not including thermal noise) divided by the  average image intensity in a relatively bright surrounding area (in principle not includ - ing thermal noise).
+An NRA is an area with essentially zero return—for example, a  shadow area, a very smooth area such as a calm lake, or a specially constructed large  sheet of aluminum.
+Another, similar SAR image quality metric (IQM) is the contrast ratio (CR) ,  defined as the ratio of the average intensity of a typical bright region in a SAR image  to the intensity of an NRA.
+If thermal noise is negligible, then CR = 1/MNR.
+Comparison of SAR Imagery and Optical Imagery.
+ The human eye is, of  course, a system for producing images using visible light.
+The light hits the lens and is  focused upon the retina, and the resulting image is transmitted to the brain.
+Over many  millennia, humans have become fully accustomed to seeing and processing this vis - ible imagery.
+Therefore, upon seeing a SAR image, we may instinctively assume that  it has certain properties of a visible image, which, in fact, it does not possess.
+Optical  imagery is based on an “angle-angle” principle, whereas SAR imagery is based on a  very different “range-crossrange” principle.
+The top illustration in Figure 17.7 illustrates the appearance of a flat landscape to  the human eye (or a camera).
+The terrain is illuminated by sunlight, at least partially  diffused through the atmosphere.
+At the eye, each pixel subtends the same azimuth and  elevation angles.
+Thus, pixels farther from the eye are larger (coarser resolution), in  both downrange and crossrange, than pixels closer to the eye.
+The bottom illustration in Figure 17.7 shows that, for a SAR image, the situation is  quite different (assuming adequate SNR).
+The range pixel size dr is  δψrc B≅ ⋅21 cos (17.35) Pixels farther from the SAR are smaller in range (smaller grazing angle and finer  downrange resolution) than pixels closer to the SAR; and crossrange resolution is  independent of range.
+When we display a SAR image, especially of a large landscape, it is usually most  satisfying to display it with the SAR direction at the top.
+The finer resolution pixels are  at the bottom, just as they are with a naturally oriented optical image.
+This orientation  tends to look most natural to a human observer.
+Because SAR imagery and optical imagery are collected using entirely  different  physical principles, we should not be surprised if they look different .
+A good example  of this is provided in a SAR image of the Washington Monument, courtesy of the  Environmental Research Institute of Michigan, now General Dynamics, Ypsilanti, MI.
+ The top illustration in Figure 17.8 illustrates the collection geometry (and the sche - matic result) of optical imagery of the Washington Monument with the Monument’s  shadow pointed toward the observer.
+We assume that the sun is to the south of the  Monument and the observer is to the north.
+The image shows a shadow on the north  ch17.indd   18 12/17/07   6:49:25 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar  SYNTHETIC APERTURE RADAR  17 .196x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17 side cast by the sun.
+The portion of the Monument visible in the image is the north  side, illuminated by diffusely scattered sunlight.
+In comparison, the bottom illustration  in Figure 17.8 shows the geometry and result of SAR imagery, again with the shadow  on the north side.
+This time the shadow is cast by the SAR itself.
+The portion of the  monument visible in the image is the south  side.
+Figure 17.9 shows the SAR image.
+It  does not look entirely like an optical image, nor should it.
+Another difference between SAR and optical images is the presence of speckle   (see Section 2-5.1 in Henderson and Lewis30) in the former.
+Let us consider a particu - lar pixel of a complex image of complicated terrain, such as vegetation.
+(By “pixel”  we mean the complex number—magnitude and phase—that, after SAR processing,  corresponds to a particular location on the ground.) If only one scatterer were in the  region of ground represented by the pixel, then the pixel magnitude and phase would  be a function of the scatterer’s exact position.
+Since the region represented by the  pixel typically contains many scatterers, the complex pixel value is the sum of the FIGURE 17.7  Comparison of SAR and optical imagery: Optical imagery is based on  an “angle-angle” principle.
+SAR imagery is based on a “range-crossrange” principle.
+ Often optical and SAR images of the same target region do not look the same to a human  observer.
+( Courtesy of SciTech Publishing, Inc .) ch17.indd   19 12/17/07   6:49:25 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar 17 .20  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17 complex numbers that each results from one of the scatterers.
+Thus, when terrain,  especially vegetation, is imaged, the amplitude (voltage) of a particular pixel is the  magnitude of the complex sum of the coherent returns from many scatterers within  the pixel.
+In another nearby pixel, even if the terrain is nominally the same as in the  first pixel, the coherent returns will add differently and the pixel magnitude will be  somewhat different.
+This phenomenon, characteristic of coherent imagery, causes  SAR imagery of terrain to exhibit more pixel-to-pixel fluctuation (speckle) than cor - responding optical imagery.
+Stimson5 points out, “Sometimes the beam of the real antenna may be wide enough  to enable the same area to be mapped several times without changing the antenna’s  look angle.
+This is called multilook mapping .
+When the maps are superimposed (i.e.,  when [the magnitudes of] successive returns from each resolution cell are averaged),  the effects of scintillation [i.e., speckle] are reduced” (p.
+432).FIGURE 17.8  Principles of imaging the Washington Monument: For the geometry  shown, the optical image shows the side of the Monument on the same side as the shadow,  whereas the SAR image shows the side of the Monument on the opposite side of the  shadow.
+( Courtesy of SciTech Publishing, Inc .) ch17.indd   20 12/17/07   6:49:27 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar  SYNTHETIC APERTURE RADAR  17.216x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17 17.7 SUMMARY OF KEY SAR EQUATIONS A review of the basic equations of SAR follows: ● Range resolution = dr ≅ c/2B (c = speed of light, B = pulse bandwidth) ● Crossrange resolution = dcr ≅ l  /2∆q  (l = wavelength, ∆q = angle subtended by synthetic aperture) ● Physical beamwidth ≅ l  /D (D = antenna diameter)FIGURE 17.9  SAR image of the Washington Monument: The SAR image shows the side of the Monument  that is on the opposite side of the shadow, which may appear counterintuitive to a human observer.
+( Courtesy  of General Dynamics, Ypsilanti, Michigan ) ch17.indd   21 12/21/07   2:44:07 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar 17 .22  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17 ● Crossrange resolution for stripmap SAR:  δλ θλ λcr≈ ≈ =2 2 2 ∆ ( / )DD (17.36) ● Image Collection Time: tA = lR/(2Vdcrcosqsq) ● PRF: fR = PRF ≥ 2V/D (V = platform velocity) ● PRF limits for unambiguous range, fR < c/2R:  2 2V Dfc RR≤ <  (17.37)  For stripmap SAR,  S c V δ ψcr≤( .) cos 4 7 (17.38) ● Signal-to-noise ratio:  SNRP G R kT F Vr= =Tx-avg Loss2 3 0 3 3 0 2 4λ σ δ π ψ ( ) ( ) cosP P A R k T F Vr Tx-avg Loss2 2 0 3 0 8η σ δ π λ ψ ( ) cos (17.39) 17.8 SPECIAL SAR APPLICATIONS In this section, we briefly discuss several specific aspects of SAR, specifically polari - metric SAR, moving targets, vibrating targets, measurement of object height, and foli - age-penetration SAR.
+Polarimetric SAR.
+ Usually when a radar transmits a pulse at a particular polariza - tion (e.g., horizontal—H), it receives the echoes at the same polarization.
+Some radars  are capable of transmitting at one polarization and receiving at two orthogonal polar - izations (e.g., horizontal [H] and vertical [V] or right-circular [R] and left-circular [L]).
+ Furthermore, some radars can transmit at either of two orthogonal polarizations and receive  at either of the transmitted polarizations; and the choice of transmitted and received polar - izations can be varied from pulse to pulse.
+If the phases as well as the magnitudes of the  echoes are obtained, then such a radar is fully polarimetric .
+We may designate the choice  of polarizations as follows: HV is “transmit H, receive V ,” and so forth.
+Fully polarimetric SARs have been demonstrated (Sullivan et al.34 and Held et al.35).
+ For example, Sullivan et al.34 includes HH and HV X-band SAR images taken of the  same scene at the same time using HH and HV modes interleaved on a pulse-to-pulse  basis.
+The SAR described could, using pulse-to-pulse interleaving, transmit/receive first  HH, then HV , then VH, and then VV data, and produce four corresponding simultane - ously collected complex images, such that the phases of the corresponding pixels in the  four images bear a specific relationship to each other, depending on the target type.
+Novak et al.36 developed an optimal polarimetric whitening filter  for enhanced tar - get detection in such sets of fully-polarimetric SAR images.
+Using fully polarimetric  data from a 33-GHz SAR, they showed that dihedral reflectors look quite different  from trihedral reflectors in fully-polarimetric SAR imagery.
+Few dihedrals exist in  Ka-band natural clutter; thus, if a portion of a SAR image corresponds closely to a  dihedral, then the region is likely to contain cultural (human-made) object(s).37 ch17.indd   22 12/17/07   6:49:33 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar  SYNTHETIC APERTURE RADAR  17 .236x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17 Moving Targets in a SAR Image.
+Displacement of a Moving Target.
+ The basic theory of SAR assumes that the  ground (scene) is stationary.
+A moving target in the scene will have a “wrong” rela - tionship between its location and its line-of-sight velocity.
+If the target motion is in a  straight line at constant speed, the target image will be displaced in crossrange by  rV V R VdisplLOS L OS= =Ω (17.40) where Ω is the apparent rotation rate of the scene relative to the radar and VLOS is the target  velocity component along the radar line-of-sight.
+In general, complicated motion of a tar - get during a SAR data collection prevents formation of a clear SAR image of the target.
+Detection of Moving Targets in SAR Images.
+ Various processing methods have  been developed to detect and reposition moving targets: Single-Aperture Moving-Target Indication (MTI) SAR  With respect to con - ventional  single-aperture SAR, key results have been obtained by several authors,  including Raney,38 Freeman,39 Freeman and Currie,40 and Werness et al.41 If the  PRF is greater than the minimum necessary to produce a SAR image, then further  doppler bands are available.
+These bands can be used for additional information,  and processing results for moving targets will be different from those for fixed  targets.
+Freeman39 presents a summary of potential results for moving targets, cov - ering such issues as azimuth shift, range walk, and azimuth defocus: “Probably  the worst defect...will be displacement of moving targets in the azimuth direction,  away from their true position on the ground.
+The prefilter we have described is  optimised for targets traveling radially...Such targets will appear at their correct  position in the MTI image.” Interferometric SAR (InSAR) for Moving Target Indication (MTI)  As  mentioned in Section 17.3, Interferometric SAR (InSAR, sometimes also called  IFSAR) refers to the use of two antennas whose signals are combined coherently.
+ The two antennas are displaced horizontally (along a line parallel to the ground)  to detect and analyze moving targets and are displaced vertically to estimate   terrain height.
+Both types of InSAR are discussed herein.
+The former is discussed  in this section and the latter is discussed later in “Interferometric SAR (InSAR) for  Target Height Measurement.” InSAR to detect moving targets was originally developed by the Jet Propulsion  Laboratory (JPL) to detect ocean currents,18,19 and has been improved by several  authors.42 One of the most sophisticated techniques has been developed for the  Joint STARS aircraft and uses an interesting combination of SAR and MTI tech - niques to detect and evaluate moving targets.21 The Joint STARS SAR mode involves a classical single-receiver-channel spotlight  SAR that dwells on a designated ground-referenced coordinate for a duration that  results in a nominally square point-spread function (i.e., downrange resolution =  crossrange resolution).
+The MTI mode is capable of detecting and accurately geo - locating both exoclutter (i.e., target moving faster than apparent terrain motion) and  endoclutter (i.e., target moving more slowly than apparent terrain motion) returns  from moving targets that, in general, have radar cross sections that are smaller than  ch17.indd   23 12/17/07   6:49:35 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar 17 .24  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17 the corresponding main-beam clutter-only cells.
+It accomplishes this by transmitting  a coherent burst of pulses that are subsequently received by each of three linearly dis - placed subarrays (or interferometer ports).
+In each channel, the pulses are fast-time  and slow-time processed into a set of range and doppler cells whose intensities may  be considered as a SAR image of the scene (although not as fine in range or doppler  resolution as in the SAR mode and generally not with a nominally square PSF).
+Each  of the interferometer ports produces a (complex-valued) range-doppler “image” that  could be called a “SAR” image, since it was formed from a coherent sequence of  pulses, and the subsequent complex pair-wise combining of these images with the  proper relative complex weighting to null the clutter can be considered as an InSAR  process.
+On the other hand, to avoid confusion with the type of interferometric SAR  that is used for target height measurement, the Joint STARS team typically refers to  their process as “Clutter Suppression Interferometry” or simply “CSI”.‡ Barbarossa and Farina43 show that, by using multiple subapertures, detection and  repositioning of moving targets can be considerably improved, in an extension of the  real-beam Displaced Phase-Center Antenna (DPCA) technique (Staudaher44).
+They  developed a procedure for SAR processing using an arbitrary number of subaper - tures, separated horizontally, to cancel ground clutter and image a moving target.
+ Their approach is a combination of space-time processing (see the literature1,25,45,46,  for a discussion of Space-Time Adaptive Processing or STAP) and time-frequency  processing.47,48 Figure 17.10 a shows a simulated point-spread function (PSF) of a  moving point target after clutter cancellation, and Figure 10 b shows the final simu - lated PSF after range migration compensation.
+The authors state: “The [point] target is supposed moving on the terrain (shadow - ing effects have been neglected) at a constant velocity, in a direction oblique with  respect to the radar motion.
+The velocity parameters have been chosen in order to  make evident the presence of range migration and of cross-range smearing of the tar - get image.
+The ground reflectivity has been assumed equal to the target reflectivity  (this is quite a pessimistic assumption, because in many cases of practical interest,  the target reflectivity is higher).
+A receiver thermal noise, 40 dB below the target  return, has also been summed to the received signal.
+The ground echo is first can - celed, by using a two-element antenna and two time samples.
+.
+.The two antennas are  separated by d = vT.
+[v = platform speed , T = pulse repetition interval.] A SAR image  is then formed by conventional techniques.
+The result is shown in Figure [17.10 a].
+ The smearing of the moving pointlike target is evident.
+Given the motion param - eters, the target has migrated over six range cells.
+This is the cause for the broaden - ing of the target image even in range, as well as in cross range.
+.
+.
+.The target echo  causes a detection and initializes the motion estimation channel.
+The high [fine]  resolution data are initially smoothed in range to decrease [coarsen] the range reso - lution.
+Then the processor looks for the range cell with the maximum energy content  and computes the WVD [Wigner-Ville Distribution48] of that cell only.
+.
+.
+.The phase  history is then used for compensating the range migration and the phase shift on  the high [fine] resolution range data.
+The final image is shown in Figure [17.10 b].
+  The sharpening of the target image is quite evident.” Barbarossa and Farina assumed  a point target in their simulation.
+They obtain a precise location of a simulated mov - ing point target, but do not claim to have produced a simulated image of an extended  moving target, such as a vehicle.
+‡  Paragraph courtesy of Dr.
+Marshall Greenspan, Northrop-Grumman Corporation.
+ch17.indd   24 12/17/07   6:49:35 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar  SYNTHETIC APERTURE RADAR  17 .256x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17 Guarino and Ibsen49 describe an experiment using the AN/APG-76 radar.
+“The  radar provides a unique simultaneous SAR/GMTI [Ground Moving Target  Indication—scanning real aperture radar] mode in which detected targets are dis - played on the SAR map as moving target symbols.
+The symbols are accurately  located at their true azimuth position relative to the map center...The [SAR] map  on which the moving target symbol is displayed is collected and processed simul - taneously with the GMTI.” The authors also make clear that Global Positioning  System (GPS) inputs were essential to their accurate location of targets; fixed tar - gets were geolocated to an absolute accuracy of better than 3 meters, and moving  target vehicles to an absolute accuracy of about 15 meters.
+Stimson5 also discusses  these AN/APG-76 results (pp.
+434, 554).
+Imaging of Moving Targets in SAR Images.
+ Perry et al.50 have developed a method  for SAR imaging of ground-moving targets that have unknown straight-line, constant- speed motion.
+They process the received phase history with a “keystone formatting”  procedure that eliminates the effects of linear range migration for all ground-moving  targets, regardless of their unknown velocity.
+The processing procedure then automati - cally focuses the moving targets.
+Figure 17.11 a shows a conventionally processed SAR  image containing three moving targets—a military truck (type M813), a tractor-trailer  truck, and a surrogate (i.e., a full-size replica) of a missile transporter-erector-launcher  (TEL).
+Figure 17.11 b shows the focused image of the tractor-trailer resulting from the  processing.
+The two-foot resolution clearly shows the outline of the cab and trailer of  the truck.
+Vibrating Targets in a SAR Image.
+ Consider a SAR observing a scene that con - tains a point target whose position is oscillating sinusoidally (vibrating) (see Section 9.4  of Carrara et al.3).
+The component of the vibration amplitude that is parallel to the line- of-sight (LOS) is d.
+The variable component of the radar-target distance is then  ∆Rtgt(t) = d sin (2p   fvibt) (17.41) where fvib is the vibration frequency.
+Let the normalized complex echo corresponding to a stationary pixel be ej f td2π,  where fd is the doppler frequency characteristic of the pixel.
+(We assume low fractional  bandwidth, in which case this is equivalent to the doppler frequency corresponding   to the center frequency of the transmitted bandwidth; see Section 8.1.5 of Sullivan1).
+FIGURE 17.10  SAR image of a moving target using multiple subapertures for clutter   cancellation (simulated data): ( a) adaptive processing and ( b) adaptive processing plus SAR  (after S.
+Barbarossa and A.
+Farina43 © IEEE 1994 ) ch17.indd   25 12/17/07   6:49:38 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar 17 .26  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17 In addition to this echo, the pixel containing the target will produce an additional echo  with a periodic phase error :  φπ λπ φ πe odf t f t = =42 2 sin( ) s in( )vib vib (17.42) We assume 4 p  d  l, thus fo  1.
+The normalized complex echo corresponding  to the phase error is  e ej j f teφ φ π=0 2sin( )vib (17.43)  ≈ +1 20j f t φ πsin( )vib (17.44)        = + −−120 2 2 φπ π( ) e ej f t j f tvib vib (17.45) The normalized complex echo corresponding to the vibrating target is then the  complex product of the echo corresponding to the stationary pixel and the echo cor - responding to the phase error:  e e ej j f t jd eφ π φ dop=2 (17.46) and  e e e ej j f t o j t f f j t fd d dφ π π π φdop vib = + −+ − 2 2 2 2(( ) ( f fvib)) (17.47) In the SAR image, the vibrating point target will appear in three crossrange locations.
+ Most of the target energy still appears at the correct location, whereas a small fraction  of the energy will appear in each of two pixels separated in crossrange by fvib in doppler  frequency.
+Thus, a vibrating target can give rise to a pair of distinctive echoes.FIGURE 17.11  Imaging a moving target in a SAR image:  (a) Conventional SAR image (real data) showing  blurred moving vehicles: an M813 military truck, a tractor-trailer truck, and a surrogate (mockup) of a missile  transporter-erector-launcher.
+( b) Image of tractor-trailer truck using “keystone” processing; the truck’s cab is  at the bottom and the trailer is above it.
+( after R.
+P .
+Perry et al .50 © IEEE 1999 )(a) Conventional SAR Processing (b) Keystone Processing Range Cross Range 1010Tractor Trailer Moving at 17 mph on Straight Road 20 30 40Range Bins 50 60 20 30 40 50 Doppler Bins60 70 80dB−0 −5 −10 −15 −20 −25 ch17.indd   26 12/17/07   6:49:46 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar  SYNTHETIC APERTURE RADAR  17 .276x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17 The corresponding velocity separation is ∆v = ± fvib l /2, and the crossrange  displacement is then  ∆∆ Ω∆rv v VRf R= = = ±vib avg 2Vλ  (17.48) where l avg = average wavelength (assuming low fractional bandwidth).
+The relative  amplitude of each of the paired echoes is  V oltage:  φ π λo d 22= avg (17.49)  Power:  φ π λo d 222 2  =  avg (17.50) Thus, the amplitude of the paired echoes is proportional to the square of the vibra - tion amplitude, and crossrange displacement is proportional to the vibration frequency  (see Section 7.5.2 of Sullivan1).
+For bright, point-like targets, or for targets such that 4 p  d is not small compared  to l, additional terms should be retained in Eq.
+17.44, describing the fact that a series  of paired echoes, of decreasing amplitude, may appear in crossrange.
+Figure 17.12 shows a SAR image of a scene including a vibrating target—a truck  with its engine running.
+The image contains two sets of paired echoes, corresponding to  two vibration frequencies characteristic of the particular truck used for the observation.
+Measurement of Object Height.
+ The basic theory of SAR assumes that the  scene is flat.
+To the extent that the scene is not flat, distortions in the SAR image will  result.
+In some cases, they can be used to measure the height of elevated objects above  a flat terrain.
+FIGURE 17.12  SAR scene containing vibrating target: Crossrange is hori - zontal; range is vertical.
+The paired echoes in crossrange are characteristic of a  vibrating target (truck with engine running) in a SAR image.
+The frequencies  (2.7 Hz and 12 Hz) are peculiar to the specific truck that was imaged.
+( Courtesy  of Northrop-Grumman Corporation ) ch17.indd   27 12/17/07   6:49:51 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar 17 .28  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17 Shadows.
+ The simplest method of measuring object height is to observe the length  Lshadow  of the shadow of the object cast by the SAR and calculate the object height h  from the known SAR altitude H and ground range Rg:  h LH Rg= ⋅shadow  (17.51) This expression assumes flat-earth, and may be generalized to curved-earth if Rg is  relatively large; see Section 3.2.2 of Sullivan.1 However, the shadow method works only  for an isolated, relatively high object on essentially flat terrain (e.g., Figure 17.9).
+Layover.
+ SAR processing sorts target returns into bins (pixels) depending on the  range R and velocity v of the target relative to the platform.
+If two or more targets have  the same R and v, then they will be placed at the same location in the SAR image.
+We shall define a layover contour  as the locus of points in 3D space such that an  object at any of the points will be assigned to the same location in a SAR image.
+ As shown in Figure 17.13, a layover contour is the intersection of a constant-range  sphere of range R and a constant velocity cone of generating angle b  = cos–1 (v/V)  with axis along the platform direction, i.e., a circle of radius R sinb  ahead of the  platform.
+( b  > 90 ° corresponds to targets behind the platform.) We shall, there - fore, call the contour the layover circle .
+If the top of an elevated object, such as a  tower, is on the layover circle and if the ground is flat, then the top of the tower  will appear in the SAR image at the same position as a point on the ground where  the layover circle intersects the ground.
+The tower will be “laid over,” hence the  nomenclature.
+As shown in Figure 17.13, let us consider a platform in straight-line, constant-speed  motion at altitude H over a flat earth forming a SAR image, the center of which is at  slant range Rs  H and squint angle qsq.
+Suppose that a tower of height h (h  H)  is in the area that is imaged.
+We describe locations within the image by a coordinate  system ( x1, y1).
+If the base of the tower is at ( x10, y10), we wish to ascertain the image  coordinates of the top of the tower.
+Figure 17.13 a illustrates a perspective view.
+Because Rg  H, the isodop ( y1 – axis)  makes an angle qsq with the y-axis.
+The image center is a distance S ≅ Rg cos qsq from  the x-axis, where Rg = ground range.
+Figure 17.13 b shows a view from the +x-axis,  indicating the layover circle normal to the x-axis and showing that the image location  of the tower top is located a distance (the layover distance ) d ≅ hH/(Rg cos qsq) from  the image location of the tower base.
+Figure 17.13 c then depicts the view in image  coordinates ( x1, y1).
+The image coordinates of the tower top are  x11 = x10 + d sin qsq, y11 = y10 − d cos qsq  For example, if Rg = 100 km, H = 5 km, h = 100 m, and qsq = 0, then d = 5 m,   x11 = x10, and y11 = y10 – 5 m.
+The tower top appears in the image 5 m closer to the radar  than the tower base.
+This principle may sometimes be used to estimate the height of  isolated, tower-like structures on relatively level ground:  hdR Hg≅cosθsq (17.52) The intersection of the constant-velocity cone and the ground is a hyperbola.
+If  H is not  R, the isodop direction will not be parallel to the down-range direction.
+ ch17.indd   28 12/17/07   6:49:54 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar  SYNTHETIC APERTURE RADAR  17 .296x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17 The geometry is more complicated but layover distance and object height may still  be estimated.
+Stereo SAR.
+ Two SAR images of the same scene may be obtained from somewhat  different locations (see Section 9.3.8.1 in Carrara et al.3).
+Noncoherent comparison  FIGURE 17.13  Layover:  (a) Perspective view, ( b) view along platform flight path, and ( c) view  in coordinate system of SAR image ( Courtesy of SciTech Publishing, Inc .) ch17.indd   29 12/17/07   6:49:55 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar 17 .30  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17 of the two—the stereo  technique—may enable estimation of object height.
+The tech - nique is analogous to the method by which we humans use our two eyes to help  estimate the distance of the objects that we see.
+In fact, the two SAR images may be  printed on the same page using two different colors, with the viewer using special  glasses so that the left eye sees only one image and the right eye only the other and the  brain processing the two together so that the scene is perceived in 3D.
+Interferometric SAR (InSAR) for Target Height Measurement.
+ Interferometric SAR  (InSAR)42,51,52 (also called IFSAR; see Section 9.3 of Carrara et al.3 and Adams et al.20),  when used for terrain height measurement, involves two SAR images taken from anten - nas at slightly different altitudes and compared coherently  to obtain fine-resolution infor - mation regarding the height of terrain or targets in the image.
+(In this case, it is sometimes  called IFSARE, where E emphasizes elevation measurement.) InSAR may be performed  using a single platform with two antennas ( single-pass InSAR ) or by the same platform  making two passes over the same terrain ( two-pass InSAR ).
+Allen42 gives several exam - ples of fielded systems using each type.
+It is essential that the relative locations of the two  antennas be rather precisely known.
+Advantages and disadvantages of the two types of  InSAR are as follows.
+Two-pass InSAR : ● No special hardware is required; a conventional SAR may be flown twice over the  designated terrain.
+● Motion compensation is challenging; the position of the antenna versus time in each  pass must be known with great precision.
+● A long baseline (vertical distance between antenna paths) provides fine vertical  resolution (but challenging ambiguities).
+● The scene may change between passes due to wind, etc.
+● Example results are given by Schuler et al.,53 who perform “terrain topography  measurement using multipass polarimetric SAR.” Single-pass InSAR : ● Baseline is relatively well known, providing consistency throughout synthetic aperture.
+● Scene is same for both images since data for each are collected simultaneously.
+● On-board, real-time processing is a possibility.
+● More sophisticated (expensive) hardware is required: two antennas, two receiver  channels, and two sets of analog-to-digital (A/D) converters.
+● Example results are given by Adams et al.,20 who include an InSAR image of  the stadium at the University of Michigan in Ann Arbor, viewable with two-   color glasses.
+To understand the theory of InSAR, we first consider two antennas, A and B, separated  vertically by a baseline L, observing a point target a that is on a flat ground at range R;  the radar line-of-sight (LOS) intersects the flat ground at grazing angle y1 (Figure 17.14).
+ We consider two possibilities: (1) one antenna transmits and each receives ( n = 1), and (2)  antenna A transmits and then receives; then antenna B transmits and then receives ( n = 2).
+ ch17.indd   30 12/17/07   6:49:55 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar  SYNTHETIC APERTURE RADAR  17 .316x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17 For a “single-frequency” pulse of wavelength l, the difference in the phases of the echoes  received from the point target observed by the two antennas is (from Figure 17.14)  ∆φπ λπ ψ λ11 2 2= =ns nLsin (17.53) We now consider the same antennas A and B observing a second point target b that  is a distance h above the flat ground also at range R; the radar line-of-sight (LOS) inter - sects the parallel to the flat ground at grazing angle y2.
+The difference in the phases of  the echoes received from the point target observed by the two antennas is now  ∆φπ ψ λ22 2=nLsin (17.54) We consider the quantity  ∆ ∆ ∆ φ φ φπ λψ ψ ≡ − = − | | |sin sin |2 1 2 12nL (17.55) We assume that h  R and thus y2 ≈ y1 ≈ (y2 + y1)/2 = y .
+Then, where ∆y  =   |y 2 − y1| , from Figure 17.14,  ∆ ∆ φπ λψ ψπ λψψπ λ≈ = =2 2 2 nL nL h RnLh Rcos coscos (17.56)FIGURE 17.14  InSAR—-vertical antenna separation: Vertical antenna separation enables estimation of the  height of a target above the average ground height or, more generally, terrain height versus location.
+( Courtesy  of SciTech Publishing, Inc .)Point Target b  above Ground  Plane Point Target a  on Ground  PlaneLA B RR z h = z cos ψs ψ ψψ ψ2 ψ2 ≈ ψ1 ≈ ψψ1 ∆ψ ch17.indd   31 12/17/07   6:50:01 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar 17 .32  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17 We now consider | d  (∆f)| = the change in ∆f  due to a change in h given by | d  h|:  | ( )| | | δ φπ λδ ∆ =2nL Rh 17.57) Antennas A and B may be considered as separated in vertical distance on an aircraft.
+ The relationship between d  (∆f) and a variation in terrain altitude d  h is  | || ( )|δλ δ φ πhR nL=∆ 2   (antennas separated vertically) (17.58) InSAR for terrain elevation measurement can also be performed by an aircraft with  two antennas separated horizontally  (perpendicular to the flight path) by L.
+The aircraft  is banking at angle g  > 0 and collecting data from the flat ground at grazing angle y  (Figure 17.15).
+Then the effective aperture (perpendicular to the LOS) is L sin (y + g  )  instead of Lcos y.
+From Figure 17.15, we have  | || ( )|cos sin( )δλ δ φ ψ π ψ γhR nL=+∆ 2   (antennas separated horizontally) (17.59) In either geometry, since both channels are noisy, the expected accuracy in the  phase difference (1-sigma) is given by Levanon17:  δ φ( )∆ =12 SNR (17.60) where SNR = signal-to-noise ratio (see Section 17.6).
+Thus, the theoretical accuracy  for terrain altitude measurement is Vertical antenna separation (no banking) :  δλ πhR nL= 2SNR (17.61) FIGURE 17.15  InSAR—-horizontal antenna separation: As long as the two  apertures do not both lie on the same line of sight to the target area, an estimate of  terrain height may be made, by comparing the phases of echoes received by the two  apertures.
+( Courtesy of SciTech Publishing, Inc .) ch17.indd   32 12/17/07   6:50:08 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar  SYNTHETIC APERTURE RADAR  17.336x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17 Horizontal antenna separation :  δλ ψ π ψ γhR nL= +cos sin( ) 2SN R (17.62) Furthermore, when the phase moves through an interval of 2 p, an ambiguity occurs  in terrain altitude measurement.
+The corresponding altitude difference is computed by  replacing d  (∆f) by 2p in Eqs.
+17.58 and 17.59.
+Vertical antenna separation (no banking) :  ∆h ambigR nL( ) =λ (17.63) Horizontal antenna separation :  ∆h ambigR nL( )cos sin( )=+λ ψ ψ γ (17.64) Although we have derived these relationships for a single monochromatic pulse, they  can be shown (see Section 8.1.5 of Sullivan1 and Sections 3.0 and 9.3 of Carrara et al.3)  to be true for SAR pixels also, with l replaced by c/favg.
+The National Aeronautics and Space Administration (NASA) performed successful  X/C-band single-pass polarimetric InSAR (single-pass) for the Space Shuttle Radar  Topography Mission (SRTM), using antennas on the shuttle itself and on the shuttle’s  maneuverable arm to produce a complete 3D map of the Earth’s surface between 60 °  N latitude and 56 ° S latitude—nearly 80% of the surface, with best vertical accuracy  of 6 meters on a 30-meter horizontal grid.54 Foliage-Penetration (FOPEN) SAR.
+ Although higher frequency (greater than  approximately 2 GHz) microwaves do not penetrate foliage well, lower frequency micro - waves do (Fleischman et al.55; see also Section 21-6 of Ulaby et al.56).
+For example,   for C band, the attenuation of a typical forest canopy varies from ≈ 10 dB to ≈ 40 dB;  the probability that the attenuation is less than 20 dB is about 0.2.
+On the other hand, for  UHF radiation, attenuation varies from 0 to ≈ 20 dB; half the time it is less than ≈ 7 dB.
+ Thus, for FOPEN, UHF radiation is necessary: shorter waves will not penetrate the  foliage, whereas for airborne applications, longer waves would require prohibitively  large antennas.
+(Specific values of attenuation [dB/meter] vary with grazing angle, tree  type, leaf density, and moisture content; however, the previous statement is a general  summary of these results; further details are given in Fleishman et al.55) The aperture time tA required to collect sufficient data for a SAR image is found from  Eq.
+17.6.
+For example, let us assume R = 100 km, V = 180 m/sec (350 kts), qsq = 0, and dcr =   1 m.
+For f = 10 GHz (X band, l = 0.03 m), tA = 8.3 sec, and the fractional bandwidth B/fo =   0.015.
+On the other hand, for fo = 0.5 GHz (UHF, l = 0.6 m), tA = 167 sec = 2.8 min and  B/fo = 0.3.
+Such a high fractional bandwidth (an ultra-wideband SAR ) presents challenges  in designing hardware components, such as antennas, that are reasonably linear over the  full frequency range.57 Furthermore, the long aperture time presents motion-compensa - tion challenges, and the wide real-beam angle adds to processing difficulties, very likely  requiring Range-Migration Algorithm (RMA) processing (Section 17.3).
+In addition, for  calculating crossrange resolution, the small-angle approximation no longer holds.
+ch17.indd   33 12/19/07   2:33:49 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar 17 .34  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17 A number of authors report successful results with FOPEN SAR, using such  SARs as the Environmental Research Institute of Michigan P-3 SAR,58,59 the  Swedish National Defense Research Establishment CARABAS sensor,60 and the SRI  International Ultra-Wideband SAR.61 Furthermore, Moyer62 presents images from  conventional and FOPEN SARs showing that vehicles under trees may be imaged  significantly better with FOPEN SAR than with conventional SAR; example imagery  is given in Figure 17.16.
+REFERENCES  1.
+R.
+J.
+Sullivan, Radar Foundations for Imaging and Advanced Concepts , Raleigh, NC: SciTech,  2004; previously published as Microwave Radar: Imaging and Advanced Concepts , Norwood,  MA: Artech House, 2000.
+ 2.
+L.
+J.
+Cutrona, “Synthetic aperture radar,” in M.
+Skolnik, Radar Handbook , 2nd Ed., New York:  McGraw-Hill, 1990; 1st Ed., New York: McGraw-Hill, 1970.
+ 3.
+W.
+G.
+Carrara, R.
+S.
+Goodman, and R.
+M.
+Majewski, Spotlight Synthetic Aperture Radar ,  Norwood, MA: Artech House, 1995.
+ 4.
+J.
+Curlander and R.
+McDonough, Synthetic Aperture Radar , New York: John Wiley and Sons, 1991.
+ 5.
+G.
+W.
+Stimson, Introduction to Airborne Radar , 2nd Ed., Mendham, NJ: SciTech, 1998.
+ 6.
+C.
+J.
+Jakowatz, Jr., D.
+E.
+Wahl, P.
+H.
+Eichel, D.
+C.
+Ghiglia, and P.
+A.
+Thompson, Spotlight-Mode  SAR: A Signal-Processing Approach , Boston: Kluwer Academic Publishers, 1996.
+ 7.
+S.
+A.
+Hovanessian, Introduction to Synthetic Array and Imaging Radars , Norwood, MA:  Artech House, 1980.FIGURE 17.16  Conventional and FOPEN SAR62 images: In the conventional image, target vehicles   cannot readily be seen, whereas in the FOPEN image they are quite prominent.
+(Source: http://www.darpa   .mil/DARPATech2000/Presentations/spo_pdf/4MoyerCCTB&W.pdf ) Photograph FOPEN SAR ImageConventional SAR ImageExample of Foliage-Obscured Vehicles • Depression Angle:  45°, Resolution:  1 m × 1 m  • Vehicles Mask ed By Trees, Along Logging Road in Maine ch17.indd   34 12/17/07   6:50:13 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar  SYNTHETIC APERTURE RADAR  17 .356x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17  8.
+R.
+O.
+Harger, Synthetic Aperture Radar Systems : Theory and Design , New York: Academic  Press, 1970.
+ 9.
+R.
+Birk, W.
+Camus, E.
+Valenti, and W.
+McCandless, “Synthetic aperture radar imaging systems,”  IEEE AES Magazine , pp.
+15−23, November 1995.
+10.
+C.
+Jackson and J.
+Apel (deceased; the book is dedicated to him), Synthetic Aperture Radar Marine  User’s Manual , Washington, DC: Department of Commerce, National Oceanic and Atmospheric  Administration (NOAA), 2004.
+11.
+D.
+Ausherman, A.
+Kozma, J.
+Walker, H.
+Jones, and E.
+Poggio, “Developments in radar imaging,”  IEEE Transactions on Aerospace and Electronic Systems , vol.
+AES-20, no.
+4, July 1984.
+12.
+C.
+Wiley, “Synthetic aperture radars,” IEEE Transactions Aerospace and Electronic Systems ,  vol.
+AES-21, pp.
+440–443, May 1985.
+13.
+L.
+J.
+Cutrona, W.
+E.
+Vivian, E.
+N.
+Leith, and G.
+O.
+Hall, “A high-resolution radar combat-   surveillance system,” IRE Transactions on Military Electronics , vol.
+MIL-5, no.
+2, pp.
+127–131,  April 1961.
+(Reprinted in Kovaly.15) 14.
+C.
+W.
+Sherwin, J.
+P.
+Ruina, and R.
+D.
+Rawliffe, “Some early developments in synthetic aper - ture radar systems, IRE Transactions on Military Electronics , vol.
+MIL-6, no.
+2, pp.
+111–115,   April 1962.
+(Reprinted in Kovaly.15) 15.
+J.
+J.
+Kovaly, Synthetic Aperture Radar , Norwood, MA: Artech House, 1976.
+(This is a collection  of early classic papers concerning SAR.) 16.
+D.
+C.
+Schleher, MTI and Pulsed Doppler Radar , Norwood, MA: Artech House, 1991.
+17.
+N.
+Levanon, Radar Principles , New York: Wiley-Interscience, 1988.
+18.
+R.
+M.
+Goldstein and H.
+A.
+Zebker, “Interferometric radar measurement of ocean currents,”  Nature , vol.
+328, pp.
+707–709, 1987.
+19.
+R.
+M.
+Goldstein, H.
+A.
+Zebker, and T.
+P.
+Barnett, “Remote sensing of ocean currents,” Science ,  vol.
+246, pp.
+1282–1285, 1989.
+20.
+G.
+F.
+Adams et al., “The ERIM interferometric SAR: IFSAR,” in Proceedings of the 1996 IEEE  National Radar Conference , 1996, pp.
+249−254.
+(Reprinted in IEEE AES Systems Magazine ,  December 1996.) 21.
+M.
+Skolnik, Introduction to Radar Systems : 1st Ed., New York: McGraw-Hill, 1962; 2nd Ed.,  New York: McGraw-Hill, 1980; 3rd Ed., New York: McGraw-Hill, 2001.
+22.
+S.
+Musman, D.
+Kerr, and C.
+Bachmann, “Automatic recognition of ISAR ship images,” IEEE  Transactions on Aerospace and Electronic Systems , vol.
+32, no.
+4, pp.
+1392–1404, October 1996.
+23.
+W.
+L.
+Wolfe and G.
+Zissis (eds.), The Infrared Handbook , rev.
+ed., Ann Arbor, MI: Environmental  Research Institute of Michigan (now General Dynamics, Ypsilanti, MI), 1989.
+24.
+M.
+Richards, Fundamentals of Radar Signal Processing , New York: McGraw-Hill, 2005.
+25.
+R.
+Klemm, Principles of Space-Time Adaptive Processing ,” London: IEE, 2002.
+26.
+E.
+F.
+Knott, J.
+F.
+Shaeffer, and M.
+T.
+Tuley, Radar Cross Section , 2nd Ed., Raleigh, NC:  SciTech, 2004.
+27.
+E.
+O.
+Brigham, The Fast Fourier Transform and Its Applications , Englewood Cliffs, NJ: Prentice  Hall, 1988.
+28.
+E.
+D.
+Kaplan, Understanding GPS, Principles and Applications , Norwood, MA: Artech  House, 1996.
+29.
+R.
+W.
+Bayma and P.
+A.
+McInnes, “Aperture size and ambiguity constraints for a synthetic aperture  radar,” in Proc.
+1975 International Radar Conference , pp.
+499–504.
+(Reprinted in Kovaly.15) 30.
+F.
+M.
+Henderson and A.
+J.
+Lewis (eds.), Principles and Applications of Imaging Radar ,   New York: Wiley, 1998.
+31.
+C.
+Oliver and S.
+Quegan, Understanding Synthetic Aperture Radar Images , Norwood, MA:  Artech House, 1998.
+32.
+F.
+J.
+Harris, “On the use of windows for harmonic analysis with the discrete Fourier transform,”  Proceedings of the IEEE , vol.
+66, no.
+1, pp.
+51−83, January 1978.
+33.
+D.
+Barton, Radar Systems Analysis and Modeling , Norwood, MA: Artech House, 2004.
+ch17.indd   35 12/17/07   6:50:14 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar 17 .36  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17 34.
+R.
+J.
+Sullivan, A.
+D.
+Nichols, R.
+F.
+Rawson, C.
+W.
+Haney, F.
+P.
+Dareff, and J.
+J.
+Schanne, Jr.,  “Polarimetric X/L/C-band SAR,” in Proceedings of the 1988 IEEE National Radar Conference ,  1988, pp.
+9−14.
+35.
+D.
+N.
+Held, W.
+E.
+Brown, and T.
+W.
+Miller, “Preliminary results from the NASA/JPL multifre - quency, multipolarization SAR,” in Proceedings of the 1988 IEEE National Radar Conference ,  1988, pp.
+7−8.
+See also  P.
+A.
+Rosen et al., “UA VSAR: New NASA airborne SAR system for  research,” IEEE Aerospace and Electronic Systems Magazine , vol.
+22, no.
+11, pp.
+21–28,  November 2007.
+36.
+L.
+M.
+Novak, M.
+C.
+Burl, and W.
+W.
+Irving, “Optimal polarimetric processing for enhanced target  detection,” IEEE Transactions on Aerospace and Electronic Systems , vol.
+29, no.
+1, pp.
+234–243,  January 1993.
+37.
+L.
+M.
+Novak, S.
+D.
+Halversen, G.
+J.
+Owirka, and M.
+Hiett, “Effects of polarization and resolu - tion on SAR ATR,” IEEE Transactions on Aerospace and Electronic Systems , vol.
+33, no.
+1,   pp.
+102−115, January 1997.
+38.
+R.
+K.
+Raney, “Synthetic aperture imaging radar and moving targets,” IEEE Transactions of  Aerospace and Electronic Systems , vol.
+AES-7, no.
+3, pp.
+499-505, 1971.
+39.
+A.
+Freeman, “Simple MTI using synthetic aperture radar,” in Proceedings of IGARSS 1984  Symposium , ESA SP-215, 1984.
+40.
+A.
+Freeman and A.
+Currie, “Synthetic aperture radar (SAR) images of moving targets,” GEC J .
+ Res., vol.
+5, no.
+2, pp.
+106–115, 1987.
+41.
+S.
+Werness, W.
+Carrara, L.
+Joyce, and D.
+Franczak, “Moving target algorithms for SAR data,”  IEEE Transactions on Aerospace and Electronic Systems , vol.
+AES-26, no.
+1, pp.
+57–67, 1990.
+42.
+C.
+T.
+Allen, “Interferometric synthetic aperture radar,” IEEE GRS Society Newsletter , pp.
+6–13,  November 1995.
+43.
+S.
+Barbarossa and A.
+Farina, “Space-time-frequency processing of synthetic aperture radar  signals,” IEEE Transactions on Aerospace and Electronic Systems , vol.
+30, no.
+2, pp.
+341–358,  April 1994.
+44.
+F.
+M.
+Staudaher, “Airborne MTI,” Chapter 16 in Radar Handbook , M.
+Skolnik (ed.), 2nd Ed.,  New York: McGraw-Hill, 1990.
+45.
+J.
+Ward, Space-Time Adaptive Processing for Airborne Radar , Technical Report 1015, Lexington,  MA: Lincoln Laboratory, Massachusetts Institute of Technology, 1994.
+46.
+J.
+Guerci, Space-Time Adaptive Processing for Radar , Norwood, MA: Artech House, 2003.
+47.
+V .
+C.
+Chen and H.
+Ling, Time-Frequency Transforms for Radar Imaging and Signal Analysis ,  Norwood, MA: Artech House, 2002.
+48.
+L.
+Cohen, “Time-frequency distributions–a review,” Proceedings of the IEEE , vol.
+77, no.
+7,   July 1989.
+49.
+R.
+Guarino and P.
+Ibsen, “Integrated GPS/INS/SAR/GMTI radar precision targeting flight test  results,” in Proceedings Institute of Navigation GPS-95 Conference , 1995, pp.
+373–379.
+50.
+R.
+P.
+Perry, R.
+C.
+DiPietro, and R.
+L.
+Fante, “SAR imaging of moving targets,” IEEE Transactions  on Aerospace and Electronic Systems , vol.
+35, no.
+1, pp.
+188–200, January 1999.
+51.
+J.
+Rodriguez and J.
+M.
+Martin, “Theory and design of interferometric synthetic aperture radar,”  IEE Proceedings , Part F, vol.
+139, pp.
+147–159, April 1992.
+52.
+R.
+Bamler and P.
+Hartl, “Synthetic aperture radar interferometry,” Inverse Problems , vol.
+14,   pp.
+R1 to R54, August 1998.
+See also  F.
+Gini and F.
+Lombardini, “Multibaseline cross-track  SAR interferometry: A signal-processing perspective,” IEEE Aerospace and Electronic Systems  Magazine , vol.
+20, no.
+8, Part 2: Tutorials, pp.
+71–93, August 2005 ; M.
+A.
+Richards, “A beginner’s  guide to interferometric SAR concepts and signal processing,” IEEE Aerospace and Electronic  Systems Magazine , vol.
+22, no.
+9, Part 2: Tutorials, pp.
+5–29, September 2007.
+53.
+D.
+L.
+Schuler, J-S Lee, T.
+L.
+Ainsworth, and M.
+R.
+Grunes, “Terrain topography measurement  using multipass synthetic aperture radar data,” Radio Science , vol.
+35, no.
+3, May–June 2000,   pp.
+813–832.
+54.
+W.
+B.
+Scott, “Flight to radar-map Earth from space,” Aviation Week and Space Technology ,   pp.
+50−53, September 20, 1999 (Cover Story).
+ch17.indd   36 12/17/07   6:50:14 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar  SYNTHETIC APERTURE RADAR  17 .376x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17 55.
+J.
+G.
+Fleischman, S.
+Ayasli, E.
+M.
+Adams, D.
+R.
+Gosselin, M.
+F.
+Toups, and M.
+A.
+Worris,  “Foliage penetration experiment,” (series of three papers), IEEE Transactions on Aerospace  and Electronic Systems , vol.
+32, no.
+1, pp.
+134−166, January 1996.
+(This series of papers was  awarded the 1996 M.
+Barry Carlton Award; see IEEE Transactions on Aerospace and Electronic  Systems , vol.
+35, no.
+4, p.
+1472, October 1999.) 56.
+F.
+T.
+Ulaby, R.
+K.
+Moore, and A.
+K.
+Fung, Microwave Remote Sensing , 3 V olumes, Norwood, MA:  Artech House, 1986.
+57.
+E.
+L.
+Ayers, J.
+M.
+Ralston, R.
+P.
+Mahoney, P.
+G.
+Tomlinson, and J.
+McCorkle, “Antenna mea - sures of merit for ultra-wide synthetic aperture radar,” in Proceedings of the 1998 IEEE Radar  Conference , 1998, pp.
+331−336.
+58.
+N.
+Vandenberg, D.
+R.
+Sheen, S.
+Shackman, and D.
+Wiseman, “P-3 ultrawideband SAR: System  applications to foliage penetration,” Proceedings SPIE , vol.
+2757, pp.
+130–135, 1996.
+59.
+M.
+F.
+Toups, L.
+Bessette, and B.
+T.
+Binder, “Foliage penetration data collections and investiga - tions utilizing the P-3 UWB SAR”, Proceedings SPIE , vol.
+2757, p.
+136–144, 1999.
+60.
+L.
+M.
+H.
+Ulander and P.
+O.
+Frolind, “Precision processing of CARABAS HF/VHF-band SAR  data,” Proceedings IEEE Geoscience Remote Sensing Symposium  IGARSS 1999 , Hamburg,  Germany, vol.
+1, 1999, p.
+47–49.
+Also see L.M.
+Ulander et al., “Detection of concealed ground  targets in CARABAS SAR images using change detection,” Proceedings SPIE , vol.
+3721,   p.
+243–252, Algorithms for Synthetic Aperture Radar Imagery VI , E.
+G.
+Zelnio (ed.), 1999.
+61.
+E.
+M.
+Winter, M.
+J.
+Schlangen, and C.
+R.
+Hendrikson, “Comparisons of target detection in clut - ter using data from the 1993 FOPEN experiments,” Proceedings SPIE , vol.
+2230, p.
+244–254,  Algorithms for Synthetic Aperture Radar Imagery, D.
+A.
+Giglio (ed.), 1994.
+62.
+L.
+Moyer, “Counter concealed target technologies,” presented at DARPA Tech 2000, http://www   .darpa.mil/DARPATech2000/Presentations/spo_pdf/4MoyerCCTB&W.pdf.
+ch17.indd   37 12/17/07   6:50:14 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17   blind folio 17 .38 ch17.indd   38 12/17/07   6:50:14 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies.
+All rights reserved.
+Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar 

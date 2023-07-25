@@ -1,8 +1,15 @@
 from flask import Flask, redirect, url_for, render_template, request
-from flan_model import google_flan
+
 from pdfReader import read_pdf
 import os
 import binascii
+import sys
+
+# caution: path[0] is reserved for script path (or '' in REPL)
+# print(os.sep.join([os.getcwd(),"Web_App", "models"]))
+sys.path.insert(1, os.sep.join([os.getcwd(),"Web_App", "models"])) # to get path of model functions
+
+from flan_model import google_flan
 
 app = Flask(__name__)
 
