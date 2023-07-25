@@ -149,213 +149,211 @@ The MTI mode is capable of detecting and accurately geo - locating both exoclutt
 Each  of the interferometer ports produces a (complex-valued) range-doppler “image” that  could be called a “SAR” image, since it was formed from a coherent sequence of  pulses, and the subsequent complex pair-wise combining of these images with the  proper relative complex weighting to null the clutter can be considered as an InSAR  process. On the other hand, to avoid confusion with the type of interferometric SAR  that is used for target height measurement, the Joint STARS team typically refers to  their process as “Clutter Suppression Interferometry” or simply “CSI”.‡ Barbarossa and Farina43 show that, by using multiple subapertures, detection and  repositioning of moving targets can be considerably improved, in an extension of the  real-beam Displaced Phase-Center Antenna (DPCA) technique (Staudaher44). They  developed a procedure for SAR processing using an arbitrary number of subaper - tures, separated horizontally, to cancel ground clutter and image a moving target. 
  Their approach is a combination of space-time processing (see the literature1,25,45,46,  for a discussion of Space-Time Adaptive Processing or STAP) and time-frequency  processing.47,48 Figure 17.10 a shows a simulated point-spread function (PSF) of a  moving point target after clutter cancellation, and Figure 10 b shows the final simu - lated PSF after range migration compensation. The authors state: “The [point] target is supposed moving on the terrain (shadow - ing effects have been neglected) at a constant velocity, in a direction oblique with  respect to the radar motion. The velocity parameters have been chosen in order to  make evident the presence of range migration and of cross-range smearing of the tar - get image. 
 The ground reflectivity has been assumed equal to the target reflectivity  (this is quite a pessimistic assumption, because in many cases of practical interest,  the target reflectivity is higher). A receiver thermal noise, 40 dB below the target  return, has also been summed to the received signal. The ground echo is first can - celed, by using a two-element antenna and two time samples. 
-. .The two antennas are  separated by d = vT. [v = platform speed , T = pulse repetition interval.] A SAR image  is then formed by conventional techniques. 
-The result is shown in Figure [17.10 a].  The smearing of the moving pointlike target is evident. Given the motion param - eters, the target has migrated over six range cells. 
-This is the cause for the broaden - ing of the target image even in range, as well as in cross range. . . 
+.The two antennas are  separated by d = vT. [v = platform speed , T = pulse repetition interval.] A SAR image  is then formed by conventional techniques. The result is shown in Figure [17.10 a]. 
+ The smearing of the moving pointlike target is evident. Given the motion param - eters, the target has migrated over six range cells. This is the cause for the broaden - ing of the target image even in range, as well as in cross range. 
 .The target echo  causes a detection and initializes the motion estimation channel. The high [fine]  resolution data are initially smoothed in range to decrease [coarsen] the range reso - lution. Then the processor looks for the range cell with the maximum energy content  and computes the WVD [Wigner-Ville Distribution48] of that cell only. 
-. . .The phase  history is then used for compensating the range migration and the phase shift on  the high [fine] resolution range data. 
-The final image is shown in Figure [17.10 b].   The sharpening of the target image is quite evident.” Barbarossa and Farina assumed  a point target in their simulation. They obtain a precise location of a simulated mov - ing point target, but do not claim to have produced a simulated image of an extended  moving target, such as a vehicle. 
-‡  Paragraph courtesy of Dr. Marshall Greenspan, Northrop-Grumman Corporation. ch17.indd   24 12/17/07   6:49:35 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies. 
-All rights reserved. Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar.  SYNTHETIC APERTURE RADAR  17 .256x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17 Guarino and Ibsen49 describe an experiment using the AN/APG-76 radar. 
-“The  radar provides a unique simultaneous SAR/GMTI [Ground Moving Target  Indication—scanning real aperture radar] mode in which detected targets are dis - played on the SAR map as moving target symbols. The symbols are accurately  located at their true azimuth position relative to the map center...The [SAR] map  on which the moving target symbol is displayed is collected and processed simul - taneously with the GMTI.” The authors also make clear that Global Positioning  System (GPS) inputs were essential to their accurate location of targets; fixed tar - gets were geolocated to an absolute accuracy of better than 3 meters, and moving  target vehicles to an absolute accuracy of about 15 meters. Stimson5 also discusses  these AN/APG-76 results (pp. 
-434, 554). Imaging of Moving Targets in SAR Images.  Perry et al.50 have developed a method  for SAR imaging of ground-moving targets that have unknown straight-line, constant- speed motion. 
-They process the received phase history with a “keystone formatting”  procedure that eliminates the effects of linear range migration for all ground-moving  targets, regardless of their unknown velocity. The processing procedure then automati - cally focuses the moving targets. Figure 17.11 a shows a conventionally processed SAR  image containing three moving targets—a military truck (type M813), a tractor-trailer  truck, and a surrogate (i.e., a full-size replica) of a missile transporter-erector-launcher  (TEL). 
-Figure 17.11 b shows the focused image of the tractor-trailer resulting from the  processing. The two-foot resolution clearly shows the outline of the cab and trailer of  the truck. Vibrating Targets in a SAR Image. 
- Consider a SAR observing a scene that con - tains a point target whose position is oscillating sinusoidally (vibrating) (see Section 9.4  of Carrara et al.3). The component of the vibration amplitude that is parallel to the line- of-sight (LOS) is d. The variable component of the radar-target distance is then  ∆Rtgt(t) = d sin (2p   fvibt) (17.41) where fvib is the vibration frequency. 
-Let the normalized complex echo corresponding to a stationary pixel be ej f td2π,  where fd is the doppler frequency characteristic of the pixel. (We assume low fractional  bandwidth, in which case this is equivalent to the doppler frequency corresponding   to the center frequency of the transmitted bandwidth; see Section 8.1.5 of Sullivan1). FIGURE 17.10  SAR image of a moving target using multiple subapertures for clutter   cancellation (simulated data): ( a) adaptive processing and ( b) adaptive processing plus SAR  (after S. 
-Barbarossa and A. Farina43 © IEEE 1994 ) ch17.indd   25 12/17/07   6:49:38 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies. All rights reserved. 
-Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar. 17 .26  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17 In addition to this echo, the pixel containing the target will produce an additional echo  with a periodic phase error :  φπ λπ φ πe odf t f t = =42 2 sin( ) s in( )vib vib (17.42) We assume 4 p  d  l, thus fo  1. The normalized complex echo corresponding  to the phase error is  e ej j f teφ φ π=0 2sin( )vib (17.43)  ≈ +1 20j f t φ πsin( )vib (17.44)        = + −−120 2 2 φπ π( ) e ej f t j f tvib vib (17.45) The normalized complex echo corresponding to the vibrating target is then the  complex product of the echo corresponding to the stationary pixel and the echo cor - responding to the phase error:  e e ej j f t jd eφ π φ dop=2 (17.46) and  e e e ej j f t o j t f f j t fd d dφ π π π φdop vib = + −+ − 2 2 2 2(( ) ( f fvib)) (17.47) In the SAR image, the vibrating point target will appear in three crossrange locations. 
- Most of the target energy still appears at the correct location, whereas a small fraction  of the energy will appear in each of two pixels separated in crossrange by fvib in doppler  frequency. Thus, a vibrating target can give rise to a pair of distinctive echoes.FIGURE 17.11  Imaging a moving target in a SAR image:  (a) Conventional SAR image (real data) showing  blurred moving vehicles: an M813 military truck, a tractor-trailer truck, and a surrogate (mockup) of a missile  transporter-erector-launcher. ( b) Image of tractor-trailer truck using “keystone” processing; the truck’s cab is  at the bottom and the trailer is above it. 
-( after R. P . Perry et al .50 © IEEE 1999 )(a) Conventional SAR Processing (b) Keystone Processing Range Cross Range 1010Tractor Trailer Moving at 17 mph on Straight Road 20 30 40Range Bins 50 60 20 30 40 50 Doppler Bins60 70 80dB−0 −5 −10 −15 −20 −25 ch17.indd   26 12/17/07   6:49:46 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies. 
-All rights reserved. Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar.  SYNTHETIC APERTURE RADAR  17 .276x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17 The corresponding velocity separation is ∆v = ± fvib l /2, and the crossrange  displacement is then  ∆∆ Ω∆rv v VRf R= = = ±vib avg 2Vλ  (17.48) where l avg = average wavelength (assuming low fractional bandwidth). 
-The relative  amplitude of each of the paired echoes is  V oltage:  φ π λo d 22= avg (17.49)  Power:  φ π λo d 222 2  =  avg (17.50) Thus, the amplitude of the paired echoes is proportional to the square of the vibra - tion amplitude, and crossrange displacement is proportional to the vibration frequency  (see Section 7.5.2 of Sullivan1). For bright, point-like targets, or for targets such that 4 p  d is not small compared  to l, additional terms should be retained in Eq. 17.44, describing the fact that a series  of paired echoes, of decreasing amplitude, may appear in crossrange. 
-Figure 17.12 shows a SAR image of a scene including a vibrating target—a truck  with its engine running. The image contains two sets of paired echoes, corresponding to  two vibration frequencies characteristic of the particular truck used for the observation. Measurement of Object Height. 
- The basic theory of SAR assumes that the  scene is flat. To the extent that the scene is not flat, distortions in the SAR image will  result. In some cases, they can be used to measure the height of elevated objects above  a flat terrain. 
-FIGURE 17.12  SAR scene containing vibrating target: Crossrange is hori - zontal; range is vertical. The paired echoes in crossrange are characteristic of a  vibrating target (truck with engine running) in a SAR image. The frequencies  (2.7 Hz and 12 Hz) are peculiar to the specific truck that was imaged. 
-( Courtesy  of Northrop-Grumman Corporation ) ch17.indd   27 12/17/07   6:49:51 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies. All rights reserved. Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar. 
-17 .28  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17 Shadows.  The simplest method of measuring object height is to observe the length  Lshadow  of the shadow of the object cast by the SAR and calculate the object height h  from the known SAR altitude H and ground range Rg:  h LH Rg= ⋅shadow  (17.51) This expression assumes flat-earth, and may be generalized to curved-earth if Rg is  relatively large; see Section 3.2.2 of Sullivan.1 However, the shadow method works only  for an isolated, relatively high object on essentially flat terrain (e.g., Figure 17.9). Layover. 
- SAR processing sorts target returns into bins (pixels) depending on the  range R and velocity v of the target relative to the platform. If two or more targets have  the same R and v, then they will be placed at the same location in the SAR image. We shall define a layover contour  as the locus of points in 3D space such that an  object at any of the points will be assigned to the same location in a SAR image. 
- As shown in Figure 17.13, a layover contour is the intersection of a constant-range  sphere of range R and a constant velocity cone of generating angle b  = cos–1 (v/V)  with axis along the platform direction, i.e., a circle of radius R sinb  ahead of the  platform. ( b  > 90 ° corresponds to targets behind the platform.) We shall, there - fore, call the contour the layover circle . If the top of an elevated object, such as a  tower, is on the layover circle and if the ground is flat, then the top of the tower  will appear in the SAR image at the same position as a point on the ground where  the layover circle intersects the ground. 
-The tower will be “laid over,” hence the  nomenclature. As shown in Figure 17.13, let us consider a platform in straight-line, constant-speed  motion at altitude H over a flat earth forming a SAR image, the center of which is at  slant range Rs  H and squint angle qsq. Suppose that a tower of height h (h  H)  is in the area that is imaged. 
-We describe locations within the image by a coordinate  system ( x1, y1). If the base of the tower is at ( x10, y10), we wish to ascertain the image  coordinates of the top of the tower. Figure 17.13 a illustrates a perspective view. 
-Because Rg  H, the isodop ( y1 – axis)  makes an angle qsq with the y-axis. The image center is a distance S ≅ Rg cos qsq from  the x-axis, where Rg = ground range. Figure 17.13 b shows a view from the +x-axis,  indicating the layover circle normal to the x-axis and showing that the image location  of the tower top is located a distance (the layover distance ) d ≅ hH/(Rg cos qsq) from  the image location of the tower base. 
-Figure 17.13 c then depicts the view in image  coordinates ( x1, y1). The image coordinates of the tower top are  x11 = x10 + d sin qsq, y11 = y10 − d cos qsq  For example, if Rg = 100 km, H = 5 km, h = 100 m, and qsq = 0, then d = 5 m,   x11 = x10, and y11 = y10 – 5 m. The tower top appears in the image 5 m closer to the radar  than the tower base. 
-This principle may sometimes be used to estimate the height of  isolated, tower-like structures on relatively level ground:  hdR Hg≅cosθsq (17.52) The intersection of the constant-velocity cone and the ground is a hyperbola. If  H is not  R, the isodop direction will not be parallel to the down-range direction.  ch17.indd   28 12/17/07   6:49:54 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies. 
-All rights reserved. Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar.  SYNTHETIC APERTURE RADAR  17 .296x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17 The geometry is more complicated but layover distance and object height may still  be estimated. 
-Stereo SAR.  Two SAR images of the same scene may be obtained from somewhat  different locations (see Section 9.3.8.1 in Carrara et al.3). Noncoherent comparison  FIGURE 17.13  Layover:  (a) Perspective view, ( b) view along platform flight path, and ( c) view  in coordinate system of SAR image ( Courtesy of SciTech Publishing, Inc .) ch17.indd   29 12/17/07   6:49:55 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies. 
-All rights reserved. Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar. 17 .30  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17 of the two—the stereo  technique—may enable estimation of object height. 
-The tech - nique is analogous to the method by which we humans use our two eyes to help  estimate the distance of the objects that we see. In fact, the two SAR images may be  printed on the same page using two different colors, with the viewer using special  glasses so that the left eye sees only one image and the right eye only the other and the  brain processing the two together so that the scene is perceived in 3D. Interferometric SAR (InSAR) for Target Height Measurement. 
- Interferometric SAR  (InSAR)42,51,52 (also called IFSAR; see Section 9.3 of Carrara et al.3 and Adams et al.20),  when used for terrain height measurement, involves two SAR images taken from anten - nas at slightly different altitudes and compared coherently  to obtain fine-resolution infor - mation regarding the height of terrain or targets in the image. (In this case, it is sometimes  called IFSARE, where E emphasizes elevation measurement.) InSAR may be performed  using a single platform with two antennas ( single-pass InSAR ) or by the same platform  making two passes over the same terrain ( two-pass InSAR ). Allen42 gives several exam - ples of fielded systems using each type. 
-It is essential that the relative locations of the two  antennas be rather precisely known. Advantages and disadvantages of the two types of  InSAR are as follows. Two-pass InSAR : ● No special hardware is required; a conventional SAR may be flown twice over the  designated terrain. 
-● Motion compensation is challenging; the position of the antenna versus time in each  pass must be known with great precision. ● A long baseline (vertical distance between antenna paths) provides fine vertical  resolution (but challenging ambiguities). ● The scene may change between passes due to wind, etc. 
-● Example results are given by Schuler et al.,53 who perform “terrain topography  measurement using multipass polarimetric SAR.” Single-pass InSAR : ● Baseline is relatively well known, providing consistency throughout synthetic aperture. ● Scene is same for both images since data for each are collected simultaneously. ● On-board, real-time processing is a possibility. 
-● More sophisticated (expensive) hardware is required: two antennas, two receiver  channels, and two sets of analog-to-digital (A/D) converters. ● Example results are given by Adams et al.,20 who include an InSAR image of  the stadium at the University of Michigan in Ann Arbor, viewable with two-   color glasses. To understand the theory of InSAR, we first consider two antennas, A and B, separated  vertically by a baseline L, observing a point target a that is on a flat ground at range R;  the radar line-of-sight (LOS) intersects the flat ground at grazing angle y1 (Figure 17.14). 
- We consider two possibilities: (1) one antenna transmits and each receives ( n = 1), and (2)  antenna A transmits and then receives; then antenna B transmits and then receives ( n = 2).  ch17.indd   30 12/17/07   6:49:55 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies. All rights reserved. 
-Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar.  SYNTHETIC APERTURE RADAR  17 .316x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17 For a “single-frequency” pulse of wavelength l, the difference in the phases of the echoes  received from the point target observed by the two antennas is (from Figure 17.14)  ∆φπ λπ ψ λ11 2 2= =ns nLsin (17.53) We now consider the same antennas A and B observing a second point target b that  is a distance h above the flat ground also at range R; the radar line-of-sight (LOS) inter - sects the parallel to the flat ground at grazing angle y2. The difference in the phases of  the echoes received from the point target observed by the two antennas is now  ∆φπ ψ λ22 2=nLsin (17.54) We consider the quantity  ∆ ∆ ∆ φ φ φπ λψ ψ ≡ − = − | | |sin sin |2 1 2 12nL (17.55) We assume that h  R and thus y2 ≈ y1 ≈ (y2 + y1)/2 = y . 
-Then, where ∆y  =   |y 2 − y1| , from Figure 17.14,  ∆ ∆ φπ λψ ψπ λψψπ λ≈ = =2 2 2 nL nL h RnLh Rcos coscos (17.56)FIGURE 17.14  InSAR—-vertical antenna separation: Vertical antenna separation enables estimation of the  height of a target above the average ground height or, more generally, terrain height versus location. ( Courtesy  of SciTech Publishing, Inc .)Point Target b  above Ground  Plane Point Target a  on Ground  PlaneLA B RR z h = z cos ψs ψ ψψ ψ2 ψ2 ≈ ψ1 ≈ ψψ1 ∆ψ ch17.indd   31 12/17/07   6:50:01 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies. All rights reserved. 
-Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar. 17 .32  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17 We now consider | d  (∆f)| = the change in ∆f  due to a change in h given by | d  h|:  | ( )| | | δ φπ λδ ∆ =2nL Rh 17.57) Antennas A and B may be considered as separated in vertical distance on an aircraft.  The relationship between d  (∆f) and a variation in terrain altitude d  h is  | || ( )|δλ δ φ πhR nL=∆ 2   (antennas separated vertically) (17.58) InSAR for terrain elevation measurement can also be performed by an aircraft with  two antennas separated horizontally  (perpendicular to the flight path) by L. 
-The aircraft  is banking at angle g  > 0 and collecting data from the flat ground at grazing angle y  (Figure 17.15). Then the effective aperture (perpendicular to the LOS) is L sin (y + g  )  instead of Lcos y. From Figure 17.15, we have  | || ( )|cos sin( )δλ δ φ ψ π ψ γhR nL=+∆ 2   (antennas separated horizontally) (17.59) In either geometry, since both channels are noisy, the expected accuracy in the  phase difference (1-sigma) is given by Levanon17:  δ φ( )∆ =12 SNR (17.60) where SNR = signal-to-noise ratio (see Section 17.6). 
-Thus, the theoretical accuracy  for terrain altitude measurement is Vertical antenna separation (no banking) :  δλ πhR nL= 2SNR (17.61) FIGURE 17.15  InSAR—-horizontal antenna separation: As long as the two  apertures do not both lie on the same line of sight to the target area, an estimate of  terrain height may be made, by comparing the phases of echoes received by the two  apertures. ( Courtesy of SciTech Publishing, Inc .) ch17.indd   32 12/17/07   6:50:08 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies. All rights reserved. 
-Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar.  SYNTHETIC APERTURE RADAR  17.336x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17 Horizontal antenna separation :  δλ ψ π ψ γhR nL= +cos sin( ) 2SN R (17.62) Furthermore, when the phase moves through an interval of 2 p, an ambiguity occurs  in terrain altitude measurement. The corresponding altitude difference is computed by  replacing d  (∆f) by 2p in Eqs. 
-17.58 and 17.59. Vertical antenna separation (no banking) :  ∆h ambigR nL( ) =λ (17.63) Horizontal antenna separation :  ∆h ambigR nL( )cos sin( )=+λ ψ ψ γ (17.64) Although we have derived these relationships for a single monochromatic pulse, they  can be shown (see Section 8.1.5 of Sullivan1 and Sections 3.0 and 9.3 of Carrara et al.3)  to be true for SAR pixels also, with l replaced by c/favg. The National Aeronautics and Space Administration (NASA) performed successful  X/C-band single-pass polarimetric InSAR (single-pass) for the Space Shuttle Radar  Topography Mission (SRTM), using antennas on the shuttle itself and on the shuttle’s  maneuverable arm to produce a complete 3D map of the Earth’s surface between 60 °  N latitude and 56 ° S latitude—nearly 80% of the surface, with best vertical accuracy  of 6 meters on a 30-meter horizontal grid.54 Foliage-Penetration (FOPEN) SAR. 
- Although higher frequency (greater than  approximately 2 GHz) microwaves do not penetrate foliage well, lower frequency micro - waves do (Fleischman et al.55; see also Section 21-6 of Ulaby et al.56). For example,   for C band, the attenuation of a typical forest canopy varies from ≈ 10 dB to ≈ 40 dB;  the probability that the attenuation is less than 20 dB is about 0.2. On the other hand, for  UHF radiation, attenuation varies from 0 to ≈ 20 dB; half the time it is less than ≈ 7 dB. 
- Thus, for FOPEN, UHF radiation is necessary: shorter waves will not penetrate the  foliage, whereas for airborne applications, longer waves would require prohibitively  large antennas. (Specific values of attenuation [dB/meter] vary with grazing angle, tree  type, leaf density, and moisture content; however, the previous statement is a general  summary of these results; further details are given in Fleishman et al.55) The aperture time tA required to collect sufficient data for a SAR image is found from  Eq. 17.6. 
-For example, let us assume R = 100 km, V = 180 m/sec (350 kts), qsq = 0, and dcr =   1 m. For f = 10 GHz (X band, l = 0.03 m), tA = 8.3 sec, and the fractional bandwidth B/fo =   0.015. On the other hand, for fo = 0.5 GHz (UHF, l = 0.6 m), tA = 167 sec = 2.8 min and  B/fo = 0.3. 
-Such a high fractional bandwidth (an ultra-wideband SAR ) presents challenges  in designing hardware components, such as antennas, that are reasonably linear over the  full frequency range.57 Furthermore, the long aperture time presents motion-compensa - tion challenges, and the wide real-beam angle adds to processing difficulties, very likely  requiring Range-Migration Algorithm (RMA) processing (Section 17.3). In addition, for  calculating crossrange resolution, the small-angle approximation no longer holds. ch17.indd   33 12/19/07   2:33:49 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies. 
-All rights reserved. Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar. 17 .34  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17 A number of authors report successful results with FOPEN SAR, using such  SARs as the Environmental Research Institute of Michigan P-3 SAR,58,59 the  Swedish National Defense Research Establishment CARABAS sensor,60 and the SRI  International Ultra-Wideband SAR.61 Furthermore, Moyer62 presents images from  conventional and FOPEN SARs showing that vehicles under trees may be imaged  significantly better with FOPEN SAR than with conventional SAR; example imagery  is given in Figure 17.16. 
-REFERENCES  1. R. J. 
-Sullivan, Radar Foundations for Imaging and Advanced Concepts , Raleigh, NC: SciTech,  2004; previously published as Microwave Radar: Imaging and Advanced Concepts , Norwood,  MA: Artech House, 2000.  2. L. 
-J. Cutrona, “Synthetic aperture radar,” in M. Skolnik, Radar Handbook , 2nd Ed., New York:  McGraw-Hill, 1990; 1st Ed., New York: McGraw-Hill, 1970. 
- 3. W. G. 
-Carrara, R. S. Goodman, and R. 
-M. Majewski, Spotlight Synthetic Aperture Radar ,  Norwood, MA: Artech House, 1995.  4. 
-J. Curlander and R. McDonough, Synthetic Aperture Radar , New York: John Wiley and Sons, 1991. 
- 5. G. W. 
-Stimson, Introduction to Airborne Radar , 2nd Ed., Mendham, NJ: SciTech, 1998.  6. C. 
-J. Jakowatz, Jr., D. E. 
-Wahl, P. H. Eichel, D. 
-C. Ghiglia, and P. A. 
-Thompson, Spotlight-Mode  SAR: A Signal-Processing Approach , Boston: Kluwer Academic Publishers, 1996.  7. S. 
-A. Hovanessian, Introduction to Synthetic Array and Imaging Radars , Norwood, MA:  Artech House, 1980.FIGURE 17.16  Conventional and FOPEN SAR62 images: In the conventional image, target vehicles   cannot readily be seen, whereas in the FOPEN image they are quite prominent. (Source: http://www.darpa   .mil/DARPATech2000/Presentations/spo_pdf/4MoyerCCTB&W.pdf ) Photograph FOPEN SAR ImageConventional SAR ImageExample of Foliage-Obscured Vehicles • Depression Angle:  45°, Resolution:  1 m × 1 m  • Vehicles Mask ed By Trees, Along Logging Road in Maine ch17.indd   34 12/17/07   6:50:13 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies. 
-All rights reserved. Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar.  SYNTHETIC APERTURE RADAR  17 .356x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17  8. 
-R. O. Harger, Synthetic Aperture Radar Systems : Theory and Design , New York: Academic  Press, 1970. 
- 9. R. Birk, W. 
-Camus, E. Valenti, and W. McCandless, “Synthetic aperture radar imaging systems,”  IEEE AES Magazine , pp. 
-15−23, November 1995. 10. C. 
-Jackson and J. Apel (deceased; the book is dedicated to him), Synthetic Aperture Radar Marine  User’s Manual , Washington, DC: Department of Commerce, National Oceanic and Atmospheric  Administration (NOAA), 2004. 11. 
-D. Ausherman, A. Kozma, J. 
-Walker, H. Jones, and E. Poggio, “Developments in radar imaging,”  IEEE Transactions on Aerospace and Electronic Systems , vol. 
-AES-20, no. 4, July 1984. 12. 
-C. Wiley, “Synthetic aperture radars,” IEEE Transactions Aerospace and Electronic Systems ,  vol. AES-21, pp. 
-440–443, May 1985. 13. L. 
-J. Cutrona, W. E. 
-Vivian, E. N. Leith, and G. 
-O. Hall, “A high-resolution radar combat-   surveillance system,” IRE Transactions on Military Electronics , vol. MIL-5, no. 
-2, pp. 127–131,  April 1961. (Reprinted in Kovaly.15) 14. 
-C. W. Sherwin, J. 
-P. Ruina, and R. D. 
-Rawliffe, “Some early developments in synthetic aper - ture radar systems, IRE Transactions on Military Electronics , vol. MIL-6, no. 2, pp. 
-111–115,   April 1962. (Reprinted in Kovaly.15) 15. J. 
-J. Kovaly, Synthetic Aperture Radar , Norwood, MA: Artech House, 1976. (This is a collection  of early classic papers concerning SAR.) 16. 
-D. C. Schleher, MTI and Pulsed Doppler Radar , Norwood, MA: Artech House, 1991. 
-17. N. Levanon, Radar Principles , New York: Wiley-Interscience, 1988. 
-18. R. M. 
-Goldstein and H. A. Zebker, “Interferometric radar measurement of ocean currents,”  Nature , vol. 
-328, pp. 707–709, 1987. 19. 
-R. M. Goldstein, H. 
-A. Zebker, and T. P. 
-Barnett, “Remote sensing of ocean currents,” Science ,  vol. 246, pp. 1282–1285, 1989. 
-20. G. F. 
-Adams et al., “The ERIM interferometric SAR: IFSAR,” in Proceedings of the 1996 IEEE  National Radar Conference , 1996, pp. 249−254. (Reprinted in IEEE AES Systems Magazine ,  December 1996.) 21. 
-M. Skolnik, Introduction to Radar Systems : 1st Ed., New York: McGraw-Hill, 1962; 2nd Ed.,  New York: McGraw-Hill, 1980; 3rd Ed., New York: McGraw-Hill, 2001. 22. 
-S. Musman, D. Kerr, and C. 
-Bachmann, “Automatic recognition of ISAR ship images,” IEEE  Transactions on Aerospace and Electronic Systems , vol. 32, no. 4, pp. 
-1392–1404, October 1996. 23. W. 
-L. Wolfe and G. Zissis (eds.), The Infrared Handbook , rev. 
-ed., Ann Arbor, MI: Environmental  Research Institute of Michigan (now General Dynamics, Ypsilanti, MI), 1989. 24. M. 
-Richards, Fundamentals of Radar Signal Processing , New York: McGraw-Hill, 2005. 25. R. 
-Klemm, Principles of Space-Time Adaptive Processing ,” London: IEE, 2002. 26. E. 
-F. Knott, J. F. 
-Shaeffer, and M. T. Tuley, Radar Cross Section , 2nd Ed., Raleigh, NC:  SciTech, 2004. 
-27. E. O. 
-Brigham, The Fast Fourier Transform and Its Applications , Englewood Cliffs, NJ: Prentice  Hall, 1988. 28. E. 
-D. Kaplan, Understanding GPS, Principles and Applications , Norwood, MA: Artech  House, 1996. 29. 
-R. W. Bayma and P. 
-A. McInnes, “Aperture size and ambiguity constraints for a synthetic aperture  radar,” in Proc. 1975 International Radar Conference , pp. 
-499–504. (Reprinted in Kovaly.15) 30. F. 
-M. Henderson and A. J. 
-Lewis (eds.), Principles and Applications of Imaging Radar ,   New York: Wiley, 1998. 31. C. 
-Oliver and S. Quegan, Understanding Synthetic Aperture Radar Images , Norwood, MA:  Artech House, 1998. 32. 
-F. J. Harris, “On the use of windows for harmonic analysis with the discrete Fourier transform,”  Proceedings of the IEEE , vol. 
-66, no. 1, pp. 51−83, January 1978. 
-33. D. Barton, Radar Systems Analysis and Modeling , Norwood, MA: Artech House, 2004. 
-ch17.indd   35 12/17/07   6:50:14 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies. All rights reserved. Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar. 
-17 .36  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17 34. R. J. 
-Sullivan, A. D. Nichols, R. 
-F. Rawson, C. W. 
-Haney, F. P. Dareff, and J. 
-J. Schanne, Jr.,  “Polarimetric X/L/C-band SAR,” in Proceedings of the 1988 IEEE National Radar Conference ,  1988, pp. 9−14. 
-35. D. N. 
-Held, W. E. Brown, and T. 
-W. Miller, “Preliminary results from the NASA/JPL multifre - quency, multipolarization SAR,” in Proceedings of the 1988 IEEE National Radar Conference ,  1988, pp. 7−8. 
-See also  P. A. Rosen et al., “UA VSAR: New NASA airborne SAR system for  research,” IEEE Aerospace and Electronic Systems Magazine , vol. 
-22, no. 11, pp. 21–28,  November 2007. 
-36. L. M. 
-Novak, M. C. Burl, and W. 
-W. Irving, “Optimal polarimetric processing for enhanced target  detection,” IEEE Transactions on Aerospace and Electronic Systems , vol. 29, no. 
-1, pp. 234–243,  January 1993. 37. 
-L. M. Novak, S. 
-D. Halversen, G. J. 
-Owirka, and M. Hiett, “Effects of polarization and resolu - tion on SAR ATR,” IEEE Transactions on Aerospace and Electronic Systems , vol. 33, no. 
-1,   pp. 102−115, January 1997. 38. 
-R. K. Raney, “Synthetic aperture imaging radar and moving targets,” IEEE Transactions of  Aerospace and Electronic Systems , vol. 
-AES-7, no. 3, pp. 499-505, 1971. 
-39. A. Freeman, “Simple MTI using synthetic aperture radar,” in Proceedings of IGARSS 1984  Symposium , ESA SP-215, 1984. 
-40. A. Freeman and A. 
-Currie, “Synthetic aperture radar (SAR) images of moving targets,” GEC J .  Res., vol. 5, no. 
-2, pp. 106–115, 1987. 41. 
-S. Werness, W. Carrara, L. 
-Joyce, and D. Franczak, “Moving target algorithms for SAR data,”  IEEE Transactions on Aerospace and Electronic Systems , vol. AES-26, no. 
-1, pp. 57–67, 1990. 42. 
-C. T. Allen, “Interferometric synthetic aperture radar,” IEEE GRS Society Newsletter , pp. 
-6–13,  November 1995. 43. S. 
-Barbarossa and A. Farina, “Space-time-frequency processing of synthetic aperture radar  signals,” IEEE Transactions on Aerospace and Electronic Systems , vol. 30, no. 
-2, pp. 341–358,  April 1994. 44. 
-F. M. Staudaher, “Airborne MTI,” Chapter 16 in Radar Handbook , M. 
-Skolnik (ed.), 2nd Ed.,  New York: McGraw-Hill, 1990. 45. J. 
-Ward, Space-Time Adaptive Processing for Airborne Radar , Technical Report 1015, Lexington,  MA: Lincoln Laboratory, Massachusetts Institute of Technology, 1994. 46. J. 
-Guerci, Space-Time Adaptive Processing for Radar , Norwood, MA: Artech House, 2003. 47. V . 
-C. Chen and H. Ling, Time-Frequency Transforms for Radar Imaging and Signal Analysis ,  Norwood, MA: Artech House, 2002. 
-48. L. Cohen, “Time-frequency distributions–a review,” Proceedings of the IEEE , vol. 
-77, no. 7,   July 1989. 49. 
-R. Guarino and P. Ibsen, “Integrated GPS/INS/SAR/GMTI radar precision targeting flight test  results,” in Proceedings Institute of Navigation GPS-95 Conference , 1995, pp. 
-373–379. 50. R. 
-P. Perry, R. C. 
-DiPietro, and R. L. Fante, “SAR imaging of moving targets,” IEEE Transactions  on Aerospace and Electronic Systems , vol. 
-35, no. 1, pp. 188–200, January 1999. 
-51. J. Rodriguez and J. 
-M. Martin, “Theory and design of interferometric synthetic aperture radar,”  IEE Proceedings , Part F, vol. 139, pp. 
-147–159, April 1992. 52. R. 
-Bamler and P. Hartl, “Synthetic aperture radar interferometry,” Inverse Problems , vol. 14,   pp. 
-R1 to R54, August 1998. See also  F. Gini and F. 
-Lombardini, “Multibaseline cross-track  SAR interferometry: A signal-processing perspective,” IEEE Aerospace and Electronic Systems  Magazine , vol. 20, no. 8, Part 2: Tutorials, pp. 
-71–93, August 2005 ; M. A. Richards, “A beginner’s  guide to interferometric SAR concepts and signal processing,” IEEE Aerospace and Electronic  Systems Magazine , vol. 
-22, no. 9, Part 2: Tutorials, pp. 5–29, September 2007. 
-53. D. L. 
-Schuler, J-S Lee, T. L. Ainsworth, and M. 
-R. Grunes, “Terrain topography measurement  using multipass synthetic aperture radar data,” Radio Science , vol. 35, no. 
-3, May–June 2000,   pp. 813–832. 54. 
-W. B. Scott, “Flight to radar-map Earth from space,” Aviation Week and Space Technology ,   pp. 
-50−53, September 20, 1999 (Cover Story). ch17.indd   36 12/17/07   6:50:14 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies. All rights reserved. 
-Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar.  SYNTHETIC APERTURE RADAR  17 .376x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17 55. J. 
-G. Fleischman, S. Ayasli, E. 
-M. Adams, D. R. 
-Gosselin, M. F. Toups, and M. 
-A. Worris,  “Foliage penetration experiment,” (series of three papers), IEEE Transactions on Aerospace  and Electronic Systems , vol. 32, no. 
-1, pp. 134−166, January 1996. (This series of papers was  awarded the 1996 M. 
-Barry Carlton Award; see IEEE Transactions on Aerospace and Electronic  Systems , vol. 35, no. 4, p. 
-1472, October 1999.) 56. F. T. 
-Ulaby, R. K. Moore, and A. 
-K. Fung, Microwave Remote Sensing , 3 V olumes, Norwood, MA:  Artech House, 1986. 57. 
-E. L. Ayers, J. 
-M. Ralston, R. P. 
-Mahoney, P. G. Tomlinson, and J. 
-McCorkle, “Antenna mea - sures of merit for ultra-wide synthetic aperture radar,” in Proceedings of the 1998 IEEE Radar  Conference , 1998, pp. 331−336. 58. 
-N. Vandenberg, D. R. 
-Sheen, S. Shackman, and D. Wiseman, “P-3 ultrawideband SAR: System  applications to foliage penetration,” Proceedings SPIE , vol. 
-2757, pp. 130–135, 1996. 59. 
-M. F. Toups, L. 
-Bessette, and B. T. Binder, “Foliage penetration data collections and investiga - tions utilizing the P-3 UWB SAR”, Proceedings SPIE , vol. 
-2757, p. 136–144, 1999. 60. 
-L. M. H. 
-Ulander and P. O. Frolind, “Precision processing of CARABAS HF/VHF-band SAR  data,” Proceedings IEEE Geoscience Remote Sensing Symposium  IGARSS 1999 , Hamburg,  Germany, vol. 
-1, 1999, p. 47–49. Also see L.M. 
-Ulander et al., “Detection of concealed ground  targets in CARABAS SAR images using change detection,” Proceedings SPIE , vol. 3721,   p. 243–252, Algorithms for Synthetic Aperture Radar Imagery VI , E. 
-G. Zelnio (ed.), 1999. 61. 
-E. M. Winter, M. 
-J. Schlangen, and C. R. 
-Hendrikson, “Comparisons of target detection in clut - ter using data from the 1993 FOPEN experiments,” Proceedings SPIE , vol. 2230, p. 244–254,  Algorithms for Synthetic Aperture Radar Imagery, D. 
-A. Giglio (ed.), 1994. 62. 
-L. Moyer, “Counter concealed target technologies,” presented at DARPA Tech 2000, http://www   .darpa.mil/DARPATech2000/Presentations/spo_pdf/4MoyerCCTB&W.pdf. ch17.indd   37 12/17/07   6:50:14 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies. 
-All rights reserved. Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar. 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17   blind folio 17 .38 ch17.indd   38 12/17/07   6:50:14 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies. 
-All rights reserved. Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar. 
+.The phase  history is then used for compensating the range migration and the phase shift on  the high [fine] resolution range data. The final image is shown in Figure [17.10 b].   The sharpening of the target image is quite evident.” Barbarossa and Farina assumed  a point target in their simulation. 
+They obtain a precise location of a simulated mov - ing point target, but do not claim to have produced a simulated image of an extended  moving target, such as a vehicle. ‡  Paragraph courtesy of Dr. Marshall Greenspan, Northrop-Grumman Corporation. 
+ch17.indd   24 12/17/07   6:49:35 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies. All rights reserved. Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar. 
+ SYNTHETIC APERTURE RADAR  17 .256x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17 Guarino and Ibsen49 describe an experiment using the AN/APG-76 radar. “The  radar provides a unique simultaneous SAR/GMTI [Ground Moving Target  Indication—scanning real aperture radar] mode in which detected targets are dis - played on the SAR map as moving target symbols. The symbols are accurately  located at their true azimuth position relative to the map center...The [SAR] map  on which the moving target symbol is displayed is collected and processed simul - taneously with the GMTI.” The authors also make clear that Global Positioning  System (GPS) inputs were essential to their accurate location of targets; fixed tar - gets were geolocated to an absolute accuracy of better than 3 meters, and moving  target vehicles to an absolute accuracy of about 15 meters. 
+Stimson5 also discusses  these AN/APG-76 results (pp. 434, 554). Imaging of Moving Targets in SAR Images. 
+ Perry et al.50 have developed a method  for SAR imaging of ground-moving targets that have unknown straight-line, constant- speed motion. They process the received phase history with a “keystone formatting”  procedure that eliminates the effects of linear range migration for all ground-moving  targets, regardless of their unknown velocity. The processing procedure then automati - cally focuses the moving targets. 
+Figure 17.11 a shows a conventionally processed SAR  image containing three moving targets—a military truck (type M813), a tractor-trailer  truck, and a surrogate (i.e., a full-size replica) of a missile transporter-erector-launcher  (TEL). Figure 17.11 b shows the focused image of the tractor-trailer resulting from the  processing. The two-foot resolution clearly shows the outline of the cab and trailer of  the truck. 
+Vibrating Targets in a SAR Image.  Consider a SAR observing a scene that con - tains a point target whose position is oscillating sinusoidally (vibrating) (see Section 9.4  of Carrara et al.3). The component of the vibration amplitude that is parallel to the line- of-sight (LOS) is d. 
+The variable component of the radar-target distance is then  ∆Rtgt(t) = d sin (2p   fvibt) (17.41) where fvib is the vibration frequency. Let the normalized complex echo corresponding to a stationary pixel be ej f td2π,  where fd is the doppler frequency characteristic of the pixel. (We assume low fractional  bandwidth, in which case this is equivalent to the doppler frequency corresponding   to the center frequency of the transmitted bandwidth; see Section 8.1.5 of Sullivan1). 
+FIGURE 17.10  SAR image of a moving target using multiple subapertures for clutter   cancellation (simulated data): ( a) adaptive processing and ( b) adaptive processing plus SAR  (after S. Barbarossa and A. Farina43 © IEEE 1994 ) ch17.indd   25 12/17/07   6:49:38 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies. 
+All rights reserved. Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar. 17 .26  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17 In addition to this echo, the pixel containing the target will produce an additional echo  with a periodic phase error :  φπ λπ φ πe odf t f t = =42 2 sin( ) s in( )vib vib (17.42) We assume 4 p  d  l, thus fo  1. 
+The normalized complex echo corresponding  to the phase error is  e ej j f teφ φ π=0 2sin( )vib (17.43)  ≈ +1 20j f t φ πsin( )vib (17.44)        = + −−120 2 2 φπ π( ) e ej f t j f tvib vib (17.45) The normalized complex echo corresponding to the vibrating target is then the  complex product of the echo corresponding to the stationary pixel and the echo cor - responding to the phase error:  e e ej j f t jd eφ π φ dop=2 (17.46) and  e e e ej j f t o j t f f j t fd d dφ π π π φdop vib = + −+ − 2 2 2 2(( ) ( f fvib)) (17.47) In the SAR image, the vibrating point target will appear in three crossrange locations.  Most of the target energy still appears at the correct location, whereas a small fraction  of the energy will appear in each of two pixels separated in crossrange by fvib in doppler  frequency. Thus, a vibrating target can give rise to a pair of distinctive echoes.FIGURE 17.11  Imaging a moving target in a SAR image:  (a) Conventional SAR image (real data) showing  blurred moving vehicles: an M813 military truck, a tractor-trailer truck, and a surrogate (mockup) of a missile  transporter-erector-launcher. 
+( b) Image of tractor-trailer truck using “keystone” processing; the truck’s cab is  at the bottom and the trailer is above it. ( after R. P . 
+Perry et al .50 © IEEE 1999 )(a) Conventional SAR Processing (b) Keystone Processing Range Cross Range 1010Tractor Trailer Moving at 17 mph on Straight Road 20 30 40Range Bins 50 60 20 30 40 50 Doppler Bins60 70 80dB−0 −5 −10 −15 −20 −25 ch17.indd   26 12/17/07   6:49:46 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies. All rights reserved. Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar. 
+ SYNTHETIC APERTURE RADAR  17 .276x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17 The corresponding velocity separation is ∆v = ± fvib l /2, and the crossrange  displacement is then  ∆∆ Ω∆rv v VRf R= = = ±vib avg 2Vλ  (17.48) where l avg = average wavelength (assuming low fractional bandwidth). The relative  amplitude of each of the paired echoes is  V oltage:  φ π λo d 22= avg (17.49)  Power:  φ π λo d 222 2  =  avg (17.50) Thus, the amplitude of the paired echoes is proportional to the square of the vibra - tion amplitude, and crossrange displacement is proportional to the vibration frequency  (see Section 7.5.2 of Sullivan1). For bright, point-like targets, or for targets such that 4 p  d is not small compared  to l, additional terms should be retained in Eq. 
+17.44, describing the fact that a series  of paired echoes, of decreasing amplitude, may appear in crossrange. Figure 17.12 shows a SAR image of a scene including a vibrating target—a truck  with its engine running. The image contains two sets of paired echoes, corresponding to  two vibration frequencies characteristic of the particular truck used for the observation. 
+Measurement of Object Height.  The basic theory of SAR assumes that the  scene is flat. To the extent that the scene is not flat, distortions in the SAR image will  result. 
+In some cases, they can be used to measure the height of elevated objects above  a flat terrain. FIGURE 17.12  SAR scene containing vibrating target: Crossrange is hori - zontal; range is vertical. The paired echoes in crossrange are characteristic of a  vibrating target (truck with engine running) in a SAR image. 
+The frequencies  (2.7 Hz and 12 Hz) are peculiar to the specific truck that was imaged. ( Courtesy  of Northrop-Grumman Corporation ) ch17.indd   27 12/17/07   6:49:51 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies. All rights reserved. 
+Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar. 17 .28  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17 Shadows.  The simplest method of measuring object height is to observe the length  Lshadow  of the shadow of the object cast by the SAR and calculate the object height h  from the known SAR altitude H and ground range Rg:  h LH Rg= ⋅shadow  (17.51) This expression assumes flat-earth, and may be generalized to curved-earth if Rg is  relatively large; see Section 3.2.2 of Sullivan.1 However, the shadow method works only  for an isolated, relatively high object on essentially flat terrain (e.g., Figure 17.9). 
+Layover.  SAR processing sorts target returns into bins (pixels) depending on the  range R and velocity v of the target relative to the platform. If two or more targets have  the same R and v, then they will be placed at the same location in the SAR image. 
+We shall define a layover contour  as the locus of points in 3D space such that an  object at any of the points will be assigned to the same location in a SAR image.  As shown in Figure 17.13, a layover contour is the intersection of a constant-range  sphere of range R and a constant velocity cone of generating angle b  = cos–1 (v/V)  with axis along the platform direction, i.e., a circle of radius R sinb  ahead of the  platform. ( b  > 90 ° corresponds to targets behind the platform.) We shall, there - fore, call the contour the layover circle . 
+If the top of an elevated object, such as a  tower, is on the layover circle and if the ground is flat, then the top of the tower  will appear in the SAR image at the same position as a point on the ground where  the layover circle intersects the ground. The tower will be “laid over,” hence the  nomenclature. As shown in Figure 17.13, let us consider a platform in straight-line, constant-speed  motion at altitude H over a flat earth forming a SAR image, the center of which is at  slant range Rs  H and squint angle qsq. 
+Suppose that a tower of height h (h  H)  is in the area that is imaged. We describe locations within the image by a coordinate  system ( x1, y1). If the base of the tower is at ( x10, y10), we wish to ascertain the image  coordinates of the top of the tower. 
+Figure 17.13 a illustrates a perspective view. Because Rg  H, the isodop ( y1 – axis)  makes an angle qsq with the y-axis. The image center is a distance S ≅ Rg cos qsq from  the x-axis, where Rg = ground range. 
+Figure 17.13 b shows a view from the +x-axis,  indicating the layover circle normal to the x-axis and showing that the image location  of the tower top is located a distance (the layover distance ) d ≅ hH/(Rg cos qsq) from  the image location of the tower base. Figure 17.13 c then depicts the view in image  coordinates ( x1, y1). The image coordinates of the tower top are  x11 = x10 + d sin qsq, y11 = y10 − d cos qsq  For example, if Rg = 100 km, H = 5 km, h = 100 m, and qsq = 0, then d = 5 m,   x11 = x10, and y11 = y10 – 5 m. 
+The tower top appears in the image 5 m closer to the radar  than the tower base. This principle may sometimes be used to estimate the height of  isolated, tower-like structures on relatively level ground:  hdR Hg≅cosθsq (17.52) The intersection of the constant-velocity cone and the ground is a hyperbola. If  H is not  R, the isodop direction will not be parallel to the down-range direction. 
+ ch17.indd   28 12/17/07   6:49:54 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies. All rights reserved. Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar. 
+ SYNTHETIC APERTURE RADAR  17 .296x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17 The geometry is more complicated but layover distance and object height may still  be estimated. Stereo SAR.  Two SAR images of the same scene may be obtained from somewhat  different locations (see Section 9.3.8.1 in Carrara et al.3). 
+Noncoherent comparison  FIGURE 17.13  Layover:  (a) Perspective view, ( b) view along platform flight path, and ( c) view  in coordinate system of SAR image ( Courtesy of SciTech Publishing, Inc .) ch17.indd   29 12/17/07   6:49:55 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies. All rights reserved. Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar. 
+17 .30  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17 of the two—the stereo  technique—may enable estimation of object height. The tech - nique is analogous to the method by which we humans use our two eyes to help  estimate the distance of the objects that we see. In fact, the two SAR images may be  printed on the same page using two different colors, with the viewer using special  glasses so that the left eye sees only one image and the right eye only the other and the  brain processing the two together so that the scene is perceived in 3D. 
+Interferometric SAR (InSAR) for Target Height Measurement.  Interferometric SAR  (InSAR)42,51,52 (also called IFSAR; see Section 9.3 of Carrara et al.3 and Adams et al.20),  when used for terrain height measurement, involves two SAR images taken from anten - nas at slightly different altitudes and compared coherently  to obtain fine-resolution infor - mation regarding the height of terrain or targets in the image. (In this case, it is sometimes  called IFSARE, where E emphasizes elevation measurement.) InSAR may be performed  using a single platform with two antennas ( single-pass InSAR ) or by the same platform  making two passes over the same terrain ( two-pass InSAR ). 
+Allen42 gives several exam - ples of fielded systems using each type. It is essential that the relative locations of the two  antennas be rather precisely known. Advantages and disadvantages of the two types of  InSAR are as follows. 
+Two-pass InSAR : ● No special hardware is required; a conventional SAR may be flown twice over the  designated terrain. ● Motion compensation is challenging; the position of the antenna versus time in each  pass must be known with great precision. ● A long baseline (vertical distance between antenna paths) provides fine vertical  resolution (but challenging ambiguities). 
+● The scene may change between passes due to wind, etc. ● Example results are given by Schuler et al.,53 who perform “terrain topography  measurement using multipass polarimetric SAR.” Single-pass InSAR : ● Baseline is relatively well known, providing consistency throughout synthetic aperture. ● Scene is same for both images since data for each are collected simultaneously. 
+● On-board, real-time processing is a possibility. ● More sophisticated (expensive) hardware is required: two antennas, two receiver  channels, and two sets of analog-to-digital (A/D) converters. ● Example results are given by Adams et al.,20 who include an InSAR image of  the stadium at the University of Michigan in Ann Arbor, viewable with two-   color glasses. 
+To understand the theory of InSAR, we first consider two antennas, A and B, separated  vertically by a baseline L, observing a point target a that is on a flat ground at range R;  the radar line-of-sight (LOS) intersects the flat ground at grazing angle y1 (Figure 17.14).  We consider two possibilities: (1) one antenna transmits and each receives ( n = 1), and (2)  antenna A transmits and then receives; then antenna B transmits and then receives ( n = 2).  ch17.indd   30 12/17/07   6:49:55 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies. 
+All rights reserved. Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar.  SYNTHETIC APERTURE RADAR  17 .316x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17 For a “single-frequency” pulse of wavelength l, the difference in the phases of the echoes  received from the point target observed by the two antennas is (from Figure 17.14)  ∆φπ λπ ψ λ11 2 2= =ns nLsin (17.53) We now consider the same antennas A and B observing a second point target b that  is a distance h above the flat ground also at range R; the radar line-of-sight (LOS) inter - sects the parallel to the flat ground at grazing angle y2. 
+The difference in the phases of  the echoes received from the point target observed by the two antennas is now  ∆φπ ψ λ22 2=nLsin (17.54) We consider the quantity  ∆ ∆ ∆ φ φ φπ λψ ψ ≡ − = − | | |sin sin |2 1 2 12nL (17.55) We assume that h  R and thus y2 ≈ y1 ≈ (y2 + y1)/2 = y . Then, where ∆y  =   |y 2 − y1| , from Figure 17.14,  ∆ ∆ φπ λψ ψπ λψψπ λ≈ = =2 2 2 nL nL h RnLh Rcos coscos (17.56)FIGURE 17.14  InSAR—-vertical antenna separation: Vertical antenna separation enables estimation of the  height of a target above the average ground height or, more generally, terrain height versus location. ( Courtesy  of SciTech Publishing, Inc .)Point Target b  above Ground  Plane Point Target a  on Ground  PlaneLA B RR z h = z cos ψs ψ ψψ ψ2 ψ2 ≈ ψ1 ≈ ψψ1 ∆ψ ch17.indd   31 12/17/07   6:50:01 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies. 
+All rights reserved. Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar. 17 .32  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17 We now consider | d  (∆f)| = the change in ∆f  due to a change in h given by | d  h|:  | ( )| | | δ φπ λδ ∆ =2nL Rh 17.57) Antennas A and B may be considered as separated in vertical distance on an aircraft. 
+ The relationship between d  (∆f) and a variation in terrain altitude d  h is  | || ( )|δλ δ φ πhR nL=∆ 2   (antennas separated vertically) (17.58) InSAR for terrain elevation measurement can also be performed by an aircraft with  two antennas separated horizontally  (perpendicular to the flight path) by L. The aircraft  is banking at angle g  > 0 and collecting data from the flat ground at grazing angle y  (Figure 17.15). Then the effective aperture (perpendicular to the LOS) is L sin (y + g  )  instead of Lcos y. 
+From Figure 17.15, we have  | || ( )|cos sin( )δλ δ φ ψ π ψ γhR nL=+∆ 2   (antennas separated horizontally) (17.59) In either geometry, since both channels are noisy, the expected accuracy in the  phase difference (1-sigma) is given by Levanon17:  δ φ( )∆ =12 SNR (17.60) where SNR = signal-to-noise ratio (see Section 17.6). Thus, the theoretical accuracy  for terrain altitude measurement is Vertical antenna separation (no banking) :  δλ πhR nL= 2SNR (17.61) FIGURE 17.15  InSAR—-horizontal antenna separation: As long as the two  apertures do not both lie on the same line of sight to the target area, an estimate of  terrain height may be made, by comparing the phases of echoes received by the two  apertures. ( Courtesy of SciTech Publishing, Inc .) ch17.indd   32 12/17/07   6:50:08 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies. 
+All rights reserved. Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar.  SYNTHETIC APERTURE RADAR  17.336x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17 Horizontal antenna separation :  δλ ψ π ψ γhR nL= +cos sin( ) 2SN R (17.62) Furthermore, when the phase moves through an interval of 2 p, an ambiguity occurs  in terrain altitude measurement. 
+The corresponding altitude difference is computed by  replacing d  (∆f) by 2p in Eqs. 17.58 and 17.59. Vertical antenna separation (no banking) :  ∆h ambigR nL( ) =λ (17.63) Horizontal antenna separation :  ∆h ambigR nL( )cos sin( )=+λ ψ ψ γ (17.64) Although we have derived these relationships for a single monochromatic pulse, they  can be shown (see Section 8.1.5 of Sullivan1 and Sections 3.0 and 9.3 of Carrara et al.3)  to be true for SAR pixels also, with l replaced by c/favg. 
+The National Aeronautics and Space Administration (NASA) performed successful  X/C-band single-pass polarimetric InSAR (single-pass) for the Space Shuttle Radar  Topography Mission (SRTM), using antennas on the shuttle itself and on the shuttle’s  maneuverable arm to produce a complete 3D map of the Earth’s surface between 60 °  N latitude and 56 ° S latitude—nearly 80% of the surface, with best vertical accuracy  of 6 meters on a 30-meter horizontal grid.54 Foliage-Penetration (FOPEN) SAR.  Although higher frequency (greater than  approximately 2 GHz) microwaves do not penetrate foliage well, lower frequency micro - waves do (Fleischman et al.55; see also Section 21-6 of Ulaby et al.56). For example,   for C band, the attenuation of a typical forest canopy varies from ≈ 10 dB to ≈ 40 dB;  the probability that the attenuation is less than 20 dB is about 0.2. 
+On the other hand, for  UHF radiation, attenuation varies from 0 to ≈ 20 dB; half the time it is less than ≈ 7 dB.  Thus, for FOPEN, UHF radiation is necessary: shorter waves will not penetrate the  foliage, whereas for airborne applications, longer waves would require prohibitively  large antennas. (Specific values of attenuation [dB/meter] vary with grazing angle, tree  type, leaf density, and moisture content; however, the previous statement is a general  summary of these results; further details are given in Fleishman et al.55) The aperture time tA required to collect sufficient data for a SAR image is found from  Eq. 
+17.6. For example, let us assume R = 100 km, V = 180 m/sec (350 kts), qsq = 0, and dcr =   1 m. For f = 10 GHz (X band, l = 0.03 m), tA = 8.3 sec, and the fractional bandwidth B/fo =   0.015. 
+On the other hand, for fo = 0.5 GHz (UHF, l = 0.6 m), tA = 167 sec = 2.8 min and  B/fo = 0.3. Such a high fractional bandwidth (an ultra-wideband SAR ) presents challenges  in designing hardware components, such as antennas, that are reasonably linear over the  full frequency range.57 Furthermore, the long aperture time presents motion-compensa - tion challenges, and the wide real-beam angle adds to processing difficulties, very likely  requiring Range-Migration Algorithm (RMA) processing (Section 17.3). In addition, for  calculating crossrange resolution, the small-angle approximation no longer holds. 
+ch17.indd   33 12/19/07   2:33:49 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies. All rights reserved. Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar. 
+17 .34  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17 A number of authors report successful results with FOPEN SAR, using such  SARs as the Environmental Research Institute of Michigan P-3 SAR,58,59 the  Swedish National Defense Research Establishment CARABAS sensor,60 and the SRI  International Ultra-Wideband SAR.61 Furthermore, Moyer62 presents images from  conventional and FOPEN SARs showing that vehicles under trees may be imaged  significantly better with FOPEN SAR than with conventional SAR; example imagery  is given in Figure 17.16. REFERENCES  1. R. 
+J. Sullivan, Radar Foundations for Imaging and Advanced Concepts , Raleigh, NC: SciTech,  2004; previously published as Microwave Radar: Imaging and Advanced Concepts , Norwood,  MA: Artech House, 2000.  2. 
+L. J. Cutrona, “Synthetic aperture radar,” in M. 
+Skolnik, Radar Handbook , 2nd Ed., New York:  McGraw-Hill, 1990; 1st Ed., New York: McGraw-Hill, 1970.  3. W. 
+G. Carrara, R. S. 
+Goodman, and R. M. Majewski, Spotlight Synthetic Aperture Radar ,  Norwood, MA: Artech House, 1995. 
+ 4. J. Curlander and R. 
+McDonough, Synthetic Aperture Radar , New York: John Wiley and Sons, 1991.  5. G. 
+W. Stimson, Introduction to Airborne Radar , 2nd Ed., Mendham, NJ: SciTech, 1998.  6. 
+C. J. Jakowatz, Jr., D. 
+E. Wahl, P. H. 
+Eichel, D. C. Ghiglia, and P. 
+A. Thompson, Spotlight-Mode  SAR: A Signal-Processing Approach , Boston: Kluwer Academic Publishers, 1996.  7. 
+S. A. Hovanessian, Introduction to Synthetic Array and Imaging Radars , Norwood, MA:  Artech House, 1980.FIGURE 17.16  Conventional and FOPEN SAR62 images: In the conventional image, target vehicles   cannot readily be seen, whereas in the FOPEN image they are quite prominent. 
+(Source: http://www.darpa   .mil/DARPATech2000/Presentations/spo_pdf/4MoyerCCTB&W.pdf ) Photograph FOPEN SAR ImageConventional SAR ImageExample of Foliage-Obscured Vehicles • Depression Angle:  45°, Resolution:  1 m × 1 m  • Vehicles Mask ed By Trees, Along Logging Road in Maine ch17.indd   34 12/17/07   6:50:13 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies. All rights reserved. Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar. 
+ SYNTHETIC APERTURE RADAR  17 .356x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17  8. R. O. 
+Harger, Synthetic Aperture Radar Systems : Theory and Design , New York: Academic  Press, 1970.  9. R. 
+Birk, W. Camus, E. Valenti, and W. 
+McCandless, “Synthetic aperture radar imaging systems,”  IEEE AES Magazine , pp. 15−23, November 1995. 10. 
+C. Jackson and J. Apel (deceased; the book is dedicated to him), Synthetic Aperture Radar Marine  User’s Manual , Washington, DC: Department of Commerce, National Oceanic and Atmospheric  Administration (NOAA), 2004. 
+11. D. Ausherman, A. 
+Kozma, J. Walker, H. Jones, and E. 
+Poggio, “Developments in radar imaging,”  IEEE Transactions on Aerospace and Electronic Systems , vol. AES-20, no. 4, July 1984. 
+12. C. Wiley, “Synthetic aperture radars,” IEEE Transactions Aerospace and Electronic Systems ,  vol. 
+AES-21, pp. 440–443, May 1985. 13. 
+L. J. Cutrona, W. 
+E. Vivian, E. N. 
+Leith, and G. O. Hall, “A high-resolution radar combat-   surveillance system,” IRE Transactions on Military Electronics , vol. 
+MIL-5, no. 2, pp. 127–131,  April 1961. 
+(Reprinted in Kovaly.15) 14. C. W. 
+Sherwin, J. P. Ruina, and R. 
+D. Rawliffe, “Some early developments in synthetic aper - ture radar systems, IRE Transactions on Military Electronics , vol. MIL-6, no. 
+2, pp. 111–115,   April 1962. (Reprinted in Kovaly.15) 15. 
+J. J. Kovaly, Synthetic Aperture Radar , Norwood, MA: Artech House, 1976. 
+(This is a collection  of early classic papers concerning SAR.) 16. D. C. 
+Schleher, MTI and Pulsed Doppler Radar , Norwood, MA: Artech House, 1991. 17. N. 
+Levanon, Radar Principles , New York: Wiley-Interscience, 1988. 18. R. 
+M. Goldstein and H. A. 
+Zebker, “Interferometric radar measurement of ocean currents,”  Nature , vol. 328, pp. 707–709, 1987. 
+19. R. M. 
+Goldstein, H. A. Zebker, and T. 
+P. Barnett, “Remote sensing of ocean currents,” Science ,  vol. 246, pp. 
+1282–1285, 1989. 20. G. 
+F. Adams et al., “The ERIM interferometric SAR: IFSAR,” in Proceedings of the 1996 IEEE  National Radar Conference , 1996, pp. 249−254. 
+(Reprinted in IEEE AES Systems Magazine ,  December 1996.) 21. M. Skolnik, Introduction to Radar Systems : 1st Ed., New York: McGraw-Hill, 1962; 2nd Ed.,  New York: McGraw-Hill, 1980; 3rd Ed., New York: McGraw-Hill, 2001. 
+22. S. Musman, D. 
+Kerr, and C. Bachmann, “Automatic recognition of ISAR ship images,” IEEE  Transactions on Aerospace and Electronic Systems , vol. 32, no. 
+4, pp. 1392–1404, October 1996. 23. 
+W. L. Wolfe and G. 
+Zissis (eds.), The Infrared Handbook , rev. ed., Ann Arbor, MI: Environmental  Research Institute of Michigan (now General Dynamics, Ypsilanti, MI), 1989. 24. 
+M. Richards, Fundamentals of Radar Signal Processing , New York: McGraw-Hill, 2005. 25. 
+R. Klemm, Principles of Space-Time Adaptive Processing ,” London: IEE, 2002. 26. 
+E. F. Knott, J. 
+F. Shaeffer, and M. T. 
+Tuley, Radar Cross Section , 2nd Ed., Raleigh, NC:  SciTech, 2004. 27. E. 
+O. Brigham, The Fast Fourier Transform and Its Applications , Englewood Cliffs, NJ: Prentice  Hall, 1988. 28. 
+E. D. Kaplan, Understanding GPS, Principles and Applications , Norwood, MA: Artech  House, 1996. 
+29. R. W. 
+Bayma and P. A. McInnes, “Aperture size and ambiguity constraints for a synthetic aperture  radar,” in Proc. 
+1975 International Radar Conference , pp. 499–504. (Reprinted in Kovaly.15) 30. 
+F. M. Henderson and A. 
+J. Lewis (eds.), Principles and Applications of Imaging Radar ,   New York: Wiley, 1998. 31. 
+C. Oliver and S. Quegan, Understanding Synthetic Aperture Radar Images , Norwood, MA:  Artech House, 1998. 
+32. F. J. 
+Harris, “On the use of windows for harmonic analysis with the discrete Fourier transform,”  Proceedings of the IEEE , vol. 66, no. 1, pp. 
+51−83, January 1978. 33. D. 
+Barton, Radar Systems Analysis and Modeling , Norwood, MA: Artech House, 2004. ch17.indd   35 12/17/07   6:50:14 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies. All rights reserved. 
+Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar. 17 .36  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17 34. R. 
+J. Sullivan, A. D. 
+Nichols, R. F. Rawson, C. 
+W. Haney, F. P. 
+Dareff, and J. J. Schanne, Jr.,  “Polarimetric X/L/C-band SAR,” in Proceedings of the 1988 IEEE National Radar Conference ,  1988, pp. 
+9−14. 35. D. 
+N. Held, W. E. 
+Brown, and T. W. Miller, “Preliminary results from the NASA/JPL multifre - quency, multipolarization SAR,” in Proceedings of the 1988 IEEE National Radar Conference ,  1988, pp. 
+7−8. See also  P. A. 
+Rosen et al., “UA VSAR: New NASA airborne SAR system for  research,” IEEE Aerospace and Electronic Systems Magazine , vol. 22, no. 11, pp. 
+21–28,  November 2007. 36. L. 
+M. Novak, M. C. 
+Burl, and W. W. Irving, “Optimal polarimetric processing for enhanced target  detection,” IEEE Transactions on Aerospace and Electronic Systems , vol. 
+29, no. 1, pp. 234–243,  January 1993. 
+37. L. M. 
+Novak, S. D. Halversen, G. 
+J. Owirka, and M. Hiett, “Effects of polarization and resolu - tion on SAR ATR,” IEEE Transactions on Aerospace and Electronic Systems , vol. 
+33, no. 1,   pp. 102−115, January 1997. 
+38. R. K. 
+Raney, “Synthetic aperture imaging radar and moving targets,” IEEE Transactions of  Aerospace and Electronic Systems , vol. AES-7, no. 3, pp. 
+499-505, 1971. 39. A. 
+Freeman, “Simple MTI using synthetic aperture radar,” in Proceedings of IGARSS 1984  Symposium , ESA SP-215, 1984. 40. A. 
+Freeman and A. Currie, “Synthetic aperture radar (SAR) images of moving targets,” GEC J .  Res., vol. 
+5, no. 2, pp. 106–115, 1987. 
+41. S. Werness, W. 
+Carrara, L. Joyce, and D. Franczak, “Moving target algorithms for SAR data,”  IEEE Transactions on Aerospace and Electronic Systems , vol. 
+AES-26, no. 1, pp. 57–67, 1990. 
+42. C. T. 
+Allen, “Interferometric synthetic aperture radar,” IEEE GRS Society Newsletter , pp. 6–13,  November 1995. 43. 
+S. Barbarossa and A. Farina, “Space-time-frequency processing of synthetic aperture radar  signals,” IEEE Transactions on Aerospace and Electronic Systems , vol. 
+30, no. 2, pp. 341–358,  April 1994. 
+44. F. M. 
+Staudaher, “Airborne MTI,” Chapter 16 in Radar Handbook , M. Skolnik (ed.), 2nd Ed.,  New York: McGraw-Hill, 1990. 45. 
+J. Ward, Space-Time Adaptive Processing for Airborne Radar , Technical Report 1015, Lexington,  MA: Lincoln Laboratory, Massachusetts Institute of Technology, 1994. 46. 
+J. Guerci, Space-Time Adaptive Processing for Radar , Norwood, MA: Artech House, 2003. 47. 
+V . C. Chen and H. 
+Ling, Time-Frequency Transforms for Radar Imaging and Signal Analysis ,  Norwood, MA: Artech House, 2002. 48. L. 
+Cohen, “Time-frequency distributions–a review,” Proceedings of the IEEE , vol. 77, no. 7,   July 1989. 
+49. R. Guarino and P. 
+Ibsen, “Integrated GPS/INS/SAR/GMTI radar precision targeting flight test  results,” in Proceedings Institute of Navigation GPS-95 Conference , 1995, pp. 373–379. 50. 
+R. P. Perry, R. 
+C. DiPietro, and R. L. 
+Fante, “SAR imaging of moving targets,” IEEE Transactions  on Aerospace and Electronic Systems , vol. 35, no. 1, pp. 
+188–200, January 1999. 51. J. 
+Rodriguez and J. M. Martin, “Theory and design of interferometric synthetic aperture radar,”  IEE Proceedings , Part F, vol. 
+139, pp. 147–159, April 1992. 52. 
+R. Bamler and P. Hartl, “Synthetic aperture radar interferometry,” Inverse Problems , vol. 
+14,   pp. R1 to R54, August 1998. See also  F. 
+Gini and F. Lombardini, “Multibaseline cross-track  SAR interferometry: A signal-processing perspective,” IEEE Aerospace and Electronic Systems  Magazine , vol. 20, no. 
+8, Part 2: Tutorials, pp. 71–93, August 2005 ; M. A. 
+Richards, “A beginner’s  guide to interferometric SAR concepts and signal processing,” IEEE Aerospace and Electronic  Systems Magazine , vol. 22, no. 9, Part 2: Tutorials, pp. 
+5–29, September 2007. 53. D. 
+L. Schuler, J-S Lee, T. L. 
+Ainsworth, and M. R. Grunes, “Terrain topography measurement  using multipass synthetic aperture radar data,” Radio Science , vol. 
+35, no. 3, May–June 2000,   pp. 813–832. 
+54. W. B. 
+Scott, “Flight to radar-map Earth from space,” Aviation Week and Space Technology ,   pp. 50−53, September 20, 1999 (Cover Story). ch17.indd   36 12/17/07   6:50:14 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies. 
+All rights reserved. Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar.  SYNTHETIC APERTURE RADAR  17 .376x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17 55. 
+J. G. Fleischman, S. 
+Ayasli, E. M. Adams, D. 
+R. Gosselin, M. F. 
+Toups, and M. A. Worris,  “Foliage penetration experiment,” (series of three papers), IEEE Transactions on Aerospace  and Electronic Systems , vol. 
+32, no. 1, pp. 134−166, January 1996. 
+(This series of papers was  awarded the 1996 M. Barry Carlton Award; see IEEE Transactions on Aerospace and Electronic  Systems , vol. 35, no. 
+4, p. 1472, October 1999.) 56. F. 
+T. Ulaby, R. K. 
+Moore, and A. K. Fung, Microwave Remote Sensing , 3 V olumes, Norwood, MA:  Artech House, 1986. 
+57. E. L. 
+Ayers, J. M. Ralston, R. 
+P. Mahoney, P. G. 
+Tomlinson, and J. McCorkle, “Antenna mea - sures of merit for ultra-wide synthetic aperture radar,” in Proceedings of the 1998 IEEE Radar  Conference , 1998, pp. 331−336. 
+58. N. Vandenberg, D. 
+R. Sheen, S. Shackman, and D. 
+Wiseman, “P-3 ultrawideband SAR: System  applications to foliage penetration,” Proceedings SPIE , vol. 2757, pp. 130–135, 1996. 
+59. M. F. 
+Toups, L. Bessette, and B. T. 
+Binder, “Foliage penetration data collections and investiga - tions utilizing the P-3 UWB SAR”, Proceedings SPIE , vol. 2757, p. 136–144, 1999. 
+60. L. M. 
+H. Ulander and P. O. 
+Frolind, “Precision processing of CARABAS HF/VHF-band SAR  data,” Proceedings IEEE Geoscience Remote Sensing Symposium  IGARSS 1999 , Hamburg,  Germany, vol. 1, 1999, p. 47–49. 
+Also see L.M. Ulander et al., “Detection of concealed ground  targets in CARABAS SAR images using change detection,” Proceedings SPIE , vol. 3721,   p. 
+243–252, Algorithms for Synthetic Aperture Radar Imagery VI , E. G. Zelnio (ed.), 1999. 
+61. E. M. 
+Winter, M. J. Schlangen, and C. 
+R. Hendrikson, “Comparisons of target detection in clut - ter using data from the 1993 FOPEN experiments,” Proceedings SPIE , vol. 2230, p. 
+244–254,  Algorithms for Synthetic Aperture Radar Imagery, D. A. Giglio (ed.), 1994. 
+62. L. Moyer, “Counter concealed target technologies,” presented at DARPA Tech 2000, http://www   .darpa.mil/DARPATech2000/Presentations/spo_pdf/4MoyerCCTB&W.pdf. 
+ch17.indd   37 12/17/07   6:50:14 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies. All rights reserved. Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar. 
+6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 17   blind folio 17 .38 ch17.indd   38 12/17/07   6:50:14 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies. All rights reserved. Any use is subject to the Terms of Use as given at the website.	Synthetic Aperture Radar. 
