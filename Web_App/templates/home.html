@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>FALCON Chatbot</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+        <!-- Connecting to Roboto font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    </head>
+    <body>
+        <div class="header">
+            FALCON Chatbot
+            <button onClick="window.location.reload();" id="new_chat">New Chat</button>
+        </div>
+        
+        <div id="chat_log">
+        </div>
+        <div id="bottom_section">
+            <div id="discount_form">
+                <input autofocus type="text" id="entry" name="entry" placeholder="Ask me anything" onkeypress="return enter_check(event);">
+                <button type="submit" value="Submit" id="submit_button">></button>
+                
+            </div>
+            <form action="/upload_file" method = "post" enctype="multipart/form-data">
+                <input type="file" name="context_file" accept=".pdf" id="pdf_upload" aria-invalid="false" onchange="this.form.submit()"> </button>
+            </form>
+        </div>
+        <script type = "text/javascript" src = "{{ url_for('static', filename = 'home.js') }}"></script>
+    </body>
+</html>

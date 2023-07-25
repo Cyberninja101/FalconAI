@@ -1,0 +1,61 @@
+                                       RADAR SYSTEMS   (Digital Notes)     By  Dr. C. 
+Ravi Shankar Reddy   Mrs.S. Rajani     DEPARTMENT OF ELECTRONICS AND COMMUNICATION ENGINEERING   MALLA REDDY COLLEGE OF ENGINEERING & TECHNOLOGY   (Autonomous Institution – UGC, Govt. of India)    (Affiliated to JNTUH, Hyderabad, Approved by AICTE - Accredited by NBA & NAAC – ‘A’ Grade)  Maisammaguda, Dhulapally (Post Via. 
+Kompally), Secunderabad – 500100, Telangana State, India  . B.Tech ( ECE)  R-18      Malla Reddy College of Engineering and Technology (MRCET)  MALLA REDDY COLLEGE OF ENGINEERING AND TECHNOLOGY   IV Year B.Tech. ECE -I Sem       L T/P/D  C  3  -/ - /- 3  CORE ELECTIVE – V  (R18A0419) RADAR SYSTEMS   COURSE OBJECTIVES   1. 
+To learn Radar Fundamentals like Radar Equation, Operating frequencies &  Applications.   2. To understand the basic concepts of different types of Radars for surveillance &  Tracking. 
+  3. To know the various types of tracking techniques in volved.   4. 
+To understand Radar Receivers, MTI filters, displays and antennas.     UNIT I    Basics of Radar: Introduction, Maximum Unambiguous Range, Radar Waveforms, Simple form  of Radar  Equation, Radar Block Diagram and Operation, Radar Frequencies and Applicati ons,  Prediction of Range Performance, Minimum Detectable Signal, Receiver Noise, Modified Radar  Range Equation, Related Problems.   Radar Equation:  SNR,  Envelope Detector -False Alarm  Time and Probability, Integration of Radar  Pulses, Radar Cross Section of T argets (simple targets - sphere, cone -sphere),  Transmitter  Power, PRF and Range Ambiguities, System Losses (qualitative treatment), Related Problems. 
+   UNIT -II  CW and Frequency Modulated Radar:  Doppler Effect, CW Radar – Block Diagram, Isolation  between  Transmitter and Receiver, Non -zero IF Receiver, Receiver Bandwidth Requirements,  Applications of CW  radar, Related Problems.   FM-CW Radar:  FM-CW Radar, Range and Doppler Measurement, Block Diagram and  Characteristics (Approaching/  Receding Targets), FM -CW alti meter, Multiple Frequency CW  Radar.    UNIT -III  MTI and Pulse Doppler Radar:  Introduction, Principle, MTI Radar with - Power Amplifier  Transmitter and  Power Oscillator Transmitter, Delay Line Cancellers – Filter Characteristics,  Blind Speeds, Double  Cancella tion, Staggered PRFs. 
+Range Gated Doppler Filters. MTI Radar  Parameters, Limitations to MTI  Performance, MTI versus Pulse Doppler Radar.   Tracking Radar:  Tracking with Radar, Sequential Lobing, Conical Scan, Monopulse Tracking  Radar – Amplitude Comparison M onopulse (one - and two - coordinates), Angular Accuracy,  Tracking in Range, Acquisition and Scanning Patterns, Comparison of Trackers. 
+   UNIT -IV  Detection of Radar Signals in Noise:  Introduction, Matched Filter Receiver – Response  Characteristics  and Derivat ion, Correlation Function and Cross -correlation Receiver, Efficiency  of Non -matched Filters,  Matched Filter with Non -white Noise.   . B.Tech ( ECE)  R-18      Malla Reddy College of Engineering and Technology (MRCET)  UNIT -V  Radar Receivers:  Noise Figure and Noise Temperature, Displays – types, Introduction to Phased  Array Antennas –Basic C oncepts,  Radiation Pattern, Beam Steering and Beam Width changes,  Applications,  Advantages and Limitations. 
+   Electronic Warfare:  Introduction to ESM, ECM and ECCM systems.   TEXT BOOK:    1. Introduction to Radar Systems – Merrill I. 
+Skolnik, TMH Special India n Edition, 2nd Edition,       Tata McGraw -Hill, 2007.    REFERENCES:    1. Introduction to Radar Systems – Merrill I. 
+Skolnik, 3rd Edition Tata McGraw -Hill, 2001.    2. Radar: Principles, Technology, Applications -Byron Edde, Pearson Education, 2004. 
+  3. Principles  of Modern Radar: Basic Principles -Mark A. Richards, James A. 
+Scheer, William A.  Holm, Yesdee,2013.   4. 
+‘Radar Hand Book ‘ Ed. By M.I Skolnik, 2nd Edition, Tata McGraw Hill.   5. 
+‘Understanding Radar Systems’ by Simon Kinsley and Shaun Quegan, Scitech Publish ing,  McGraw -Hill.    COURSE OUTCOMES   1. Demonstrate an understanding of the factors affecting the radar performance using Radar  Range Equation. 
+  2. Analyze the principle of FM -CW radar and apply it in FM -CW Altimeter.   3. 
+Differentiate between a MTI Radar and a Pulse D oppler Radar based on their working  principle.   4. Demonstrate an understanding of the importance of Matched Filter Receivers in Radars. 
+  5. Familiarize with the different types of Radar Displays and their application in real time  scenario                                      . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . 
