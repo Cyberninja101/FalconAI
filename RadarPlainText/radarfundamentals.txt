@@ -1,447 +1,166 @@
-Prof.
-David Jenn Department of Electrical & Computer Engineering 833 Dyer Road, Room 437 Monterey, CA  93943 (831) 656-2254 jenn@nps.navy.mil , jenn@nps.edu http://www.nps.navy.mil/faculty/jennRadar Fundamentals 2Overview • Introduction • Radar functions• Antennas basics• Radar range equation• System parameters• Electromagnetic waves• Scattering mechanisms• Radar cross section and stealth• Sample radar systems 3•Bistatic : the transmit and receive antennas  are at different locations as  viewed from the target (e.g., ground transmitter and airborne receiver).
-• Monostatic : the transmitter and receiver are colocated as viewed from  the target (i.e., the same antenna is used to transmit and receive).
-• Quasi-monostatic : the transmit  and receive antennas are slightly  separated but still appear to  be at the same location as  viewed from the target  (e.g., separate transmit  and receive antennas on  the same aircraft).Radio Detection and Ranging   TARGET TRANSMITTER  (TX)RECEIVER  (RX) INCIDENT  WAVE FRONTSSCATTERED  WAVE FRONTS RtRrθ 4Radar Functions • Normal radar functions: 1.
-range (from pulse delay) 2.
-velocity (from Doppler frequency shift) 3.
-angular direction (from antenna pointing) • Signature analysis and inverse scattering: 4.
-target size (from magnitude of return)5.
-target shape and components (return as a function of  direction) 6.
-moving parts (modulation of the return) 7.
-material composition • The complexity (cost & size) of th e radar increases with the extent  of the functions that the radar performs. 5Electromagnetic Spectrum Wavelength ( λ, in a vacuum and approximately in air) 10-3 10-210-1 11 0-510-410-3 10-210-1 11 01102 103104 105 109108107106105 104103 102 10 1 100 10 1 100 10 1 Frequency (f, cps, Hz)RadioMicrons Meters Giga Mega KiloMicrowave Millimeter Infrared Ultraviolet Visible Optical 300 MHz 300 GHzEHF SHF UHF VHF HF MF LF Typical radar  frequencies 6Radar Bands and Usage 8 (Similar to Table 1.1 and Section 1.5 in Skolnik) 7Time Delay Ranging • Target range is the fundamental qu antity measured by most radars.
-  It is obtained by recording the round trip travel time of a pulse, TR,  and computing range from: where  c= 3x108m/s is the velocity of light in free space.
-TIME TRAMPLITUDETRANSMITTED  PULSE RECEIVED   PULSEBistatic:  tr RRR c T+ = Monostatic:  ( )2RtrcTR RRR = == 8Classification by Function Radars Civilian Military Weather Avoidance Navagation & Tracking Search & Surveillance Space Flight SoundingHigh Resolution  Imaging & Mapping Proximity Fuzes Countermeasures 9Classification by Waveform Radars CW Pulsed Noncoherent Coherent Low PRF Medium  PRFHigh PRFFMCW ("Pulse doppler") CW = continuous wave  FMCW = frequency modulated continuous wave  PRF = pulse repetition frequencyNote: MTI                Pulse Doppler      MTI = moving target indicator 10Plane Waves z1t2txE DIRECTION OF  PROPAGATIONoE oE−λ• Wave propagates in the z direction • Wavelength, λ • Radian frequency ω = 2π f  (rad/sec)  • Frequency, f(Hz) • Phase velocity in free space  is c (m/s) •x-polarized (direction of the  electric field vector) •Eo, maximum amplitude of  the waveElectric field vector 11Wavefronts and Rays • In the antenna far-field the waves are  spherical • Wavefronts at large distances are  locally plane • Wave propagation can be accurately  modeled with a locally plane wave approximation PLANE WAVE FRONTS RAYSLocal region in the far field of  the source can be approximated by a plane wave ANTENNARADIATION PATTERN DR2(2 / )RDλ > 12•If multiple signal sources of the sa me frequency are present, or multiple  paths exist between a radar and target , then the total signal at a location  is the sum (superposition principle).
-•The result is interference : constructive interference occurs if the waves  add; destructive interference occurs if the waves cancel.
-•Example: ground bounce multi-path can be misinterpreted as multiple  targets.Superposition of Waves th rh rdtdGrazing Angle,ψAirborne Radar Target 13•Polarization refers to the shape of the curve traced by the tip of the  electric field vector as a function  of time at a point in space.
-• Microwave systems are generally designed for linear or circular polarization.
- • Two orthogonal linearly polarized an tennas can be used to generate  circular polarization.Wave Polarization 1 2 3 4 5 6LINEAR  POLARIZATION ELECTRIC FIELD   VECTOR AT AN  INSTANT IN TIME ORTHOGANAL TRANSMITTING ANTENNAS ELECTRIC FIELDS HORIZONTAL, HVERTICAL, V HORIZONTAL ANTENNA RECEIVES ONLY  HORIZONTALLY POLARIZED RADIATION12 3 4CIRCULAR  POLARIZATION 14Antenna Parameters • Gain is the radiation intensity relative to a lossless isotropic reference.
-• Fundamental equation for gain: • In general, an increase in gain is accompanied by a decrease in  beamwidth, and is achieved by in creasing the antenna size relative  to the wavelength.
-• With regard to radar, high gain and narrow beams are desirable for  long detection and tracking ranges and accurate direction measurement.24/ , effective area   = aperture area  efficiency (0 1) /,  w a v e l e n g t he eGA AA A cfπλε εελ= = =≤ ≤ =Low gain                   High gain (Small in wavelengths)       (Large in wavelengths) ANTENNA DIRECTIONAL   RADIATION PATTERNAperture area 15•Half power beamwidth, HPBW (θB)  • Polarization • Sidelobe level  • Antenna noise temperature ( TA)  • Operating bandwidth  • Radar cross section and other signaturesAntenna Parameters 0MAXIMUM  SIDELOBE   LEVELPEAK GAINGAIN (dB)θsPATTERN ANGLEθSCAN  ANGLE HPBW3 dB 0MAXIMUM  SIDELOBE   LEVELPEAK GAINGAIN (dB)θsPATTERN ANGLEθSCAN  ANGLE HPBW3 dB Rectangular dB pattern plot G 0.5G G 0.5G Polar voltage pattern plot 16•Airborne applications:  > Size, weight, power consumption> Power handling> Location on platform and required field of view > Many systems operating over a wide frequency spectrum > Isolation and interference > Reliability and maintainability> Radomes (antenna enclosures or covers) • Accommodate as many systems as  possible to avoid operational  restrictions (multi-mission, multi-band, etc.) • Signatures must be controlled: ra dar cross section (RCS), infrared  (IR), acoustic, and visible (camouflage) • New antenna architectures and technologies > Conformal, integrated> Digital “smart” antennas with multiple beams> BroadbandRadar Antenna Tradeoffs 17Radar Range Equation • Quasi-monostatic 2 transmit power (W) received power (W) transmit antenna gain receive antenna gain radar cross section (RCS, m )  effective aperture area of receive antennat r t r erP P G G Aσ= = = = = =RTX PtGt RX PrGrσ Pr=PtGtσAer (4πR2)2=PtGtGrσλ2 (4π)3R4 18Minimum Detection Range • The minimum received power that the radar receiver can "sense"  is referred to a the minimum detectable signal (MDS) and is  denoted          .
-• Given the MDS, the maximum detection range can be obtained:   Smin RPr Pr∝1/R4 RmaxSmin Pr=Smin=PtGtGrσλ2 (4π)3R4⇒Rmax=PtGtGrσλ2 (4π)3Smin⎛  ⎝ ⎜ ⎞  ⎠ ⎟ 1/4 19Radar Block Diagram • This receiver is a superheterodyne receiver because of the intermediate    frequency (IF) amplifier.
-(Similar  to Figure 1.4 in Skolnik.) • Coherent radar uses the same local oscill ator reference for transmit and receive.
- 20Coordinate Systems • Radar coordinate systems spherical polar: ( r,θ,φ) azimuth/elevation: (Az,El)  or  • The radar is located at the origin of  the coordinate system; the Earth's surface lies in the  x-yplane.
-  • Azimuth (α) is generally measured  clockwise from a reference (like a  compass) but the spherical system  azimuth angle (φ )is measured  counterclockwise from the xaxis.
- Therefore(α,γ) α=360−φ γ=90−θCONSTANT   ELEVATION xyz θ φγZENITH HORIZON  P αrTarget  Constant El cut Constant Az cut  Radar 21Radar Display Types RANGE (TIME)RECEIVED POWERTARGET  RETURN AZIMUTH RANGE 0 -180 180TARGET  BLIP"A" DISPLAY "B" DISPLAY "C" DISPLAYPLAN POSITION  INDICATOR (PPI) AZIMUTHELEVATION 0 -180 180TARGET  BLIP 090RANGE  UNITS RADAR AT  CENTERAZIMUTH TARGET  BLIP 22Pulsed Waveform • In practice multiple pulses are transmitted to: 1.
-cover search patterns 2.
-track moving targets 3.
-integrate (sum) several target returns to improve detection •T h e  p u l s e  t r a i n is a common waveform TIME  τPoTppeak instantaneous power (W) pulse width (sec) 1/ ,  pulse repetition frequency (PRF, Hz) interpulse period (sec)   number of pulseso pp pP fT T N τ= = = = = 23Range Ambiguities • For convenience we omit the sinusoid al carrier when drawing the pulse  train • When multiple pulses are transmitted  there is the possibility of a range  ambiguity .
-• To determine the range unambiguously require s that              .
- The  unambiguous range is TIME τPoTp TIME TRANSMITTED  PULSE 1TRANSMITTED  PULSE 2TARGET   RETURN TR1TR2 Tp≥2R c Ru=cTp 2=c 2fp 24Range Resolution • Two targets are resolved if their returns do not overlap.
- The range  resolution corresponding to a pulse width τ is                                      .
-∆R=R2−R1=cτ/2 cτ/2 cτcτ/2 TIME STEP 1 TIME STEP 2 TIME STEP 3 TIME STEP 4to to+τ/2 to+τ to+3τ/2R1 R2R1 R1R1R2 R2 R2TARGET 25Range Gates • Typical pulse train and range gates • Analog implementation of range gates     L123 M   L123 M  L123 M  L123 M  LDWELL TIME =N/PRF M  RANGE GATESt TRANSMIT PULSES RECEIVER.
-  M   M.....
-.....
-  M  M.....
-......
-TO SIGNAL  PROCESSOROUTPUTS ARE CALLED   "RANGE BINS" • Gates are opened and closed sequentially  • The time each gate is closed corresponds to          a range increment  • Gates must cover the entire interpulse period          or the ranges of interest  • For tracking a target a single gate can remain          closed until the target leaves the bin 26Clutter and Interference TX RXTARGET GROUND MULTI PATHDIRECT PATH CLUTTERINTERFERENCE ANTENNA  MAIN LOBE GROUNDSIDELOBE CLUTTER  IN RANGE GATERANGE GATE SPHERICAL WAVEFRONT  (IN ANTENNA FAR FIELD) TARGET RAIN (MAINBEAM CLUTTER) GROUND (SIDELOBE CLUTTER)The point target  approximation is good when the target extent  << ∆ R 27Thermal Noise • In practice the received signal is "c orrupted" (distorted from the ideal  shape and amplitude) by thermal no ise, interference and clutter.
-• Typical return trace appears as follows: • Threshold detection is commonly used.
- If the re turn is greater than the  detection threshold a target is declared.
- Ais a false alarm : the noise is  greater than the threshold le vel but there is no target.
- Bis a miss : a  target is present but the return is not detected.TARGET RETURNS TIMERECEIVED POWERRANDOM  NOISE DETECTION  THRESHOLD  (RELATED TO S        )minA B 28Thermal Noise Power • Consider a receiver at the standard temperature , Todegrees Kelvin (K).
-  Over a range of frequencies of bandwidth Bn(Hz) the available noise  power is  where                              (Joules/K) is Boltzman's constant.
-• Other radar components will also contribute noise (antenna, mixer,  cables, etc.).
- We define a system noise temperature Ts, in which case  the available noise power is No=kToBn 231.38 10Bk−=× No=kTsBn TIME OR FREQUENCYNOISE  POWER 29Signal-to-Noise Ratio (SNR)  • Considering the presence of noise, the important parameter for detection is  the signal-to-noise ratio (SNR) • Factors have been added for processing gain Gpand loss L • Most radars are designed so that  • At this point we will cons ider only two noise sources: 1.
-background noise co llected by the antenna (TA) 2.
-total effect of all other system components (To, system effective  noise temperature)2 34SNR (4 ) Tttr p r o BsnPGG G L P N RkBσλ π== Ts=TA+Te1/nBτ≈ 30Integration of Pulses • Noncoherent integration (postdetection integration ): performed after the envelope  detector.
- The magnitudes of the returns from all pulses are added.
-SNR increases approximately as        .
-• Coherent integration (predetection integration ): performed before the  envelope detector (phase information must be available).
- Coherent pulses must be transmitted.
-The SNR increases as N.
-• The last trace shows a noncoherent integrated signal.
-• Integration improvement an example of  processing gain .
-N From Byron Edde, Radar: Principles, Technology,  Applications , Prentice-Hall 31Dwell Time HALF POWER  ANGLE HPBW ...MAXIMUM  VALUE OF   GAINANTENNA POWER  PATTERN (POLAR PLOT) BθDB /λ θ≈• Simple antenna model: constant gain  inside the half power beamwidth (HPBW), zero outside.
- If the aperture has a diameter D with uniform  illumination                 .
-• The time that the target is  in the beam (dwell time , look time , or time on  target ) is tot • The beam scan rate is ωsin revolutions per minute or                  in degrees  per second.
-• The number of pulses  that will hit the target in this time iss B tθ θ& =ot ss dtdθ θ&= p B ft not= 32Doppler Shift • Targets in motion relative to the  radar cause the return signal frequency to be shifted.
-• A Doppler shift only occurs when  the relative velocity vector has a radial component.
- In general there will be both radial and tangential components to the velocity•• •123 vr  wave fronts expanded1 2 4 3 4  wave fronts compressed1 2 4 3 4 WAVE FRONT  EMITTED AT  POSITION 1WAVE FRONT  EMITTED AT  POSITION 2 R decreasing ⇒dR dt<0⇒fd>0 (closing target) R increasing ⇒dR dt>0⇒fd<0 (receeding target)  r v t   r v r  r v  • R2/drfvλ =− 33Doppler Filter Banks • The radar’s operating band is divided into narrow sub-bands.
- Ideally there  should be no overlap in sub-ba nd frequency characteristics.
-• The noise bandwidth of the Doppler filte rs is small compared to that of the  radar’s total bandwidth, which improves the SNR.
-  • Velocity estimates can be made by mon itoring the power out of each filter.
- • If a signal is present in a filter, the target's velocity range is known.
-fcf fc+fdAMP FREQUENCY  CHARACTERISTICNARROWBAND  DOPPLER FILTERS CROSSOVER  LEVELdB SCALE 34Velocity Ambiguities ω ω ωcωc+ωdSpectrum of doppler  shifted CW signalCoherent pulse train spectrum  (fixed target -- no doppler)ωc ωc+ωdω ωcCENTRAL  LOBE  FILTERfdobserved=2vrλmod(PRF) fd=nPRF +fdapparentExpanded central lobe region with target doppler shift DOPPLER  SHIFTED  TARGET  RETURNS•T h e  s p e c t r u m is the Fourier transform of the pulse train waveform.
-1/PRF 1/fp 35Low, High, Medium PRF • If fdis increased the true target Dopple r shifted return moves out of the  passband and a lower sideband lobe ente rs.
- Thus the Doppler measurement is ambiguous.
-• PRF determines Doppler and range ambiguities: PRF RANGE DOPPLER High Ambiguous Unambiguous Medium Ambiguous Ambiguous Low Unambiguous Ambiguous ω ωc+ωd ωcAPPARENT  DOPPLER  SHIFTACTUAL  DOPPLER  SHIFTfdmax=±fp/2 vu=λfdmax/2 =±λfp/4 ∆vu=λfp/2 36Track Versus Search • Search radars > Long, medium, short ra nges (20 km to 2000 km) > High power density on the target: high peak power, long pulses, long  pulse trains, high antenna gain > Low PRFs, large range bins > Search options: rapid search rate with narrow beams or slower search  rate with wide beams • Tracking radar  > Accurate angle and range measurement required> Minimize time on target for rapid processing> Special tracking techniques: monopu lse, conical scan, beam switching SUM BEAM, ΣDIFFERENCE BEAM, ∆ SIGNAL ANGLE  OF ARRIVALPOINTING  ERROR SUM BEAM, ΣDIFFERENCE BEAM, ∆ SIGNAL ANGLE  OF ARRIVALPOINTING  ERRORMonopulse Technique 37 Antenna Patterns • Fan beam for 2-d search • Pencil beam for tracking for 3-d search 38Attack Approach • A network of radars are arranged to  provide continuous coverage of a  ground target.
-• Conventional aircraft cannot penetr ate the radar network without being  detected.
-GROUND TARGET ATTACK  APPROACHFORWARD EDGE OF   BATTLE AREA (FEBA)Rmax RADAR DETECTION RANGE, R max 39Radar Jamming • The barrage jammer floods the radar with noise and therefore decreases  the SNR.
-• The radar knows it is being jammed.
-GROUND TARGET AIR  DEFENSE  RADAR ATTACK APPROACH STANDOFF  JAMMER RACETRACK  FLIGHT PATTERN 40Low Observability GROUND TARGET AIR  DEFENSE  RADAR ATTACK APPROACH• Detection range depends on RCS,                   , and therefore RCS  reduction can be used to open holes in a radar network.
-• There are cost and performance limitations to RCS reduction.
-  Rmax∝σ4 41Radar Cross Section (RCS) • Typical values: • Fundamental equation for the RCS of a “electrically large” perfectly reflecting surface of area Awhen viewed directly by  the radar • Expressed in decibels relative to a square meter (dBsm): -40   -20 0 20 40 dBsmm2 0.0001 0.01 1 100 10000  INSECTS BIRDS CREEPING  &  TRAVELING  WAVESFIGHTER  AIRCRAFTBOMBER  AIRCRAFTSHIPS 2 24Aπ σλ≈ σdBsm =10log 10(σ) 42RCS Target Types • A few dominant scatterers (e.g., hu ll) and many smaller independent  scatterers • S-Band (2800 MHz), horizontal polarization, maximum RCS = 70  dBsm  43RCS Target Types • Many independent random scatte rers, none of which dominate  (e.g., large aircraft) From Skolnik • S-Band (3000 MHz)• Horizontal Polarization • Maximum RCS = 40 dBsm 44Scattering Mechanisms Double diffraction from sharp corners Diffraction from rounded objectSPECULAR DUCTING,  WAVEGUIDE  MODESMULTIPLE REFLECTIONS EDGE DIFFRACTIONSURFACE  WAVES CREEPING  WAVES• Scattering mechanisms are used to describe wave behavior.
-  Especially important at radar frequencies:specular = "mirror like" reflections that satisfy Snell's law surface waves = the body surface acts like a transmission line  diffraction = scattered waves that origin ate at abrupt discontinuities 45Example: Dipole and Box •f =1 GHz, −100 dBm (blue) to −35 dBm (red), 0 dBm Tx power, 1 m metal cube ANTENNABOX Reflected Field  OnlyREFLECTEDIncident + Reflected Reflected + Diffracted Incident + Reflected  + Diffracted ANTENNABOX Reflected Field  OnlyREFLECTEDIncident + Reflected Reflected + Diffracted Incident + Reflected  + Diffracted 46 RCS Reduction Methods • Shaping (tilt surfaces, align edges, no corner reflectors) • Materials (apply radar absorbing layers)• Cancellation (introduce secondary scatterers to cancel the “bare” target) From Fuhs 47AN/TPQ-37 Firefinder • Locates mortars, artillery, ro cket launchers and missiles  • Locates 10 weapons simultaneously  • Locates targets on first round  • Adjusts friendly fire   • Interfaces with tactical fire • Predicts impact of hostile projectiles • Maximum range: 50 km  • Effective range:  Artillery: 30 km, Rockets: 50 km • Azimuth sector: 90° • Frequency: S-band, 15 frequencies • Transmitted power: 120 kW• Permanent storage for 99 targets; field exercise mode; digital data  interface  48SCR-270 Air Search Radar   49SCR-270-D-RADAR  • Detected Japanese aircraft approaching Pearl Harbor • Performance characteristics: SCR-270-D Radio Set Perfor mance Characteristics (Source: SCR-270-D Radio Set Te chnical Manual, 1942 ) Maximum Detection Range .
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-250 miles Maximum Detection altitude .
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-50,000 ft Range Accuracy   .
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-4 miles* Azimuth Accuracy .
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-2 degrees Operating Frequency  .
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-104-112 MHz Antenna  .
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-D irective array ** Peak Power Output  .
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
- 100 kw Pulse Width   .
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
- 15-40 microsecond Pulse Repetition Rate  .
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-621 cps Antenna Rotation  .
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-up to 1 rpm, max Transmitter Tubes .
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-2 tridoes*** Receiver  .
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-superheterodyne Transmit/Receive/Device .
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-spark gap *      Range accuracy wit hout calibration of range dial.
-**    Consisting of dipoles, 8 high and 4 wide.
-***  Consisting of a push-pull, self excited oscillator, using a tuned cathode circuit. 50AN/SPS-40 Surface Search  • UHF long range two-dimens ional surface search radar 51AN/SPS-40 Surface Search  • UHF long range two-dimensional  surface search radar.
- Operates in short and long range modes   • Range  Maximum: 200 nmMinimum:  2 nm • Target RCS: 1 sq.
-m.• Transmitter Frequency:  402.5 to 447.5 MHz • Pulse width: 60 s• Peak power: 200 to 255 kW• Staggered PRF: 257 Hz (ave)• Non-staggered PRF: 300 Hz•A n t e n n a Parabolic reflectorGain: 21 dBHorizontal SLL:  27 dBVertical SLL: 19 dB HPBW: 11 by 19 degrees • Receiver 10 channels spaced 5 MHzNoise figure: 4.2 IF frequency: 30  MHzPCR: 60:1Correlation gain: 18 dB MDS: −115 dBm MTI improvement factor: 54 dB 
+Prof. David Jenn Department of Electrical & Computer Engineering 833 Dyer Road, Room 437 Monterey, CA  93943 (831) 656-2254 jenn@nps.navy.mil , jenn@nps.edu http://www.nps.navy.mil/faculty/jennRadar Fundamentals. 2Overview • Introduction • Radar functions• Antennas basics• Radar range equation• System parameters• Electromagnetic waves• Scattering mechanisms• Radar cross section and stealth• Sample radar systems. 
+3•Bistatic : the transmit and receive antennas  are at different locations as  viewed from the target (e.g., ground transmitter and airborne receiver). • Monostatic : the transmitter and receiver are colocated as viewed from  the target (i.e., the same antenna is used to transmit and receive). • Quasi-monostatic : the transmit  and receive antennas are slightly  separated but still appear to  be at the same location as  viewed from the target  (e.g., separate transmit  and receive antennas on  the same aircraft).Radio Detection and Ranging   TARGET TRANSMITTER  (TX)RECEIVER  (RX) INCIDENT  WAVE FRONTSSCATTERED  WAVE FRONTS RtRrθ. 
+4Radar Functions • Normal radar functions: 1. range (from pulse delay) 2. velocity (from Doppler frequency shift) 3. 
+angular direction (from antenna pointing) • Signature analysis and inverse scattering: 4. target size (from magnitude of return)5. target shape and components (return as a function of  direction) 6. 
+moving parts (modulation of the return) 7. material composition • The complexity (cost & size) of th e radar increases with the extent  of the functions that the radar performs.. 5Electromagnetic Spectrum Wavelength ( λ, in a vacuum and approximately in air) 10-3 10-210-1 11 0-510-410-3 10-210-1 11 01102 103104 105 109108107106105 104103 102 10 1 100 10 1 100 10 1 Frequency (f, cps, Hz)RadioMicrons Meters Giga Mega KiloMicrowave Millimeter Infrared Ultraviolet Visible Optical 300 MHz 300 GHzEHF SHF UHF VHF HF MF LF Typical radar  frequencies. 
+6Radar Bands and Usage 8 (Similar to Table 1.1 and Section 1.5 in Skolnik). 7Time Delay Ranging • Target range is the fundamental qu antity measured by most radars.   It is obtained by recording the round trip travel time of a pulse, TR,  and computing range from: where  c= 3x108m/s is the velocity of light in free space. 
+TIME TRAMPLITUDETRANSMITTED  PULSE RECEIVED   PULSEBistatic:  tr RRR c T+ = Monostatic:  ( )2RtrcTR RRR = ==. 8Classification by Function Radars Civilian Military Weather Avoidance Navagation & Tracking Search & Surveillance Space Flight SoundingHigh Resolution  Imaging & Mapping Proximity Fuzes Countermeasures. 9Classification by Waveform Radars CW Pulsed Noncoherent Coherent Low PRF Medium  PRFHigh PRFFMCW ("Pulse doppler") CW = continuous wave  FMCW = frequency modulated continuous wave  PRF = pulse repetition frequencyNote: MTI                Pulse Doppler      MTI = moving target indicator. 
+10Plane Waves z1t2txE DIRECTION OF  PROPAGATIONoE oE−λ• Wave propagates in the z direction • Wavelength, λ • Radian frequency ω = 2π f  (rad/sec)  • Frequency, f(Hz) • Phase velocity in free space  is c (m/s) •x-polarized (direction of the  electric field vector) •Eo, maximum amplitude of  the waveElectric field vector. 11Wavefronts and Rays • In the antenna far-field the waves are  spherical • Wavefronts at large distances are  locally plane • Wave propagation can be accurately  modeled with a locally plane wave approximation PLANE WAVE FRONTS RAYSLocal region in the far field of  the source can be approximated by a plane wave ANTENNARADIATION PATTERN DR2(2 / )RDλ >. 12•If multiple signal sources of the sa me frequency are present, or multiple  paths exist between a radar and target , then the total signal at a location  is the sum (superposition principle). 
+•The result is interference : constructive interference occurs if the waves  add; destructive interference occurs if the waves cancel. •Example: ground bounce multi-path can be misinterpreted as multiple  targets.Superposition of Waves th rh rdtdGrazing Angle,ψAirborne Radar Target. 13•Polarization refers to the shape of the curve traced by the tip of the  electric field vector as a function  of time at a point in space. 
+• Microwave systems are generally designed for linear or circular polarization.  • Two orthogonal linearly polarized an tennas can be used to generate  circular polarization.Wave Polarization 1 2 3 4 5 6LINEAR  POLARIZATION ELECTRIC FIELD   VECTOR AT AN  INSTANT IN TIME ORTHOGANAL TRANSMITTING ANTENNAS ELECTRIC FIELDS HORIZONTAL, HVERTICAL, V HORIZONTAL ANTENNA RECEIVES ONLY  HORIZONTALLY POLARIZED RADIATION12 3 4CIRCULAR  POLARIZATION. 14Antenna Parameters • Gain is the radiation intensity relative to a lossless isotropic reference. 
+• Fundamental equation for gain: • In general, an increase in gain is accompanied by a decrease in  beamwidth, and is achieved by in creasing the antenna size relative  to the wavelength. • With regard to radar, high gain and narrow beams are desirable for  long detection and tracking ranges and accurate direction measurement.24/ , effective area   = aperture area  efficiency (0 1) /,  w a v e l e n g t he eGA AA A cfπλε εελ= = =≤ ≤ =Low gain                   High gain (Small in wavelengths)       (Large in wavelengths) ANTENNA DIRECTIONAL   RADIATION PATTERNAperture area. 15•Half power beamwidth, HPBW (θB)  • Polarization • Sidelobe level  • Antenna noise temperature ( TA)  • Operating bandwidth  • Radar cross section and other signaturesAntenna Parameters 0MAXIMUM  SIDELOBE   LEVELPEAK GAINGAIN (dB)θsPATTERN ANGLEθSCAN  ANGLE HPBW3 dB 0MAXIMUM  SIDELOBE   LEVELPEAK GAINGAIN (dB)θsPATTERN ANGLEθSCAN  ANGLE HPBW3 dB Rectangular dB pattern plot G 0.5G G 0.5G Polar voltage pattern plot. 
+16•Airborne applications:  > Size, weight, power consumption> Power handling> Location on platform and required field of view > Many systems operating over a wide frequency spectrum > Isolation and interference > Reliability and maintainability> Radomes (antenna enclosures or covers) • Accommodate as many systems as  possible to avoid operational  restrictions (multi-mission, multi-band, etc.) • Signatures must be controlled: ra dar cross section (RCS), infrared  (IR), acoustic, and visible (camouflage) • New antenna architectures and technologies > Conformal, integrated> Digital “smart” antennas with multiple beams> BroadbandRadar Antenna Tradeoffs. 17Radar Range Equation • Quasi-monostatic 2 transmit power (W) received power (W) transmit antenna gain receive antenna gain radar cross section (RCS, m )  effective aperture area of receive antennat r t r erP P G G Aσ= = = = = =RTX PtGt RX PrGrσ Pr=PtGtσAer (4πR2)2=PtGtGrσλ2 (4π)3R4. 18Minimum Detection Range • The minimum received power that the radar receiver can "sense"  is referred to a the minimum detectable signal (MDS) and is  denoted          . 
+• Given the MDS, the maximum detection range can be obtained:   Smin RPr Pr∝1/R4 RmaxSmin Pr=Smin=PtGtGrσλ2 (4π)3R4⇒Rmax=PtGtGrσλ2 (4π)3Smin⎛  ⎝ ⎜ ⎞  ⎠ ⎟ 1/4. 19Radar Block Diagram • This receiver is a superheterodyne receiver because of the intermediate    frequency (IF) amplifier. (Similar  to Figure 1.4 in Skolnik.) • Coherent radar uses the same local oscill ator reference for transmit and receive. 
+. 20Coordinate Systems • Radar coordinate systems spherical polar: ( r,θ,φ) azimuth/elevation: (Az,El)  or  • The radar is located at the origin of  the coordinate system; the Earth's surface lies in the  x-yplane.   • Azimuth (α) is generally measured  clockwise from a reference (like a  compass) but the spherical system  azimuth angle (φ )is measured  counterclockwise from the xaxis. 
+ Therefore(α,γ) α=360−φ γ=90−θCONSTANT   ELEVATION xyz θ φγZENITH HORIZON  P αrTarget  Constant El cut Constant Az cut  Radar. 21Radar Display Types RANGE (TIME)RECEIVED POWERTARGET  RETURN AZIMUTH RANGE 0 -180 180TARGET  BLIP"A" DISPLAY "B" DISPLAY "C" DISPLAYPLAN POSITION  INDICATOR (PPI) AZIMUTHELEVATION 0 -180 180TARGET  BLIP 090RANGE  UNITS RADAR AT  CENTERAZIMUTH TARGET  BLIP. 22Pulsed Waveform • In practice multiple pulses are transmitted to: 1. 
+cover search patterns 2. track moving targets 3. integrate (sum) several target returns to improve detection •T h e  p u l s e  t r a i n is a common waveform TIME  τPoTppeak instantaneous power (W) pulse width (sec) 1/ ,  pulse repetition frequency (PRF, Hz) interpulse period (sec)   number of pulseso pp pP fT T N τ= = = = =. 
+23Range Ambiguities • For convenience we omit the sinusoid al carrier when drawing the pulse  train • When multiple pulses are transmitted  there is the possibility of a range  ambiguity . • To determine the range unambiguously require s that              .  The  unambiguous range is TIME τPoTp TIME TRANSMITTED  PULSE 1TRANSMITTED  PULSE 2TARGET   RETURN TR1TR2 Tp≥2R c Ru=cTp 2=c 2fp. 
+24Range Resolution • Two targets are resolved if their returns do not overlap.  The range  resolution corresponding to a pulse width τ is                                      . ∆R=R2−R1=cτ/2 cτ/2 cτcτ/2 TIME STEP 1 TIME STEP 2 TIME STEP 3 TIME STEP 4to to+τ/2 to+τ to+3τ/2R1 R2R1 R1R1R2 R2 R2TARGET. 
+25Range Gates • Typical pulse train and range gates • Analog implementation of range gates     L123 M   L123 M  L123 M  L123 M  LDWELL TIME =N/PRF M  RANGE GATESt TRANSMIT PULSES RECEIVER.   M   M..... ..... 
+  M  M..... ...... TO SIGNAL  PROCESSOROUTPUTS ARE CALLED   "RANGE BINS" • Gates are opened and closed sequentially  • The time each gate is closed corresponds to          a range increment  • Gates must cover the entire interpulse period          or the ranges of interest  • For tracking a target a single gate can remain          closed until the target leaves the bin. 
+26Clutter and Interference TX RXTARGET GROUND MULTI PATHDIRECT PATH CLUTTERINTERFERENCE ANTENNA  MAIN LOBE GROUNDSIDELOBE CLUTTER  IN RANGE GATERANGE GATE SPHERICAL WAVEFRONT  (IN ANTENNA FAR FIELD) TARGET RAIN (MAINBEAM CLUTTER) GROUND (SIDELOBE CLUTTER)The point target  approximation is good when the target extent  << ∆ R. 27Thermal Noise • In practice the received signal is "c orrupted" (distorted from the ideal  shape and amplitude) by thermal no ise, interference and clutter. • Typical return trace appears as follows: • Threshold detection is commonly used. 
+ If the re turn is greater than the  detection threshold a target is declared.  Ais a false alarm : the noise is  greater than the threshold le vel but there is no target.  Bis a miss : a  target is present but the return is not detected.TARGET RETURNS TIMERECEIVED POWERRANDOM  NOISE DETECTION  THRESHOLD  (RELATED TO S        )minA B. 
+28Thermal Noise Power • Consider a receiver at the standard temperature , Todegrees Kelvin (K).   Over a range of frequencies of bandwidth Bn(Hz) the available noise  power is  where                              (Joules/K) is Boltzman's constant. • Other radar components will also contribute noise (antenna, mixer,  cables, etc.). 
+ We define a system noise temperature Ts, in which case  the available noise power is No=kToBn 231.38 10Bk−=× No=kTsBn TIME OR FREQUENCYNOISE  POWER. 29Signal-to-Noise Ratio (SNR)  • Considering the presence of noise, the important parameter for detection is  the signal-to-noise ratio (SNR) • Factors have been added for processing gain Gpand loss L • Most radars are designed so that  • At this point we will cons ider only two noise sources: 1. background noise co llected by the antenna (TA) 2. 
+total effect of all other system components (To, system effective  noise temperature)2 34SNR (4 ) Tttr p r o BsnPGG G L P N RkBσλ π== Ts=TA+Te1/nBτ≈. 30Integration of Pulses • Noncoherent integration (postdetection integration ): performed after the envelope  detector.  The magnitudes of the returns from all pulses are added. 
+SNR increases approximately as        . • Coherent integration (predetection integration ): performed before the  envelope detector (phase information must be available).  Coherent pulses must be transmitted. 
+The SNR increases as N. • The last trace shows a noncoherent integrated signal. • Integration improvement an example of  processing gain . 
+N From Byron Edde, Radar: Principles, Technology,  Applications , Prentice-Hall. 31Dwell Time HALF POWER  ANGLE HPBW ...MAXIMUM  VALUE OF   GAINANTENNA POWER  PATTERN (POLAR PLOT) BθDB /λ θ≈• Simple antenna model: constant gain  inside the half power beamwidth (HPBW), zero outside.  If the aperture has a diameter D with uniform  illumination                 . 
+• The time that the target is  in the beam (dwell time , look time , or time on  target ) is tot • The beam scan rate is ωsin revolutions per minute or                  in degrees  per second. • The number of pulses  that will hit the target in this time iss B tθ θ& =ot ss dtdθ θ&= p B ft not=. 32Doppler Shift • Targets in motion relative to the  radar cause the return signal frequency to be shifted. 
+• A Doppler shift only occurs when  the relative velocity vector has a radial component.  In general there will be both radial and tangential components to the velocity•• •123 vr  wave fronts expanded1 2 4 3 4  wave fronts compressed1 2 4 3 4 WAVE FRONT  EMITTED AT  POSITION 1WAVE FRONT  EMITTED AT  POSITION 2 R decreasing ⇒dR dt<0⇒fd>0 (closing target) R increasing ⇒dR dt>0⇒fd<0 (receeding target)  r v t   r v r  r v  • R2/drfvλ =−. 33Doppler Filter Banks • The radar’s operating band is divided into narrow sub-bands. 
+ Ideally there  should be no overlap in sub-ba nd frequency characteristics. • The noise bandwidth of the Doppler filte rs is small compared to that of the  radar’s total bandwidth, which improves the SNR.   • Velocity estimates can be made by mon itoring the power out of each filter. 
+ • If a signal is present in a filter, the target's velocity range is known. fcf fc+fdAMP FREQUENCY  CHARACTERISTICNARROWBAND  DOPPLER FILTERS CROSSOVER  LEVELdB SCALE. 34Velocity Ambiguities ω ω ωcωc+ωdSpectrum of doppler  shifted CW signalCoherent pulse train spectrum  (fixed target -- no doppler)ωc ωc+ωdω ωcCENTRAL  LOBE  FILTERfdobserved=2vrλmod(PRF) fd=nPRF +fdapparentExpanded central lobe region with target doppler shift DOPPLER  SHIFTED  TARGET  RETURNS•T h e  s p e c t r u m is the Fourier transform of the pulse train waveform. 
+1/PRF 1/fp. 35Low, High, Medium PRF • If fdis increased the true target Dopple r shifted return moves out of the  passband and a lower sideband lobe ente rs.  Thus the Doppler measurement is ambiguous. 
+• PRF determines Doppler and range ambiguities: PRF RANGE DOPPLER High Ambiguous Unambiguous Medium Ambiguous Ambiguous Low Unambiguous Ambiguous ω ωc+ωd ωcAPPARENT  DOPPLER  SHIFTACTUAL  DOPPLER  SHIFTfdmax=±fp/2 vu=λfdmax/2 =±λfp/4 ∆vu=λfp/2. 36Track Versus Search • Search radars > Long, medium, short ra nges (20 km to 2000 km) > High power density on the target: high peak power, long pulses, long  pulse trains, high antenna gain > Low PRFs, large range bins > Search options: rapid search rate with narrow beams or slower search  rate with wide beams • Tracking radar  > Accurate angle and range measurement required> Minimize time on target for rapid processing> Special tracking techniques: monopu lse, conical scan, beam switching SUM BEAM, ΣDIFFERENCE BEAM, ∆ SIGNAL ANGLE  OF ARRIVALPOINTING  ERROR SUM BEAM, ΣDIFFERENCE BEAM, ∆ SIGNAL ANGLE  OF ARRIVALPOINTING  ERRORMonopulse Technique. 37 Antenna Patterns • Fan beam for 2-d search • Pencil beam for tracking for 3-d search. 
+38Attack Approach • A network of radars are arranged to  provide continuous coverage of a  ground target. • Conventional aircraft cannot penetr ate the radar network without being  detected. GROUND TARGET ATTACK  APPROACHFORWARD EDGE OF   BATTLE AREA (FEBA)Rmax RADAR DETECTION RANGE, R max. 
+39Radar Jamming • The barrage jammer floods the radar with noise and therefore decreases  the SNR. • The radar knows it is being jammed. GROUND TARGET AIR  DEFENSE  RADAR ATTACK APPROACH STANDOFF  JAMMER RACETRACK  FLIGHT PATTERN. 
+40Low Observability GROUND TARGET AIR  DEFENSE  RADAR ATTACK APPROACH• Detection range depends on RCS,                   , and therefore RCS  reduction can be used to open holes in a radar network. • There are cost and performance limitations to RCS reduction.   Rmax∝σ4. 
+41Radar Cross Section (RCS) • Typical values: • Fundamental equation for the RCS of a “electrically large” perfectly reflecting surface of area Awhen viewed directly by  the radar • Expressed in decibels relative to a square meter (dBsm): -40   -20 0 20 40 dBsmm2 0.0001 0.01 1 100 10000  INSECTS BIRDS CREEPING  &  TRAVELING  WAVESFIGHTER  AIRCRAFTBOMBER  AIRCRAFTSHIPS 2 24Aπ σλ≈ σdBsm =10log 10(σ). 42RCS Target Types • A few dominant scatterers (e.g., hu ll) and many smaller independent  scatterers • S-Band (2800 MHz), horizontal polarization, maximum RCS = 70  dBsm . 43RCS Target Types • Many independent random scatte rers, none of which dominate  (e.g., large aircraft) From Skolnik • S-Band (3000 MHz)• Horizontal Polarization • Maximum RCS = 40 dBsm. 
+44Scattering Mechanisms Double diffraction from sharp corners Diffraction from rounded objectSPECULAR DUCTING,  WAVEGUIDE  MODESMULTIPLE REFLECTIONS EDGE DIFFRACTIONSURFACE  WAVES CREEPING  WAVES• Scattering mechanisms are used to describe wave behavior.   Especially important at radar frequencies:specular = "mirror like" reflections that satisfy Snell's law surface waves = the body surface acts like a transmission line  diffraction = scattered waves that origin ate at abrupt discontinuities. 45Example: Dipole and Box •f =1 GHz, −100 dBm (blue) to −35 dBm (red), 0 dBm Tx power, 1 m metal cube ANTENNABOX Reflected Field  OnlyREFLECTEDIncident + Reflected Reflected + Diffracted Incident + Reflected  + Diffracted ANTENNABOX Reflected Field  OnlyREFLECTEDIncident + Reflected Reflected + Diffracted Incident + Reflected  + Diffracted. 
+46 RCS Reduction Methods • Shaping (tilt surfaces, align edges, no corner reflectors) • Materials (apply radar absorbing layers)• Cancellation (introduce secondary scatterers to cancel the “bare” target) From Fuhs. 47AN/TPQ-37 Firefinder • Locates mortars, artillery, ro cket launchers and missiles  • Locates 10 weapons simultaneously  • Locates targets on first round  • Adjusts friendly fire   • Interfaces with tactical fire • Predicts impact of hostile projectiles • Maximum range: 50 km  • Effective range:  Artillery: 30 km, Rockets: 50 km • Azimuth sector: 90° • Frequency: S-band, 15 frequencies • Transmitted power: 120 kW• Permanent storage for 99 targets; field exercise mode; digital data  interface . 48SCR-270 Air Search Radar  . 
+49SCR-270-D-RADAR  • Detected Japanese aircraft approaching Pearl Harbor • Performance characteristics: SCR-270-D Radio Set Perfor mance Characteristics (Source: SCR-270-D Radio Set Te chnical Manual, 1942 ) Maximum Detection Range . . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. 250 miles Maximum Detection altitude . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. 50,000 ft Range Accuracy   . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. 4 miles* Azimuth Accuracy . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+2 degrees Operating Frequency  . . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+104-112 MHz Antenna  . . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. D irective array ** Peak Power Output  . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. .  100 kw Pulse Width   . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. .  15-40 microsecond Pulse Repetition Rate  . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. 621 cps Antenna Rotation  . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+up to 1 rpm, max Transmitter Tubes . . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . 2 tridoes*** Receiver  . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . superheterodyne Transmit/Receive/Device . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. spark gap *      Range accuracy wit hout calibration of range dial. **    Consisting of dipoles, 8 high and 4 wide. 
+***  Consisting of a push-pull, self excited oscillator, using a tuned cathode circuit.. 50AN/SPS-40 Surface Search  • UHF long range two-dimens ional surface search radar. 51AN/SPS-40 Surface Search  • UHF long range two-dimensional  surface search radar. 
+ Operates in short and long range modes   • Range  Maximum: 200 nmMinimum:  2 nm • Target RCS: 1 sq. m.• Transmitter Frequency:  402.5 to 447.5 MHz • Pulse width: 60 s• Peak power: 200 to 255 kW• Staggered PRF: 257 Hz (ave)• Non-staggered PRF: 300 Hz•A n t e n n a Parabolic reflectorGain: 21 dBHorizontal SLL:  27 dBVertical SLL: 19 dB HPBW: 11 by 19 degrees • Receiver 10 channels spaced 5 MHzNoise figure: 4.2 IF frequency: 30  MHzPCR: 60:1Correlation gain: 18 dB MDS: −115 dBm MTI improvement factor: 54 dB. 
