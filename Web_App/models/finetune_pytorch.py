@@ -214,19 +214,20 @@ def main():
         )
 
     if data_args.block_size <= 0:
-        data_args.block_size = tokenizer.max_len
+        data_args.block_size = tokenizer.model_max_length
         # Our input block size will be the max possible for the model
     else:
-        data_args.block_size = min(data_args.block_size, tokenizer.max_len)
+        data_args.block_size = min(data_args.block_size, tokenizer.model_max_length)
 
     # Get datasets
 
     train_dataset = get_dataset(data_args, tokenizer=tokenizer) if training_args.do_train else None
+    # print("hi")
     eval_dataset = get_dataset(data_args, tokenizer=tokenizer, evaluate=True) if training_args.do_eval else None
     data_collator = DataCollatorForLanguageModeling(
         tokenizer=tokenizer, mlm=data_args.mlm, mlm_probability=data_args.mlm_probability
     )
-
+    print("train dataset:", train_dataset, "length:", len(train_dataset))
     # Initialize our Trainer
     trainer = Trainer(
         model=model,
@@ -234,7 +235,7 @@ def main():
         data_collator=data_collator,
         train_dataset=train_dataset,
         eval_dataset=eval_dataset,
-        prediction_loss_only=True,
+        # prediction_loss_only=True,
     )
 
     # Training
