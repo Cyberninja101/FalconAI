@@ -9,7 +9,7 @@ import sys
 # print(os.sep.join([os.getcwd(),"Web_App", "models"]))
 sys.path.insert(1, os.sep.join([os.getcwd(),"Web_App", "models"])) # to get path of model functions
 
-from flan_model import google_flan
+from models.flan_model import google_flan
 
 app = Flask(__name__)
 
