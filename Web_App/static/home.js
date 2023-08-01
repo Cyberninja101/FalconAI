@@ -11,13 +11,19 @@
 var form_entry = document.getElementById("entry");
 var chat_box = document.getElementById("chat_log");
 var button = document.getElementById("submit_button");
-var test_button = document.getElementById("test_but");
-var test = document.getElementById("test");
-var test2 = document.getElementById("test2");
 var count = 0;
+var checkbox = document.querySelector("input[name=color_mode]");
 // let date_time3 = date_time2.getTime();
 //false = user turn, true = machine turn
 var turn = Boolean(false);
+
+checkbox.addEventListener("change", function() {
+    if (this.checked) {
+        document.getElementById("pdf_upload").style.display = "flex";
+    } else {
+        document.getElementById("pdf_upload").style.display = "none";
+    }
+});
 
 // Require jQuery
 const scrollSmoothlyToBottom = (id) => {
