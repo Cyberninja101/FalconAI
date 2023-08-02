@@ -11,7 +11,10 @@ html, body {
     background: -moz-linear-gradient(135deg, hsla(234, 100%, 92%, 1) 0%, hsla(140, 100%, 91%, 1) 100%);
 
     background: -webkit-linear-gradient(135deg, hsla(234, 100%, 92%, 1) 0%, hsla(140, 100%, 91%, 1) 100%); */
-    background-color: #f8e8d9;
+    /* background-color: #f8e8d9; */
+
+    /* The light brown: */
+    background-color: #f7f7f7; 
 
     filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#D7DBFF", endColorstr="#D1FFE0", GradientType=1 );
 
@@ -52,8 +55,10 @@ body {
     width: 50vmax;
     height: 70vh;
     border-radius: 20px;
-    background-color: rgba(255, 255, 255, 0.9);
     
+    /* background-color: rgba(220, 227, 240, 0.9); */
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 15px rgb(233, 233, 233);
     /* scrollable */
     overflow-y: scroll;
     
@@ -76,8 +81,8 @@ body {
     margin-right: 12px;
     margin-left: 5px;
     font-size: 1.7rem;
-    /* background: #66b9f1; */
-    background: linear-gradient(135deg, hsla(234, 100%, 92%, 1) 0%, hsla(140, 100%, 91%, 1) 100%);
+    background: #66b9f1;
+    /* background: linear-gradient(135deg, hsla(234, 100%, 92%, 1) 0%, hsla(140, 100%, 91%, 1) 100%); */
     border: none;
     border-radius: 10px;
     outline: none;
@@ -124,7 +129,8 @@ form {
 
 
 #user_chat {
-    background-color: rgb(31, 127, 210);
+    background-color: rgb(151, 221, 174);
+    /* background-color: rgb(31, 127, 210); */
     width:fit-content;
     max-width: 53%;
     margin-left: auto;
@@ -139,7 +145,8 @@ form {
 }
 
 #ai_chat {
-    background-color: rgb(31, 210, 67);
+    background-color: rgb(171, 176, 221);
+    /* background-color: rgb(131, 131, 131); */
     width:fit-content;
     max-width: 53%;
     margin-right: auto;
@@ -303,7 +310,7 @@ label {
     display: none;
     background: #FF9800;
     border: none;
-    color: #fff;
+    color: #030303;
 }
 
 .btn-color-mode-switch input[type="checkbox"]{
@@ -339,6 +346,7 @@ label {
     content: attr(data-off);
     right: auto;
     left: 7vmax;
+    color: #030303;
 }
 
 .btn-color-mode-switch input[type="checkbox"]:checked + label.btn-color-mode-switch-inner{
