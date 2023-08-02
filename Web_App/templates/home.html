@@ -14,11 +14,12 @@
         <div class="header">
             FALCON Chatbot
         </div>
+        
         <div id="chat_log"></div>
         <div id="uploaded_files"><h2 style="text-decoration: underline;">Uploaded Files:</h2></div>
 
         <div class="btn-container">
-            <button class="new_chat_button" onClick="window.location.reload();">
+            <button class="new_chat_button" onClick="window.location.reload();" title="New Chat">
                 <img src="../static/newchat_restart_icon.png" alt="Image">
 
             </button>
@@ -26,7 +27,7 @@
                 <input type="checkbox" name="color_mode" id="color_mode" value="1">
                 <label for="color_mode" data-on="Document Mode" data-off="Normal Mode" class="btn-color-mode-switch-inner"></label>
             </label>
-            <button class="HMT_button">
+            <button class="HMT_button" title="Human Machine Teaming">
                 <img src="../static/HMT_robot_icon.png" alt="Image">
 
             </button>
@@ -36,10 +37,10 @@
         <div id="bottom_section">
             <div id="discount_form">
                 <input autofocus type="text" id="entry" name="entry" placeholder="Ask me anything" onkeypress="return enter_check(event);">
-                <button title="Send Messsage" type="submit" value="Submit" id="submit_button">></button>
+                <button title="Send Message" type="submit" value="Submit" id="submit_button">></button>
             </div>
             <form action="/upload_file" method = "post" enctype="multipart/form-data">
-                <input multiple type="file" name="context_file" accept=".pdf" id="pdf_upload" aria-invalid="false" onchange="this.form.submit()"> </button>
+                <input type="file" name="context_file" accept=".pdf" id="pdf_upload" aria-invalid="false" onchange="this.form.submit()"> </button>
             </form>
         </div>
         <script type = "text/javascript" src = "{{ url_for('static', filename = 'home.js') }}"></script>

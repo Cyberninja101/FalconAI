@@ -250,7 +250,7 @@ div.btn-container{
     padding-top: 1vh;
 }
 
-div.btn-container i{
+div.btn-container {
     display: inline-block;
     position: relative;
     top: -9px;
