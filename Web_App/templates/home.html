@@ -14,8 +14,8 @@
         <div class="header">
             FALCON Chatbot
         </div>
-        
         <div id="chat_log"></div>
+        <div id="uploaded_files"><h2 style="text-decoration: underline;">Uploaded Files:</h2></div>
 
         <div class="btn-container">
             <button class="new_chat_button" onClick="window.location.reload();">
@@ -36,10 +36,10 @@
         <div id="bottom_section">
             <div id="discount_form">
                 <input autofocus type="text" id="entry" name="entry" placeholder="Ask me anything" onkeypress="return enter_check(event);">
-                <button type="submit" value="Submit" id="submit_button">></button>
+                <button title="Send Messsage" type="submit" value="Submit" id="submit_button">></button>
             </div>
             <form action="/upload_file" method = "post" enctype="multipart/form-data">
-                <input type="file" name="context_file" accept=".pdf" id="pdf_upload" aria-invalid="false" onchange="this.form.submit()"> </button>
+                <input multiple type="file" name="context_file" accept=".pdf" id="pdf_upload" aria-invalid="false" onchange="this.form.submit()"> </button>
             </form>
         </div>
         <script type = "text/javascript" src = "{{ url_for('static', filename = 'home.js') }}"></script>

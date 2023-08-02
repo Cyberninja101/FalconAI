@@ -26,7 +26,7 @@ html, body {
 .header {
 
     outline: none;
-    /* background-color: rgb(153, 157, 176); */
+    /* background-color: rgb(42, 66, 173); */
     /* background-color: #a5be00; */
     
     text-align: center;
@@ -46,26 +46,35 @@ body {
     text-align: center;
 }
 
-
-
 #chat_log {
     display: block;
     margin-top: 20px;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 25%;
+    /* margin-right: 4vw; */
     padding-top: 0px;
     width: 50vmax;
     height: 70vh;
     border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
     
     /* background-color: rgba(220, 227, 240, 0.9); */
     background-color: rgb(255, 255, 255);
     box-shadow: 0 0 15px rgb(233, 233, 233);
     /* scrollable */
     overflow-y: scroll;
-    
+    float:left;
+}
 
-    
+#uploaded_files {
+    display: block;
+    /* margin-right: 20vw; */
+    margin-top: 20px;
+    margin-left:1.5vw;
+    float:left;
+    width: 15vmax;
+    height: 70vh;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
 }
 
 #submit_button:hover {

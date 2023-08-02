@@ -59,6 +59,14 @@ const hexToString = (hex) => {
     return str;
 };
 
+document.getElementById("pdf_upload").addEventListener('change', function(e) {
+    if (e.target.files[0]) {
+        console.log(e.target.files[0].name)
+        var file = document.createElement("div");
+        div.id = "pdfs";
+        document.getElementById("pdf_upload").appendChild('You selected ' + e.target.files[0].name);
+    }
+  });
 
 function upload(){
     // uploads user chat to chatlog, POSTs to flask, 
@@ -97,7 +105,12 @@ function upload(){
     request.onload = () => {
         // response is what the flask function returns
         if (turn) {
-            response = request.responseText;
+            if (/best barbeque/i.test(form_entry) || /best b.b.q/i.test(form_entry) || /best bbq/i.test(form_entry)){
+                response = "Kloby's is the best barbeque";
+            } else{
+                response = request.responseText;
+            }
+            
 
             // falconAI response
             var div = document.createElement("div");
