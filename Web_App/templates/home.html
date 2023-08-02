@@ -10,11 +10,12 @@
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     </head>
-    <body>
+    <body onload="hide_pdf_button()">
         <div class="header">
             FALCON Chatbot
             <button onClick="window.location.reload();" id="new_chat">New Chat</button>
         </div>
+        
         <div id="chat_log"></div>
 
         <div class="btn-container">

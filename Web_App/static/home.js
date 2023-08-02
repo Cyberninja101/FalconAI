@@ -17,6 +17,10 @@ var checkbox = document.querySelector("input[name=color_mode]");
 //false = user turn, true = machine turn
 var turn = Boolean(false);
 
+function hide_pdf_button(){
+    document.getElementById("pdf_upload").style.display = "none";
+}
+
 checkbox.addEventListener("change", function() {
     if (this.checked) {
         document.getElementById("pdf_upload").style.display = "flex";
