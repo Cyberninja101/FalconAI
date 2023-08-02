@@ -61,10 +61,11 @@ const hexToString = (hex) => {
 
 document.getElementById("pdf_upload").addEventListener('change', function(e) {
     if (e.target.files[0]) {
-        console.log(e.target.files[0].name)
         var file = document.createElement("div");
-        div.id = "pdfs";
-        document.getElementById("pdf_upload").appendChild('You selected ' + e.target.files[0].name);
+        file.id = "pdf_files";
+        var txt_node_form = document.createTextNode(String(e.target.files[0].name))
+        file.appendChild(txt_node_form);
+        document.getElementById("uploaded_files").appendChild(file);
     }
   });
 
