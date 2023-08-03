@@ -7,6 +7,8 @@
 //         });
 //     });
 // });
+// import fs from 'fs';
+// import path from 'path';
 
 // Hamburger menu
 function menuOnClick() {
@@ -20,11 +22,21 @@ var chat_box = document.getElementById("chat_log");
 var button = document.getElementById("submit_button");
 var count = 0;
 var checkbox = document.querySelector("input[name=color_mode]");
-// let date_time3 = date_time2.getTime();
-//false = user turn, true = machine turn
 var turn = Boolean(false);
 
+
+function deleteAllFilesInDir(dirPath) {
+    try {
+      fs.readdirSync(dirPath).forEach(file => {
+        fs.rmSync(path.join(dirPath, file));
+      });
+    } catch (error) {
+      console.log(error);
+    }
+}
+
 function onload_do(){
+    console.log("working")
     document.getElementById("pdf_upload").style.display = "none";
     document.getElementById("uploaded_files").style.display = "none";
 }
@@ -32,6 +44,7 @@ function onload_do(){
 checkbox.addEventListener("change", function() {
     if (this.checked) {
         document.getElementById("pdf_upload").style.display = "flex";
+        document.getElementById("uploaded_files").style.display = "initial";
     } else {
         document.getElementById("pdf_upload").style.display = "none";
         document.getElementById("uploaded_files").style.display = "none";
@@ -79,16 +92,12 @@ document.getElementById("pdf_upload").addEventListener('change', function(e) {
         file.appendChild(txt_node_form);
         document.getElementById("uploaded_files").appendChild(file);
     }
-    document.getElementById("uploaded_files").style.display = "initial";
   });
 
-async function reset_button(){
-    const fs = require("fs");
-    const path = require("path");
-
+function reset_button(){
     console.log("works")
 
-    const directory = "Web_App/context/";
+    deleteAllFilesInDir("Web_App/context/")
 
     // for (const file of await fs.readdir(directory)) {
     //     await fs.unlink(path.join(directory, file));

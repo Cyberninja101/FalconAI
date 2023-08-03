@@ -169,7 +169,7 @@ body {
 }
 
 #uploaded_files {
-    display: block;
+    display: none;
     /* margin-right: 20vw; */
     margin-top: 0px;
     margin-left:1.5vw;
@@ -305,7 +305,7 @@ form {
 }
 
 #pdf_upload {
-    display: none;
+    display: block;
     justify-self:right;
     background-image: url("../pdf_icon.png");
     background-size: 67px;
