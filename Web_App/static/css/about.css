@@ -141,9 +141,34 @@ html, body {
 }
   
   
-
-
 body {
     font-family: 'Roboto', sans-serif;
     text-align: center;
+}
+
+
+/* Main stuff */
+
+#background {
+    display: block;
+    /* margin-top: 20px; */
+    margin-left: 25vmax;
+    /* margin-right: auto; */
+    margin-bottom: 17px;
+    padding-top: 0px;
+    width: 50vmax;
+    height: 85vh;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    
+    /* background-color: rgba(220, 227, 240, 0.9); */
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 15px rgb(233, 233, 233);
+    /* scrollable */
+    overflow-y: scroll;
+    float:left;
+}
+
+#falcon_team {
+    font-size: 20px;
 }
