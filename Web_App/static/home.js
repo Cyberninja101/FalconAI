@@ -19,21 +19,9 @@ function menuOnClick() {
 
 var form_entry = document.getElementById("entry");
 var chat_box = document.getElementById("chat_log");
-var button = document.getElementById("submit_button");
 var count = 0;
 var checkbox = document.querySelector("input[name=color_mode]");
 var turn = Boolean(false);
-
-
-function deleteAllFilesInDir(dirPath) {
-    try {
-      fs.readdirSync(dirPath).forEach(file => {
-        fs.rmSync(path.join(dirPath, file));
-      });
-    } catch (error) {
-      console.log(error);
-    }
-}
 
 function onload_do(){
     console.log("working")
@@ -93,18 +81,6 @@ document.getElementById("pdf_upload").addEventListener('change', function(e) {
         document.getElementById("uploaded_files").appendChild(file);
     }
   });
-
-function reset_button(){
-    console.log("works")
-
-    deleteAllFilesInDir("Web_App/context/")
-
-    // for (const file of await fs.readdir(directory)) {
-    //     await fs.unlink(path.join(directory, file));
-    // }
-
-    window.location.reload();
-}
 
 function upload(){
     // uploads user chat to chatlog, POSTs to flask, 
@@ -176,8 +152,11 @@ function upload(){
 }
 
 //check if button is manually hit, check this if we add another button
-button.addEventListener("click", upload)
+document.getElementById("submit_button").addEventListener("click", upload)
 
+document.getElementsByClassName("HMT_button").addEventListener("click", function(){
+    console.log("hmt pressed")
+})
 
 //check if enter button is hit 
 function enter_check (e){
