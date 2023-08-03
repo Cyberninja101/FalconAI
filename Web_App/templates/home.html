@@ -10,7 +10,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     </head>
-    <body onload="hide_pdf_button()">
+    <body onload="onload_do()">
         <div class="header">
             <div id="menu">
                 <div id="menu-bar" onclick="menuOnClick()">
@@ -33,12 +33,11 @@
         
         
         <div id="chat_log"></div>
-        <div id="uploaded_files"><h2 style="text-decoration: underline;">Uploaded Files:</h2></div>
+        <div id="uploaded_files"><h2 style="text-decoration: underline;">Uploaded Files</h2></div>
 
         <div id="middle_section" class="btn-container">
-            <button class="new_chat_button" onClick="window.location.reload();" title="New Chat">
+            <button class="new_chat_button" onclick="reset_button()" title="New Chat">
                 <img src="../static/newchat_restart_icon.png" alt="Image">
-
             </button>
             <label class="switch btn-color-mode-switch">
                 <input type="checkbox" name="color_mode" id="color_mode" value="1">

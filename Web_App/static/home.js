@@ -24,8 +24,9 @@ var checkbox = document.querySelector("input[name=color_mode]");
 //false = user turn, true = machine turn
 var turn = Boolean(false);
 
-function hide_pdf_button(){
+function onload_do(){
     document.getElementById("pdf_upload").style.display = "none";
+    document.getElementById("uploaded_files").style.display = "none";
 }
 
 checkbox.addEventListener("change", function() {
@@ -33,6 +34,7 @@ checkbox.addEventListener("change", function() {
         document.getElementById("pdf_upload").style.display = "flex";
     } else {
         document.getElementById("pdf_upload").style.display = "none";
+        document.getElementById("uploaded_files").style.display = "none";
     }
 });
 
@@ -68,13 +70,32 @@ const hexToString = (hex) => {
 
 document.getElementById("pdf_upload").addEventListener('change', function(e) {
     if (e.target.files[0]) {
+        // var fs = require('fs');
+        // var files = fs.readdirSync("contexts/");
+        // console.log(files)
         var file = document.createElement("div");
         file.id = "pdf_files";
         var txt_node_form = document.createTextNode(String(e.target.files[0].name))
         file.appendChild(txt_node_form);
         document.getElementById("uploaded_files").appendChild(file);
     }
+    document.getElementById("uploaded_files").style.display = "initial";
   });
+
+async function reset_button(){
+    const fs = require("fs");
+    const path = require("path");
+
+    console.log("works")
+
+    const directory = "Web_App/context/";
+
+    // for (const file of await fs.readdir(directory)) {
+    //     await fs.unlink(path.join(directory, file));
+    // }
+
+    window.location.reload();
+}
 
 function upload(){
     // uploads user chat to chatlog, POSTs to flask, 
