@@ -8,6 +8,13 @@
 //     });
 // });
 
+// Hamburger menu
+function menuOnClick() {
+    document.getElementById("menu-bar").classList.toggle("change");
+    document.getElementById("nav").classList.toggle("change");
+    document.getElementById("menu-bg").classList.toggle("change-bg");
+}
+
 var form_entry = document.getElementById("entry");
 var chat_box = document.getElementById("chat_log");
 var button = document.getElementById("submit_button");

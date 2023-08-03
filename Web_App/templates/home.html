@@ -12,8 +12,25 @@
     </head>
     <body onload="hide_pdf_button()">
         <div class="header">
+            <div id="menu">
+                <div id="menu-bar" onclick="menuOnClick()">
+                  <div id="bar1" class="bar"></div>
+                  <div id="bar2" class="bar"></div>
+                  <div id="bar3" class="bar"></div>
+                </div>
+                <nav class="nav" id="nav">
+                  <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">How To Use</a></li>
+                  </ul>
+                </nav> 
+            </div>
+            <div class="menu-bg" id="menu-bg"></div>
             FALCON Chatbot
+            
         </div>
+        
         
         <div id="chat_log"></div>
         <div id="uploaded_files"><h2 style="text-decoration: underline;">Uploaded Files:</h2></div>
