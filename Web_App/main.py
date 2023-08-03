@@ -44,10 +44,17 @@ def home():
 @app.route("/about")
 def about():
     """
-    About page
+    About page, description of us, APL, our project.
+    Explain the usecases
     """
     return render_template("about.html")
 
+@app.route("/how_to")
+def how_to():
+    """
+    How to use the different features of our web app.
+    """
+    return render_template("how_to.html")
 
 @app.route("/new_entry/<entry>", methods=["POST"])
 def new_entry(entry):
