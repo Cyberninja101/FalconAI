@@ -32,7 +32,7 @@ html, body {
     text-align: center;
     font-size: 45px;
     padding-top: 12px;
-    padding-bottom: 4px;
+    padding-bottom: 10px;
     color: rgb(0, 0, 0);
     width:100%;
     margin-left: 0px;
@@ -48,9 +48,10 @@ body {
 
 #chat_log {
     display: block;
-    margin-top: 20px;
+    /* margin-top: 20px; */
     margin-left: 25%;
     /* margin-right: 4vw; */
+    margin-bottom: 17px;
     padding-top: 0px;
     width: 50vmax;
     height: 70vh;
@@ -68,13 +69,14 @@ body {
 #uploaded_files {
     display: block;
     /* margin-right: 20vw; */
-    margin-top: 20px;
+    margin-top: 0px;
     margin-left:1.5vw;
     float:left;
     width: 15vmax;
     height: 70vh;
     border-radius: 20px;
     background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 15px rgb(233, 233, 233);
 }
 
 #submit_button:hover {
@@ -241,20 +243,27 @@ form {
 
 /*switch styles*/
 
-div.btn-container{
-    display: block;
+/* Middle Section */
+#middle_section {
+    display:flex;
+    width: 50vmax;
+    justify-content: space-between;
+    /* margin-top: 15px; */
+    /* margin-bottom: 15px; */
+}
+
+div.btn-container {
     margin-left: auto;
     margin-right: auto;
     vertical-align: middle;
     text-align: center;
     padding-top: 1vh;
-}
-
-div.btn-container {
     display: inline-block;
     position: relative;
     top: -9px;
 }
+
+
 
 label {
     font-size: 16px;
@@ -270,7 +279,7 @@ label {
 
 .btn-color-mode-switch > label.btn-color-mode-switch-inner{
     margin: 0px;
-    width: 40vmax;
+    width: 38vmax;
     height: 45px;
     /* background: #E0E0E0; */
     background: hsla(234, 100%, 92%, 1);
@@ -294,14 +303,15 @@ label {
     font-size: 16px;
     font-weight: 500;
     top: 13px;
-    right: 7vmax;
+    /* right: 7vmax; */
+    right:5vw;
 
 }
 
 .btn-color-mode-switch > label.btn-color-mode-switch-inner:after{
     display: flex;
     content: attr(data-off);
-    width: 20vmax;
+    width: 19vmax;
     height: 30px;
     background: #fff;
     border-radius: 26px;
@@ -349,14 +359,14 @@ label {
 
 .btn-color-mode-switch input[type="checkbox"]:checked + label.btn-color-mode-switch-inner:after{
     content: attr(data-on);
-    left: 19.8vmax;
+    left: 18.8vmax;
     background: #3c3c3c;
 }
 
 .btn-color-mode-switch input[type="checkbox"]:checked + label.btn-color-mode-switch-inner:before{
     content: attr(data-off);
     right: auto;
-    left: 7vmax;
+    left: 5vw;
     color: #030303;
 }
 
@@ -378,10 +388,11 @@ label {
     justify-content: center;
     
     background-color: rgba(0, 0, 0, 0);
-    padding: 10px 20px;
+
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    
 }
 .new_chat_button img {
     height: 45px;
@@ -393,7 +404,7 @@ label {
     justify-content: center;
     
     background-color: rgba(0, 0, 0, 0);
-    padding: 10px 20px;
+
     border: none;
     border-radius: 5px;
     cursor: pointer;
