@@ -78,7 +78,7 @@ html, body {
 }
 
 .nav ul {
-    transform: translateY(-25px);
+    transform: translateY(-45px);
     padding: 0 35px;
 }
 
@@ -135,8 +135,8 @@ html, body {
 }
 
 .change-bg {
-    width: 520px;
-    height: 460px;
+    width: 500px;
+    height: 420px;
     transform: translate(-60%,-30%);
 }
   

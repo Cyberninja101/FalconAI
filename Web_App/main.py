@@ -25,6 +25,11 @@ def home():
     """
     # Refresh the chatbot history
     chatbot.__init__()
+
+    # Also delete uploaded files
+    
+
+
     return render_template("home.html")
 
 @app.route("/about")
