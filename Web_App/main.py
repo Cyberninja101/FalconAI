@@ -1,7 +1,7 @@
 from flask import Flask, redirect, url_for, render_template, request
 
 from pdfReader import read_pdf
-import os
+import os, shutil
 import binascii
 import sys
 
@@ -27,8 +27,17 @@ def home():
     chatbot.__init__()
 
     # Also delete uploaded files
-    
-
+    folder = 'Web_App/contexts/'
+    for filename in os.listdir(folder):
+        if filename != ".gitignore":
+            file_path = os.path.join(folder, filename)
+            try:
+                if os.path.isfile(file_path) or os.path.islink(file_path):
+                    os.unlink(file_path)
+                elif os.path.isdir(file_path):
+                    shutil.rmtree(file_path)
+            except Exception as e:
+                print('Failed to delete %s. Reason: %s' % (file_path, e))
 
     return render_template("home.html")
 
