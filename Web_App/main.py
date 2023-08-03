@@ -27,6 +27,12 @@ def home():
     chatbot.__init__()
     return render_template("home.html")
 
+@app.route("/about")
+def about():
+    """
+    About page
+    """
+    return render_template("about.html")
 
 
 @app.route("/new_entry/<entry>", methods=["POST"])
