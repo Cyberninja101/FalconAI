@@ -160,8 +160,16 @@ function upload(){
 //check if button is manually hit, check this if we add another button
 document.getElementById("submit_button").addEventListener("click", upload)
 
-document.getElementsByClassName("HMT_button").addEventListener("click", function(){
-    console.log("hmt pressed")
+document.getElementById("HMT_btn").addEventListener("click", function(){
+    var hmt_bool_flag = "true";
+    if (hmt_bool_flag == "true"){
+        console.log("htm pressed")
+        document.getElementById("HMT_img").src="../static/HMT_robot_icon_blue.png";
+        var hmt_bool_flag = "false";
+    } else if (hmt_bool_flag == "false"){
+        console.log("elsed")
+        document.getElementById("HMT_img").src="../static/HMT_robot_icon.png";
+    }
 })
 
 //check if enter button is hit 
