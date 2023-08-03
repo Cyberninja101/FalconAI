@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>FALCON Chatbot</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+        <!-- Connecting to Roboto font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    </head>
+    <body onload="hide_pdf_button()">
+        <div class="header">
+            <div id="menu">
+                <div id="menu-bar" onclick="menuOnClick()">
+                  <div id="bar1" class="bar"></div>
+                  <div id="bar2" class="bar"></div>
+                  <div id="bar3" class="bar"></div>
+                </div>
+                <nav class="nav" id="nav">
+                  <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">How To Use</a></li>
+                  </ul>
+                </nav> 
+            </div>
+            <div class="menu-bg" id="menu-bg"></div>
+            FALCON Chatbot
+            
+        </div>
+        
+    </body>
+</html>
