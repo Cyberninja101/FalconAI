@@ -9,13 +9,14 @@ import sys
 # print(os.sep.join([os.getcwd(),"Web_App", "models"]))
 sys.path.insert(1, os.sep.join([os.getcwd(),"Web_App", "models"])) # to get path of model functions
 
-from models.flan_model import google_flan
+from test_model import gpt2, model
 
 app = Flask(__name__)
 
 # Chat Log
 chat_log = []
- 
+
+chatbot = model()
 
 @app.route("/")
 def home():
@@ -50,10 +51,7 @@ def new_entry(entry):
             ascii_string = bytes_object.decode("ASCII")
             ls.append(ascii_string)
         output = "".join(ls)
-
-        x = chatbot.run(output)
-        print(x[1])
-        return x[0]
+        return chatbot.predict(str(output))
 
 
 @app.route("/upload_file", methods=["POST"])
@@ -72,6 +70,6 @@ def upload_file():
         return '', 204
 
 if __name__ == "__main__":
-    chatbot = google_flan()
+    
     app.run(debug=True) # Set debug = True for live changes in development
 
