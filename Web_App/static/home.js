@@ -176,7 +176,7 @@ function hmt(){
 }
 
 document.getElementById("HMT_btn").addEventListener("click", hmt)
-
+w
 //check if enter button is hit 
 function enter_check (e){
     var key_pressed = e.key;
