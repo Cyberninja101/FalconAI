@@ -65,11 +65,11 @@ html, body {
 }
 
 #bar1 {
-    transform: translateY(-4px);
+    transform: translateY(-6px);
 }
 
 #bar3 {
-    transform: translateY(4px);
+    transform: translateY(6px);
 }
 
 .nav {
