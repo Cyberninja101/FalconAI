@@ -17,6 +17,13 @@ function menuOnClick() {
     document.getElementById("menu-bg").classList.toggle("change-bg");
 }
 
+function reset() {
+    $('input[type="checkbox"]').each(function(){
+        $(this).prop('checked', false);
+    });
+    location.reload()
+}
+
 var form_entry = document.getElementById("entry");
 var chat_box = document.getElementById("chat_log");
 var button = document.getElementById("submit_button");

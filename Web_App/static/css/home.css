@@ -185,6 +185,12 @@ body {
     overflow: hidden;
 }
 
+#upload_file_title {
+    text-decoration: underline;
+    margin-bottom: 5px;
+}
+
+
 #submit_button:hover {
     background-color: rgb(50, 139, 212);
     /* background-color: linear-gradient(135deg, rgb(198, 203, 246) 0%, hsla(rgb(185, 246, 205)); */
@@ -331,6 +337,7 @@ form {
 #pdf_files {
     text-overflow: clip;
     width: 15vmax;
+    margin-bottom: 5px;
     
 }
 
