@@ -31,7 +31,6 @@ var checkbox = document.querySelector("input[name=color_mode]");
 var turn = Boolean(false);
 
 function onload_do(){
-    console.log("working")
     document.getElementById("pdf_upload").style.display = "none";
     document.getElementById("uploaded_files").style.display = "none";
 }
