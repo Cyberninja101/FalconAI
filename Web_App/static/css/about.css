@@ -151,14 +151,16 @@ body {
     float:left;
 }
 
-#falcon_team {
+.about_subtitles {
     font-size: 20px;
+    text-align: left;
 }
 
-#about1 {
+.about_texts {
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
     padding-left: 30px;
     padding-right: 30px;
     text-align: left;
 }
+

@@ -171,6 +171,23 @@ body {
     float:left;
 }
 
+/* Content Warning: */
+#warning {
+    background-color: rgb(230, 73, 25);
+    width:fit-content;
+    max-width: 70%;
+    margin-left: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: auto;
+    
+    padding: 8px;
+    /* border-radius: 9px; */
+    color: white;
+    text-align: center;
+    min-height: 19px;
+}
+
 #user_chat {
     background-color: rgb(85, 215, 161);
     width:fit-content;
