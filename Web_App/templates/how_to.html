@@ -9,7 +9,11 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-    </head>
+        <!-- Roboto 300 light font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+      </head>
     <body onload="hide_pdf_button()">
         <div class="header">
             <div id="menu">
@@ -32,8 +36,45 @@
 
         <div id="background">
           <h8 class="how_to_subtitles">
-            How to use FALCON Chatbot
+            A Comprehensive Guide to the FALCON Chatbot
           </h8>
+          <ol>
+            <li class="how_to_lists">Choose Your Mode</li>
+            <p class="how_to_texts">
+              Choose between the normal and document modes. Normal mode is for general questions, while doument mode allows you to import pdfs and ask specific questions relating to the files.
+            </p>
+            <img id="mode_img" src="../static/images/mode_button.png">
+            <p class="how_to_texts">
+              Choose whether or not you want to put it on HMT (Human Machine Teaming) mode. If so, press the robot icon above the right side of the question box, and it should turn blue, meaning it turned on. Press it again to turn off. HMT makes FALCON explain how it gets to its answer, and shows all the different tools it uses.
+            </p>
+            <img id="hmt_img" src="../static/images/HMT_on_off.png">
+            <li class="how_to_lists">Upload Your PDF(s) [Only for Document Mode]</li>
+            <div id="upload_container">
+              <p id="pdf_text" class="how_to_texts">
+                Click the red upload file button to upload your PDFs. You can only upload one document at a time. Don't upload to many pages of PDFs, or else it will take the model a long time to run. You can see the uploaded files in the "Uploaded Files" section.
+              </p>
+              <img id="pdf_icon" src="../static/images/pdf_icon.png">
+            </div>
+            
+
+            <li class="how_to_lists">Ask Your Question</li>
+            <p class="how_to_texts">
+              Type in your question to ask FALCON, and press [enter] or the blue button.
+            </p>
+            <img id="mode_img" src="../static/images/question_box.png">
+            <li class="how_to_lists">Wait for a Response</li>
+            <p class="how_to_texts">
+              Depending on the difficulty level of the prompt, the model may take a bit of time to inference and run.
+            </p>
+            <li class="how_to_lists">FALCON's Answer</li>
+            <p class="how_to_texts">
+              Hopefully, FALCON was able to help you out and make your day better!
+            </p>
+            <li class="how_to_lists">Next Steps</li>
+            <p class="how_to_texts">
+              Next, you can ask more questions, try out the different modes (Normal, Document, HMT), or even check out our project in the about page.
+            </p>
+          </ol>
         </div>
 
 

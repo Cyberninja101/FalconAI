@@ -171,3 +171,41 @@ body {
     text-align: left;
     margin-top: 20px
 }
+
+.how_to_lists {
+    text-align: left;
+    font-size: large;
+}
+
+.how_to_texts {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    padding-left: 30px;
+    padding-right: 30px;
+    text-align: left;
+    font-size: medium;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#mode_img {
+    width:50%;
+}
+
+#hmt_img {
+    width: 40%;
+}
+
+#upload_container {
+    display: flex;
+    margin-right: 50px;
+}
+
+#pdf_icon {
+    height: 70px;
+    padding-top: 5px;
+}
+
+#pdf_text {
+    padding-right: 5px;
+}
