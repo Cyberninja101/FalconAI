@@ -28,7 +28,7 @@ class gpt2(LLM):
         outputs = model.generate(inputs, max_new_tokens=7, do_sample=True, top_k=50, top_p=0.95).tolist()[0]
         return (tokenizer.decode(outputs))
 
-class model:
+class gpt2_model:
     def predict(self, query):
         template = """You are a chatbot having a conversation with a human.
 

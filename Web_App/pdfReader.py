@@ -1,4 +1,6 @@
 from langchain.document_loaders import PyPDFLoader #pip install langchain pypdf
+import os
+from langchain.document_loaders import PyPDFDirectoryLoader
 
 def read_pdf(filePath):
     """

@@ -4,17 +4,7 @@ html, body {
     padding: 0;
     min-height: 100vh;
 
-    /* background: hsla(234, 100%, 92%, 1);
-
-    background: linear-gradient(135deg, hsla(234, 100%, 92%, 1) 0%, hsla(140, 100%, 91%, 1) 100%);
-
-    background: -moz-linear-gradient(135deg, hsla(234, 100%, 92%, 1) 0%, hsla(140, 100%, 91%, 1) 100%);
-
-    background: -webkit-linear-gradient(135deg, hsla(234, 100%, 92%, 1) 0%, hsla(140, 100%, 91%, 1) 100%); */
-    /* background-color: #f8e8d9; */
-
     /* The light brown: */
-    /* background-color: #f7f7f7;  */
     background: rgb(247,247,247);
     background: linear-gradient(90deg, rgba(247,247,247,1) 0%, rgba(239,247,249,1) 100%);
 
@@ -24,10 +14,7 @@ html, body {
 }  
 
 .header {
-
     outline: none;
-    /* background-color: rgb(42, 66, 173); */
-    /* background-color: #a5be00; */
     
     text-align: center;
     font-size: 45px;
@@ -57,7 +44,6 @@ html, body {
 .bar {
     height: 5px;
     width: 100%;
-    /* background-color: #DC052D; */
     background-color: #000000;
     display: block;
     border-radius: 5px;
@@ -109,7 +95,7 @@ html, body {
     width: 0;
     height: 0;
     margin: 30px 0 20px 30px;
-    background-color:rgb(143, 210, 255);
+    background-color: rgb(206, 206, 206);
     border-radius: 50%;
     transition: 0.3s ease;
 }
@@ -139,11 +125,70 @@ html, body {
     height: 420px;
     transform: translate(-60%,-30%);
 }
-  
-  
-
 
 body {
     font-family: 'Roboto', sans-serif;
     text-align: center;
+}
+
+
+#background {
+    display: block;
+    margin-left: 25vmax;
+    margin-bottom: 17px;
+    padding-top: 20px;
+    width: 50vmax;
+    height: 85vh;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 15px rgb(233, 233, 233);
+    
+    /* scrollable */
+    overflow-y: scroll;
+    float:left;
+}
+
+.how_to_subtitles {
+    font-size: 25px;
+    text-align: left;
+    margin-top: 20px
+}
+
+.how_to_lists {
+    text-align: left;
+    font-size: large;
+}
+
+.how_to_texts {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    padding-left: 30px;
+    padding-right: 30px;
+    text-align: left;
+    font-size: medium;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#mode_img {
+    width:50%;
+}
+
+#hmt_img {
+    width: 40%;
+}
+
+#upload_container {
+    display: flex;
+    margin-right: 50px;
+}
+
+#pdf_icon {
+    height: 70px;
+    padding-top: 5px;
+}
+
+#pdf_text {
+    padding-right: 5px;
 }

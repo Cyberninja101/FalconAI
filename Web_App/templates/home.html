@@ -10,6 +10,8 @@
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     </head>
+
+    <!-- Hide the pdf button and the uploaded files on load -->
     <body onload="onload_do()">
         <div class="header">
             <div id="menu">
@@ -32,27 +34,33 @@
         </div>
         
         
-        <div id="chat_log"></div>
+        <div id="chat_log">
+            <div id="warning">
+                Content Warning: Generated messages may contain offensive language
+            </div>
+            <!-- So it starts with document mode at the top -->
+            <div id="mode_text">Normal Mode</div>
+        </div>
         <div id="uploaded_files">
             <h2 id="upload_file_title">Uploaded Files</h2>
         </div>
 
         <div id="middle_section" class="btn-container">
             <button class="new_chat_button" onclick="reset();" title="New Chat">
-                <img src="../static/newchat_restart_icon.png" alt="Image">
+                <img src="../static/images/newchat_restart_icon.png" alt="Image">
             </button>
             <label class="switch btn-color-mode-switch">
                 <input type="checkbox" name="color_mode" id="color_mode" value="1">
                 <label for="color_mode" data-on="Document Mode" data-off="Normal Mode" class="btn-color-mode-switch-inner"></label>
             </label>
             <button id="HMT_btn" class="HMT_button" title="Human Machine Teaming">
-                <img id="HMT_img" src="../static/HMT_robot_icon.png" alt="Image">
+                <img id="HMT_img" src="../static/images/HMT_robot_icon.png" alt="Image">
 
-            </button>
-              
+            </button>  
         </div>
 
         <div id="bottom_section">
+            <!-- Input box at the bottom -->
             <div id="discount_form">
                 <input autofocus type="text" id="entry" name="entry" placeholder="Ask me anything" onkeypress="return enter_check(event);">
                 <button title="Send Message" type="submit" value="Submit" id="submit_button">></button>
