@@ -4,13 +4,19 @@ html, body {
     padding: 0;
     min-height: 100vh;
 
-    background: hsla(234, 100%, 92%, 1);
+    /* background: hsla(234, 100%, 92%, 1);
 
     background: linear-gradient(135deg, hsla(234, 100%, 92%, 1) 0%, hsla(140, 100%, 91%, 1) 100%);
 
     background: -moz-linear-gradient(135deg, hsla(234, 100%, 92%, 1) 0%, hsla(140, 100%, 91%, 1) 100%);
 
-    background: -webkit-linear-gradient(135deg, hsla(234, 100%, 92%, 1) 0%, hsla(140, 100%, 91%, 1) 100%);
+    background: -webkit-linear-gradient(135deg, hsla(234, 100%, 92%, 1) 0%, hsla(140, 100%, 91%, 1) 100%); */
+    /* background-color: #f8e8d9; */
+
+    /* The light brown: */
+    /* background-color: #f7f7f7;  */
+    background: rgb(247,247,247);
+    background: linear-gradient(90deg, rgba(247,247,247,1) 0%, rgba(239,247,249,1) 100%);
 
     filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#D7DBFF", endColorstr="#D1FFE0", GradientType=1 );
 
@@ -18,16 +24,123 @@ html, body {
 }  
 
 .header {
+
     outline: none;
-    background-color: rgb(42, 66, 173);
+    /* background-color: rgb(42, 66, 173); */
+    /* background-color: #a5be00; */
+    
     text-align: center;
-    font-size: 30px;
-    padding-top: 7px;
-    padding-bottom: 7px;
-    color: white;
+    font-size: 45px;
+    padding-top: 12px;
+    padding-bottom: 10px;
+    color: rgb(0, 0, 0);
+    width: 100%;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+
+/* Hamburger stuff */
+
+#menu {
+    z-index: 2;
+    text-align: left;
+}
+
+#menu-bar {
+    width: 45px;
+    height: 40px;
+    margin: 30px 0 0px 30px;
+    cursor: pointer;
+}
+
+.bar {
+    height: 5px;
+    width: 100%;
+    /* background-color: #DC052D; */
+    background-color: #000000;
+    display: block;
+    border-radius: 5px;
+    transition: 0.3s ease;
+}
+
+#bar1 {
+    transform: translateY(-6px);
+}
+
+#bar3 {
+    transform: translateY(6px);
+}
+
+.nav {
+    transition: 0.3s ease;
+    display: none;
+}
+
+.nav ul {
+    transform: translateY(-45px);
+    padding: 0 35px;
+}
+
+.nav li {
+    list-style: none;
+    padding: 0px 0;
+}
+
+.nav li a {
+    color: rgb(0, 0, 0);
+    font-size: 25px;
+    text-decoration: none;
     
 }
 
+.nav li a:hover {
+    font-weight: bold;
+}
+
+.menu-bg, #menu {
+    top: 0;
+    left: 0;
+    position: absolute;
+}
+
+.menu-bg {
+    z-index: 1;
+    width: 0;
+    height: 0;
+    margin: 30px 0 20px 30px;
+    background-color:rgb(143, 210, 255);
+    border-radius: 50%;
+    transition: 0.3s ease;
+}
+
+.change {
+    display: block;
+}
+
+.change .bar {
+    background-color: rgb(0, 0, 0);
+}
+
+.change #bar1 {
+    transform: translateY(4px) rotateZ(-45deg);
+}
+
+.change #bar2 {
+    opacity: 0;
+}
+
+.change #bar3 {
+    transform: translateY(-6px) rotateZ(45deg);
+}
+
+.change-bg {
+    width: 500px;
+    height: 420px;
+    transform: translate(-60%,-30%);
+}
+  
+  
 
 
 body {
@@ -35,28 +148,53 @@ body {
     text-align: center;
 }
 
-
-
 #chat_log {
     display: block;
-    margin-top: 20px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: 1px;
+    /* margin-top: 20px; */
+    margin-left: 25%;
+    /* margin-right: 4vw; */
+    margin-bottom: 17px;
+    padding-top: 0px;
     width: 50vmax;
     height: 70vh;
     border-radius: 20px;
     /* background-color: #465246; */
     background-color: rgba(255, 255, 255, 0.9);
+    
+    /* background-color: rgba(220, 227, 240, 0.9); */
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 15px rgb(233, 233, 233);
     /* scrollable */
     overflow-y: scroll;
-    
-
-    
+    float:left;
 }
+
+#uploaded_files {
+    display: none;
+    /* margin-right: 20vw; */
+    margin-top: 0px;
+    margin-left:1.5vw;
+    float:left;
+    width: 15vmax;
+    height: auto;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 15px rgb(233, 233, 233);
+    padding-bottom: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    overflow: hidden;
+}
+
+#upload_file_title {
+    text-decoration: underline;
+    margin-bottom: 5px;
+}
+
 
 #submit_button:hover {
     background-color: rgb(50, 139, 212);
+    /* background-color: linear-gradient(135deg, rgb(198, 203, 246) 0%, hsla(rgb(185, 246, 205)); */
     transition: 0.3s;
 }
 
@@ -70,6 +208,7 @@ body {
     margin-left: 5px;
     font-size: 1.7rem;
     background: #66b9f1;
+    /* background: linear-gradient(135deg, hsla(234, 100%, 92%, 1) 0%, hsla(140, 100%, 91%, 1) 100%); */
     border: none;
     border-radius: 10px;
     outline: none;
@@ -98,7 +237,7 @@ input[type=text] {
     width: 50vmax;
     /* margin-left: auto;
     margin-right: auto; */
-    margin-top: 30px;
+    margin-top: 1vh;
     height: 70px;
     box-shadow: 0 0 15px rgb(233, 233, 233);
     border-radius: 20px;
@@ -111,12 +250,13 @@ input[type=text] {
 
 form {
     display: block;
-    margin-top: 2%;
+    margin-top: 1%;
 }
 
 
 #user_chat {
-    background-color: rgb(31, 127, 210);
+    background-color: rgb(151, 221, 174);
+    /* background-color: rgb(31, 127, 210); */
     width:fit-content;
     max-width: 53%;
     margin-left: auto;
@@ -131,7 +271,8 @@ form {
 }
 
 #ai_chat {
-    background-color: rgb(31, 210, 67);
+    background-color: rgb(171, 176, 221);
+    /* background-color: rgb(131, 131, 131); */
     width:fit-content;
     max-width: 53%;
     margin-right: auto;
@@ -153,20 +294,25 @@ form {
     margin-top: auto;
     margin-bottom: auto;
 
-    padding: 6px;
+    padding: 11px;
     
-    font-size: 1.2rem;
-    background: #66b9f1;
+    font-size: 1.25rem;
+    /* background: #66b9f1; */
+    background: linear-gradient(135deg, hsla(234, 100%, 92%, 1) 0%, hsla(140, 100%, 91%, 1) 100%);
+    background: -moz-linear-gradient(135deg, hsla(234, 100%, 92%, 1) 0%, hsla(140, 100%, 91%, 1) 100%);
+
+    background: -webkit-linear-gradient(135deg, hsla(234, 100%, 92%, 1) 0%, hsla(140, 100%, 91%, 1) 100%);
     border: none;
     border-radius: 10px;
     outline: none;
     cursor: pointer;
-    color: white;
-
+    color: rgb(255, 255, 255);
+    margin-right: 1vw;
+    
 }
 
 #pdf_upload {
-    display: flex;
+    display: block;
     justify-self:right;
     background-image: url("../pdf_icon.png");
     background-size: 67px;
@@ -179,8 +325,8 @@ form {
     overflow: hidden;
     display: inline-block;
     color: transparent;
-    margin-top: 2vh;
-    margin-left: 1.5vw;
+    margin-bottom: 9vh;
+    margin-left: 1vw;
 }
 
 /* On hover */
@@ -189,7 +335,12 @@ form {
 }
 
 
-
+#pdf_files {
+    text-overflow: clip;
+    width: 15vmax;
+    margin-bottom: 5px;
+    
+}
 
 /* Hides default file selector button */
 ::file-selector-button {
@@ -200,4 +351,182 @@ form {
     display: flex;
     margin-left: 25.07vw;
     width: 60%;
+}
+
+
+
+
+/* Change Mode Button Stuff */
+
+
+/*switch styles*/
+
+/* Middle Section */
+#middle_section {
+    display:flex;
+    width: 50vmax;
+    justify-content: space-between;
+    /* margin-top: 15px; */
+    /* margin-bottom: 15px; */
+}
+
+div.btn-container {
+    margin-left: auto;
+    margin-right: auto;
+    vertical-align: middle;
+    text-align: center;
+    padding-top: 1vh;
+    display: inline-block;
+    position: relative;
+    top: -9px;
+}
+
+
+
+label {
+    font-size: 16px;
+    color: #424242;
+    font-weight: 500;
+}
+
+.btn-color-mode-switch{
+    display: inline-block;
+    margin: 0px;
+    position: relative;
+}
+
+.btn-color-mode-switch > label.btn-color-mode-switch-inner{
+    margin: 0px;
+    width: 38vmax;
+    height: 45px;
+    /* background: #E0E0E0; */
+    background: hsla(234, 100%, 92%, 1);
+
+    background: linear-gradient(135deg, hsla(234, 100%, 92%, 1) 0%, hsla(140, 100%, 91%, 1) 100%);
+
+    /* background: -moz-linear-gradient(135deg, hsla(234, 100%, 92%, 1) 0%, hsla(140, 100%, 91%, 1) 100%);
+
+    background: -webkit-linear-gradient(135deg, hsla(234, 100%, 92%, 1) 0%, hsla(140, 100%, 91%, 1) 100%); */
+    border-radius: 26px;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.3s ease;
+    /*box-shadow: 0px 0px 8px 0px rgba(17, 17, 17, 0.34) inset;*/
+    display: block;
+}
+
+.btn-color-mode-switch > label.btn-color-mode-switch-inner:before{
+    content: attr(data-on);
+    position: absolute;
+    font-size: 16px;
+    font-weight: 500;
+    top: 13px;
+    /* right: 7vmax; */
+    right:5vw;
+
+}
+
+.btn-color-mode-switch > label.btn-color-mode-switch-inner:after{
+    display: flex;
+    content: attr(data-off);
+    width: 19vmax;
+    height: 30px;
+    background: #fff;
+    border-radius: 26px;
+    position: absolute;
+    left: 2.5px;
+    top: 2.5px;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0px 0px 6px -2px #111;
+    padding: 5px 0px;
+    /* vertical-align: middle; */
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-color-mode-switch > .alert{
+    display: none;
+    background: #FF9800;
+    border: none;
+    color: #030303;
+}
+
+.btn-color-mode-switch input[type="checkbox"]{
+    cursor: pointer;
+    width: 50px;
+    height: 45px;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    margin: 0px;
+}
+
+.btn-color-mode-switch input[type="checkbox"]:checked + label.btn-color-mode-switch-inner{
+    /* background: #151515; */
+    background: hsla(234, 100%, 92%, 1);
+
+    background: linear-gradient(135deg, hsla(234, 100%, 92%, 1) 0%, hsla(140, 100%, 91%, 1) 100%);
+
+    /* background: -moz-linear-gradient(135deg, hsla(234, 100%, 92%, 1) 0%, hsla(140, 100%, 91%, 1) 100%);
+
+    background: -webkit-linear-gradient(135deg, hsla(234, 100%, 92%, 1) 0%, hsla(140, 100%, 91%, 1) 100%); */
+    color: #ffffff;
+}
+
+.btn-color-mode-switch input[type="checkbox"]:checked + label.btn-color-mode-switch-inner:after{
+    content: attr(data-on);
+    left: 18.8vmax;
+    background: #3c3c3c;
+}
+
+.btn-color-mode-switch input[type="checkbox"]:checked + label.btn-color-mode-switch-inner:before{
+    content: attr(data-off);
+    right: auto;
+    left: 5vw;
+    color: #030303;
+}
+
+.btn-color-mode-switch input[type="checkbox"]:checked + label.btn-color-mode-switch-inner{
+    /*background: #66BB6A; */
+    /*color: #fff;*/
+}
+
+.btn-color-mode-switch input[type="checkbox"]:checked ~ .alert{
+    display: block;
+}
+
+
+
+/* new chat button */
+.new_chat_button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    
+    background-color: rgba(0, 0, 0, 0);
+
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    
+}
+.new_chat_button img {
+    height: 45px;
+}
+
+.HMT_button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    
+    background-color: rgba(0, 0, 0, 0);
+
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.HMT_button img {
+    height: 45px;
 }

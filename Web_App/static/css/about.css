@@ -1,0 +1,174 @@
+html, body {
+    /* get rid of default margins and padding */
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+
+    /* background: hsla(234, 100%, 92%, 1);
+
+    background: linear-gradient(135deg, hsla(234, 100%, 92%, 1) 0%, hsla(140, 100%, 91%, 1) 100%);
+
+    background: -moz-linear-gradient(135deg, hsla(234, 100%, 92%, 1) 0%, hsla(140, 100%, 91%, 1) 100%);
+
+    background: -webkit-linear-gradient(135deg, hsla(234, 100%, 92%, 1) 0%, hsla(140, 100%, 91%, 1) 100%); */
+    /* background-color: #f8e8d9; */
+
+    /* The light brown: */
+    /* background-color: #f7f7f7;  */
+    background: rgb(247,247,247);
+    background: linear-gradient(90deg, rgba(247,247,247,1) 0%, rgba(239,247,249,1) 100%);
+
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#D7DBFF", endColorstr="#D1FFE0", GradientType=1 );
+
+    scroll-behavior: smooth;
+}  
+
+.header {
+
+    outline: none;
+    /* background-color: rgb(42, 66, 173); */
+    /* background-color: #a5be00; */
+    
+    text-align: center;
+    font-size: 45px;
+    padding-top: 12px;
+    padding-bottom: 10px;
+    color: rgb(0, 0, 0);
+    width: 100%;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+
+/* Hamburger stuff */
+
+#menu {
+    z-index: 2;
+    text-align: left;
+}
+
+#menu-bar {
+    width: 45px;
+    height: 40px;
+    margin: 30px 0 0px 30px;
+    cursor: pointer;
+}
+
+.bar {
+    height: 5px;
+    width: 100%;
+    /* background-color: #DC052D; */
+    background-color: #000000;
+    display: block;
+    border-radius: 5px;
+    transition: 0.3s ease;
+}
+
+#bar1 {
+    transform: translateY(-6px);
+}
+
+#bar3 {
+    transform: translateY(6px);
+}
+
+.nav {
+    transition: 0.3s ease;
+    display: none;
+}
+
+.nav ul {
+    transform: translateY(-45px);
+    padding: 0 35px;
+}
+
+.nav li {
+    list-style: none;
+    padding: 0px 0;
+}
+
+.nav li a {
+    color: rgb(0, 0, 0);
+    font-size: 25px;
+    text-decoration: none;
+    
+}
+
+.nav li a:hover {
+    font-weight: bold;
+}
+
+.menu-bg, #menu {
+    top: 0;
+    left: 0;
+    position: absolute;
+}
+
+.menu-bg {
+    z-index: 1;
+    width: 0;
+    height: 0;
+    margin: 30px 0 20px 30px;
+    background-color:rgb(143, 210, 255);
+    border-radius: 50%;
+    transition: 0.3s ease;
+}
+
+.change {
+    display: block;
+}
+
+.change .bar {
+    background-color: rgb(0, 0, 0);
+}
+
+.change #bar1 {
+    transform: translateY(4px) rotateZ(-45deg);
+}
+
+.change #bar2 {
+    opacity: 0;
+}
+
+.change #bar3 {
+    transform: translateY(-6px) rotateZ(45deg);
+}
+
+.change-bg {
+    width: 500px;
+    height: 420px;
+    transform: translate(-60%,-30%);
+}
+  
+  
+body {
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+}
+
+
+/* Main stuff */
+
+#background {
+    display: block;
+    /* margin-top: 20px; */
+    margin-left: 25vmax;
+    /* margin-right: auto; */
+    margin-bottom: 17px;
+    padding-top: 0px;
+    width: 50vmax;
+    height: 85vh;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    
+    /* background-color: rgba(220, 227, 240, 0.9); */
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 15px rgb(233, 233, 233);
+    /* scrollable */
+    overflow-y: scroll;
+    float:left;
+}
+
+#falcon_team {
+    font-size: 20px;
+}

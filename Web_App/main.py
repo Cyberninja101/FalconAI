@@ -1,7 +1,7 @@
 from flask import Flask, redirect, url_for, render_template, request
 
 from pdfReader import read_pdf
-import os
+import os, shutil
 import binascii
 import sys
 
@@ -9,13 +9,14 @@ import sys
 # print(os.sep.join([os.getcwd(),"Web_App", "models"]))
 sys.path.insert(1, os.sep.join([os.getcwd(),"Web_App", "models"])) # to get path of model functions
 
-from models.flan_model import google_flan
+from test_model import gpt2, model
 
 app = Flask(__name__)
 
 # Chat Log
 chat_log = []
- 
+
+chatbot = model()
 
 @app.route("/")
 def home():
@@ -24,9 +25,36 @@ def home():
     """
     # Refresh the chatbot history
     chatbot.__init__()
+
+    # Also delete uploaded files
+    folder = 'Web_App/contexts/'
+    for filename in os.listdir(folder):
+        if filename != ".gitignore":
+            file_path = os.path.join(folder, filename)
+            try:
+                if os.path.isfile(file_path) or os.path.islink(file_path):
+                    os.unlink(file_path)
+                elif os.path.isdir(file_path):
+                    shutil.rmtree(file_path)
+            except Exception as e:
+                print('Failed to delete %s. Reason: %s' % (file_path, e))
+
     return render_template("home.html")
 
+@app.route("/about")
+def about():
+    """
+    About page, description of us, APL, our project.
+    Explain the usecases
+    """
+    return render_template("about.html")
 
+@app.route("/how_to")
+def how_to():
+    """
+    How to use the different features of our web app.
+    """
+    return render_template("how_to.html")
 
 @app.route("/new_entry/<entry>", methods=["POST"])
 def new_entry(entry):
@@ -50,10 +78,7 @@ def new_entry(entry):
             ascii_string = bytes_object.decode("ASCII")
             ls.append(ascii_string)
         output = "".join(ls)
-
-        x = chatbot.run(output)
-        print(x[1])
-        return x[0]
+        return chatbot.predict(str(output))
 
 
 @app.route("/upload_file", methods=["POST"])
@@ -72,6 +97,6 @@ def upload_file():
         return '', 204
 
 if __name__ == "__main__":
-    chatbot = google_flan()
+    
     app.run(debug=True) # Set debug = True for live changes in development
 
