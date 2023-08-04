@@ -331,7 +331,7 @@ form {
 #pdf_upload {
     display: block;
     justify-self:right;
-    background-image: url("../pdf_icon.png");
+    background-image: url("../images/pdf_icon.png");
     background-size: 67px;
 
     /* transparent background color */
@@ -349,7 +349,7 @@ form {
 
 /* On hover */
 #pdf_upload:hover {
-    background-image: url("../pdf_icon_darkest.png");
+    background-image: url("../images/pdf_icon_darkest.png");
 }
 
 
