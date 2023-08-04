@@ -138,7 +138,7 @@ body {
     display: block;
     margin-left: 25vmax;
     margin-bottom: 17px;
-    padding-top: 0px;
+    padding-top: 20px;
     width: 50vmax;
     height: 85vh;
     border-radius: 20px;
@@ -154,6 +154,7 @@ body {
 .about_subtitles {
     font-size: 25px;
     text-align: left;
+    margin-top: 20px
 }
 
 .about_texts {
