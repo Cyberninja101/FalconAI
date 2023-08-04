@@ -29,6 +29,7 @@ var chat_box = document.getElementById("chat_log");
 var count = 0;
 var checkbox = document.querySelector("input[name=color_mode]");
 var turn = Boolean(false);
+var mode = "normal";
 
 function onload_do(){
     document.getElementById("pdf_upload").style.display = "none";
@@ -37,11 +38,15 @@ function onload_do(){
 
 checkbox.addEventListener("change", function() {
     if (this.checked) {
+        // Document mode
         document.getElementById("pdf_upload").style.display = "flex";
         document.getElementById("uploaded_files").style.display = "initial";
+        mode = "document";
     } else {
+        // Normal Mode
         document.getElementById("pdf_upload").style.display = "none";
         document.getElementById("uploaded_files").style.display = "none";
+        mode = "normal";
     }
 });
 
@@ -97,7 +102,7 @@ function upload(){
     var form_entry = String(document.getElementById("entry").value);
     console.log(form_entry)
     response = "";
-    request.open('POST', `/new_entry/${stringToHex(form_entry)}`);
+    request.open('POST', `/new_entry/${mode}/${stringToHex(form_entry)}`);
 
     // creating user chat
     var div = document.createElement("div");

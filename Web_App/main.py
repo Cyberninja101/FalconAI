@@ -9,22 +9,28 @@ import sys
 # print(os.sep.join([os.getcwd(),"Web_App", "models"]))
 sys.path.insert(1, os.sep.join([os.getcwd(),"Web_App", "models"])) # to get path of model functions
 
-from test_model import gpt2, model
+from test_model import gpt2, gpt2_model
+from test_chroma import vectordb
 
 app = Flask(__name__)
 
 # Chat Log
 chat_log = []
 
-chatbot = model()
+# Defining models
+finetuned_model = gpt2_model()
+vectordb_model = vectordb()
+
 
 @app.route("/")
 def home():
     """
     This is the home/default page. ok
     """
-    # Refresh the chatbot history
-    chatbot.__init__()
+    # Refresh the finetuned_model history
+    finetuned_model.__init__()
+
+
 
     # Also delete uploaded files
     folder = 'Web_App/contexts/'
@@ -56,8 +62,8 @@ def how_to():
     """
     return render_template("how_to.html")
 
-@app.route("/new_entry/<entry>", methods=["POST"])
-def new_entry(entry):
+@app.route("/new_entry/<mode>/<entry>", methods=["POST"])
+def new_entry(mode, entry):
     """
     This is when the user asks FALCON a new question, and enters it.
     The question should be saved as a json file, displayed in the 
@@ -66,19 +72,24 @@ def new_entry(entry):
     """
     print("This is the new_entry")
     if request.method == "POST":
-    # making error cause there is no form
-        print(f"Here is the entry: {entry}")
-        # TODO: Send info to LLM somehow
-        # This is temporary dummy function
+        print(mode)
+        # Converting hex to string
         ls = []
-
         for i in entry.split(","):
             hex_string = i
             bytes_object = bytes.fromhex(hex_string)
             ascii_string = bytes_object.decode("ASCII")
             ls.append(ascii_string)
         output = "".join(ls)
-        return chatbot.predict(str(output))
+
+        # Check Document or Normal Mode
+        if mode == "normal":
+            # Normal, use finetuned_model model
+            return finetuned_model.predict(str(output))
+        else:
+            # Document mode, use vectordb_model
+            return vectordb_model.predict(str(output))
+        
 
 
 @app.route("/upload_file", methods=["POST"])
@@ -89,7 +100,7 @@ def upload_file():
 
 
         # TODO: FOR JUSTIN - Convert pdf file to string using ur function
-        # and send it to the chatbot model as context
+        # and send it to the finetuned_model model as context
 
         # empty return with 204 code, means its good
         x = read_pdf(f"Web_App/contexts/{f.filename}") # - content of uploaded as string TODO: implement 
@@ -97,6 +108,5 @@ def upload_file():
         return '', 204
 
 if __name__ == "__main__":
-    
     app.run(debug=True) # Set debug = True for live changes in development
 
