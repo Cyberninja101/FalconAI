@@ -163,7 +163,7 @@ body {
     padding-left: 30px;
     padding-right: 30px;
     text-align: left;
-    font-size: large;
+    font-size: medium;
 }
 
 #about_container {
@@ -176,8 +176,20 @@ body {
     font-weight: 300;
     padding-left: 30px;
     text-align: left;
-    font-size: large;
+    font-size: medium;
 }
 
-/* #ASPIRE_logo { */
+#built_list {
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.built_list {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    padding-left: 0px;
+    padding-bottom: 5px;
+    text-align: left;
+    font-size: medium;
+}
     
