@@ -109,7 +109,7 @@ html, body {
     width: 0;
     height: 0;
     margin: 30px 0 20px 30px;
-    background-color:rgb(143, 210, 255);
+    background-color: rgb(206, 206, 206);
     border-radius: 50%;
     transition: 0.3s ease;
 }
