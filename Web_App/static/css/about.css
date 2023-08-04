@@ -152,7 +152,7 @@ body {
 }
 
 .about_subtitles {
-    font-size: 20px;
+    font-size: 25px;
     text-align: left;
 }
 
@@ -162,5 +162,21 @@ body {
     padding-left: 30px;
     padding-right: 30px;
     text-align: left;
+    font-size: large;
 }
 
+#about_container {
+    display: flex;
+    padding-right: 40px;
+}
+
+#about_text1 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    padding-left: 30px;
+    text-align: left;
+    font-size: large;
+}
+
+/* #ASPIRE_logo { */
+    
