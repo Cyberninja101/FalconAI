@@ -78,10 +78,8 @@ def pdfDirToTxt(pdfFilesDir, txtOutDir):
             content = document.page_content.replace('\n',' ')
             l_content = [s+". " for s in content.split(". ")]
             while l_content: # while list is not empty
-                x = l_content.pop(0)
-                if x!='. ':
-                    f.write(x)
-                    count+=1
+                f.write(l_content.pop(0))
+                count+=1
                 if count == 3:
                     count = 0
                     f.write('\n')
