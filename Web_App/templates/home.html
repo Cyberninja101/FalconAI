@@ -10,6 +10,8 @@
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     </head>
+
+    <!-- Hide the pdf button and the uploaded files on load -->
     <body onload="onload_do()">
         <div class="header">
             <div id="menu">
@@ -58,6 +60,7 @@
         </div>
 
         <div id="bottom_section">
+            <!-- Input box at the bottom -->
             <div id="discount_form">
                 <input autofocus type="text" id="entry" name="entry" placeholder="Ask me anything" onkeypress="return enter_check(event);">
                 <button title="Send Message" type="submit" value="Submit" id="submit_button">></button>

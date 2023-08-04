@@ -30,8 +30,6 @@ def home():
     # Refresh the finetuned_model history
     finetuned_model.__init__()
 
-
-
     # Also delete uploaded files
     folder = 'Web_App/contexts/'
     for filename in os.listdir(folder):
