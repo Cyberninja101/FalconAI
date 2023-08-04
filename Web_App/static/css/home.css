@@ -174,11 +174,12 @@ body {
 /* Content Warning: */
 #warning {
     background-color: rgb(230, 73, 25);
-    width:fit-content;
-    max-width: 70%;
+
+    max-width: 72%;
+    /* max-width: 600px; */
     margin-left: auto;
     margin-top: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     margin-right: auto;
     
     padding: 8px;
@@ -193,8 +194,8 @@ body {
     width:fit-content;
     max-width: 53%;
     margin-left: auto;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     margin-right: 20px;
     padding: 8px;
     border-radius: 9px;
@@ -208,8 +209,8 @@ body {
     width:fit-content;
     max-width: 53%;
     margin-right: auto;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     margin-left: 20px;
     padding: 8px;
     border-radius: 9px;
@@ -240,7 +241,7 @@ body {
 #mode_text {
     color: rgb(147, 144, 144);
     opacity: 0.5;
-    padding-bottom: 4px;
+    padding-bottom: 10px;
     font-size: 2.5vh;
 }
 
