@@ -109,7 +109,7 @@ html, body {
     width: 0;
     height: 0;
     margin: 30px 0 20px 30px;
-    background-color:rgb(143, 210, 255);
+    background-color: rgb(206, 206, 206);
     border-radius: 50%;
     transition: 0.3s ease;
 }
@@ -146,4 +146,28 @@ html, body {
 body {
     font-family: 'Roboto', sans-serif;
     text-align: center;
+}
+
+
+#background {
+    display: block;
+    margin-left: 25vmax;
+    margin-bottom: 17px;
+    padding-top: 20px;
+    width: 50vmax;
+    height: 85vh;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 15px rgb(233, 233, 233);
+    
+    /* scrollable */
+    overflow-y: scroll;
+    float:left;
+}
+
+.how_to_subtitles {
+    font-size: 25px;
+    text-align: left;
+    margin-top: 20px
 }
