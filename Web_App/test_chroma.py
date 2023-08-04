@@ -80,7 +80,7 @@ class vectordb:
             retriever = vectordb.as_retriever(search_kwargs={"k": 3})
 
             qa_chain = RetrievalQA.from_chain_type(llm=gpt2(),
-                                            chain_type="stuff",
+                                            chain_type="map_reduce",
                                             retriever=retriever,
                                             return_source_documents=True,
                                             verbose=False)

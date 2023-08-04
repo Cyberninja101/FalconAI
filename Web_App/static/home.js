@@ -124,11 +124,27 @@ checkbox.addEventListener("change", function() {
         // Document mode
         document.getElementById("pdf_upload").style.display = "flex";
         document.getElementById("uploaded_files").style.display = "initial";
+
+        var mode_text = document.createElement("div");
+        mode_text.id = "mode_text";
+        var mode_node = document.createTextNode("Document Mode");
+        mode_text.appendChild(mode_node);
+        chat_box.appendChild(mode_text);
+        scrollSmoothlyToBottom("chat_log")
+
         mode = "document";
     } else {
         // Normal Mode
         document.getElementById("pdf_upload").style.display = "none";
         document.getElementById("uploaded_files").style.display = "none";
+
+        var mode_text = document.createElement("div");
+        mode_text.id = "mode_text";
+        var mode_node = document.createTextNode("Normal Mode");
+        mode_text.appendChild(mode_node);
+        chat_box.appendChild(mode_text);
+        scrollSmoothlyToBottom("chat_log")
+
         mode = "normal";
     }
 });

@@ -237,6 +237,13 @@ body {
     margin-right: 1vw;
 }
 
+#mode_text {
+    color: rgb(147, 144, 144);
+    opacity: 0.5;
+    padding-bottom: 4px;
+    font-size: 2.5vh;
+}
+
 #uploaded_files {
     display: none;
     margin-top: 0px;
