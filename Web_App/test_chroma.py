@@ -41,15 +41,21 @@ class vectordb:
             if fname.endswith('.pdf'):
                 pdfToTxt("Web_App/contexts/" + str(fname), "Web_App/contexts")
                 os.remove("Web_App/contexts/" + str(fname))
+                print("removed")
         else:
+            print("elsed")
             if len(dir)!=1:
                 loader = DirectoryLoader(os.sep.join([path, "Web_App",'contexts']), glob="./*.txt", loader_cls=TextLoader)
+                print("docs loaded")
             else:
                 return("No uploaded files.")
             documents = loader.load()
 
             text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=100)
             texts = text_splitter.split_documents(documents)
+
+            print("text splitted")
+            print(len(texts))
 
             # # Downloading from HF took forever, check if embedding is on disk and use that
             # if os.path.exists("instructor-base"):
@@ -65,9 +71,10 @@ class vectordb:
             #     print("Saved embeddings to disk.")
 
             device = "cuda" if torch.cuda.is_available() else "cpu"
+            print(device)
             embedding = HuggingFaceInstructEmbeddings(model_name="hkunlp/instructor-base", 
                                                                 model_kwargs={"device": device})
-
+            print("embedding")
             vectordb = Chroma.from_documents(texts, embedding)
 
             retriever = vectordb.as_retriever(search_kwargs={"k": 3})
@@ -77,7 +84,7 @@ class vectordb:
                                             retriever=retriever,
                                             return_source_documents=True,
                                             verbose=False)
-
+            print("chain initialized")
             llm_response = qa_chain(query)
             lines = llm_response['result'].split('\n')
 
@@ -87,6 +94,8 @@ class vectordb:
             trim_index = temp_resp.find("### Human:")
             if trim_index != -1: 
                     temp_resp = temp_resp[:trim_index]
+
+            print("formatted")
 
             answer = ""
             answer += temp_resp
