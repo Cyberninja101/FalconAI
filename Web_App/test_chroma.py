@@ -104,6 +104,3 @@ class vectordb:
                 answer += source.metadata['source']
 
             return(answer)
-
-chroma = vectordb()
-print(chroma.predict("What is radar"))

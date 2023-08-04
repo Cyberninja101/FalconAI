@@ -1,14 +1,14 @@
-// $(function() {
-//     $("submit_button").on('click', function(e) {
-//         e.preventDefault()
-//         $.getJSON('/filter/top',
-//            {
-//         // do nothing
-//         });
-//     });
-// });
-// import fs from 'fs';
-// import path from 'path';
+var form_entry = document.getElementById("entry");
+var chat_box = document.getElementById("chat_log");
+var count = 0;
+var checkbox = document.querySelector("input[name=color_mode]");
+var turn = Boolean(false);
+var mode = "normal";
+
+function onload_do(){
+    document.getElementById("pdf_upload").style.display = "none";
+    document.getElementById("uploaded_files").style.display = "none";
+}
 
 // Hamburger menu
 function menuOnClick() {
@@ -22,18 +22,6 @@ function reset() {
         $(this).prop('checked', false);
     });
     location.reload()
-}
-
-var form_entry = document.getElementById("entry");
-var chat_box = document.getElementById("chat_log");
-var count = 0;
-var checkbox = document.querySelector("input[name=color_mode]");
-var turn = Boolean(false);
-var mode = "normal";
-
-function onload_do(){
-    document.getElementById("pdf_upload").style.display = "none";
-    document.getElementById("uploaded_files").style.display = "none";
 }
 
 checkbox.addEventListener("change", function() {
