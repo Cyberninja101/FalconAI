@@ -180,206 +180,205 @@ A target at the edge of the time  window yields a frequency offset equal to one-
  PULSE COMPRESSION RADAR  8.356x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 8 The range window width is   ∆rcTB BcB B Tp p= =2 2 ( / ) (8.37) Stretch Pulse Compression Radar Examples.  This section describes three  examples of radars that employ stretch pulse compression systems.  Long Range Imaging Radar.62,63 The Long Range Imaging Radar (LRIR) is an  X-band radar with stretch processing bandwidths of 0.8, 1.6 MHz, and 3.2 MHz. 
 The  wideband waveform has a swept bandwidth of 1000 MHz, to a pulsewidth of approxi - mately 250 µs, and a LFM slope B/T ≈ 1000 MHz/(250 µs) = 4 MHz/µs. The range  window width for the 3.2 MHz processing bandwidth is   ∆rcB B Tm s p= =×=2150 3 2120( / ). µ µMHz 4MHz sm  Millimeter Wave Radar. 
  The stretch processing implementation for the Millimeter  Wave radar (MMW) located at Kwajalein Atoll is described by Abouzahara and  Avent.64 The MMW radar operates at a carrier frequency of 35 GHz using waveforms  with a maximum swept bandwidth of 1000 MHz and pulsewidth of 50 µs. The LFM  slope for the transmit waveform is  αµµ = = =B T100020MHz 50sMHz/s  The stretch processing bandwidth is Bp = 5 MHz. The width of the stretch processing  time window is   ∆t= =50 25MHz 20MHz ssµµ. 
-  The reference waveform pulsewidth is TR = 50 + 0.25 = 50.25 µs to avoid a loss in SNR  for targets at the edges of the range window. The swept bandwidth of the reference  waveform and the range window width are  BR= × = 20MHz/s50.25 s1005 MHz µ µ    ∆ ∆rct = = × =2150 m s 0.25 s37.5 m µ µ   The 6-dB range resolution width with Hamming weighting applied over the 50-µs  pulsewidth in the spectral analysis processing is   ∆Rc B61 8121 811500 27 = = = . . 
-.m s 1000 MHzmµ   Cobra Dane Wideband Pulse Compression System. 67 The characteristics of the  wideband pulse compression system developed for the Cobra Dane radar are sum - marized in Table 8.9. ch08.indd   35 12/20/07   12:51:28 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies. 
-All rights reserved. Any use is subject to the Terms of Use as given at the website.	Pulse Compression Radar. 8.36  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 8 APPENDIX Signal Analysis Summary.68–70 Table 8.10 is a summary of signal analysis defi - nitions and relationships. 
-Table 8.11 shows Woodward’s Fourier transform rules and  pairs.69 These relationships simplify the application of signal analysis techniques. In  most cases, it will not be necessary to explicitly perform an integration to evaluate the  Fourier transform or inverse Fourier transform.Characteristic Value Transmit LFM bandwidth 1175 to 1375 MHz Reference LFM bandwidth 1665 to 1865 MHz* Transmit waveform swept bandwidth, B 200 MHz Reference waveform swept bandwidth, Bref 200 MHz*  Transmit pulsewidth, T 1000 µs Reference pulsewidth, Tref 1000 µs* Transmit waveform LFM slope 0.2 MHz/µs (up-chirp) Compressed pulsewidth (–3 dB), t3 3.75 ft Time-bandwidth product, TB 200,000 Time sidelobe level –30 dB Target range window 240 ft Number of range samples 400 Range sample spacing 0.6 ft First IF (at output of correlation mixer) 490 MHz Second IF 60 MHz Stretch processing bandwidth, Bp 100 kHz A/D converter sampling frequency 1 MHz (in I and Q baseband channels)TABLE   8. 9 Cobra Dane Wideband Pulse Compression System Characteristics ( adapted from Filer  and Hartt67 © IEEE 1976  ) * Excludes pulsewidth and swept bandwidth extension due to 240-ft range window  1 Fourier transform (spectrum) of  signal x(t) X f x te d tj( ) ( ) = −∞∞ −∫2πft  2 Inverse Fourier transform of  spectrum X(  f  ) x t X f e d fj( ) ( ) = −∞∞ ∫2πft  3 Convolution of signals x(t) and y(t) y t x t h t x h t d x t h( ) ( ) ( ) ( )( ) ( )= ∗ = − = − −∞∞ −∞∞ ∫ ∫τ τ τ τ ( ( )τ τd  4 Filter frequency response H(f) = Y(f)/X(f)  5 Euler’s identity   e jjθθ θ = +cos s inTABLE   8. 
-10 Signal Analysis Definitions and Relationships ch08.indd   36 12/20/07   12:51:37 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies. All rights reserved. Any use is subject to the Terms of Use as given at the website.	Pulse Compression Radar. 
- PULSE COMPRESSION RADAR  8.376x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 8 Radar Transmit Waveforms .2,68,71 –73 The transmitted waveforms used in radar  are bandpass signals that can be expressed in the form  x t a t f t t ( ) ( )cos[ ( )] = + 20π φ  (8.38) where a(t) is the amplitude modulation ( V), f(t) is the phase modulation (rad), and  f0 is the carrier frequency (Hz). The amplitude and phase modulation functions vary  slowly compared to the period of the carrier (1/ f0). Consequently, x(t) is a narrowband  waveform with a bandwidth that is small compared to the carrier frequency . 
- Complex Envelope.  The complex envelope of x(t) is given by  u t a tej t( ) ( )( )=φ (8.39 a)TABLE   8. 10 Signal Analysis Definitions and Relationships ( Continued )  6 Cosine and sine functions expressed  in terms of complex exponentialscos ( ) sin ( )θ θθ θ θ θ= + = −− −e e e e jj j j j2 2  7 Parseval’s theorem  (superscript asterisk indicates  complex conjugate)x ty t dt X f Y f df x t dt X( )( ) ( ) ( ) | () | |−∞∞ ∗ −∞∞ ∗∫ ∫= =2( ( )|f d f2 −∞∞ −∞∞ ∫ ∫  8 rect function rect( )tt t=< >  1 1 2 0 1 2, || , ||  9 sinc functionsinc( ) sin( ) ( ) f f f = π π 10 Repetition operator repT nx t x t nT [ ()] ( ) = − =−∞∞ ∑ 11 Comb operator combF nX f X nF f nF [ ( )] ( ) ( ) = − =−∞∞ ∑ δ 12 Sampling property of delta function x t t t dt x t ( )( ) ( ) −∞∞ ∫− =δ0 0 13 Cauchy-Schwarz inequality f xg xdx f x dx g x dx ( )( ) | ( ) | | () | −∞∞ −∞∞ −∞∞ ∫ ∫ ∫≤2 2 2 withequalityifandonly if ()1 f x k g=∗( ( )x ch08.indd   37 12/20/07   12:51:57 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies. 
-All rights reserved. Any use is subject to the Terms of Use as given at the website.	Pulse Compression Radar. 8.38  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 8 The bandpass signal is expressed in terms of the complex envelope by  u t x tej f t( ) Re[ () ] =20π (8.39 b) Complex Envelope Representation of Radar Echoes. 
-73 The radar echo signal  from a point target is  s t A at t f f t t t tr r d d d d ( ) ( ) cos[ ( ) ( ) ( ) ] = − + − + − 20π φ  (8.40) where Ar is a dimensionless amplitude scale factor, td is the target time delay ( s), fd is  the target doppler shift (Hz), a(t) is the amplitude modulation ( V), f (t) is the phase  modulation (rad), and f0 is the transmit carrier frequency (Hz). The complex envelope  of sr(t) is   u t A e u t t er rj f t dj f t td d d ( ) ( )( )= −− − 2 20π π  (8.41) The term u(t – td) is the complex envelope of the transmit waveform delayed in time  by td. The complex exponential exp[ j2p  fd(t – td)] represents a linear phase modulation  versus time that is impressed on the received echo signal by the doppler shift fd. 
-The  carrier phase shift is qc = –2p  f0td. The time delay and doppler shift are expressed in terms of target range and range- rate by td = 2R/c (s) and fd = –(2/l)Vr (Hz), where R is the target range ( m), Vr = dR/dt Signal Spectrum Comments  1 x(t) X(  f  ) Fourier transform pair  2 Ax(t) + Bu(t) AX(  f  ) + BU(  f  ) Linearity  3 x(−t) X(−f  ) Signal time reversal  4 x*(t) X*(−f) Conjugate of signal  5 dx/dt j2πfX(  f  ) Time domain differentiation  6 −j2πtx(t) dX/df Frequency domain differentiation  7 x(t − t  ) X(  f  ) exp ( −j2πft ) Signal time shift  8 x(t)exp( j2πf0t) X(  f − f0 ) Signal frequency shift  9 x(t/T) |T|X(  fT ) Time scaling 10 x t y t( ) ( )∗ X(  f  )Y(  f  ) Time domain convolution 11 x(t)y(t) X f Y f ( ) ( )∗ Time domain multiplication 12repTx t[ ()] | / | [ ( )] 11 T X fT combWoodward’s repetition operator 13combTx t[ ()] | / | [ ( )] 11 T X fTrepWoodward’s comb operator 14 X(t) x(–f  ) Time-frequency interchange (duality) 15 d (t) 1 Delta function in time 16 1 d (  f  ) Delta function in frequency 17 rect(t) sinc(  f  ) rect function in time 18 sinc( t) rect(  f  ) rect function in frequency 19 exp(– πt2) exp(– π f2) Gaussian time functionTABLE   8. 11 Fourier Transform Rules and Pairs ch08.indd   38 12/20/07   12:52:14 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies. 
-All rights reserved. Any use is subject to the Terms of Use as given at the website.	Pulse Compression Radar.  PULSE COMPRESSION RADAR  8.396x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 8 is the range-rate (negative for an incoming target), c is the speed of light, and l = c/f0  (m) is the carrier wavelength. 
-Matched Filters .2,74 A matched filter achieves maximum output signal-to-noise  ratio for a signal received in white noise. The matched filter frequency response for   a signal u(t) is   H f k U f ej f t mf( ) ( ) =∗ − 121π (8.42) where k1 is an arbitrary complex constant and U(  f  ) is the spectrum of u(t). The time  delay t1 is required to exceed the duration of u(t) to achieve a causal impulse response  that is zero for negative time. 
-The matched filter impulse response is   h t k u t tmf( ) ( ) = −∗ 1 1 (8.43) The peak signal-to-noise to mean-noise-power ratio at the output of a filter with  frequency response H(  f  ) is defined as  ( )S NA o no=02 2σ (8.44) where Ao is the matched filter output signal amplitude at the peak of the signal and s  2 no  is the matched filter output noise power. The matched filter output SNR is given by*  S NE N()=mf2 0 (8.45) where E is the energy of the received bandpass signal at the matched filter input ( J),  and N0 is the one-sided noise power spectrum at the matched filter input (W/Hz).  Filter Matching Loss. 
- Filter matching loss Lm is the loss in SNR that results when  a signal is not processed using a matched filter. The filter matching loss is defined as   LS N S Nm o=( ) ( )mf (8.46) where ( S/N)o is the SNR at the output of a filter with frequency response H(  f  ) and   (S/N)mf is the matched filter SNR. The filter matching loss can also be expressed as  LE N S Nm o=( ) ( )20 (8.47) where the matched filter SNR is given by ( S/N)mf = (2E/N0). 
-The filter matching loss is  ≥ 1, where Lm = 1 for the matched filter. The filter matching loss expressed in decibels  is Lm(dB) = 10log( Lm) and equals 0 dB for the matched filter.  *  An alternate definition of signal-to-noise ratio is also used in the literature in which the signal power at the peak of  the waveform is averaged over one cycle of the carrier.75,76 In this case, the average signal power is one-half of the  peak signal power and the matched-filter output SNR is E/N0. 
-ch08.indd   39 12/20/07   12:52:38 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies. All rights reserved. Any use is subject to the Terms of Use as given at the website.	Pulse Compression Radar. 
-8.40  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 8 Ambiguity Functions .2,71,72,77 –79 The autocorrelation† function for a transmit  waveform with complex envelope u(t) is defined as   χ τ τπ u dj f tf u t u t e dtd ( , ) ( ) ( ) = +∗ −∞∞ ∫2  (8.48) where t is the relative time delay and fd is doppler shift. The relative time delay is  positive for a target further in range than a reference target, and doppler frequency is   positive for an incoming target (negative range-rate). The complex envelope u(t)   is normalized to unit energy   | () |u t dt21 −∞∞ ∫= (8.49) The ambiguity function of u(t) is defined as the square magnitude of the autocorrelation  function  Ψu d u d f f( , ) | ( , ) | τ χ τ =2 (8.50) The ambiguity function is interpreted as a surface above the delay-doppler ( t – fd)  plane. 
-The maximum value of the ambiguity function is unity at the origin ( t = fd = 0):  Ψ Ψu d u f( , ) ( , ) τ ≤ = 0 0 1 (8.51) The volume under the ambiguity surface is unity for any waveform u(t):   −∞∞ −∞∞ ∫ ∫= Ψu d d f d df ( , )τ τ 1 (8.52) In the general case, where the energy of the complex envelope is not normalized  to unity, the value of the ambiguity function at the origin is equal to ( 2E)2 where E  is the energy of the bandpass signal corresponding to u(t), and the volume under the  ambiguity function is also equal to ( 2E)2. The normalization condition is equivalent to  the assumption that the energy of the bandpass transmit waveform equals 0.5 J. Matched Filter Time Response. 
- The matched filter time response to a target  with doppler shift fd can be expressed in terms of the autocorrelation function. The  matched filter impulse response with k1 = 1 and t1 = 0 is   h t u tmf( ) ( )*= −  (8.53) The matched filter input signal is assumed to have zero time delay and a doppler  shift fd:  s t u tej f td ( ) ( )=2π (8.54) †  The terminology for this function is not standardized in the literature. Woodward69 uses the term correlation func - tion. 
-The term time-frequency autocorrelation function is used by Spafford.80 The signs associated with t  and fd  within the integrand also differ in the literature. The standardized definition proposed by Sinsky and Wang78 is  used in this chapter. ch08.indd   40 12/20/07   12:52:53 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies. 
-All rights reserved. Any use is subject to the Terms of Use as given at the website.	Pulse Compression Radar.  PULSE COMPRESSION RADAR  8.416x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 8 The matched filter output signal y(t) is found by convolution of s(t) with the  matched filter impulse response hmf(t):  y t u tu t t e dtj f td ( ) ( ) ( ) = ′ ′ − ′ −∞∞ ∗ ′∫2π  (8.55) Comparison of this result with the definition of the autocorrelation function shows  that the matched filter response can be expressed as  y(t) = Xu(−t, fd) (8.56) As a result, the matched filter time response for a target with doppler frequency fd  is a time-reversed version of the autocorrelation function. 
-Conditions for Target Resolution in Time Delay and Doppler Frequency .72,78    Assume that two targets with equal radar cross sections are present at the same angular  position. The first target (termed the reference target ) is located at the origin of the  delay-doppler plane with zero relative time delay and zero doppler frequency, and the  second target is at relative time delay t  and doppler frequency fd. The relative time delay  is positive when the second target is farther in range than the reference target and the  doppler frequency is positive for an incoming target. 
-The matched-filter output power  for the reference target is proportional to the ambiguity function and is given by  Pref = Ψu (0,0) = 1 (8.57) The matched filter output power for the second target, evaluated at the peak of the  reference target, is   P2 = Ψu (t, fd) (8.58) The second target is unresolved from the reference target at locations in the delay- doppler plane where Ψu(t, fd) ≈ 1. REFERENCES  1. J. 
-R. Klauder, A. C. 
-Price, S. Darlington, and W. J. 
-Albersheim, “The theory and design of chirp  radars,” Bell Syst. Tech. J ., vol. 
-39, pp. 745–808, July 1960.  2. 
-C. E. Cook and M. 
-Bernfield, Radar signals: An Introduction to Theory and Application ,   New York: Academic Press, 1967.  3. C. 
-E. Cook and J. Paolillo, “A pulse compression predistortion function for efficient sidelobe  reduction in a high-power radar,” Proc. 
-IEEE , pp. 377–389, April 1964.  4. 
-T. T. Taylor, “Design of line-source antennas for narrow beamwidth and low sidelobes,” IRE  Trans ., vol. 
-AP-3, pp. 16–28, January 1955.  5. 
-R. C. Hansen, “Aperture theory,” in Microwave Scanning Antennas , vol. 
-I, R. C. Hansen (ed.),  New York: Academic Press, 1964, chap. 
-1.  6. H. 
-Gautier and P. Tournois, “Signal processing using surface-acoustic-wave and digital compo - nents,” IEEE Proc ., vol. 127, pt. 
-F, pp. 92–93, April 1980.  7. 
-A. J. Slobodnik, Jr., “Surface acoustic waves and SAW materials,” Proc. 
-IEEE , vol. 64,   pp. 581–594, May 1976. 
- 8. T. W. 
-Bristol, “Acoustic surface-wave-device applications,” Microwave J ., vol. 17, pp. 25–27,  January 1974. 
-ch08.indd   41 12/20/07   12:52:55 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies. All rights reserved. Any use is subject to the Terms of Use as given at the website.	Pulse Compression Radar. 
-8.42  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 8  9. J. W. 
- Arthur, “Modern SAW-based pulse compression systems for radar applications,” Electronics  & Communications Engineering Journal , December 1995. 10. R. 
-C. Williamson, “Properties and applications of reflective-array devices,” Proc. IEEE , vol. 
-64,  pp. 702–703, May 1976. 11. 
-G. W. Judd, “Technique for realizing low time sidelobe levels in small compression ratio chirp  waveforms,” Proc. 
-IEEE Ultrasonics Symp ., 1973, pp. 478–481. 12. 
-A. Pohl, C. Posch, F. 
-Seifert, and L. Reindl, “Wideband compressive receiver with SAW convolver,”  1995 IEEE Ultrasonics Symposium , pp. 155–158. 
-13.  X. Shou, J. 
-Xu, H. Wang, and Q. Xu, “SAW pulse compression systems with lower sidelobes,”  1997 Asia Pacific Microwave Conference , pp. 
-833–835. 14. T. 
-Murakami, “Optimum waveform study for coherent pulse doppler,” RCA Final Rept ., prepared  for Office of Naval Research, Contract Nonr 4649(00)(x), AD641391, February 28, 1965. 15. T. 
-Collins and P. Atkins, “Nonlinear frequency modulation chirps for active sonar,” IEE Proc.- Radar, Sonar Navig ., vol. 146, no. 
-6, pp. 312–316, December 1999. 16. 
-L. R. Varschney and D. 
-Thomas, “Sidelobe reduction for matched range processing,” 2003 IEEE  Radar Conference , pp. 446–451. 17. 
-N. Levanon and E. Mozeson, Radar Signals , New York: IEEE Press, John Wiley & Sons, Inc.,  2004, pp. 
-106, 145. 18. R. 
-H. Barker, “Group synchronization of binary digital systems,” in Communication Theory ,   W. Jackson (ed.), New York: Academic Press, 1953, pp. 
-273–287. 19. P. 
-J. Edmonson, C. K. 
-Campbell, and S. F. Yuen, “Study of SAW pulse compression using 5×5  Barker codes with quadriphase IDT geometries,” 1988 IEEE Ultrasonics Symposium , pp. 
-219–222. 20. T. 
-Felhauer, “Design and analysis of new P(n,k) polyphase pulse compression codes,” IEEE  Transactions on Aerospace and Electronics Systems , vol. 30, no. 3, pp. 
-865–874, July 1994. 21. R. 
-Turyn and J. Stover, “On binary sequences,” Proc. Am. 
-Math. Soc ., vol. 12, pp. 
-394–399,   June 1961. 22. D. 
-G. Luenburger, “On Barker codes of even length,” Proc. IEEE , vol. 
-51, pp. 230–231, January  1963. 23. 
-R. Turyn, “On Barker codes of even length,” Proc. IEEE  (correspondence), vol. 
-51, p. 1256,  September 1963. 24. 
-L. Bomer and M. Antweiler, “Polyphase Barker sequences,” Electronics Letters , vol. 
-23, no. 23,  pp. 1577–1579, November 9, 1989. 
-25. H. Meikle, Modern Radar Systems , Norwood, MA: Artech House, 2001, p. 
-258. 26. B. 
-L. Lewis, “Range-time-sidelobe reduction technique for FM-derived polyphase PC codes,”  IEEE Transactions on Aerospace and Electronics Systems , vol. 29, no.3, pp. 
-834–863, July 1993. 27. W. 
-W. Peterson and E. J. 
-Weldon, Jr., Error Correcting Codes , Cambridge: M.I.T. Press, 1972,  app. C. 
-28. M. I. 
-Skolnik, Introduction to Radar Systems , 3rd Ed., New York: McGraw Hill, 2001, p. 367. 29. 
-N. Levanon and E. Mozeson, Radar Signals , New York: IEEE Press, John Wiley & Sons, Inc.,  2004, pp. 
-106–109. 30. L. 
-Bömer and M. Antweiler, “Polyphase Barker sequences,” Electronics Letters , vol. 25, no. 
-23,   pp. 1577–79, November 9, 1989. 31. 
-W-D. Wirth, Radar Techniques Using Array Antennas , IEE Radar, Sonar, Navigation and  Avionics Series 10, London: The Institution of Electrical Engineers, 2001. 32. 
-R. L. Frank, “Polyphase codes with good nonperiodic correlation properties,” IEEE Trans .,   vol. 
-IT-9, pp. 43–45, January 1963. 33. 
-B. L. Lewis and F. 
-F. Kretschmer, Jr., “A new class of polyphase pulse compression codes and  techniques,” IEEE Trans ., vol. AES-17, pp. 
-364–372, May 1981. (See correction, IEEE Trans.,  vol. AES-17, p. 
-726, May 1981.) 34. B. L. 
+  The reference waveform pulsewidth is TR = 50 + 0.25 = 50.25 µs to avoid a loss in SNR  for targets at the edges of the range window. The swept bandwidth of the reference  waveform and the range window width are  BR= × = 20MHz/s50.25 s1005 MHz µ µ    ∆ ∆rct = = × =2150 m s 0.25 s37.5 m µ µ   The 6-dB range resolution width with Hamming weighting applied over the 50-µs  pulsewidth in the spectral analysis processing is   ∆Rc B61 8121 811500 27 = = = . .m s 1000 MHzmµ   Cobra Dane Wideband Pulse Compression System. 
+67 The characteristics of the  wideband pulse compression system developed for the Cobra Dane radar are sum - marized in Table 8.9. ch08.indd   35 12/20/07   12:51:28 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies. All rights reserved. 
+Any use is subject to the Terms of Use as given at the website.	Pulse Compression Radar. 8.36  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 8 APPENDIX Signal Analysis Summary.68–70 Table 8.10 is a summary of signal analysis defi - nitions and relationships. Table 8.11 shows Woodward’s Fourier transform rules and  pairs.69 These relationships simplify the application of signal analysis techniques. 
+In  most cases, it will not be necessary to explicitly perform an integration to evaluate the  Fourier transform or inverse Fourier transform.Characteristic Value Transmit LFM bandwidth 1175 to 1375 MHz Reference LFM bandwidth 1665 to 1865 MHz* Transmit waveform swept bandwidth, B 200 MHz Reference waveform swept bandwidth, Bref 200 MHz*  Transmit pulsewidth, T 1000 µs Reference pulsewidth, Tref 1000 µs* Transmit waveform LFM slope 0.2 MHz/µs (up-chirp) Compressed pulsewidth (–3 dB), t3 3.75 ft Time-bandwidth product, TB 200,000 Time sidelobe level –30 dB Target range window 240 ft Number of range samples 400 Range sample spacing 0.6 ft First IF (at output of correlation mixer) 490 MHz Second IF 60 MHz Stretch processing bandwidth, Bp 100 kHz A/D converter sampling frequency 1 MHz (in I and Q baseband channels)TABLE   8. 9 Cobra Dane Wideband Pulse Compression System Characteristics ( adapted from Filer  and Hartt67 © IEEE 1976  ) * Excludes pulsewidth and swept bandwidth extension due to 240-ft range window  1 Fourier transform (spectrum) of  signal x(t) X f x te d tj( ) ( ) = −∞∞ −∫2πft  2 Inverse Fourier transform of  spectrum X(  f  ) x t X f e d fj( ) ( ) = −∞∞ ∫2πft  3 Convolution of signals x(t) and y(t) y t x t h t x h t d x t h( ) ( ) ( ) ( )( ) ( )= ∗ = − = − −∞∞ −∞∞ ∫ ∫τ τ τ τ ( ( )τ τd  4 Filter frequency response H(f) = Y(f)/X(f)  5 Euler’s identity   e jjθθ θ = +cos s inTABLE   8. 10 Signal Analysis Definitions and Relationships ch08.indd   36 12/20/07   12:51:37 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies. 
+All rights reserved. Any use is subject to the Terms of Use as given at the website.	Pulse Compression Radar.  PULSE COMPRESSION RADAR  8.376x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 8 Radar Transmit Waveforms .2,68,71 –73 The transmitted waveforms used in radar  are bandpass signals that can be expressed in the form  x t a t f t t ( ) ( )cos[ ( )] = + 20π φ  (8.38) where a(t) is the amplitude modulation ( V), f(t) is the phase modulation (rad), and  f0 is the carrier frequency (Hz). 
+The amplitude and phase modulation functions vary  slowly compared to the period of the carrier (1/ f0). Consequently, x(t) is a narrowband  waveform with a bandwidth that is small compared to the carrier frequency .  Complex Envelope. 
+ The complex envelope of x(t) is given by  u t a tej t( ) ( )( )=φ (8.39 a)TABLE   8. 10 Signal Analysis Definitions and Relationships ( Continued )  6 Cosine and sine functions expressed  in terms of complex exponentialscos ( ) sin ( )θ θθ θ θ θ= + = −− −e e e e jj j j j2 2  7 Parseval’s theorem  (superscript asterisk indicates  complex conjugate)x ty t dt X f Y f df x t dt X( )( ) ( ) ( ) | () | |−∞∞ ∗ −∞∞ ∗∫ ∫= =2( ( )|f d f2 −∞∞ −∞∞ ∫ ∫  8 rect function rect( )tt t=< >  1 1 2 0 1 2, || , ||  9 sinc functionsinc( ) sin( ) ( ) f f f = π π 10 Repetition operator repT nx t x t nT [ ()] ( ) = − =−∞∞ ∑ 11 Comb operator combF nX f X nF f nF [ ( )] ( ) ( ) = − =−∞∞ ∑ δ 12 Sampling property of delta function x t t t dt x t ( )( ) ( ) −∞∞ ∫− =δ0 0 13 Cauchy-Schwarz inequality f xg xdx f x dx g x dx ( )( ) | ( ) | | () | −∞∞ −∞∞ −∞∞ ∫ ∫ ∫≤2 2 2 withequalityifandonly if ()1 f x k g=∗( ( )x ch08.indd   37 12/20/07   12:51:57 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies. All rights reserved. 
+Any use is subject to the Terms of Use as given at the website.	Pulse Compression Radar. 8.38  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 8 The bandpass signal is expressed in terms of the complex envelope by  u t x tej f t( ) Re[ () ] =20π (8.39 b) Complex Envelope Representation of Radar Echoes. 73 The radar echo signal  from a point target is  s t A at t f f t t t tr r d d d d ( ) ( ) cos[ ( ) ( ) ( ) ] = − + − + − 20π φ  (8.40) where Ar is a dimensionless amplitude scale factor, td is the target time delay ( s), fd is  the target doppler shift (Hz), a(t) is the amplitude modulation ( V), f (t) is the phase  modulation (rad), and f0 is the transmit carrier frequency (Hz). 
+The complex envelope  of sr(t) is   u t A e u t t er rj f t dj f t td d d ( ) ( )( )= −− − 2 20π π  (8.41) The term u(t – td) is the complex envelope of the transmit waveform delayed in time  by td. The complex exponential exp[ j2p  fd(t – td)] represents a linear phase modulation  versus time that is impressed on the received echo signal by the doppler shift fd. The  carrier phase shift is qc = –2p  f0td. 
+The time delay and doppler shift are expressed in terms of target range and range- rate by td = 2R/c (s) and fd = –(2/l)Vr (Hz), where R is the target range ( m), Vr = dR/dt Signal Spectrum Comments  1 x(t) X(  f  ) Fourier transform pair  2 Ax(t) + Bu(t) AX(  f  ) + BU(  f  ) Linearity  3 x(−t) X(−f  ) Signal time reversal  4 x*(t) X*(−f) Conjugate of signal  5 dx/dt j2πfX(  f  ) Time domain differentiation  6 −j2πtx(t) dX/df Frequency domain differentiation  7 x(t − t  ) X(  f  ) exp ( −j2πft ) Signal time shift  8 x(t)exp( j2πf0t) X(  f − f0 ) Signal frequency shift  9 x(t/T) |T|X(  fT ) Time scaling 10 x t y t( ) ( )∗ X(  f  )Y(  f  ) Time domain convolution 11 x(t)y(t) X f Y f ( ) ( )∗ Time domain multiplication 12repTx t[ ()] | / | [ ( )] 11 T X fT combWoodward’s repetition operator 13combTx t[ ()] | / | [ ( )] 11 T X fTrepWoodward’s comb operator 14 X(t) x(–f  ) Time-frequency interchange (duality) 15 d (t) 1 Delta function in time 16 1 d (  f  ) Delta function in frequency 17 rect(t) sinc(  f  ) rect function in time 18 sinc( t) rect(  f  ) rect function in frequency 19 exp(– πt2) exp(– π f2) Gaussian time functionTABLE   8. 11 Fourier Transform Rules and Pairs ch08.indd   38 12/20/07   12:52:14 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies. All rights reserved. 
+Any use is subject to the Terms of Use as given at the website.	Pulse Compression Radar.  PULSE COMPRESSION RADAR  8.396x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 8 is the range-rate (negative for an incoming target), c is the speed of light, and l = c/f0  (m) is the carrier wavelength. Matched Filters .2,74 A matched filter achieves maximum output signal-to-noise  ratio for a signal received in white noise. 
+The matched filter frequency response for   a signal u(t) is   H f k U f ej f t mf( ) ( ) =∗ − 121π (8.42) where k1 is an arbitrary complex constant and U(  f  ) is the spectrum of u(t). The time  delay t1 is required to exceed the duration of u(t) to achieve a causal impulse response  that is zero for negative time. The matched filter impulse response is   h t k u t tmf( ) ( ) = −∗ 1 1 (8.43) The peak signal-to-noise to mean-noise-power ratio at the output of a filter with  frequency response H(  f  ) is defined as  ( )S NA o no=02 2σ (8.44) where Ao is the matched filter output signal amplitude at the peak of the signal and s  2 no  is the matched filter output noise power. 
+The matched filter output SNR is given by*  S NE N()=mf2 0 (8.45) where E is the energy of the received bandpass signal at the matched filter input ( J),  and N0 is the one-sided noise power spectrum at the matched filter input (W/Hz).  Filter Matching Loss.  Filter matching loss Lm is the loss in SNR that results when  a signal is not processed using a matched filter. 
+The filter matching loss is defined as   LS N S Nm o=( ) ( )mf (8.46) where ( S/N)o is the SNR at the output of a filter with frequency response H(  f  ) and   (S/N)mf is the matched filter SNR. The filter matching loss can also be expressed as  LE N S Nm o=( ) ( )20 (8.47) where the matched filter SNR is given by ( S/N)mf = (2E/N0). The filter matching loss is  ≥ 1, where Lm = 1 for the matched filter. 
+The filter matching loss expressed in decibels  is Lm(dB) = 10log( Lm) and equals 0 dB for the matched filter.  *  An alternate definition of signal-to-noise ratio is also used in the literature in which the signal power at the peak of  the waveform is averaged over one cycle of the carrier.75,76 In this case, the average signal power is one-half of the  peak signal power and the matched-filter output SNR is E/N0. ch08.indd   39 12/20/07   12:52:38 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies. 
+All rights reserved. Any use is subject to the Terms of Use as given at the website.	Pulse Compression Radar. 8.40  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 8 Ambiguity Functions .2,71,72,77 –79 The autocorrelation† function for a transmit  waveform with complex envelope u(t) is defined as   χ τ τπ u dj f tf u t u t e dtd ( , ) ( ) ( ) = +∗ −∞∞ ∫2  (8.48) where t is the relative time delay and fd is doppler shift. 
+The relative time delay is  positive for a target further in range than a reference target, and doppler frequency is   positive for an incoming target (negative range-rate). The complex envelope u(t)   is normalized to unit energy   | () |u t dt21 −∞∞ ∫= (8.49) The ambiguity function of u(t) is defined as the square magnitude of the autocorrelation  function  Ψu d u d f f( , ) | ( , ) | τ χ τ =2 (8.50) The ambiguity function is interpreted as a surface above the delay-doppler ( t – fd)  plane. The maximum value of the ambiguity function is unity at the origin ( t = fd = 0):  Ψ Ψu d u f( , ) ( , ) τ ≤ = 0 0 1 (8.51) The volume under the ambiguity surface is unity for any waveform u(t):   −∞∞ −∞∞ ∫ ∫= Ψu d d f d df ( , )τ τ 1 (8.52) In the general case, where the energy of the complex envelope is not normalized  to unity, the value of the ambiguity function at the origin is equal to ( 2E)2 where E  is the energy of the bandpass signal corresponding to u(t), and the volume under the  ambiguity function is also equal to ( 2E)2. 
+The normalization condition is equivalent to  the assumption that the energy of the bandpass transmit waveform equals 0.5 J. Matched Filter Time Response.  The matched filter time response to a target  with doppler shift fd can be expressed in terms of the autocorrelation function. 
+The  matched filter impulse response with k1 = 1 and t1 = 0 is   h t u tmf( ) ( )*= −  (8.53) The matched filter input signal is assumed to have zero time delay and a doppler  shift fd:  s t u tej f td ( ) ( )=2π (8.54) †  The terminology for this function is not standardized in the literature. Woodward69 uses the term correlation func - tion. The term time-frequency autocorrelation function is used by Spafford.80 The signs associated with t  and fd  within the integrand also differ in the literature. 
+The standardized definition proposed by Sinsky and Wang78 is  used in this chapter. ch08.indd   40 12/20/07   12:52:53 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies. All rights reserved. 
+Any use is subject to the Terms of Use as given at the website.	Pulse Compression Radar.  PULSE COMPRESSION RADAR  8.416x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 8 The matched filter output signal y(t) is found by convolution of s(t) with the  matched filter impulse response hmf(t):  y t u tu t t e dtj f td ( ) ( ) ( ) = ′ ′ − ′ −∞∞ ∗ ′∫2π  (8.55) Comparison of this result with the definition of the autocorrelation function shows  that the matched filter response can be expressed as  y(t) = Xu(−t, fd) (8.56) As a result, the matched filter time response for a target with doppler frequency fd  is a time-reversed version of the autocorrelation function. Conditions for Target Resolution in Time Delay and Doppler Frequency .72,78    Assume that two targets with equal radar cross sections are present at the same angular  position. 
+The first target (termed the reference target ) is located at the origin of the  delay-doppler plane with zero relative time delay and zero doppler frequency, and the  second target is at relative time delay t  and doppler frequency fd. The relative time delay  is positive when the second target is farther in range than the reference target and the  doppler frequency is positive for an incoming target. The matched-filter output power  for the reference target is proportional to the ambiguity function and is given by  Pref = Ψu (0,0) = 1 (8.57) The matched filter output power for the second target, evaluated at the peak of the  reference target, is   P2 = Ψu (t, fd) (8.58) The second target is unresolved from the reference target at locations in the delay- doppler plane where Ψu(t, fd) ≈ 1. 
+REFERENCES  1. J. R. 
+Klauder, A. C. Price, S. 
+Darlington, and W. J. Albersheim, “The theory and design of chirp  radars,” Bell Syst. 
+Tech. J ., vol. 39, pp. 
+745–808, July 1960.  2. C. 
+E. Cook and M. Bernfield, Radar signals: An Introduction to Theory and Application ,   New York: Academic Press, 1967. 
+ 3. C. E. 
+Cook and J. Paolillo, “A pulse compression predistortion function for efficient sidelobe  reduction in a high-power radar,” Proc. IEEE , pp. 
+377–389, April 1964.  4. T. 
+T. Taylor, “Design of line-source antennas for narrow beamwidth and low sidelobes,” IRE  Trans ., vol. AP-3, pp. 
+16–28, January 1955.  5. R. 
+C. Hansen, “Aperture theory,” in Microwave Scanning Antennas , vol. I, R. 
+C. Hansen (ed.),  New York: Academic Press, 1964, chap. 1. 
+ 6. H. Gautier and P. 
+Tournois, “Signal processing using surface-acoustic-wave and digital compo - nents,” IEEE Proc ., vol. 127, pt. F, pp. 
+92–93, April 1980.  7. A. 
+J. Slobodnik, Jr., “Surface acoustic waves and SAW materials,” Proc. IEEE , vol. 
+64,   pp. 581–594, May 1976.  8. 
+T. W. Bristol, “Acoustic surface-wave-device applications,” Microwave J ., vol. 
+17, pp. 25–27,  January 1974. ch08.indd   41 12/20/07   12:52:55 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies. 
+All rights reserved. Any use is subject to the Terms of Use as given at the website.	Pulse Compression Radar. 8.42  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 8  9. 
+J. W.  Arthur, “Modern SAW-based pulse compression systems for radar applications,” Electronics  & Communications Engineering Journal , December 1995. 
+10. R. C. 
+Williamson, “Properties and applications of reflective-array devices,” Proc. IEEE , vol. 64,  pp. 
+702–703, May 1976. 11. G. 
+W. Judd, “Technique for realizing low time sidelobe levels in small compression ratio chirp  waveforms,” Proc. IEEE Ultrasonics Symp ., 1973, pp. 
+478–481. 12. A. 
+Pohl, C. Posch, F. Seifert, and L. 
+Reindl, “Wideband compressive receiver with SAW convolver,”  1995 IEEE Ultrasonics Symposium , pp. 155–158. 13. 
+ X. Shou, J. Xu, H. 
+Wang, and Q. Xu, “SAW pulse compression systems with lower sidelobes,”  1997 Asia Pacific Microwave Conference , pp. 833–835. 
+14. T. Murakami, “Optimum waveform study for coherent pulse doppler,” RCA Final Rept ., prepared  for Office of Naval Research, Contract Nonr 4649(00)(x), AD641391, February 28, 1965. 
+15. T. Collins and P. 
+Atkins, “Nonlinear frequency modulation chirps for active sonar,” IEE Proc.- Radar, Sonar Navig ., vol. 146, no. 6, pp. 
+312–316, December 1999. 16. L. 
+R. Varschney and D. Thomas, “Sidelobe reduction for matched range processing,” 2003 IEEE  Radar Conference , pp. 
+446–451. 17. N. 
+Levanon and E. Mozeson, Radar Signals , New York: IEEE Press, John Wiley & Sons, Inc.,  2004, pp. 106, 145. 
+18. R. H. 
+Barker, “Group synchronization of binary digital systems,” in Communication Theory ,   W. Jackson (ed.), New York: Academic Press, 1953, pp. 273–287. 
+19. P. J. 
+Edmonson, C. K. Campbell, and S. 
+F. Yuen, “Study of SAW pulse compression using 5×5  Barker codes with quadriphase IDT geometries,” 1988 IEEE Ultrasonics Symposium , pp. 219–222. 
+20. T. Felhauer, “Design and analysis of new P(n,k) polyphase pulse compression codes,” IEEE  Transactions on Aerospace and Electronics Systems , vol. 
+30, no. 3, pp. 865–874, July 1994. 
+21. R. Turyn and J. 
+Stover, “On binary sequences,” Proc. Am. Math. 
+Soc ., vol. 12, pp. 394–399,   June 1961. 
+22. D. G. 
+Luenburger, “On Barker codes of even length,” Proc. IEEE , vol. 51, pp. 
+230–231, January  1963. 23. R. 
+Turyn, “On Barker codes of even length,” Proc. IEEE  (correspondence), vol. 51, p. 
+1256,  September 1963. 24. L. 
+Bomer and M. Antweiler, “Polyphase Barker sequences,” Electronics Letters , vol. 23, no. 
+23,  pp. 1577–1579, November 9, 1989. 25. 
+H. Meikle, Modern Radar Systems , Norwood, MA: Artech House, 2001, p. 258. 
+26. B. L. 
 Lewis, “Range-time-sidelobe reduction technique for FM-derived polyphase PC codes,”  IEEE Transactions on Aerospace and Electronics Systems , vol. 29, no.3, pp. 834–863, July 1993. 
-ch08.indd   42 12/20/07   12:52:56 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies. All rights reserved. Any use is subject to the Terms of Use as given at the website.	Pulse Compression Radar. 
- PULSE COMPRESSION RADAR  8.436x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 8 35. B. L. 
-Lewis and F. F. Kretschmer, Jr., “Linear Frequency Modulation Derived Polyphase Pulse  Compression Codes,” IEEE Trans. 
-on Aerospace and Electronics Systems , AES-18, no. 5,   pp. 636–641, September 1982. 
-36. J. W. 
-Taylor and H. J. Blinchikoff, “Quadriphase code-a radar pulse compression signal  with unique characteristics,” IEEE Trans. 
-Aerospace and Electronic Systems , vol. 24, no. 2,   pp. 
-156–170, March 1988. 37. H. 
-J. Blinchikoff, “Range sidelobe reduction for the quadriphase codes,” IEEE Trans. Aerospace  and Electronic Systems, vol. 
-32, no. 2, April 1996, pp. 668–675. 
-38. N. Levanon, “Stepped-frequency pulse-train radar signal,” IEE Proc-Radar Sonar Navigation ,  vol. 
-149, no. 6, December 2002. 39. 
-A. W. Rihaczek, Principles of High-Resolution Radar , New York: McGraw-Hill Book Company,  1969, chap. 
-8. 40. J. 
-P. Donohue and F. M. 
-Ingels, “Ambiguity function properties of frequency hopped radar/sonar  signals,” Proc. of the 1989 Southeastcon , session 10B6, pp. 85–89. 
- 41. J. P. 
-Costas, “A study of a class of detection waveforms having nearly ideal range-doppler ambi - guity properties,” Proc. of the IEEE , vol. 72, no. 
-8, August 1984. 42. B. 
-R. Mahafza, Radar Systems Analysis and Design using MATLAB, 2000 , Boca Raton: Chapman  & Hall/CRC, 2000. 43. 
-B. M. Popvik, “New construction of Costas sequences,” Electronic Letters , vol. 
-25, no.1,   January 5, 1989.  44. M. 
-I. Skolnik, Introduction to Radar Systems , 3rd Ed., New York: McGraw Hill, 2001, pp. 355–57. 
- 45. D. P. 
-Morgan, “Surface acoustic wave devices and applications,” Ultrasonics , vol. 11, pp. 121–131,  1973. 
-46. L. O. 
-Eber and H. H. Soule, Jr., “Digital generation of wideband LFM waveforms,” IEEE Int. 
- Radar Conf. Rec ., 1975, pp. 170–175. 
-47. AD9858 1-GSPS direct digital synthesizer data sheet, Rev. A, 2003, Analog Devices, Norwood,  MA (available at www.analog.com). 
-48. J. K. 
-Hartt and L. F. Sheats, “Application of pipeline FFT technology in radar signal and data  processing,” EASCON Rec ., 1971, pp. 
-216–221; reprinted in David K. Barton, Radars , vol. 3,   Ann Arbor: Books on Demand UMI, 1975. 
-49. P. E. 
-Blankenship and E. M. Hofstetter, “Digital pulse compression via fast convolution,”  IEEE Trans. 
-on Acoustics,  Speech and Signal Processing , vol. ASSP-23, no. 2, pp. 
-189–222,   April 1975. 50. L. 
-W. Martinson and R. J. 
-Smith, “Digital matched filtering with pipelined floating point  fast Fourier transforms (FFTs),” IEEE Trans. on Acoustics, Speech and Signal Processing ,   vol. ASSP-23, no. 
-2, pp. 222–234, April 1975. 51. 
-L. E. Pellon, “A double Nyquist digital product detector for quadrature sampling,” IEEE Trans. 
- on Signal Processing , vol. 40, no. 7, pp. 
-1670–1680. 52. G. 
-A. Shaw and S. C. 
-Pohlig, “I/Q baseband demodulation in the RASSP SAR benchmark,”  Project Report RASSP-4, Massachusetts Institute of Technology, Lincoln Laboratory, 25 August  1995, http://www.ll.mit.edu/llrassp/documents.html. 53. M. 
-A. Richard, “Digital I/Q,” Section 3.7.3 in Fundamentals of Radar Signal Processing ,   New York: McGraw-Hill, 2005. 54. 
-L. R. Rabiner and B. 
-Gold, Theory and Application of Digital Signal Processing , Englewood  Cliffs, NJ: Prentice-Hall, Inc., 1975, chap. 2. 55. 
-J. J. Gostin, “The GE592 solid-state radar,” IEEE EASCON 1980 , pp. 
-197–203. 56. E. 
-L, Cole, P. A DeCesare, M. J. 
-Martineaus, R. S. Baker, and S. 
-M. Buswell, “ASR-12: A next  generation solid-state air traffic control radar,” IEEE 1998 Radar Conference , pp. 9–14. 
-57. W. J. 
-Caputi, Jr., “Stretch: A time-transformation technique,” IEEE Trans ., vol. AES-7, pp. 269–278,  March 1971. 
-58. W. J. 
-Caputi, “A technique for the time-transformation of signals and its application to directional  systems,” The Radio and Electronic Engineer , pp. 135–142, March 1965. ch08.indd   43 12/21/07   10:22:44 AMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies. 
-All rights reserved. Any use is subject to the Terms of Use as given at the website.	Pulse Compression Radar. 8.44  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 8 59. 
-W. J. Caputi, “Swept-heterodyne apparatus for changing the time-bandwidth product of a signal,”  U.S. 
-Patent 3283080, November 1, 1966. 60. W. 
-J. Caputi, “Pulse-type object detection apparatus,” U.S. Patent, November 21, 1967. 
-61. K. R. 
-Roth, M. E. Austin, D. 
-J. Frediani, G. H. 
-Knittel, and A. V . Mrstik, “The Kiernan reentry  measurements system on Kwajalein Atoll,” The Lincoln Laboratory Technical Journal, vol. 
-2,   no. 2, 1989. 62. 
-D. R. Bromaghim and J. 
-P. Perry, “A wideband linear fm ramp generator for the long-range imag - ing radar,” IEEE Trans, Microwave Theory and Techniques , vol. MTT-26, no. 
-5, pp. 322–325,  May 1978. 63. 
-G. R. Armstrong and M. 
-Axelbank, “Description of the long-range imaging radar,” Project Report  PSI-85, Massachusetts Institute of Technology, Lincoln Laboratory, November 16, 1977. 64. M. 
-D. Abouzahra and R. K. 
-Avent, “The 100-kW millimeter-wave radar at the Kwajalein Atoll,”  IEEE Antennas and Propagation Magazine , vol. 36, no. 2, pp. 
-7–19, April 1994. 65. W. 
-C. Kellog, “Digital processing rescues hardware phase errors,” Microwaves & RF , pp. 63–67,  80, November 1982. 
-66. C. L. 
-Temes, “Sidelobe suppression in a range channel pulse-compression radar,” IRE Trans .,   vol. MIL-6, pp. 162–169, April 1962. 
-67. E. Filer and J. 
-Hartt, “COBRA DANE wideband pulse compression system,” IEEE EASCON  ’76,  1976, pp. 61-A–61-M.  68. 
-S. Stein and J. J. 
-Jones, “ Modern Communication Principles with Application to Digital  Signaling ,” New York: McGraw-Hill, 1967. 69. P. 
-M. Woodward, Probability and Information Theory with Application to Radar , Pergamon  Press, 1960. 70. 
-D. Brandwood, “Fourier Transforms,” in Radar and Signal Processing , Boston: Artech House,  2003. 71. 
-G. W. Deley, “Waveform design,” in Radar Handbook , M. 
-I. Skolnik (ed.), 1st Ed., New York:  McGraw-Hill, 1970. 72. 
-A. I. Sinsky, “Waveform selection and processing” in Radar Technology , E. 
-Brookner (ed.),  Boston: Artech House, 1977, Chap. 7. 73. 
-C. W. Helstrom, Statistical Theory of Signal Detection , 2nd Ed., Pergamon Press, 1968. 
-74. G. L. 
-Turin, “An introduction to matched filters,” IRE Trans. Inform. Theory , vol. 
-IT-6,   pp. 311–329, June 1960. 75. 
-D. K. Barton, Modern Radar System Analysis and Modeling , Canton, MA: Artech House Inc,  2005, Chap. 
-5, p. 197.  76. 
-F. E. Nathanson, J. 
-P. Reilly, and M. N. 
-Cohen, Radar Design Principles: Signal Processing and  the Environment , 2nd Ed. New York: McGraw-Hill, 1991. chap. 
-8, p. 357. 77. 
-A. W. Rihaczek, “Radar signal design for target resolution,” Proc. 
-IEEE , vol. 53, pp. 116–128,  February 1965. 
-78. A. I. 
-Sinsky and C. P. Wang, “Standardization of the definition of the ambiguity function,” IEEE  Trans. 
-Aerospace and Electronic Systems , pp. 532–533, July 1974. 79. 
-IEEE standard radar definitions, IEEE Std 686-1990, The Institution of Electrical and Electronic  Engineers, New York, NY , 1990. The ambiguity function is defined on page 55 using the standard - ized definition given by Sinsky and Wang. 80. 
-L. J. Spafford, “Optimum radar signal processing in clutter,” IEEE Trans. 
-Information Theory ,  vol. IT-14, no. 5, pp. 
-734–743, September 1968. ch08.indd   44 12/21/07   10:24:08 AMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies. All rights reserved. 
-Any use is subject to the Terms of Use as given at the website.	Pulse Compression Radar. 
+27. W. W. 
+Peterson and E. J. Weldon, Jr., Error Correcting Codes , Cambridge: M.I.T. 
+Press, 1972,  app. C. 28. 
+M. I. Skolnik, Introduction to Radar Systems , 3rd Ed., New York: McGraw Hill, 2001, p. 
+367. 29. N. 
+Levanon and E. Mozeson, Radar Signals , New York: IEEE Press, John Wiley & Sons, Inc.,  2004, pp. 106–109. 
+30. L. Bömer and M. 
+Antweiler, “Polyphase Barker sequences,” Electronics Letters , vol. 25, no. 23,   pp. 
+1577–79, November 9, 1989. 31. W-D. 
+Wirth, Radar Techniques Using Array Antennas , IEE Radar, Sonar, Navigation and  Avionics Series 10, London: The Institution of Electrical Engineers, 2001. 32. R. 
+L. Frank, “Polyphase codes with good nonperiodic correlation properties,” IEEE Trans .,   vol. IT-9, pp. 
+43–45, January 1963. 33. B. 
+L. Lewis and F. F. 
+Kretschmer, Jr., “A new class of polyphase pulse compression codes and  techniques,” IEEE Trans ., vol. AES-17, pp. 364–372, May 1981. 
+(See correction, IEEE Trans.,  vol. AES-17, p. 726, May 1981.) 34. 
+B. L. Lewis, “Range-time-sidelobe reduction technique for FM-derived polyphase PC codes,”  IEEE Transactions on Aerospace and Electronics Systems , vol. 
+29, no.3, pp. 834–863, July 1993. ch08.indd   42 12/20/07   12:52:56 PMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies. 
+All rights reserved. Any use is subject to the Terms of Use as given at the website.	Pulse Compression Radar.  PULSE COMPRESSION RADAR  8.436x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 8 35. 
+B. L. Lewis and F. 
+F. Kretschmer, Jr., “Linear Frequency Modulation Derived Polyphase Pulse  Compression Codes,” IEEE Trans. on Aerospace and Electronics Systems , AES-18, no. 
+5,   pp. 636–641, September 1982. 36. 
+J. W. Taylor and H. 
+J. Blinchikoff, “Quadriphase code-a radar pulse compression signal  with unique characteristics,” IEEE Trans. Aerospace and Electronic Systems , vol. 
+24, no. 2,   pp. 156–170, March 1988. 
+37. H. J. 
+Blinchikoff, “Range sidelobe reduction for the quadriphase codes,” IEEE Trans. Aerospace  and Electronic Systems, vol. 32, no. 
+2, April 1996, pp. 668–675. 38. 
+N. Levanon, “Stepped-frequency pulse-train radar signal,” IEE Proc-Radar Sonar Navigation ,  vol. 149, no. 
+6, December 2002. 39. A. 
+W. Rihaczek, Principles of High-Resolution Radar , New York: McGraw-Hill Book Company,  1969, chap. 8. 
+40. J. P. 
+Donohue and F. M. Ingels, “Ambiguity function properties of frequency hopped radar/sonar  signals,” Proc. 
+of the 1989 Southeastcon , session 10B6, pp. 85–89.  41. 
+J. P. Costas, “A study of a class of detection waveforms having nearly ideal range-doppler ambi - guity properties,” Proc. 
+of the IEEE , vol. 72, no. 8, August 1984. 
+42. B. R. 
+Mahafza, Radar Systems Analysis and Design using MATLAB, 2000 , Boca Raton: Chapman  & Hall/CRC, 2000. 43. B. 
+M. Popvik, “New construction of Costas sequences,” Electronic Letters , vol. 25, no.1,   January 5, 1989. 
+ 44. M. I. 
+Skolnik, Introduction to Radar Systems , 3rd Ed., New York: McGraw Hill, 2001, pp. 355–57.  45. 
+D. P. Morgan, “Surface acoustic wave devices and applications,” Ultrasonics , vol. 
+11, pp. 121–131,  1973. 46. 
+L. O. Eber and H. 
+H. Soule, Jr., “Digital generation of wideband LFM waveforms,” IEEE Int.  Radar Conf. 
+Rec ., 1975, pp. 170–175. 47. 
+AD9858 1-GSPS direct digital synthesizer data sheet, Rev. A, 2003, Analog Devices, Norwood,  MA (available at www.analog.com). 48. 
+J. K. Hartt and L. 
+F. Sheats, “Application of pipeline FFT technology in radar signal and data  processing,” EASCON Rec ., 1971, pp. 216–221; reprinted in David K. 
+Barton, Radars , vol. 3,   Ann Arbor: Books on Demand UMI, 1975. 49. 
+P. E. Blankenship and E. 
+M. Hofstetter, “Digital pulse compression via fast convolution,”  IEEE Trans. on Acoustics,  Speech and Signal Processing , vol. 
+ASSP-23, no. 2, pp. 189–222,   April 1975. 
+50. L. W. 
+Martinson and R. J. Smith, “Digital matched filtering with pipelined floating point  fast Fourier transforms (FFTs),” IEEE Trans. 
+on Acoustics, Speech and Signal Processing ,   vol. ASSP-23, no. 2, pp. 
+222–234, April 1975. 51. L. 
+E. Pellon, “A double Nyquist digital product detector for quadrature sampling,” IEEE Trans.  on Signal Processing , vol. 
+40, no. 7, pp. 1670–1680. 
+52. G. A. 
+Shaw and S. C. Pohlig, “I/Q baseband demodulation in the RASSP SAR benchmark,”  Project Report RASSP-4, Massachusetts Institute of Technology, Lincoln Laboratory, 25 August  1995, http://www.ll.mit.edu/llrassp/documents.html. 
+53. M. A. 
+Richard, “Digital I/Q,” Section 3.7.3 in Fundamentals of Radar Signal Processing ,   New York: McGraw-Hill, 2005. 54. L. 
+R. Rabiner and B. Gold, Theory and Application of Digital Signal Processing , Englewood  Cliffs, NJ: Prentice-Hall, Inc., 1975, chap. 
+2. 55. J. 
+J. Gostin, “The GE592 solid-state radar,” IEEE EASCON 1980 , pp. 197–203. 
+56. E. L, Cole, P. 
+A DeCesare, M. J. Martineaus, R. 
+S. Baker, and S. M. 
+Buswell, “ASR-12: A next  generation solid-state air traffic control radar,” IEEE 1998 Radar Conference , pp. 9–14. 57. 
+W. J. Caputi, Jr., “Stretch: A time-transformation technique,” IEEE Trans ., vol. 
+AES-7, pp. 269–278,  March 1971. 58. 
+W. J. Caputi, “A technique for the time-transformation of signals and its application to directional  systems,” The Radio and Electronic Engineer , pp. 
+135–142, March 1965. ch08.indd   43 12/21/07   10:22:44 AMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies. All rights reserved. 
+Any use is subject to the Terms of Use as given at the website.	Pulse Compression Radar. 8.44  RADAR HANDBOOK 6x9 Handbook  / Radar Handbook / Skolnik / 148547-3 / Chapter 8 59. W. 
+J. Caputi, “Swept-heterodyne apparatus for changing the time-bandwidth product of a signal,”  U.S. Patent 3283080, November 1, 1966. 
+60. W. J. 
+Caputi, “Pulse-type object detection apparatus,” U.S. Patent, November 21, 1967. 61. 
+K. R. Roth, M. 
+E. Austin, D. J. 
+Frediani, G. H. Knittel, and A. 
+V . Mrstik, “The Kiernan reentry  measurements system on Kwajalein Atoll,” The Lincoln Laboratory Technical Journal, vol. 2,   no. 
+2, 1989. 62. D. 
+R. Bromaghim and J. P. 
+Perry, “A wideband linear fm ramp generator for the long-range imag - ing radar,” IEEE Trans, Microwave Theory and Techniques , vol. MTT-26, no. 5, pp. 
+322–325,  May 1978. 63. G. 
+R. Armstrong and M. Axelbank, “Description of the long-range imaging radar,” Project Report  PSI-85, Massachusetts Institute of Technology, Lincoln Laboratory, November 16, 1977. 
+64. M. D. 
+Abouzahra and R. K. Avent, “The 100-kW millimeter-wave radar at the Kwajalein Atoll,”  IEEE Antennas and Propagation Magazine , vol. 
+36, no. 2, pp. 7–19, April 1994. 
+65. W. C. 
+Kellog, “Digital processing rescues hardware phase errors,” Microwaves & RF , pp. 63–67,  80, November 1982. 66. 
+C. L. Temes, “Sidelobe suppression in a range channel pulse-compression radar,” IRE Trans .,   vol. 
+MIL-6, pp. 162–169, April 1962. 67. 
+E. Filer and J. Hartt, “COBRA DANE wideband pulse compression system,” IEEE EASCON  ’76,  1976, pp. 
+61-A–61-M.  68. S. 
+Stein and J. J. Jones, “ Modern Communication Principles with Application to Digital  Signaling ,” New York: McGraw-Hill, 1967. 
+69. P. M. 
+Woodward, Probability and Information Theory with Application to Radar , Pergamon  Press, 1960. 70. D. 
+Brandwood, “Fourier Transforms,” in Radar and Signal Processing , Boston: Artech House,  2003. 71. G. 
+W. Deley, “Waveform design,” in Radar Handbook , M. I. 
+Skolnik (ed.), 1st Ed., New York:  McGraw-Hill, 1970. 72. A. 
+I. Sinsky, “Waveform selection and processing” in Radar Technology , E. Brookner (ed.),  Boston: Artech House, 1977, Chap. 
+7. 73. C. 
+W. Helstrom, Statistical Theory of Signal Detection , 2nd Ed., Pergamon Press, 1968. 74. 
+G. L. Turin, “An introduction to matched filters,” IRE Trans. 
+Inform. Theory , vol. IT-6,   pp. 
+311–329, June 1960. 75. D. 
+K. Barton, Modern Radar System Analysis and Modeling , Canton, MA: Artech House Inc,  2005, Chap. 5, p. 
+197.  76. F. 
+E. Nathanson, J. P. 
+Reilly, and M. N. Cohen, Radar Design Principles: Signal Processing and  the Environment , 2nd Ed. 
+New York: McGraw-Hill, 1991. chap. 8, p. 
+357. 77. A. 
+W. Rihaczek, “Radar signal design for target resolution,” Proc. IEEE , vol. 
+53, pp. 116–128,  February 1965. 78. 
+A. I. Sinsky and C. 
+P. Wang, “Standardization of the definition of the ambiguity function,” IEEE  Trans. Aerospace and Electronic Systems , pp. 
+532–533, July 1974. 79. IEEE standard radar definitions, IEEE Std 686-1990, The Institution of Electrical and Electronic  Engineers, New York, NY , 1990. 
+The ambiguity function is defined on page 55 using the standard - ized definition given by Sinsky and Wang. 80. L. 
+J. Spafford, “Optimum radar signal processing in clutter,” IEEE Trans. Information Theory ,  vol. 
+IT-14, no. 5, pp. 734–743, September 1968. 
+ch08.indd   44 12/21/07   10:24:08 AMDownloaded from Digital Engineering Library @ McGraw-Hill (www.digitalengineeringlibrary.com) Copyright © 2008 The McGraw-Hill Companies. All rights reserved. Any use is subject to the Terms of Use as given at the website.	Pulse Compression Radar. 
