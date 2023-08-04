@@ -148,20 +148,22 @@ body {
     text-align: center;
 }
 
+/* Middle Section */
+#middle_section {
+    display:flex;
+    width: 50vmax;
+    justify-content: space-between;
+}
+
 #chat_log {
     display: block;
-    /* margin-top: 20px; */
     margin-left: 25%;
-    /* margin-right: 4vw; */
     margin-bottom: 17px;
     padding-top: 0px;
     width: 50vmax;
     height: 70vh;
     border-radius: 20px;
-    /* background-color: #465246; */
     background-color: rgba(255, 255, 255, 0.9);
-    
-    /* background-color: rgba(220, 227, 240, 0.9); */
     background-color: rgb(255, 255, 255);
     box-shadow: 0 0 15px rgb(233, 233, 233);
     /* scrollable */
@@ -169,9 +171,57 @@ body {
     float:left;
 }
 
+#user_chat {
+    background-color: rgb(85, 215, 161);
+    width:fit-content;
+    max-width: 53%;
+    margin-left: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    padding: 8px;
+    border-radius: 9px;
+    color: white;
+    text-align: left;
+    min-height: 19px;
+}
+
+#ai_chat {
+    background-color: rgb(154, 164, 253);
+    width:fit-content;
+    max-width: 53%;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    padding: 8px;
+    border-radius: 9px;
+    color: white;
+    text-align: left;
+    min-height: 19px;
+}
+
+
+/* Adding new chat to chat-log */
+#new_chat {
+    display: blocks;
+    margin-top: auto;
+    margin-bottom: auto;
+    padding: 11px;
+    font-size: 1.25rem;
+    background: linear-gradient(135deg, hsla(234, 100%, 92%, 1) 0%, hsla(140, 100%, 91%, 1) 100%);
+    background: -moz-linear-gradient(135deg, hsla(234, 100%, 92%, 1) 0%, hsla(140, 100%, 91%, 1) 100%);
+    background: -webkit-linear-gradient(135deg, hsla(234, 100%, 92%, 1) 0%, hsla(140, 100%, 91%, 1) 100%);
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    margin-right: 1vw;
+}
+
 #uploaded_files {
     display: none;
-    /* margin-right: 20vw; */
     margin-top: 0px;
     margin-left:1.5vw;
     float:left;
@@ -191,30 +241,60 @@ body {
     margin-bottom: 5px;
 }
 
+#bottom_section {
+    display: flex;
+    margin-left: 25.07vw;
+    width: 60%;
+}
 
-#submit_button:hover {
-    background-color: rgb(50, 139, 212);
-    /* background-color: linear-gradient(135deg, rgb(198, 203, 246) 0%, hsla(rgb(185, 246, 205)); */
-    transition: 0.3s;
+/* new chat button */
+.new_chat_button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.new_chat_button img {
+    height: 45px;
+}
+
+.HMT_button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.HMT_button img {
+    height: 45px;
 }
 
 #submit_button {
     display: flex;
     flex-grow: 0;
     position: relative;
-    
     padding: 8px 16px;
     margin-right: 12px;
     margin-left: 5px;
     font-size: 1.7rem;
     background: #66b9f1;
-    /* background: linear-gradient(135deg, hsla(234, 100%, 92%, 1) 0%, hsla(140, 100%, 91%, 1) 100%); */
     border: none;
     border-radius: 10px;
     outline: none;
     cursor: pointer;
     color: white;
     float: right;
+}
+
+#submit_button:hover {
+    background-color: rgb(50, 139, 212);
+    transition: 0.3s;
 }
 
 /* input text box */
@@ -227,16 +307,12 @@ input[type=text] {
     opacity:0.7;
     padding-left: 15px;
     float: left;
-    
 }
 
 #discount_form {
     justify-self: center;
     display: flex;
-
     width: 50vmax;
-    /* margin-left: auto;
-    margin-right: auto; */
     margin-top: 1vh;
     height: 70px;
     box-shadow: 0 0 15px rgb(233, 233, 233);
@@ -244,7 +320,6 @@ input[type=text] {
     background-color: rgba(255, 255, 255, 0.9);
     align-items: center;
     justify-content: space-between;
-    
 }
 
 
@@ -253,69 +328,12 @@ form {
     margin-top: 1%;
 }
 
-
-#user_chat {
-    background-color: rgb(85, 215, 161);
-    /* background-color: rgb(31, 127, 210); */
-    width:fit-content;
-    max-width: 53%;
-    margin-left: auto;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    margin-right: 20px;
-    padding: 8px;
-    border-radius: 9px;
-    color: white;
-    text-align: left;
-    min-height: 19px;
-}
-
-#ai_chat {
-    background-color: rgb(171, 176, 221);
-    /* background-color: rgb(131, 131, 131); */
-    width:fit-content;
-    max-width: 53%;
-    margin-right: auto;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    margin-left: 20px;
-    padding: 8px;
-    border-radius: 9px;
-    color: white;
-    text-align: left;
-    min-height: 19px;
-}
-
-
-/* Adding new chat to chat-log */
-#new_chat {
-
-    display: blocks;
-    margin-top: auto;
-    margin-bottom: auto;
-
-    padding: 11px;
-    
-    font-size: 1.25rem;
-    /* background: #66b9f1; */
-    background: linear-gradient(135deg, hsla(234, 100%, 92%, 1) 0%, hsla(140, 100%, 91%, 1) 100%);
-    background: -moz-linear-gradient(135deg, hsla(234, 100%, 92%, 1) 0%, hsla(140, 100%, 91%, 1) 100%);
-
-    background: -webkit-linear-gradient(135deg, hsla(234, 100%, 92%, 1) 0%, hsla(140, 100%, 91%, 1) 100%);
-    border: none;
-    border-radius: 10px;
-    outline: none;
-    cursor: pointer;
-    color: rgb(255, 255, 255);
-    margin-right: 1vw;
-    
-}
-
 #pdf_upload {
     display: block;
     justify-self:right;
     background-image: url("../pdf_icon.png");
     background-size: 67px;
+
     /* transparent background color */
     background-color: rgba(255, 255, 255, 0); 
     width: 67px;
@@ -347,29 +365,8 @@ form {
     display: none;
 }
 
-#bottom_section {
-    display: flex;
-    margin-left: 25.07vw;
-    width: 60%;
-}
-
-
-
-
 /* Change Mode Button Stuff */
-
-
 /*switch styles*/
-
-/* Middle Section */
-#middle_section {
-    display:flex;
-    width: 50vmax;
-    justify-content: space-between;
-    /* margin-top: 15px; */
-    /* margin-bottom: 15px; */
-}
-
 div.btn-container {
     margin-left: auto;
     margin-right: auto;
@@ -380,8 +377,6 @@ div.btn-container {
     position: relative;
     top: -9px;
 }
-
-
 
 label {
     font-size: 16px;
@@ -399,19 +394,12 @@ label {
     margin: 0px;
     width: 38vmax;
     height: 45px;
-    /* background: #E0E0E0; */
     background: hsla(234, 100%, 92%, 1);
-
     background: linear-gradient(135deg, hsla(234, 100%, 92%, 1) 0%, hsla(140, 100%, 91%, 1) 100%);
-
-    /* background: -moz-linear-gradient(135deg, hsla(234, 100%, 92%, 1) 0%, hsla(140, 100%, 91%, 1) 100%);
-
-    background: -webkit-linear-gradient(135deg, hsla(234, 100%, 92%, 1) 0%, hsla(140, 100%, 91%, 1) 100%); */
     border-radius: 26px;
     overflow: hidden;
     position: relative;
     transition: all 0.3s ease;
-    /*box-shadow: 0px 0px 8px 0px rgba(17, 17, 17, 0.34) inset;*/
     display: block;
 }
 
@@ -421,9 +409,7 @@ label {
     font-size: 16px;
     font-weight: 500;
     top: 13px;
-    /* right: 7vmax; */
     right:5vw;
-
 }
 
 .btn-color-mode-switch > label.btn-color-mode-switch-inner:after{
@@ -440,7 +426,6 @@ label {
     transition: all 0.3s ease;
     box-shadow: 0px 0px 6px -2px #111;
     padding: 5px 0px;
-    /* vertical-align: middle; */
     align-items: center;
     justify-content: center;
 }
@@ -464,14 +449,8 @@ label {
 }
 
 .btn-color-mode-switch input[type="checkbox"]:checked + label.btn-color-mode-switch-inner{
-    /* background: #151515; */
     background: hsla(234, 100%, 92%, 1);
-
     background: linear-gradient(135deg, hsla(234, 100%, 92%, 1) 0%, hsla(140, 100%, 91%, 1) 100%);
-
-    /* background: -moz-linear-gradient(135deg, hsla(234, 100%, 92%, 1) 0%, hsla(140, 100%, 91%, 1) 100%);
-
-    background: -webkit-linear-gradient(135deg, hsla(234, 100%, 92%, 1) 0%, hsla(140, 100%, 91%, 1) 100%); */
     color: #ffffff;
 }
 
@@ -488,45 +467,6 @@ label {
     color: #030303;
 }
 
-.btn-color-mode-switch input[type="checkbox"]:checked + label.btn-color-mode-switch-inner{
-    /*background: #66BB6A; */
-    /*color: #fff;*/
-}
-
 .btn-color-mode-switch input[type="checkbox"]:checked ~ .alert{
     display: block;
-}
-
-
-
-/* new chat button */
-.new_chat_button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    
-    background-color: rgba(0, 0, 0, 0);
-
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    
-}
-.new_chat_button img {
-    height: 45px;
-}
-
-.HMT_button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    
-    background-color: rgba(0, 0, 0, 0);
-
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-.HMT_button img {
-    height: 45px;
 }
