@@ -192,3 +192,11 @@ body {
 #pdf_text {
     padding-right: 5px;
 }
+
+#big_list {
+    margin-left: 10px;
+}
+
+#edge_dumb {
+    padding-top: 10px;
+}

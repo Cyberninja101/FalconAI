@@ -169,6 +169,7 @@ body {
 #about_container {
     display: flex;
     padding-right: 40px;
+    justify-content: space-between;
 }
 
 #about_text1 {
@@ -191,5 +192,17 @@ body {
     padding-bottom: 5px;
     text-align: left;
     font-size: medium;
+}
+
+#about_container2 {
+    display: flex;
+    padding-right: 40px;
+    justify-content: space-between;
+    padding-top: 10px;
+}
+
+#code_icon {
+    height:150px;
+    padding-right: 1%;
 }
     
