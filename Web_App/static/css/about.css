@@ -23,8 +23,18 @@ html, body {
     width: 100%;
     margin-left: 0px;
     margin-right: 0px;
+    position: relative;
 }
 
+#logo {
+    /* display: inline; */
+    height: 50px;
+    /* vertical-align: baseline; */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding-left: 10px;
+}
 
 /* Hamburger stuff */
 
