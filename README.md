@@ -17,7 +17,7 @@ FALCON is an open source chatbot fine-tuned on Open-Llama 7B v2 for RADAR applic
 ## Features
 - Normal Mode
     - The normal mode uses the fine-tuned open-llama model, and is best suited for answering general questions relating to radars. With conversational memory, users can ask questions and converse with the model.
-- Document Mode (Vector Database)
+- Document Mode
     - The document ingest mode allows users to upload multiple documents to FALCON. Using the llama 13B **Kenny, confirm the final model** model from OPAL, users can ask specific questions about the text, such as "What are the top 3 threats I need to know about from North Korea as a radar specialist?", or more general questions, such as "summarize and list the main points of this document".
 - Explanation Mode
     - The explanation mode activates HMT (Human Machine Teaming), built with the ReAct framework, prompting the model to explain how it got to its answers. With more advanced AI reasoning, users can have more confidence giving the AI more complicated tasks, freeing their time for more creative endeavors. 
