@@ -19,7 +19,7 @@ app = Flask(__name__)
 chat_log = []
 
 # Defining models
-finetuned_model = radar_llama()
+# finetuned_model = radar_llama()
 vectordb_model = vectordb()
 
 
@@ -29,7 +29,7 @@ def home():
     This is the home/default page. ok
     """
     # Refresh the finetuned_model history
-    finetuned_model.__init__()
+    # finetuned_model.__init__()
 
     # Also delete uploaded files
     folder = 'Web_App/contexts/'
