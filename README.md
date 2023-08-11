@@ -4,7 +4,11 @@
 
 FALCON is an open source chatbot fine-tuned on Open-Llama 7B v2 for RADAR applications. This chatbot was created by four high schoolers during the summer of 2023 as part of the JHU Applied Physics Laboratory's (APL) [ASPIRE](https://secwww.jhuapl.edu/stem/aspire/) program. FALCON chatbot assists APL users in the AMDS (Air & Missle Defence Sector) with day-to-day tasks in secure/confidential working environments with no internet access. 
 
-*Put in a photo of the Web App UI, maybe with some box shadows when it looks nice, remind Zenchang pls*
+Website: [http://falconai.outer.jhuapl.edu](http://falconai.outer.jhuapl.edu/)
+
+*Disclaimer: This is a secure website from APL, and is only available in specific whitelisted IP address areas.*
+
+**Put in a photo of the Web App UI, maybe with some box shadows when it looks nice, remind Zenchang pls**
 
 
 - Original model: Open-Llama v2 (7 billion parameters)
@@ -24,8 +28,21 @@ FALCON is an open source chatbot fine-tuned on Open-Llama 7B v2 for RADAR applic
 - Strong CounterAI Gaurdrails
     - To prevent the model from outputting illegal, profane, or otherwise NSFW content, we implemented AI guardrails. By using language model chaining via LangChain, we are able to determine if input prompts fall into the above categories without impacting model performance.
 
-## Poster
+## ASPIRE Poster
+<img src="/ReadMe_images/FALCON_POSTER.png">
 
-<img src="/ReadMe_images/FALCON_poster.png">
+## Credits
+
+Contributors:
+- Zenchang Sun
+- Kenneth Wang
+- Justin Sykes
+- Niko Tabernero
+
+APL Mentors
+- Michael Tabernero
+- Josh McCarter
+- Ryan Allen
+- Edwina Liu
 
 
