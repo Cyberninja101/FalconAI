@@ -23,3 +23,9 @@ FALCON is an open source chatbot fine-tuned on Open-Llama 7B v2 for RADAR applic
     - The explanation mode activates HMT (Human Machine Teaming), built with the ReAct framework, prompting the model to explain how it got to its answers. With more advanced AI reasoning, users can have more confidence giving the AI more complicated tasks, freeing their time for more creative endeavors. 
 - Strong CounterAI Gaurdrails
     - To prevent the model from outputting illegal, profane, or otherwise NSFW content, we implemented AI guardrails. By using language model chaining via LangChain, we are able to determine if input prompts fall into the above categories without impacting model performance.
+
+## Poster
+
+<img src="/ReadMe_images/FALCON_poster.png">
+
+
