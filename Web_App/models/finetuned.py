@@ -32,7 +32,7 @@ from langchain import PromptTemplate
 from transformers import (AutoConfig, AutoModel, AutoModelForSeq2SeqLM,
                           AutoTokenizer, GenerationConfig, LlamaForCausalLM,
                           LlamaTokenizer, pipeline)
-
+import os
 
 """
 Ad-hoc sanity check to see if model outputs something coherent
@@ -70,7 +70,7 @@ class MyOutputParser(BaseLLMOutputParser):
 class radar_llama():
     def __init__(self):
         # Loading model
-        config = read_yaml_file(os.sep.join([os.getcwd(), "configs", "radar_open_llama_7b_qlora.yaml"]))
+        config = read_yaml_file(os.sep.join([os.getcwd(), "Web_App", "models","configs", "radar_open_llama_7b_qlora.yaml"]))
         print("Load model")
         model_path = f"{config['model_output_dir']}/{config['model_name']}"
         if "model_family" in config and config["model_family"] == "llama":

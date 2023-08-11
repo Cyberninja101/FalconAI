@@ -41,4 +41,4 @@ trainer:
   learning_rate: 0.0002  # 2e-4
   logging_steps: 20
 trainer_output_dir: trainer_outputs/
-model_output_dir: ../../../models/  # model saved in {model_output_dir}/{model_name}, models folder is in pv-data
+model_output_dir: ../../../models  # model saved in {model_output_dir}/{model_name}, models folder is in pv-data
