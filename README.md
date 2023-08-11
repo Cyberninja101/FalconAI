@@ -17,6 +17,7 @@ Website: [http://falconai.outer.jhuapl.edu](http://falconai.outer.jhuapl.edu/)
 
 **Put in a photo of the Web App UI, maybe with some box shadows when it looks nice, remind Zenchang pls**
 
+
 ## Features
 - Normal Mode
     - The normal mode uses the fine-tuned open-llama model, and is best suited for answering general questions relating to radars. With conversational memory, users can ask questions and converse with the model. Users can also ask questions outside of radars, but the responses might not be as accurate.
@@ -28,7 +29,7 @@ Website: [http://falconai.outer.jhuapl.edu](http://falconai.outer.jhuapl.edu/)
     - To prevent the model from outputting illegal, profane, or otherwise NSFW content, we implemented AI guardrails. By using language model chaining via LangChain, we are able to determine if input prompts fall into the above categories without impacting model performance.
 
 ## How to use FALCON Chatbot
-
+<img src="/ReadMe_images/how_to_FALCON.png" width="700px">
 
 ## ASPIRE Poster
 <img src="/ReadMe_images/FALCON_POSTER.png">
