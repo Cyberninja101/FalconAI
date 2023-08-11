@@ -9,15 +9,13 @@ Website: [http://falconai.outer.jhuapl.edu](http://falconai.outer.jhuapl.edu/)
 
 *Disclaimer: This is a secure website from APL, and is only available in specific whitelisted IP address areas.*
 
-**Put in a photo of the Web App UI, maybe with some box shadows when it looks nice, remind Zenchang pls**
-
-
 - Original model: Open-Llama v2 (7 billion parameters)
 - Fine-tuned on: radar textbooks and journals, threats briefs
 - Protected with: LangChain gaurdrails (NSFW, jailbreaking)
 - Built with: ReAct framework Human Machine Teaming capabilities
 - Constructed with: Flask (Python web framework)
 
+**Put in a photo of the Web App UI, maybe with some box shadows when it looks nice, remind Zenchang pls**
 
 ## Features
 - Normal Mode
