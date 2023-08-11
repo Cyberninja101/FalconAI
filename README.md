@@ -27,6 +27,9 @@ Website: [http://falconai.outer.jhuapl.edu](http://falconai.outer.jhuapl.edu/)
 - Strong CounterAI Gaurdrails
     - To prevent the model from outputting illegal, profane, or otherwise NSFW content, we implemented AI guardrails. By using language model chaining via LangChain, we are able to determine if input prompts fall into the above categories without impacting model performance.
 
+## How to use FALCON Chatbot
+
+
 ## ASPIRE Poster
 <img src="/ReadMe_images/FALCON_POSTER.png">
 
