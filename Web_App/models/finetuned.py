@@ -78,7 +78,7 @@ class radar_llama():
             self.tokenizer = LlamaTokenizer.from_pretrained(self.model_path)
             self.model = LlamaForCausalLM.from_pretrained(self.model_path, device_map="auto", load_in_8bit=True)
         else:
-            sekf.tokenizer = AutoTokenizer.from_pretrained(self.model_path)
+            self.tokenizer = AutoTokenizer.from_pretrained(self.model_path)
             self.model = AutoModelForCausalLM.from_pretrained(self.model_path, device_map="auto", load_in_8bit=True)
 
         # Create Opal Model (used in check_jailbreak)
