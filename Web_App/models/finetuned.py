@@ -2,6 +2,7 @@
 
 
 # Imports
+from _OpalLLM import OpalLLM
 
 import sys
 sys.path.append('/home/jovyan/.local/lib/python3.8/site-packages')
@@ -79,6 +80,14 @@ class radar_llama():
         else:
             sekf.tokenizer = AutoTokenizer.from_pretrained(self.model_path)
             self.model = AutoModelForCausalLM.from_pretrained(self.model_path, device_map="auto", load_in_8bit=True)
+
+        # Create Opal Model (used in check_jailbreak)
+        self.opal_llm = OpalLLM(model='lmsys/vicuna-33b',
+                      temperature=0.1,
+                      top_k=60,
+                      top_p=0.95,
+                      max_tokens=500,
+                      repetition_penalty=1.15)
         
         # Creating HF pipeline
         self.pipe = pipeline(
@@ -150,7 +159,7 @@ class radar_llama():
         Check:"""
 
         prompt_template = PromptTemplate(input_variables=['user_input'], template=template)
-        jailbreak_detect_chain = LLMChain(llm=self.local_llm, prompt=prompt_template, verbose=True)
+        jailbreak_detect_chain = LLMChain(llm=self.opal_llm, prompt=prompt_template, verbose=True)
 
 
         check = jailbreak_detect_chain.predict(user_input=query)
