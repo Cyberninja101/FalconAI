@@ -49,7 +49,7 @@ class vectordb():
                 pdfToTxt("Web_App/contexts/" + str(fname), "Web_App/contexts")
                 os.remove("Web_App/contexts/" + str(fname))
         else:
-            if len(dir)!=1:
+            if len(self.dir)!=1:
                 self.loader = DirectoryLoader("Web_App/contexts", glob="./*.txt", loader_cls=TextLoader)
             else:
                 return("No uploaded files.")

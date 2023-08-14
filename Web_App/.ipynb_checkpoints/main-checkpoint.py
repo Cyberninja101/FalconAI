@@ -19,8 +19,8 @@ app = Flask(__name__)
 chat_log = []
 
 # Defining models
-finetuned_model = radar_llama()
-# vectordb_model = vectordb()
+# finetuned_model = radar_llama()
+vectordb_model = vectordb()
 
 
 
@@ -82,13 +82,13 @@ def new_entry(mode, entry):
             ls.append(ascii_string)
         output = "".join(ls)
 
-        # Check Document or Normal Mode
-        if mode == "normal":
-            # Normal, use finetuned_model model
-            return finetuned_model.run(str(output))
-        else:
+        # # Check Document or Normal Mode
+        # if mode == "normal":
+        #     # Normal, use finetuned_model model
+        #     return finetuned_model.run(str(output))
+        # else:
             # Document mode, use vectordb_model
-            return vectordb_model.predict(str(output))
+        return vectordb_model.predict(str(output))
 
 
 @app.route("/upload_file", methods=["POST"])
