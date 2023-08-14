@@ -45,7 +45,7 @@ class vectordb:
         else:
             print("elsed")
             if len(dir)!=1:
-                loader = DirectoryLoader(os.sep.join([path, "Web_App",'contexts']), glob="./*.txt", loader_cls=TextLoader)
+                loader = DirectoryLoader("Web_App/contexts", glob="./*.txt", loader_cls=TextLoader)
                 print("docs loaded")
             else:
                 return("No uploaded files.")
@@ -80,7 +80,7 @@ class vectordb:
             retriever = vectordb.as_retriever(search_kwargs={"k": 3})
 
             qa_chain = RetrievalQA.from_chain_type(llm=gpt2(),
-                                            chain_type="map_reduce",
+                                            chain_type="stuff",
                                             retriever=retriever,
                                             return_source_documents=True,
                                             verbose=False)
@@ -102,5 +102,7 @@ class vectordb:
             answer += '\n\nSources:'
             for source in llm_response["source_documents"]:
                 answer += source.metadata['source']
-
             return(answer)
+        
+vector = vectordb()
+vector.predict("hello")

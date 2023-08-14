@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "basic-web-app",
+			"path": ".."
+		},
+		{
+			"name": "ThreatInfo",
+			"path": "../../../../Downloads/ThreatInfo"
+		}
+	],
+	"settings": {}
+}
