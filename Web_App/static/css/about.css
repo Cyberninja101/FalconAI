@@ -23,8 +23,18 @@ html, body {
     width: 100%;
     margin-left: 0px;
     margin-right: 0px;
+    position: relative;
 }
 
+#logo {
+    /* display: inline; */
+    height: 50px;
+    /* vertical-align: baseline; */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding-left: 10px;
+}
 
 /* Hamburger stuff */
 
@@ -169,6 +179,7 @@ body {
 #about_container {
     display: flex;
     padding-right: 40px;
+    justify-content: space-between;
 }
 
 #about_text1 {
@@ -191,5 +202,17 @@ body {
     padding-bottom: 5px;
     text-align: left;
     font-size: medium;
+}
+
+#about_container2 {
+    display: flex;
+    padding-right: 40px;
+    justify-content: space-between;
+    padding-top: 10px;
+}
+
+#code_icon {
+    height:150px;
+    padding-right: 1%;
 }
     

@@ -31,14 +31,24 @@ html, body {
     
     text-align: center;
     font-size: 45px;
-    padding-top: 20px;
+    padding-top: 12px;
     padding-bottom: 10px;
     color: rgb(0, 0, 0);
     width: 100%;
     margin-left: 0px;
     margin-right: 0px;
+    position: relative;
 }
 
+#logo {
+    /* display: inline; */
+    height: 50px;
+    /* vertical-align: baseline; */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding-left: 10px;
+}
 
 /* Hamburger stuff */
 
@@ -174,7 +184,7 @@ body {
 /* Content Warning: */
 #warning {
     background-color: rgb(230, 73, 25);
-
+    width: fit-content;
     max-width: 72%;
     /* max-width: 600px; */
     margin-left: auto;
@@ -421,6 +431,7 @@ label {
     height: 45px;
     background: hsla(234, 100%, 92%, 1);
     background: linear-gradient(135deg, hsla(234, 100%, 92%, 1) 0%, hsla(140, 100%, 91%, 1) 100%);
+    box-shadow: 0 0 15px rgb(233, 233, 233);
     border-radius: 26px;
     overflow: hidden;
     position: relative;

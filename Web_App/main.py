@@ -11,6 +11,7 @@ sys.path.insert(1, os.sep.join([os.getcwd(),"Web_App", "models"])) # to get path
 
 from test_model import gpt2, gpt2_model
 from test_chroma import vectordb
+from finetuned import radar_llama
 
 app = Flask(__name__)
 
@@ -18,7 +19,7 @@ app = Flask(__name__)
 chat_log = []
 
 # Defining models
-finetuned_model = gpt2_model()
+# finetuned_model = radar_llama()
 vectordb_model = vectordb()
 
 
@@ -28,7 +29,7 @@ def home():
     This is the home/default page. ok
     """
     # Refresh the finetuned_model history
-    finetuned_model.__init__()
+    # finetuned_model.__init__()
 
     # Also delete uploaded files
     folder = 'Web_App/contexts/'
@@ -83,7 +84,7 @@ def new_entry(mode, entry):
         # Check Document or Normal Mode
         if mode == "normal":
             # Normal, use finetuned_model model
-            return finetuned_model.predict(str(output))
+            return finetuned_model.run(str(output))
         else:
             # Document mode, use vectordb_model
             return vectordb_model.predict(str(output))

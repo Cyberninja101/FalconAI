@@ -1,0 +1,44 @@
+model_name: open_llama_7b_qlora_uncensored
+base_model: openlm-research/open_llama_7b
+model_family: llama  # if unspecified will use AutoModelForCausalLM/AutoTokenizer
+model_context_window: 3072 #2048 #4096  # modify the length to fit your GPU memory
+data:
+  type: raw_text
+  text_files:
+  - data/train2.txt
+  chunk_char_len: 3000 #8700 #17000  # char length of each text chunk
+  chunk_char_overlap: 300 #500  # char overlap of each text chunk
+  chunk_prefix: ""
+lora:
+  r: 8 # 64
+  lora_alpha: 32 # 16
+  target_modules:  # modules for which to train lora adapters
+  - gate_proj
+  - down_proj
+  - up_proj
+  - q_proj
+  - k_proj
+  - v_proj
+  - o_proj
+  lora_dropout: 0.05
+  bias: none
+  task_type: CAUSAL_LM
+# lora:
+#   r: 8
+#   lora_alpha: 32
+#   target_modules:  # modules for which to train lora adapters
+#   - q_proj
+#   - k_proj
+#   - v_proj
+#   lora_dropout: 0.05
+#   bias: none
+#   task_type: CAUSAL_LM
+trainer:
+  batch_size: 1
+  gradient_accumulation_steps: 4
+  warmup_steps: 70
+  num_train_epochs: 5
+  learning_rate: 0.0002  # 2e-4
+  logging_steps: 20
+trainer_output_dir: trainer_outputs/
+model_output_dir: ../../../models  # model saved in {model_output_dir}/{model_name}, models folder is in pv-data
