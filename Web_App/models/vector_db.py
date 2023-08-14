@@ -43,14 +43,14 @@ class vectordb():
     def predict(self, query):
         path = os.getcwd()
         # loader = TextLoader('Web_App/contexts/Radar_Basics1.txt')
-        dir = os.listdir("Web_App/contexts")
+        dir = os.listdir("../Web_App/contexts")
         for fname in dir:
             if fname.endswith('.pdf'):
-                pdfToTxt("Web_App/contexts/" + str(fname), "Web_App/contexts")
-                os.remove("Web_App/contexts/" + str(fname))
+                pdfToTxt("../Web_App/contexts/" + str(fname), "../Web_App/contexts")
+                os.remove("../Web_App/contexts/" + str(fname))
         else:
             if len(dir)!=1:
-                loader = DirectoryLoader("Web_App/contexts", glob="./*.txt", loader_cls=TextLoader)
+                loader = DirectoryLoader("../Web_App/contexts", glob="./*.txt", loader_cls=TextLoader)
             else:
                 return("No uploaded files.")
             documents = loader.load()
