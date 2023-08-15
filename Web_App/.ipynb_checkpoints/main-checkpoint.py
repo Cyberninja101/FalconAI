@@ -10,6 +10,7 @@ import sys
 
 from models.vector_db import vectordb
 from models.finetuned import radar_llama
+from models.hmt import HMT
 
 app = Flask(__name__)
 
@@ -18,7 +19,8 @@ chat_log = []
 
 # Defining models
 finetuned_model = radar_llama()
-vectordb_model = vectordb()
+# vectordb_model = vectordb()
+# hmt_model = HMT()
 
 
 
@@ -80,13 +82,23 @@ def new_entry(mode, entry):
                 ls.append(ascii_string)
             output = "".join(ls)
     
-            # # Check Document or Normal Mode
+            # Check Document or Normal Mode
             if mode == "normal":
                 # Normal, use finetuned_model model
                 return finetuned_model.run(str(output))
-            else:
+            elif mode == "document":
                 # Document mode, use vectordb_model
                 return vectordb_model.predict(str(output))
+            elif mode == "hmt":
+                while True:
+                    c = 0
+                    try:
+                        print(f"try {c}")
+                        c += 1
+                        print(str(output))
+                        return hmt_model.predict(str(output))
+                    except Exception as e:
+                        pass
 
 
 @app.route("/upload_file", methods=["POST"])

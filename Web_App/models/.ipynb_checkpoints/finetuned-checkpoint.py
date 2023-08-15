@@ -71,7 +71,7 @@ class MyOutputParser(BaseLLMOutputParser):
         print("original2", text)
         
         # Delete stuff after "human
-        cut_off2=text.fine("Human")
+        cut_off2=text.find("Human")
         
         return text[:cut_off2]
 
@@ -79,7 +79,7 @@ class radar_llama():
     def __init__(self):
         # Loading model
         self.config = read_yaml_file(os.sep.join([os.getcwd(), "Web_App", "models","configs", "radar_open_llama_7b_qlora.yaml"]))
-        print("Load model")
+        print("Load llama model")
         self.model_path = f"{self.config['model_output_dir']}/{self.config['model_name']}"
         if "model_family" in self.config and self.config["model_family"] == "llama":
             self.tokenizer = LlamaTokenizer.from_pretrained(self.model_path)
@@ -88,14 +88,15 @@ class radar_llama():
             sekf.tokenizer = AutoTokenizer.from_pretrained(self.model_path)
             self.model = AutoModelForCausalLM.from_pretrained(self.model_path, device_map="auto", load_in_8bit=True)
 
-        Create Opal Model (used in check_jailbreak)
+        print("Load vicuna opal model")
+        # Create Opal Model (used in check_jailbreak)
         self.opal_llm = OpalLLM(model='lmsys/vicuna-33b',
                       temperature=0.1,
                       top_k=60,
                       top_p=0.95,
                       max_tokens=500,
                       repetition_penalty=1.15)
-        
+        print("making HF pipeline")
         # Creating HF pipeline
         self.pipe = pipeline(
             "text-generation",
@@ -106,6 +107,7 @@ class radar_llama():
             top_p=0.95,
             repetition_penalty=1.15
         )
+        print(" making local llm")
         self.local_llm = HuggingFacePipeline(pipeline=self.pipe)  
         
         # Creating Prompt Template
@@ -144,7 +146,7 @@ class radar_llama():
         )
     
     def run(self, query):
-        query is the user question, string
+        # query is the user question, string
         if self.check_jailbreak(query):
             return "I cannot answer that question."
         else:
