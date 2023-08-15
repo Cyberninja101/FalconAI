@@ -41,34 +41,18 @@ from langchain.llms.base import LLM
 
 class vectordb():
     def __init__(self):
-        self.path = os.getcwd()
-        # loader = TextLoader('Web_App/contexts/Radar_Basics1.txt')
-        self.dir = os.listdir("Web_App/contexts")
-        for fname in self.dir:
-            if fname.endswith('.pdf'):
-                pdfToTxt("Web_App/contexts/" + str(fname), "Web_App/contexts")
-                os.remove("Web_App/contexts/" + str(fname))
-        else:
-            if len(self.dir)!=1:
-                self.loader = DirectoryLoader("Web_App/contexts", glob="./*.txt", loader_cls=TextLoader)
-            else:
-                return("No uploaded files.")
-            self.documents = self.loader.load()
-
-            self.text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=100)
-            self.texts = self.text_splitter.split_documents(self.documents)
-
             if os.path.exists("instructor-xl.pt"):
+                print("Loading from disk.")
                 self.embedding = torch.load("instructor-xl.pt")
                 print("Loaded embeddings from disk.")
             else:
+                print("Loading from HF")
                 # If the embeddings are not found on disk, download them from Hugging Face
                 self.device = "cuda" if torch.cuda.is_available() else "cpu"
                 self.embedding = HuggingFaceInstructEmbeddings(model_name="hkunlp/instructor-xl", 
                                                                     model_kwargs={"device": self.device})
-
-            self.vectordb = Chroma.from_documents(self.texts, self.embedding)
-            self.retriever = vectordb.as_retriever(search_kwargs={"k": 5})
+                # self.embedding.save_pretrained("instructor-base")
+                
             #model_name="lmsys/vicuna-33b"
             #model_name="databricks/dolly-v2-12b"
             self.model_name="meta-llama/Llama-2-13b-chat-hf"
@@ -82,35 +66,65 @@ class vectordb():
                             max_tokens=200,
                             repetition_penalty=1.15)
             
-            self.qa_chain = RetrievalQA.from_chain_type(llm=self.local_llm,
+    def predict(self, query):
+            self.path = os.getcwd()
+            # loader = TextLoader('Web_App/contexts/Radar_Basics1.txt')
+            self.dir = os.listdir("Web_App/contexts")
+            for fname in self.dir:
+                if fname.endswith('.pdf'):
+                    pdfToTxt("Web_App/contexts/" + str(fname), "Web_App/contexts")
+                    os.remove("Web_App/contexts/" + str(fname))
+            else:
+                if len(self.dir)!=1:
+                    self.loader = DirectoryLoader("Web_App/contexts", glob="./*.txt", loader_cls=TextLoader)
+                else:
+                    return("No uploaded files.")
+
+                print("docs loading")
+                self.documents = self.loader.load()
+    
+                self.text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=100)
+                self.texts = self.text_splitter.split_documents(self.documents)
+
+                print("init vd")
+                self.vectordb = Chroma.from_documents(self.texts, self.embedding)
+
+                print("retrieving")
+                
+                self.retriever = self.vectordb.as_retriever(search_kwargs={"k": 5})
+
+                print("init qa")
+
+                self.qa_chain = RetrievalQA.from_chain_type(llm=self.local_llm,
                                             chain_type="stuff",
                                             retriever=self.retriever,
-                                            return_source_documents=True,
-                                            verbose=False)
-    def predict(self, query):
-            self.llm_response = self.qa_chain(query)
-            self.lines = self.llm_response['result'].split('\n')
+                                            return_source_documents=True)
+                print("run chain")
+                self.llm_response = self.qa_chain(query)
 
-            self.wrapped_lines = [textwrap.fill(line, width=110) for line in self.lines]
-            self.temp_resp = '\n'.join(self.wrapped_lines)
-            self.temp_resp = str(self.temp_resp)
-            if "</s>" in self.temp_resp:
-                self.ind = self.temp_resp.find("</s>")
-                self.temp_resp = self.temp_resp[:self.ind]
-
-            self.trim_index = self.temp_resp.find("### Human:")
-            if self.trim_index != -1: 
-                    self.temp_resp = self.temp_resp[:self.trim_index]
-
-            self.answer = ""
-            self.answer += self.temp_resp
-            self.answer += '\n\nSources:'
-
-            self.clean_source_ls = []
-            for source in self.llm_response["source_documents"]:
-                if source.metadata['source'] not in self.clean_source_ls:
-                    self.clean_source_ls.append(source.metadata['source'])
-            for sources in self.clean_source_ls:
-                self.answer += sources
-            
-            return(self.answer)
+                print("formatting")
+                self.lines = self.llm_response['result'].split('\n')
+    
+                self.wrapped_lines = [textwrap.fill(line, width=110) for line in self.lines]
+                self.temp_resp = '\n'.join(self.wrapped_lines)
+                self.temp_resp = str(self.temp_resp)
+                if "</s>" in self.temp_resp:
+                    self.ind = self.temp_resp.find("</s>")
+                    self.temp_resp = self.temp_resp[:self.ind]
+    
+                self.trim_index = self.temp_resp.find("### Human:")
+                if self.trim_index != -1: 
+                        self.temp_resp = self.temp_resp[:self.trim_index]
+    
+                self.answer = ""
+                self.answer += str(self.temp_resp) + "\n"
+                self.answer += '\n\nSources: '
+    
+                self.clean_source_ls = []
+                for source in self.llm_response["source_documents"]:
+                    if source.metadata['source'] not in self.clean_source_ls:
+                        self.clean_source_ls.append(source.metadata['source'])
+                for sources in self.clean_source_ls:
+                    self.answer += sources
+                
+                return(self.answer)

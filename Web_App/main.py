@@ -7,9 +7,7 @@ import sys
 
 # caution: path[0] is reserved for script path (or '' in REPL)
 # print(os.sep.join([os.getcwd(),"Web_App", "models"]))
-sys.path.insert(1, os.sep.join([os.getcwd(),"Web_App", "models"])) # to get path of model functions
 
-from models.test_model import gpt2, gpt2_model
 from models.vector_db import vectordb
 from models.finetuned import radar_llama
 
@@ -19,7 +17,7 @@ app = Flask(__name__)
 chat_log = []
 
 # Defining models
-# finetuned_model = radar_llama()
+finetuned_model = radar_llama()
 vectordb_model = vectordb()
 
 
@@ -70,25 +68,25 @@ def new_entry(mode, entry):
     chat log, and then sent to the LLM.
 
     """
-    print("This is the new_entry")
+    print(f"This is the new_entry: {entry}")
     if request.method == "POST":
-        print(mode)
-        # Converting hex to string
-        ls = []
-        for i in entry.split(","):
-            hex_string = i
-            bytes_object = bytes.fromhex(hex_string)
-            ascii_string = bytes_object.decode("ASCII")
-            ls.append(ascii_string)
-        output = "".join(ls)
-
-        # # Check Document or Normal Mode
-        # if mode == "normal":
-        #     # Normal, use finetuned_model model
-        #     return finetuned_model.run(str(output))
-        # else:
-            # Document mode, use vectordb_model
-        return vectordb_model.predict(str(output))
+            print("mode: "+mode)
+            # Converting hex to string
+            ls = []
+            for i in entry.split(","):
+                hex_string = i
+                bytes_object = bytes.fromhex(hex_string)
+                ascii_string = bytes_object.decode("ASCII")
+                ls.append(ascii_string)
+            output = "".join(ls)
+    
+            # # Check Document or Normal Mode
+            if mode == "normal":
+                # Normal, use finetuned_model model
+                return finetuned_model.run(str(output))
+            else:
+                # Document mode, use vectordb_model
+                return vectordb_model.predict(str(output))
 
 
 @app.route("/upload_file", methods=["POST"])
