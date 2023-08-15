@@ -22,14 +22,14 @@ from langchain.agents import AgentType
 from langchain.tools import ShellTool
 from langchain.tools import HumanInputRun
 from langchain.agents import create_pandas_dataframe_agent
-import chess
-import chess.engine
+# import chess
+# import chess.engine
 from stockfish import Stockfish
 import re
 from _OpalLLM import OpalLLM
 
 class CustomOutputParser(AgentOutputParser):
-    def __init__(self, llm_output: str) -> Union[AgentAction, AgentFinish]:
+    def parse(self, llm_output: str) -> Union[AgentAction, AgentFinish]:
         if "As an AI language model, I cannot" in llm_output:
             raise SyntaxError(f"Output does not follow prompt: {llm_output}")
         # Check if agent should finish
@@ -49,8 +49,7 @@ class CustomOutputParser(AgentOutputParser):
         action_input = match.group(2)
         # Return the action and action input
         return AgentAction(tool=action, tool_input=action_input.strip(" ").strip('"'), log=llm_output)
-
-my_output_parser = CustomOutputParser()
+    
 class HMT():
     def __init__(self):
         
@@ -113,7 +112,7 @@ class HMT():
         
 
         # llm_math_chain = LLMMathChain.from_llm(llm=self.local_llm, verbose=True)
-        self.tools = [
+        self.tools = []
         #     Tool(
         #         name = "Search Google",
         #         func=google_search,
@@ -139,7 +138,7 @@ class HMT():
         #         func=chess_moves,
         #         description="useful for predicting the next chess move when given a set of moves in standard algebraic notation"
         #     )
-        ]
+        
         # Set up the base template
         self.template = """Answer the following questions as best you can. You have access to the following tools:
 
@@ -224,19 +223,16 @@ class HMT():
 
         self.agent = LLMSingleActionAgent(
             llm_chain=self.llm_chain, 
-            output_parser=my_output_parser,
+            output_parser=CustomOutputParser(),
             stop=["\nObservation:"], 
             allowed_tools=self.tool_names
         )
-
         
         self.agent_executor = AgentExecutor.from_agent_and_tools(agent=self.agent, 
                                                     tools=self.tools,
                                                     verbose=True
                                                     )
     def predict(self, query):
-        #LLM chain consisting of the LLM and a prompt
-        
         return self.agent_executor.run(query)
 
 query = HMT()
