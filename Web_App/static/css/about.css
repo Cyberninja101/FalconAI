@@ -215,3 +215,10 @@ body {
     height:150px;
     padding-right: 1%;
 }
+
+#team_photo {
+    display: block;
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
