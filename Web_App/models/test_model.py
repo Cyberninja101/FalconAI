@@ -5,6 +5,7 @@ from typing import Any, List, Mapping, Optional
 from langchain.callbacks.manager import CallbackManagerForLLMRun
 from langchain.llms.base import LLM
 from langchain.memory import ConversationBufferMemory
+import random
 
 #Create custom LangChain LLM, when we have the API for the actual model, just put the api call inside the _call function; pretty much what the _call function
 class gpt2(LLM):
@@ -29,19 +30,20 @@ class gpt2(LLM):
         return (tokenizer.decode(outputs))
 
 class gpt2_model:
-    def predict(self, query):
-        template = """You are a chatbot having a conversation with a human.
+    def run(self, query):
+        return "hi boi" + str(random.randint(0, 10))
+        # template = """You are a chatbot having a conversation with a human.
 
-        Human: {question}
-        Chatbot: """
+        # Human: {question}
+        # Chatbot: """
 
-        llm = gpt2()
+        # llm = gpt2()
 
-        prompt = PromptTemplate(template=template, input_variables=(["question"]))
+        # prompt = PromptTemplate(template=template, input_variables=(["question"]))
 
-        llm_chain = LLMChain(
-            llm=llm,
-            prompt=prompt 
-        )
+        # llm_chain = LLMChain(
+        #     llm=llm,
+        #     prompt=prompt 
+        # )
 
-        return(llm_chain.predict(question = query, return_only_outputs=True))
+        # return(llm_chain.predict(question = query, return_only_outputs=True))

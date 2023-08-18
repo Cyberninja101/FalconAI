@@ -150,15 +150,18 @@ checkbox.addEventListener("change", function() {
 });
 
 function hmt(){ 
-    console.log(hmt_bool_flag);
     if (hmt_bool_flag == 1){
         console.log("hmt pressed")
         document.getElementById("HMT_img").src="../static/images/HMT_robot_icon_blue.png";
         hmt_bool_flag = 0;
+        // document.querySelector('input[name=color_mode]').style.display = "none";
+        mode = "hmt";
     } else if (hmt_bool_flag==0){
         console.log("elsed")
         document.getElementById("HMT_img").src="../static/images/HMT_robot_icon.png";
         hmt_bool_flag=1;
+        // document.querySelector('btn-color-mode-switch').style.display = "inline-block";
+        mode = "normal";
     }
 }
 
