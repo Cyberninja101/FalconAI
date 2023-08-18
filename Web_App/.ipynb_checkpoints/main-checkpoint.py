@@ -1,4 +1,6 @@
-from flask import Flask, redirect, url_for, render_template, request
+from flask import Flask, redirect, url_for, render_template, request, session
+# The Session instance is not used for direct access, you should always use flask.session
+from flask_session import Session
 
 from models.pdfReader import read_pdf
 import os, shutil
@@ -8,19 +10,36 @@ import sys
 # caution: path[0] is reserved for script path (or '' in REPL)
 # print(os.sep.join([os.getcwd(),"Web_App", "models"]))
 
-from models.vector_db import vectordb
-from models.finetuned import radar_llama
-from models.hmt import HMT
+
+# from models.test_model import gpt2_model
+# from models.hmt import HMT
 
 app = Flask(__name__)
+app.secret_key = "1234"
+app.config["SESSION_PERMANENT"] = False
+app.config['SESSION_TYPE'] = 'filesystem'
+
+
+Session(app)
 
 # Chat Log
-chat_log = []
+chat_store = []
 
 # Defining models
-finetuned_model = radar_llama()
-# vectordb_model = vectordb()
+# finetuned_model = gpt2_model()
+
 # hmt_model = HMT()
+
+# Only load models in here
+# if os.environ.get("WERKZEUG_RUN_MAIN") == "true":
+    # The reloader has already run - do what you want to do here
+
+
+from models.vector_db import vectordb
+from models.finetuned import radar_llama
+
+finetuned_model = radar_llama()
+vectordb_model = vectordb()
 
 
 
@@ -29,6 +48,11 @@ def home():
     """
     This is the home/default page. ok
     """
+    print("testing ok")
+    # Setting up flask sessions list
+    session["chat_log"] = []
+
+    
     # Refresh the finetuned_model history
     # finetuned_model.__init__()
 
@@ -71,6 +95,9 @@ def new_entry(mode, entry):
 
     """
     print(f"This is the new_entry: {entry}")
+    # global chat_store
+    # session["chat_log"] = chat_store
+
     if request.method == "POST":
             print("mode: "+mode)
             # Converting hex to string
@@ -85,22 +112,24 @@ def new_entry(mode, entry):
             # Check Document or Normal Mode
             if mode == "normal":
                 # Normal, use finetuned_model model
-                return finetuned_model.run(str(output))
+                response = finetuned_model.run(str(output), session["chat_log"])
+
+                # Store entry in session
+                session["chat_log"].append(f"Human: {str(output)}\n")
+                session["chat_log"].append(f"AI: {str(response)}\n")
+
+                # print("session stuff:",session["chat_log"])
+
+                return response
+
             elif mode == "document":
                 # Document mode, use vectordb_model
                 return vectordb_model.predict(str(output))
-            elif mode == "hmt":
-                while True:
-                    c = 0
-                    try:
-                        print(f"try {c}")
-                        c += 1
-                        print(str(output))
-                        return hmt_model.predict(str(output))
-                    except Exception as e:
-                        pass
-
-
+            
+            # elif mode == "hmt":
+            #     # Kenny was doing something with this before.
+            #     return hmt_model.predict(str(output))
+            
 @app.route("/upload_file", methods=["POST"])
 def upload_file():
     if request.method == "POST":
@@ -117,5 +146,4 @@ def upload_file():
         return '', 204
 
 if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0", port=8000) # Set debug = True for live changes in development
-
+    app.run(debug=False, use_reloader = False, host="0.0.0.0", port=8000) # Set debug = True for live changes in development

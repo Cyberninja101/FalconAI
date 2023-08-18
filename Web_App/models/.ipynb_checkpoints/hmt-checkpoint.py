@@ -1,7 +1,6 @@
-#imports
-
-import torch
+from torch import cuda, bfloat16
 import transformers
+import sys
 from langchain.agents import Tool, AgentExecutor, LLMSingleActionAgent, AgentOutputParser
 from langchain.prompts import StringPromptTemplate
 
@@ -22,161 +21,212 @@ from langchain.agents import AgentType
 from langchain.tools import ShellTool
 from langchain.tools import HumanInputRun
 from langchain.agents import create_pandas_dataframe_agent
-# import chess
-# import chess.engine
-# from stockfish import Stockfish
+import pandas as pd
+from datasets import load_dataset
+from langchain.llms import HuggingFacePipeline
+
+import chess
+import chess.engine
+from stockfish import Stockfish
 import re
-from _OpalLLM import OpalLLM
+
+from langchain.tools import WikipediaQueryRun
+from langchain.utilities import WikipediaAPIWrapper
+
+sys.path.append('/home/jovyan/.local/lib/python3.11/site-packages')
+sys.path.append('/home/jovyan/.local/bin')
+
+model_id = 'meta-llama/Llama-2-70b-chat-hf'
     
+device = f'cuda:{cuda.current_device()}' if cuda.is_available() else 'cpu'
+
+# set quantization configuration to load large model with less GPU memory
+# this requires the `bitsandbytes` library
+bnb_config = transformers.BitsAndBytesConfig(
+    load_in_4bit=True,
+    bnb_4bit_quant_type='nf4',
+    bnb_4bit_use_double_quant=True,
+    bnb_4bit_compute_dtype=bfloat16
+)
+
+# begin initializing HF items, need auth token for these
+hf_auth = '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'
+model_config = transformers.AutoConfig.from_pretrained(
+    model_id,
+    use_auth_token=hf_auth
+)
+print("loading model")
+model = transformers.AutoModelForCausalLM.from_pretrained(
+    model_id,
+    trust_remote_code=True,
+    config=model_config,
+    quantization_config=bnb_config,
+    device_map='auto',
+    use_auth_token=hf_auth
+)
+model.eval()
+print(f"Model loaded on {device}")
+print("loading tokenizer")
+tokenizer = transformers.AutoTokenizer.from_pretrained(
+    model_id,
+    use_auth_token=hf_auth
+)
+print("loaded tokenizer")
+generate_text = transformers.pipeline(
+    model=model, 
+    tokenizer=tokenizer,
+    return_full_text=True,  # langchain expects the full text
+    task='text-generation',
+    # we pass model parameters here too
+    temperature=0.1,  # 'randomness' of outputs, 0.0 is the min and 1.0 the max
+    max_new_tokens=512,  # mex number of tokens to generate in the output
+    repetition_penalty=1.1  # without this output begins repeating
+)
+
+llm = HuggingFacePipeline(pipeline=generate_text)
+local_llm = llm
+
+search = DuckDuckGoSearchRun()
+#wikipedia = WikipediaQueryRun(api_wrapper=WikipediaAPIWrapper())
+shell_tool = ShellTool()
+shell_tool.description = shell_tool.description + f"args {shell_tool.args}".replace(
+    "{", "{{"
+).replace("}", "}}")
+self_ask_with_search = initialize_agent(
+    [shell_tool], local_llm, agent=AgentType.CHAT_ZERO_SHOT_REACT_DESCRIPTION, verbose=False
+)
+
+def duck_wrapper(input_text):
+#   search_results = search.run(f"site:webmd.com {input_text}")
+    search_results = search.run(f"site:google.com {input_text}")
+    return search_results
+
+def chess_guide(input_text):
+    search_results2 = search.run(f"site:chess.com {input_text}")
+    return search_results2
+
+def shell(input_text):
+    search_results4 = self_ask_with_search.run(input_text)
+    return search_results4
+
+def chess_moves(input_text):
+#    stockfish = Stockfish('/workspace/pv-data/InternFolders/Niko/stockfish-ubuntu-x86-64-modern')
+    stockfish = Stockfish('/workspace/pv-data/stockfish-ubuntu-x86-64-modern')
+    input_text = input_text.replace("\"", "")
+    moves = input_text.split()
+    moves_clean = []
+    for i in moves:
+        x = i.find(".")
+        if x != -1:
+            moves_clean.append(i[x+1:])
+        else:
+            moves_clean.append(i)
+
+    board = chess.Board()
+    for move in moves_clean:
+        board.push_san(move)
+    fen = board.fen()
+
+    stockfish.set_fen_position(fen)
+
+    best_move = stockfish.get_best_move()
+
+    return (f"The next best move according to Stockfish is: '{best_move}'")
+
 class HMT():
     def __init__(self):
-        
-        # Use Opal Server
-        self.model_name="tiiuae/falcon-40b-instruct"
-        self.local_llm=OpalLLM(model=self.model_name,
-                        temperature=0.1,
-                        top_k=10,
-                        top_p=0.95,
-                        max_tokens=500,
-                        repetition_penalty=1.15)
-
-        # Define which tools the agent can use to answer user queries
-        # search = DuckDuckGoSearchRun()
-        # wikipedia = WikipediaQueryRun(api_wrapper=WikipediaAPIWrapper())
-        # shell_tool = ShellTool()
-        # shell_tool.description = shell_tool.description + f"args {shell_tool.args}".replace(
-        #     "{", "{{"
-        # ).replace("}", "}}")
-        # self_ask_with_search = initialize_agent(
-        #     [shell_tool], self.local_llm, agent=AgentType.CHAT_ZERO_SHOT_REACT_DESCRIPTION, verbose=True
-        # )
-
-        # def google_search(input_text):
-        #     search_results = search.run(f"site:google.com {input_text}")
-        #     return search_results
-
-        # def chess_guide(input_text):
-        #     search_results2 = search.run(f"site:chess.com {input_text}")
-        #     return search_results2
-
-
-        # def shell(input_text):
-        #     search_results4 = self_ask_with_search.run(input_text)
-        #     return search_results4
-
-
-        # def chess_moves(input_text):
-        #     stockfish = Stockfish('/workspace/pv-data/InternFolders/Niko/stockfish-ubuntu-x86-64-modern')
-
-        #     moves = input_text.split()
-        #     moves_clean = []
-        #     for i in moves:
-        #         x = i.find(".")
-        #         if x != -1:
-        #             moves_clean.append(i[x+1:])
-        #         else:
-        #             moves_clean.append(i)
-            
-        #     board = chess.Board()
-        #     for move in moves_clean:
-        #         board.push_san(move)
-        #     fen = board.fen()
-
-        #     stockfish.set_fen_position(fen)
-        
-        #     best_move = stockfish.get_best_move()
-
-        #     return best_move
-        
-
-        # llm_math_chain = LLMMathChain.from_llm(llm=self.local_llm, verbose=True)
-        self.tools = []
-        #     Tool(
-        #         name = "Search Google",
-        #         func=google_search,
-        #         description="useful for getting answers to general questions"
-        #     ),
-        #     Tool(
-        #         name="Calculator",
-        #         func=llm_math_chain.run,
-        #         description="useful for when you need to answer arithmetic questions"
-        #     ),
-        #     Tool(
-        #         name="Chess Search",
-        #         func=chess_guide,
-        #         description="useful for general chess questions related to openings or pieces"
-        #     ),
-        #     Tool(
-        #         name="Shell Tool",
-        #         func=shell,
-        #         description = "useful for interacting with the local file system and using shell commands"
-        #     ),
-        #     Tool(
-        #         name="Chess Move Predict",
-        #         func=chess_moves,
-        #         description="useful for predicting the next chess move when given a set of moves in standard algebraic notation"
-        #     )
-        
         # Set up the base template
-        self.template = """Answer the following questions as best you can.
+        template = """Answer the following questions as best you can, but speaking as a professional chess player. You have access to the following tools:
 
-                Use the following format:
-        
-                Question: the input question you must answer
-                Thought: list out every step you need to take to solve this question
-                Step: go through one step in the list
-                ... (Keep using Step to go through the list until you've gone through all the steps)
-                Thought: I now know the final answer
-                Final Answer: the final answer to the original input question
-        
-                Here are some examples for this format:
-        
-                Question: How do I bake a cake?
-                Thought: 1. Find out what cooking tools needed
-                         2. Find out what ingredients are needed
-                         3. Find out how to make a cake batter
-                         4. Find out the temperature needed to bake the cake
-                         5. Put the cake in the oven
-                Step: 1. To bake a cake you will need a mixer, a rubber spatulas, Measuring cups and spoons, Mixing bowls, Cake pans, Cooling racks, a whisk, a spatula, and an oven thermometer
-                Step: 2. The ingredients you will need to bake a cake is Flour, Sugar, Eggs, Butter or oil, Baking powder or baking soda, and Milk or water
-                Step: 3. Before making the ake batter grease and flour your cake pans, then mix together your dry ingredients in one bowl and your wet ingredients in another bowl, combine the dry and wet ingredients, and pour the batter into the prepared cake pans.
-                Step: 4. The temperature needed to bake a cake is between 325°F and 450°F. For basic cake recipes, 350°F is the most common temperature.
-                Step: 5. Now put the cake in the oven at the aforementioned temperature for an hour or until golden brown
-                Thought: I now know the final answer
-                Final Answer: First you would need to get the proper cooking tools to bake a cake, like a mixer, a rubber spatulas, Measuring cups and spoons, Mixing bowls, Cake pans, Cooling racks, a whisk, a spatula, and an oven thermometer
-                    Then you would need to get the ingredients that are needed to bake the cake like Flour, Sugar, Eggs, Butter or oil, Baking powder or baking soda, and Milk or water
-                    After you have all the cooking tools and ingredients needed, grease and flour your cake pans to make your cake batter, after that mix together your dry ingredients in one bowl and your wet ingredients in another bowl, combine the dry and wet ingredients, and pour the batter into the prepared cake pans.
-                    The temperature needed to preheat the oven will be between 325°F and 450°F
-        
-                Question: What happens to the pawn when it reaches the end of the chess board?
-                Thought: 1.Find out what happens when a pawn gets to the other side of the chess board, 
-                         2.Find out what pawn promotion is.
-                Step: 1. When a pawn reaches the end of the chess board pawn promotion happens. 
-                Step: 2. Pawn Promotion is one of the special moves in chess. It happens when a Pawn reaches the opponent's back rank (first row of the opponent) and then it is replaced by any piece a player decides to, except The King
-                Thought: I now know the final answer
-                Final Answer: Pawn Promotion is one of the special moves in chess. It happens when a Pawn reaches the opponent's back rank (first row of the opponent) and then it is replaced by any piece a player decides to, except The King
-                
-                Begin! Remember to use the template when giving your final answer.
-                
-                Question: {input}
-                {agent_scratchpad}"""
-                # Question: What is the difference between a ninja and a samurai?
-                # Thought: 1. Find out what ninjas did historically
-                #          2. Find out what samurais did histtorically
-                #          3. Compare the two, to find differences
-                # Step: 1. Ninjas were trained as assassins and mercenaries and usually belonged to the lower classes of Japanese society. They used ninjutsu to disrupt enemies and gather information. The functions of a ninja included espionage, sabotage, infiltration, assassination and guerrilla warfare.
-                # Step: 2. Samurai were part of an elite class of Japanese warriors who fought to defend their medieval lords. They were considered to be the best warriors in medieval Japan as they were well-trained in the art of battle.
-                # Step: 3. The main difference between a ninja and a samurai is who they were and what they did. Samurai were part of an elite class of Japanese warriors who fought to defend their medieval lords. They were considered to be the best warriors in medieval Japan as they were well-trained in the art of battle. Ninjas, on the other hand, were trained as assassins and mercenaries and usually belonged to the lower classes of Japanese society. They used ninjutsu to disrupt enemies and gather information.
-                # Thought: I now know the final answer
-                # Final Answer: The main difference between a ninja and a samurai is who they were and what they did. Samurai were part of an elite class of Japanese warriors who fought to defend their medieval lords. They were considered to be the best warriors in medieval Japan as they were well-trained in the art of battle. Ninjas, on the other hand, were trained as assassins and mercenaries and usually belonged to the lower classes of Japanese society. They used ninjutsu to disrupt enemies and gather information.
+        {tools}
 
+        Use the following format:
+
+        Question: the input question you must answer
+        Thought: you should always think about what to do
+        Action: the action to take, should be one of [{tool_names}]
+        Action Input: the input to the action
+        Observation: the result of the action
+        ... (this Thought/Action/Action Input/Observation can repeat N times)
+        Thought: I now know the final answer
+        Final Answer: the final answer to the original input question
+
+        Here are some examples for this format:
+
+        Question: How old was Albert Einstein when he died divided by two
+        Thought: I should find out how old Albert Einstein was when he died. This is a general question, so I should use the Search DukcDuckGo tool
+        Action: Search DuckDuckGo
+        Action Input: "How old was Albert Einstein when he died."
+        Observation: (Tool Result) Albert Einstein was 76 years old when he died
+        Thought: I now know the final answer
+        Final Answer: Albert Einstein's age when he died is 76
+
+        Question: I am playing a chess game with the following moves in algebraic notation: e4 e5 f4. I am black, what should be my next move?
+        Thought: This is a specific chess question related to an ongoing game. I should use the Chess Move Predict tool
+        Action: Chess Move Predict
+        Action Input: "e4 e5 f4"
+        Observation: (Tool Result) Black should play e5 to f4
+        Thought: I now know the final answer
+        Final Answer: My next move should be e5 to f4
+
+        Question: What is 8 multiplied by 64?
+        Thought: This is an arithmetic problem, I should use the Calculator tool.
+        Action: Calculator
+        Action Input: "What is 8 multiplied by 64?"
+        Observation: (Tool Result) 8 multiplied by 64 is 512
+        Thought: I now know the final answer
+        Final Answer: 8 multiplied by 64 is 512
+
+        Question: What happens to the pawn when it reaches the end of the chess board?
+        Thought: This is a general question related to chess, I should use the Chess Search tool
+        Action: Chess Search
+        Action Input: "What happens to the pawn when it reaches the end of the chess board?"
+        Observation: (Tool Result) Pawn Promotion is one of the special moves in chess. It happens when a Pawn reaches the opponent's back rank (first row of the opponent) and then it is replaced by any piece a player decides to, except The King
+        Thought: I now know the final answer
+        Final Answer: Pawn Promotion is one of the special moves in chess. It happens when a Pawn reaches the opponent's back rank (first row of the opponent) and then it is replaced by any piece a player decides to, except The King
+
+        Begin! Remember to answer as a professional chess player and use the template when giving your final answer.
+
+        Question: {input}
+        {agent_scratchpad}"""
+        
+        llm_math_chain = LLMMathChain.from_llm(llm=local_llm, verbose=False)
+        tools = [
+            Tool(
+                name = "Google Search",
+                func=duck_wrapper,
+                description="useful for getting answers to general questions"
+            ),
+            Tool(
+                name="Calculator",
+                func=llm_math_chain.run,
+                description="useful for when you need to answer arithmetic questions"
+            ),
+            Tool(
+                name="Chess Search",
+                func=chess_guide,
+                description="useful for general chess questions related to openings or pieces"
+            ),
+            Tool(
+                name="Shell Tool",
+                func=shell,
+                description = "useful for interacting with the local file system and using shell commands"
+            ),
+            Tool(
+                name="Chess Move Predict",
+                func=chess_moves,
+                description="useful for predicting the next chess move when given a series of moves in standard algebraic notation"
+            )
+        ]
+        
         # Set up a prompt template
+        
         class CustomPromptTemplate(StringPromptTemplate):
             # The template to use
             template: str
             # The list of tools available
             tools: List[Tool]
-            
+
             def format(self, **kwargs) -> str:
                 # Get the intermediate steps (AgentAction, Observation tuples)
                 # Format them in a particular way
@@ -192,11 +242,18 @@ class HMT():
                 # Create a list of tool names for the tools provided
                 kwargs["tool_names"] = ", ".join([tool.name for tool in self.tools])
                 return self.template.format(**kwargs)
-                
+            
+        prompt = CustomPromptTemplate(
+            template=template,
+            tools=tools,
+            # This omits the `agent_scratchpad`, `tools`, and `tool_names` variables because those are generated dynamically
+            # This includes the `intermediate_steps` variable because that is needed
+            input_variables=["input", "intermediate_steps"]
+        )
+        
         class CustomOutputParser(AgentOutputParser):
+    
             def parse(self, llm_output: str) -> Union[AgentAction, AgentFinish]:
-                if "As an AI language model, I cannot" in llm_output:
-                    raise SyntaxError(f"Output does not follow prompt: {llm_output}")
                 # Check if agent should finish
                 if "Final Answer:" in llm_output:
                     return AgentFinish(
@@ -214,33 +271,60 @@ class HMT():
                 action_input = match.group(2)
                 # Return the action and action input
                 return AgentAction(tool=action, tool_input=action_input.strip(" ").strip('"'), log=llm_output)
+            
+        output_parser = CustomOutputParser()
+        # LLM chain consisting of the LLM and a prompt
+        llm_chain = LLMChain(llm=local_llm, prompt=prompt)
+        tool_names = [tool.name for tool in tools]
 
-        self.output_parser = CustomOutputParser()
-        
-        self.prompt = CustomPromptTemplate(
-            template=self.template,
-            tools=self.tools,
-            # This omits the `agent_scratchpad`, `tools`, and `tool_names` variables because those are generated dynamically
-            # This includes the `intermediate_steps` variable because that is needed
-            input_variables=["input", "intermediate_steps"]
-        )
-
-        self.llm_chain = LLMChain(llm=self.local_llm, prompt=self.prompt)
-        self.tool_names = [tool.name for tool in self.tools]
-
-        self.agent = LLMSingleActionAgent(
-            llm_chain=self.llm_chain, 
-            output_parser=self.output_parser,
+        agent = LLMSingleActionAgent(
+            llm_chain=llm_chain, 
+            output_parser=output_parser,
             stop=["\nObservation:"], 
-            allowed_tools=self.tool_names
+            allowed_tools=tool_names
         )
         
-        self.agent_executor = AgentExecutor.from_agent_and_tools(agent=self.agent, 
-                                                    tools=self.tools,
-                                                    verbose=True
-                                                    )
+        self.agent_executor = AgentExecutor.from_agent_and_tools(agent=agent, 
+                                                   tools=tools, 
+                                                   verbose=False,
+#                                                    handle_parsing_errors=True,
+                                                   return_intermediate_steps=True)
     def predict(self, query):
-        return self.agent_executor.run(query)
+        langchain.debug = False
+        langchain.verbose = False
+        response = self.agent_executor(query)
+        ## Parse the string from intermed_result
+        keywords = ["log=", "Action:", "Action Input:"]
+        result = []
+        print(response["intermediate_steps"])
+        for input_string_temp in response['intermediate_steps']:
+            input_string = str(input_string_temp[0])
+            obv = str(input_string_temp[1])
+            for index, keyword in enumerate(keywords):
+                start_index = input_string.find(keyword)
+                if keyword=="log=":
+                    end_index = input_string.find(keywords[index+1])
+                    appendable = ("Thought:", re.sub(r'[^A-Za-z0-9 ."]+', '', input_string[start_index+len(keyword)-1:end_index-1].strip().replace("Answer:", "").replace("Thought:", "").replace("\\n", "").replace("\\n\\", ""))[1:])
+                    result.append(appendable)
+                elif keyword == "Action Input:":
+                    appendable = (keyword, re.sub(r'[^A-Za-z0-9 ."]+', '', input_string[start_index+len(keyword)-1:len(input_string)].strip().replace("\\n", "").replace("\\n\\", "")))
+                    result.append(appendable)
+                else:
+                    end_index = input_string.find(keywords[index + 1])
+                    appendable = (keyword, re.sub(r'[^A-Za-z0-9 ."]+', '', input_string[start_index+len(keyword)-1:end_index-1].strip().replace("\\n", "").replace("\\n\\", "")))
+                    result.append(appendable)
+            result.append(("Action Output:", obv))
 
-
-
+        final_output = ''
+        for keyword, value in result:
+            final_output += f'{keyword} {value} '
+        final_ans = response["output"]
+        final_output += f"Final Answer: {final_ans} "
+        print(final_output)
+        
+        return final_output
+    
+# hmt_model = HMT()
+# print(hmt_model.predict("What is the mass of Neptune's biggest moon?"))
+# print("\n"*3)
+# print(output)
