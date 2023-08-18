@@ -100,24 +100,10 @@ def duck_wrapper(input_text):
 #   search_results = search.run(f"site:webmd.com {input_text}")
     search_results = search.run(f"site:google.com {input_text}")
     return search_results
-"""
-Define LangChain google_search tool to allow LLM to search for answers on the web.
-
-Parameters:
-Input_text: str
-	The text to look up on google
-
-Returns:
-Search_results: [figure out type]
-"""
 
 def chess_guide(input_text):
     search_results2 = search.run(f"site:chess.com {input_text}")
     return search_results2
-
-"""
-Define Lang
-"""
 
 def shell(input_text):
     search_results4 = self_ask_with_search.run(input_text)
