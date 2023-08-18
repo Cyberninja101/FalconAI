@@ -138,13 +138,8 @@ def upload_file():
         f = request.files['context_file']
         f.save(os.sep.join(["Web_App", "contexts",f.filename]))
 
-
-        # TODO: FOR JUSTIN - Convert pdf file to string using ur function
-        # and send it to the finetuned_model model as context
-
-        # empty return with 204 code, means its good
-        x = read_pdf(f"Web_App/contexts/{f.filename}") # - content of uploaded as string TODO: implement 
-        # print(x)
+        x = read_pdf(f"Web_App/contexts/{f.filename}") 
+        
         return '', 204
 
 if __name__ == "__main__":
