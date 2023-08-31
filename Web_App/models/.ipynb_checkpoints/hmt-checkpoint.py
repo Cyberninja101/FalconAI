@@ -97,68 +97,19 @@ self_ask_with_search = initialize_agent(
 )
 
 def duck_wrapper(input_text):
-    """
-    The duck_wrapper function defines LangChain google_search tool to allow LLM to search for answers on the web.
-
-    Parameters:
-    input_text: str
-        The text to look up on Google.
-
-    Returns:
-    search_results: str
-        Results found from Google based on the input text.
-    """
 #   search_results = search.run(f"site:webmd.com {input_text}")
     search_results = search.run(f"site:google.com {input_text}")
     return search_results
 
-
 def chess_guide(input_text):
-    """
-    The chess_guide function defines LangChain chess_guide tool to allow LLM to search for answers on chess.com.
-
-    Parameter:
-    input_text: str
-        The text to look up on chess.com.
-
-    Returns:
-    search_results: str
-        Results found from chess.com based on the input text.
-    """
     search_results2 = search.run(f"site:chess.com {input_text}")
     return search_results2
 
-
-
 def shell(input_text):
-    """
-    The shell function defines LangChain shell tool to allow LLM to do commands in the terminal.
-
-    Parameter:
-    input_text: str
-        The text to execute shell commands.
-    
-    Returns:
-    search_results: str
-        The output of executing that shell command based on the input text.
-    
-    """
     search_results4 = self_ask_with_search.run(input_text)
     return search_results4
 
-
 def chess_moves(input_text):
-    """
-    The chess_moves function defines LangChain custom tools to allow LLM to predict what chess move to make using Stockfish.
-    
-    Parameter:
-    input_text: str
-        The chess notations to predict a chess move.
-    
-    Returns:
-    search_results: str
-        The best chess move to make found from Stockfish based on the input text.
-    """
 #    stockfish = Stockfish('/workspace/pv-data/InternFolders/Niko/stockfish-ubuntu-x86-64-modern')
     stockfish = Stockfish('/workspace/pv-data/stockfish-ubuntu-x86-64-modern')
     input_text = input_text.replace("\"", "")

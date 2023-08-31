@@ -49,4 +49,4 @@ APL Mentors
 - Edwina Liu
 
 ## License
-**Ask Mentors, remind Zenchang**
+Unlicensed.
