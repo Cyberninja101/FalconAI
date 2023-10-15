@@ -15,14 +15,13 @@ Website: [http://falconai.outer.jhuapl.edu](http://falconai.outer.jhuapl.edu/)
 - Built with: ReAct framework Human Machine Teaming capabilities
 - Constructed with: Flask (Python web framework)
 
-**Put in a photo of the Web App UI, maybe with some box shadows when it looks nice, remind Zenchang pls**
 
 
 ## Features
 - Normal Mode
     - The normal mode uses the fine-tuned open-llama model, and is best suited for answering general questions relating to radars. With conversational memory, users can ask questions and converse with the model. Users can also ask questions outside of radars, but the responses might not be as accurate.
 - Document Mode
-    - The document ingest mode allows users to upload multiple documents to FALCON. Using the llama 13B **Kenny, confirm the final model** model from OPAL, users can ask specific questions about the text, such as "What are the top 3 threats I need to know about from North Korea as a radar specialist?", or more general questions, such as "summarize and list the main points of this document".
+    - The document ingest mode allows users to upload multiple documents to FALCON. Using the llama 13B model from OPAL, users can ask specific questions about the text, such as "What are the top 3 threats I need to know about from North Korea as a radar specialist?", or more general questions, such as "summarize and list the main points of this document".
 - Explanation Mode
     - The explanation mode activates HMT (Human Machine Teaming), built with the ReAct framework, prompting the model to explain how it got to its answers. With more advanced AI reasoning, users can have more confidence giving the AI more complicated tasks, freeing their time for more creative endeavors. 
 - Strong CounterAI Gaurdrails
